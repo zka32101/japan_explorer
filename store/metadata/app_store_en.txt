@@ -1,0 +1,83 @@
+========================================================
+APPLE APP STORE — ENGLISH LISTING
+========================================================
+
+APP NAME (max 30 chars):
+Japan Explorer: AI Guide
+
+SUBTITLE (max 30 chars):
+Travel smarter across Japan
+
+PROMOTIONAL TEXT (max 170 chars — not indexed, update anytime):
+New: AR landmark recognition and offline audio guides — explore Japan's hidden gems with your AI-powered travel companion.
+
+DESCRIPTION (max 4000 chars):
+Japan Explorer is your AI-powered travel companion for exploring Japan. Whether you're visiting for the first time or rediscovering a country you love, Japan Explorer helps you go deeper.
+
+DISCOVER CURATED SPOTS
+Temples, shrines, hidden alleys, local markets, seasonal festivals — hand-picked by Japan specialists and enriched with AI-powered cultural context.
+
+AI AUDIO GUIDES
+Point at a landmark and get an instant immersive audio guide in your language. AI personalizes the content based on your interests and travel style — not just a Wikipedia summary.
+
+SMART TRAVEL PLANNER
+Enter your travel dates and preferences. Japan Explorer generates a personalized, day-by-day itinerary in seconds. Adjust plans on the go as your adventure unfolds.
+
+5 LANGUAGES
+Full support for English, Japanese (日本語), Simplified Chinese (中文), Korean (한국어), and French (Français) — across the entire app experience.
+
+CULTURAL CHALLENGES
+Complete cultural missions to earn XP and badges. Try local specialties, attend seasonal events, practice essential phrases, and unlock exclusive hidden spots.
+
+OFFLINE MODE
+Downloaded guides and travel plans stay accessible without a network connection. Perfect for Japan's subway tunnels and rural escapes.
+
+TRAVELER COMMUNITY
+Share photos and tips, rate spots, and read authentic reviews from fellow Japan enthusiasts around the world.
+
+FREE:
+• Browse all curated spots and categories
+• Generate 1 AI travel plan per day
+• Join cultural challenges and earn badges
+• Community posts, photos, and ratings
+• Offline access to saved content
+• Full 5-language support
+
+JAPAN EXPLORER PRO (subscription):
+• Unlimited AI audio guides
+• Unlimited travel plan generation
+• Exclusive hidden gems collection
+• Advanced AR landmark recognition
+• Priority AI response speed
+• Ad-free experience
+
+KEYWORDS (App Store Connect — 100 chars total, comma-separated):
+japan,travel,guide,audio,AI,kyoto,tokyo,itinerary,culture,tourism,plan,shrine,temple
+
+PRIMARY CATEGORY:
+Travel
+
+SECONDARY CATEGORY:
+Reference
+
+AGE RATING:
+4+ (no objectionable content)
+
+SUPPORT URL:
+https://japanexplorer.app/support
+
+MARKETING URL:
+https://japanexplorer.app
+
+PRIVACY POLICY URL:
+https://japanexplorer.app/privacy
+
+REVIEW NOTES (for App Store review team):
+- Test account: testuser@japanexplorer.app / TestPass123!
+- AI features require network connection (graceful offline fallback shown)
+- In-app purchases use sandbox environment in TestFlight
+- Location permission used for nearby spots map — can be denied; app functions without it
+- Camera permission used for AI landmark recognition — can be denied; app functions without it
+- No user-generated content moderation needed for review (community posts go through Firebase content rules)
+
+========================================================

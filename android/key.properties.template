@@ -1,0 +1,28 @@
+# ============================================================
+# Android Release Signing — key.properties
+# ============================================================
+# NEVER commit this file to git.
+# Copy to android/key.properties and fill in real values.
+# android/.gitignore already excludes key.properties.
+# ============================================================
+
+# Path to your .jks keystore file (absolute or relative to android/)
+storeFile=../keystore/japan_explorer_release.jks
+
+# Keystore password (set during keytool -genkey)
+storePassword=YOUR_KEYSTORE_PASSWORD
+
+# Key alias inside the keystore
+keyAlias=japan_explorer
+
+# Key password (often same as storePassword)
+keyPassword=YOUR_KEY_PASSWORD
+
+
+# ── How to generate a keystore ────────────────────────────────
+# keytool -genkey -v \
+#   -keystore android/keystore/japan_explorer_release.jks \
+#   -alias japan_explorer \
+#   -keyalg RSA -keysize 2048 \
+#   -validity 10000
+# ─────────────────────────────────────────────────────────────

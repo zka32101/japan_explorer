@@ -1,0 +1,367 @@
+{
+  "app_name": "Japan Explorer",
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "skip": "Skip",
+    "done": "Done",
+    "save": "Save",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "close": "Close",
+    "error": "Something went wrong",
+    "loading": "Loading...",
+    "retry": "Retry",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "share": "Share",
+    "search": "Search",
+    "see_all": "See All"
+  },
+  "onboarding": {
+    "step0": {
+      "title": "Welcome to\nJapan Explorer",
+      "subtitle": "Choose your language"
+    },
+    "step1": {
+      "title": "What interests you?",
+      "subtitle": "Pick categories to personalize your experience",
+      "hint": "Select at least one"
+    },
+    "step2": {
+      "title": "How do you travel?",
+      "subtitle": "Help us recommend the best experiences",
+      "style_label": "TRAVEL STYLE",
+      "duration_label": "TRIP DURATION",
+      "solo": "Solo",
+      "couple": "Couple",
+      "family": "Family",
+      "group": "Group",
+      "weekend": "Weekend",
+      "one_week": "1 Week",
+      "two_weeks": "2 Weeks",
+      "month_plus": "1 Month+"
+    },
+    "step3": {
+      "title": "Stay in the loop",
+      "subtitle": "Get notified about events, challenges & more",
+      "allow": "Allow Notifications",
+      "later": "Maybe Later",
+      "challenge": "Daily travel challenges",
+      "streak": "Streak reminders",
+      "events": "Local events near you",
+      "meetup": "Host meetup requests"
+    },
+    "step4": {
+      "title": "You're all set!",
+      "subtitle": "Your Japan adventure starts now",
+      "cta": "Start Exploring"
+    }
+  },
+  "category": {
+    "shrine": "Shrines",
+    "temple": "Temples",
+    "nature": "Nature",
+    "food": "Food",
+    "culture": "Culture",
+    "modern": "Modern",
+    "nightlife": "Nightlife",
+    "shopping": "Shopping"
+  },
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "my_plan": "My Plan",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "Discover Japan",
+    "trending": "Trending",
+    "featured": "Featured",
+    "near_you": "Near You",
+    "all_categories": "All Categories"
+  },
+  "search": {
+    "hint": "Search places, food, culture...",
+    "recent": "Recent Searches",
+    "no_results": "No results found",
+    "try_different": "Try a different keyword"
+  },
+  "detail": {
+    "audio_guide": "Audio Guide",
+    "save": "Save",
+    "share": "Share",
+    "directions": "Get Directions",
+    "reviews": "Reviews",
+    "practical_info": "Practical Info",
+    "nearby": "Nearby Places"
+  },
+  "audio_guide": {
+    "generating": "Generating audio guide...",
+    "play": "Play",
+    "pause": "Pause",
+    "stop": "Stop",
+    "uses_remaining": "{count} uses remaining today",
+    "limit_reached": "Daily limit reached"
+  },
+  "planner": {
+    "title": "AI Trip Planner",
+    "subtitle": "Create your perfect itinerary",
+    "generate": "Generate Plan",
+    "generating": "Creating your plan...",
+    "interests": "Interests",
+    "days": "Days",
+    "budget": "Budget",
+    "uses_remaining": "{count} uses remaining this week"
+  },
+  "profile": {
+    "level": "Level {level}",
+    "xp": "{xp} XP",
+    "streak": "{days}-day streak",
+    "premium_member": "Premium Member",
+    "premium_active": "Active",
+    "unlock_premium": "Unlock Premium",
+    "settings": "Settings",
+    "my_posts": "My Posts",
+    "saved": "Saved Places"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "theme": "Theme",
+    "theme_system": "System",
+    "theme_light": "Light",
+    "theme_dark": "Dark",
+    "notifications": "Notifications",
+    "notif_streak": "Streak Reminders",
+    "notif_challenge": "Challenge Updates",
+    "notif_meetup": "Host Meetups",
+    "language": "Language",
+    "data_privacy": "Data & Privacy",
+    "clear_history": "Clear Search History",
+    "privacy_policy": "Privacy Policy",
+    "delete_account": "Delete Account",
+    "about": "About",
+    "version": "Version {version}",
+    "terms": "Terms of Service",
+    "licenses": "Open Source Licenses"
+  },
+  "premium": {
+    "title": "Unlock Premium",
+    "subtitle": "The complete Japan experience",
+    "cta": "Start Free Trial",
+    "restore": "Restore Purchases",
+    "best_value": "BEST VALUE",
+    "features": {
+      "audio": "Unlimited Audio Guides",
+      "planner": "Unlimited AI Planner",
+      "offline": "Offline Maps & Content",
+      "host": "Priority Host Matching",
+      "challenges": "Exclusive Challenges",
+      "badge": "Premium Badge"
+    }
+  },
+  "auth": {
+    "welcome": "Welcome",
+    "tagline": "Discover the real Japan",
+    "sign_in_google": "Continue with Google",
+    "sign_in_apple": "Continue with Apple",
+    "terms_note": "By continuing you agree to our Terms of Service",
+    "sign_out": "Sign Out",
+    "or": "or",
+    "email": "Email",
+    "password": "Password",
+    "sign_in": "Sign In",
+    "sign_up": "Create Account",
+    "has_account": "Already have an account? Sign In",
+    "no_account": "Don't have an account? Sign Up",
+    "email_error": "Enter a valid email",
+    "password_error": "Min 6 characters"
+  },
+  "share": {
+    "spot": "Share this spot",
+    "app": "Share Japan Explorer"
+  },
+  "review": {
+    "rate_us": "Rate Us"
+  },
+  "detail": {
+    "audio_guide": "Audio Guide",
+    "save": "Save",
+    "share": "Share",
+    "directions": "Get Directions",
+    "reviews": "Reviews",
+    "practical_info": "Practical Info",
+    "nearby": "Nearby Places",
+    "want_to_go": "Want to go",
+    "recommend": "Recommend",
+    "submit_rating": "Submit Rating",
+    "rating_submitted": "Rating submitted!",
+    "rate_required": "Please rate both categories"
+  },
+  "challenge": {
+    "title": "Daily Challenges",
+    "complete": "Complete",
+    "completed": "Completed!",
+    "xp_reward": "+{xp} XP",
+    "streak": "Current Streak",
+    "no_challenges": "No challenges today"
+  },
+  "phrases": {
+    "title": "Japanese Phrases",
+    "play": "Listen",
+    "copied": "Copied!",
+    "search": "Search phrases..."
+  },
+  "errors": {
+    "network": "No internet connection",
+    "server": "Server error. Please try again.",
+    "auth": "Authentication failed",
+    "permission": "Permission denied",
+    "unknown": "An unexpected error occurred",
+    "generic": "Something went wrong. Please try again."
+  },
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "community": "Community",
+    "my_plan": "My Plan",
+    "profile": "Profile"
+  },
+  "community": {
+    "title": "Community",
+    "create_post": "New Post",
+    "post": "Post",
+    "empty_title": "No posts yet",
+    "empty_body": "Be the first to share your Japan experience!",
+    "no_comments": "No comments yet. Be the first!",
+    "no_image": "Please select a photo first.",
+    "no_caption": "Please add a caption.",
+    "post_shared": "Post shared!",
+    "caption": "Caption",
+    "caption_hint": "Share what made this moment special...",
+    "tap_to_add_photo": "Tap to add a photo",
+    "photo_guidelines": "Please share respectful, travel-related photos only.",
+    "add_comment": "Add a comment...",
+    "delete_post": "Delete Post",
+    "delete_confirm": "Are you sure you want to delete this post? This cannot be undone."
+  },
+  "seasons": {
+    "title": "Japan Seasons & Events",
+    "happening_now": "Happening Now",
+    "all_events": "All Events",
+    "now": "NOW",
+    "year_round": "Year Round"
+  },
+  "common": {
+    "just_now": "Just now",
+    "minutes_ago": "{} min ago",
+    "hours_ago": "{} hr ago",
+    "days_ago": "{} d ago",
+    "camera": "Camera",
+    "gallery": "Photo Library",
+    "share": "Share",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "offline": {
+    "section_title": "Offline Content",
+    "manage_title": "Downloaded Content",
+    "downloaded": "downloaded",
+    "not_downloaded": "Not downloaded yet",
+    "title": "Offline Mode",
+    "banner": "You're offline — showing cached content",
+    "storage_used": "Storage Used",
+    "synced": "Synced",
+    "download_title": "Download for Offline",
+    "download_subtitle": "Save spots and content to your device. Use Japan Explorer without an internet connection.",
+    "start_sync": "Download Now",
+    "resync": "Update Downloads",
+    "clear_title": "Clear Downloads",
+    "clear_confirm": "This will delete all offline content from your device. You can re-download at any time.",
+    "clear_btn": "Clear All",
+    "available_title": "What's Available Offline",
+    "available_spots": "All Japan spots & details",
+    "available_phrases": "Japanese travel phrases",
+    "available_seasons": "Season events & calendar",
+    "available_planner": "Your saved plans"
+  },
+  "journal": {
+    "title": "Travel Journal",
+    "subtitle": "Record your Japan memories",
+    "write_btn": "Journal",
+    "write_title": "Write Journal Entry",
+    "edit_title": "Edit Journal Entry",
+    "entry_title": "Journal Entry",
+    "empty_title": "Your journal is empty",
+    "empty_body": "Visit spots in Japan and record your memories here.",
+    "explore_cta": "Explore Spots",
+    "mood": "How was it?",
+    "visit_date": "Visit date",
+    "add_photo": "Add a photo",
+    "your_notes": "Your notes",
+    "content_hint": "What made this experience special? How did it feel being there?",
+    "content_required": "Please write something before saving.",
+    "written": "Written",
+    "delete_title": "Delete Entry",
+    "delete_confirm": "This journal entry will be permanently deleted.",
+    "entry_count": "{count} entries"
+  },
+  "what_is_this": {
+    "title": "What is This?",
+    "select_image": "Select a photo to identify\nJapanese culture & customs",
+    "analyzing": "Analyzing with AI...",
+    "instructions": "Take a photo of something Japanese, and AI will explain its cultural significance!",
+    "description": "What it is",
+    "history": "Historical Background",
+    "how_to_experience": "How to Experience It"
+  },
+  "menu_translator": {
+    "title": "Menu Translator",
+    "select_menu": "Photograph a menu\nto identify dietary options",
+    "analyzing": "Analyzing menu...",
+    "instructions": "Take a photo of a Japanese menu, and AI will identify halal, vegetarian & allergen info!",
+    "dietary_summary": "Dietary Options Available",
+    "menu_items": "Menu Items",
+    "common_allergens": "Common Allergens"
+  },
+  "culture_hub": {
+    "title": "Learn Japanese Culture",
+    "search_hint": "Search culture...",
+    "no_results": "No content found",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "min_read": "{} min read",
+    "overview": "Overview",
+    "video": "Video",
+    "source": "Source",
+    "categories": {
+      "culture": "Culture",
+      "food": "Food Culture",
+      "region": "Regional Stories",
+      "art": "Art & Design",
+      "language": "Language & Expression"
+    }
+  },
+  "community": {
+    "title": "Community Answers",
+    "share_answer": "Share Answer",
+    "community_answers": "Community Answers",
+    "no_answers": "No community answers yet",
+    "be_first": "Be the first to share!",
+    "helpful": "Helpful",
+    "you_voted": "You voted",
+    "share": "Share",
+    "submit": "Submit",
+    "title_hint": "Brief explanation...",
+    "description_hint": "Share your knowledge and insights...",
+    "thank_you": "Thank you for sharing! 🙏",
+    "shared": "Shared: {}",
+    "creator_earned": "Creator earned ${}",
+    "vote_count": "{}",
+    "no_answers_yet": "No community answers yet",
+    "fill_all_fields": "Please fill in all fields"
+  }
+}

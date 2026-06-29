@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- ── App Identity ──────────────────────────────────────── -->
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Japan Explorer</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>japan_explorer</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+
+	<!-- ── Privacy Usage Descriptions (App Store required) ───── -->
+	<key>NSCameraUsageDescription</key>
+	<string>Japan Explorer uses your camera to identify Japanese landmarks, shrines, and cultural sites with AI.</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Japan Explorer reads photos from your library so you can share travel experiences with the community.</string>
+
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Japan Explorer saves AI-analyzed spot images to your photo library.</string>
+
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Japan Explorer uses your location to show nearby spots on the map and identify landmarks as you explore Japan.</string>
+
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Japan Explorer uses your location to show nearby spots and automatically recognize landmarks while you explore.</string>
+
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Japan Explorer uses the microphone for voice interactions with the AI travel guide.</string>
+
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Japan Explorer uses speech recognition so you can ask the AI guide questions by voice.</string>
+
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Japan Explorer uses anonymous analytics to improve app features and personalize recommendations.</string>
+
+	<!-- ── Google Sign-In URL Scheme ──────────────────────────── -->
+	<!-- REVERSED_CLIENT_ID comes from GoogleService-Info.plist   -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(REVERSED_CLIENT_ID)</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- ── Display & Orientation ──────────────────────────────── -->
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<!-- ── Scene Manifest ─────────────────────────────────────── -->
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>UIWindowScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>flutter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,322 @@
+{
+  "app_name": "Japan Explorer",
+  "common": {
+    "next": "下一步",
+    "back": "返回",
+    "skip": "跳过",
+    "done": "完成",
+    "save": "保存",
+    "cancel": "取消",
+    "ok": "确认",
+    "close": "关闭",
+    "error": "出现错误",
+    "loading": "加载中...",
+    "retry": "重试",
+    "confirm": "确认",
+    "delete": "删除",
+    "edit": "编辑",
+    "share": "分享",
+    "search": "搜索",
+    "see_all": "查看全部"
+  },
+  "onboarding": {
+    "step0": {
+      "title": "欢迎来到\nJapan Explorer",
+      "subtitle": "请选择您的语言"
+    },
+    "step1": {
+      "title": "您感兴趣什么？",
+      "subtitle": "选择类别以个性化您的体验",
+      "hint": "请至少选择一个"
+    },
+    "step2": {
+      "title": "您的旅行方式？",
+      "subtitle": "帮助我们为您推荐最佳体验",
+      "style_label": "旅行方式",
+      "duration_label": "旅行时长",
+      "solo": "独自旅行",
+      "couple": "情侣",
+      "family": "家庭",
+      "group": "团体",
+      "weekend": "周末",
+      "one_week": "1周",
+      "two_weeks": "2周",
+      "month_plus": "1个月以上"
+    },
+    "step3": {
+      "title": "获取最新资讯",
+      "subtitle": "接收活动、挑战和连续记录的通知",
+      "allow": "允许通知",
+      "later": "稍后设置",
+      "challenge": "每日旅行挑战",
+      "streak": "连续记录提醒",
+      "events": "附近本地活动",
+      "meetup": "主人见面请求"
+    },
+    "step4": {
+      "title": "一切准备就绪！",
+      "subtitle": "您的日本冒险即刻开始",
+      "cta": "开始探索"
+    }
+  },
+  "category": {
+    "shrine": "神社",
+    "temple": "寺庙",
+    "nature": "自然",
+    "food": "美食",
+    "culture": "文化",
+    "modern": "现代",
+    "nightlife": "夜生活",
+    "shopping": "购物"
+  },
+  "nav": {
+    "home": "首页",
+    "search": "搜索",
+    "my_plan": "我的计划",
+    "profile": "个人资料"
+  },
+  "home": {
+    "title": "探索日本",
+    "trending": "热门",
+    "featured": "精选",
+    "near_you": "附近景点",
+    "all_categories": "所有类别"
+  },
+  "search": {
+    "hint": "搜索地点、美食、文化...",
+    "recent": "最近搜索",
+    "no_results": "未找到结果",
+    "try_different": "请尝试不同的关键词"
+  },
+  "detail": {
+    "audio_guide": "语音导览",
+    "save": "保存",
+    "share": "分享",
+    "directions": "获取路线",
+    "reviews": "评论",
+    "practical_info": "实用信息",
+    "nearby": "附近景点"
+  },
+  "audio_guide": {
+    "generating": "生成语音导览中...",
+    "play": "播放",
+    "pause": "暂停",
+    "stop": "停止",
+    "uses_remaining": "今日剩余{count}次",
+    "limit_reached": "已达今日限制"
+  },
+  "planner": {
+    "title": "AI行程规划",
+    "subtitle": "创建您的完美行程",
+    "generate": "生成计划",
+    "generating": "正在创建计划...",
+    "interests": "兴趣",
+    "days": "天数",
+    "budget": "预算",
+    "uses_remaining": "本周剩余{count}次"
+  },
+  "profile": {
+    "level": "等级 {level}",
+    "xp": "{xp} 经验值",
+    "streak": "连续{days}天",
+    "premium_member": "高级会员",
+    "premium_active": "有效",
+    "unlock_premium": "升级高级版",
+    "settings": "设置",
+    "my_posts": "我的帖子",
+    "saved": "已保存景点"
+  },
+  "settings": {
+    "title": "设置",
+    "appearance": "外观",
+    "theme": "主题",
+    "theme_system": "系统",
+    "theme_light": "浅色",
+    "theme_dark": "深色",
+    "notifications": "通知",
+    "notif_streak": "连续记录提醒",
+    "notif_challenge": "挑战更新",
+    "notif_meetup": "主人见面",
+    "language": "语言",
+    "data_privacy": "数据与隐私",
+    "clear_history": "清除搜索历史",
+    "privacy_policy": "隐私政策",
+    "delete_account": "删除账户",
+    "about": "关于",
+    "version": "版本 {version}",
+    "terms": "服务条款",
+    "licenses": "开源许可证"
+  },
+  "premium": {
+    "title": "升级高级版",
+    "subtitle": "完整的日本体验",
+    "cta": "开始免费试用",
+    "restore": "恢复购买",
+    "best_value": "最优惠",
+    "features": {
+      "audio": "无限语音导览",
+      "planner": "无限AI行程规划",
+      "offline": "离线地图和内容",
+      "host": "优先主人匹配",
+      "challenges": "专属挑战",
+      "badge": "高级徽章"
+    }
+  },
+  "auth": {
+    "welcome": "欢迎",
+    "tagline": "发现真正的日本",
+    "sign_in_google": "使用Google继续",
+    "sign_in_apple": "使用Apple继续",
+    "terms_note": "继续即表示您同意我们的服务条款",
+    "sign_out": "退出登录",
+    "or": "或",
+    "email": "电子邮件",
+    "password": "密码",
+    "sign_in": "登录",
+    "sign_up": "创建账户",
+    "has_account": "已有账户？登录",
+    "no_account": "没有账户？注册",
+    "email_error": "请输入有效的电子邮件地址",
+    "password_error": "最少6个字符"
+  },
+  "share": {
+    "spot": "分享此景点",
+    "app": "分享Japan Explorer"
+  },
+  "review": {
+    "rate_us": "评分"
+  },
+  "detail": {
+    "audio_guide": "语音导览",
+    "save": "保存",
+    "share": "分享",
+    "directions": "获取路线",
+    "reviews": "评论",
+    "practical_info": "实用信息",
+    "nearby": "附近景点",
+    "want_to_go": "想去",
+    "recommend": "推荐度",
+    "submit_rating": "提交评分",
+    "rating_submitted": "评分已提交！",
+    "rate_required": "请为两个类别评分"
+  },
+  "challenge": {
+    "title": "每日挑战",
+    "complete": "完成",
+    "completed": "已完成！",
+    "xp_reward": "+{xp} 经验值",
+    "streak": "当前连续记录",
+    "no_challenges": "今天没有挑战"
+  },
+  "phrases": {
+    "title": "日语短语",
+    "play": "收听",
+    "copied": "已复制！",
+    "search": "搜索短语..."
+  },
+  "errors": {
+    "network": "无网络连接",
+    "server": "服务器错误，请重试。",
+    "auth": "认证失败",
+    "permission": "权限被拒绝",
+    "unknown": "发生意外错误",
+    "generic": "出现错误，请重试。"
+  },
+  "nav": {
+    "home": "首页",
+    "search": "搜索",
+    "community": "社区",
+    "my_plan": "我的计划",
+    "profile": "我的"
+  },
+  "community": {
+    "title": "社区",
+    "create_post": "发帖",
+    "post": "帖子",
+    "empty_title": "暂无帖子",
+    "empty_body": "成为第一个分享日本体验的人！",
+    "no_comments": "暂无评论，来第一个评论吧！",
+    "no_image": "请先选择照片。",
+    "no_caption": "请添加说明文字。",
+    "post_shared": "发帖成功！",
+    "caption": "说明",
+    "caption_hint": "分享这一刻的特别之处...",
+    "tap_to_add_photo": "点击添加照片",
+    "photo_guidelines": "请仅分享与旅行相关的尊重他人的照片。",
+    "add_comment": "添加评论...",
+    "delete_post": "删除帖子",
+    "delete_confirm": "确定要删除此帖子吗？此操作无法撤销。"
+  },
+  "seasons": {
+    "title": "日本季节与活动",
+    "happening_now": "正在进行",
+    "all_events": "全部活动",
+    "now": "NOW",
+    "year_round": "全年"
+  },
+  "common": {
+    "just_now": "刚刚",
+    "minutes_ago": "{}分钟前",
+    "hours_ago": "{}小时前",
+    "days_ago": "{}天前",
+    "camera": "相机",
+    "gallery": "相册",
+    "share": "分享",
+    "cancel": "取消",
+    "delete": "删除"
+  },
+  "offline": {
+    "section_title": "离线内容",
+    "manage_title": "已下载内容",
+    "downloaded": "已下载",
+    "not_downloaded": "尚未下载",
+    "title": "离线模式",
+    "banner": "您已离线 — 正在显示缓存内容",
+    "storage_used": "已用存储",
+    "synced": "已同步",
+    "download_title": "下载供离线使用",
+    "download_subtitle": "将景点和内容保存到设备。无需网络即可使用Japan Explorer。",
+    "start_sync": "立即下载",
+    "resync": "更新下载",
+    "clear_title": "清除下载",
+    "clear_confirm": "这将从设备中删除所有离线内容。您可以随时重新下载。",
+    "clear_btn": "全部清除",
+    "available_title": "离线可用内容",
+    "available_spots": "所有日本景点及详情",
+    "available_phrases": "日语旅行短语",
+    "available_seasons": "季节活动与日历",
+    "available_planner": "已保存的计划"
+  },
+  "journal": {
+    "title": "旅行日记",
+    "subtitle": "记录您在日本的回忆",
+    "write_btn": "日记",
+    "write_title": "撰写日记",
+    "edit_title": "编辑日记",
+    "entry_title": "日记条目",
+    "empty_title": "您的日记还是空的",
+    "empty_body": "参观日本景点并在此记录您的回忆。",
+    "explore_cta": "探索景点",
+    "mood": "感觉如何？",
+    "visit_date": "参观日期",
+    "add_photo": "添加照片",
+    "your_notes": "您的笔记",
+    "content_hint": "这次体验有什么特别之处？置身其中是什么感觉？",
+    "content_required": "保存前请先写点什么。",
+    "written": "记录于",
+    "delete_title": "删除条目",
+    "delete_confirm": "此日记条目将被永久删除。",
+    "entry_count": "{count}条记录"
+  }
+,
+  "what_is_this": {
+    "title": "这是什么？",
+    "select_image": "选择照片识别
+日本文化和风俗",
+    "analyzing": "正在分析...",
+    "instructions": "拍摄日本的东西，AI将解释其文化意义！",
+    "description": "它是什么",
+    "history": "历史背景",
+    "how_to_experience": "如何体验"
+  }
+}

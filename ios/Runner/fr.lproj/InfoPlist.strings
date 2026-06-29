@@ -1,0 +1,17 @@
+/* Japan Explorer — French permission descriptions */
+
+NSCameraUsageDescription = "Japan Explorer utilise votre caméra pour identifier des monuments japonais, sanctuaires et sites culturels grâce à l'IA.";
+
+NSPhotoLibraryUsageDescription = "Japan Explorer accède à votre bibliothèque photos pour partager vos expériences de voyage avec la communauté.";
+
+NSPhotoLibraryAddUsageDescription = "Japan Explorer enregistre les images de lieux analysés par l'IA dans votre bibliothèque photos.";
+
+NSLocationWhenInUseUsageDescription = "Japan Explorer utilise votre position pour afficher les lieux à proximité sur la carte et identifier les monuments lors de votre exploration.";
+
+NSLocationAlwaysAndWhenInUseUsageDescription = "Japan Explorer utilise votre position pour afficher les lieux à proximité et reconnaître automatiquement les monuments pendant votre exploration.";
+
+NSMicrophoneUsageDescription = "Japan Explorer utilise le microphone pour les interactions vocales avec le guide de voyage IA.";
+
+NSSpeechRecognitionUsageDescription = "Japan Explorer utilise la reconnaissance vocale pour vous permettre de poser des questions au guide IA par la voix.";
+
+NSUserTrackingUsageDescription = "Japan Explorer utilise des analyses anonymes pour améliorer les fonctionnalités de l'app et personnaliser les recommandations.";

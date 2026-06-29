@@ -1,0 +1,74 @@
+========================================================
+GOOGLE PLAY STORE — ENGLISH LISTING
+========================================================
+
+APP NAME (max 50 chars):
+Japan Explorer: AI Travel Guide
+
+SHORT DESCRIPTION (max 80 chars):
+Discover Japan with AI: audio guides, cultural tips & personalized plans.
+
+FULL DESCRIPTION (max 4000 chars):
+Explore Japan like never before with Japan Explorer — your AI-powered travel companion designed for international visitors.
+
+🗾 DISCOVER HIDDEN GEMS
+Go beyond tourist traps. Our curated spots are hand-picked by local experts and verified by AI, covering temples, shrines, gardens, street food, and cultural experiences across all of Japan.
+
+🎙️ AI AUDIO GUIDES
+Point your phone at a landmark and get an instant, immersive audio guide narrated in your language. Powered by AI, guides adapt to your interests and travel style.
+
+🗓️ SMART TRAVEL PLANNER
+Tell us your dates, style, and interests — Japan Explorer builds a personalized day-by-day itinerary in seconds. Adjust on the fly as your plans evolve.
+
+🌏 5 LANGUAGES
+Full support for English, Japanese, 中文, 한국어, and Français — UI, audio guides, and AI responses all in your language.
+
+🏆 CULTURAL CHALLENGES
+Earn XP and badges by completing cultural missions: try local foods, visit seasonal festivals, learn key phrases, and unlock hidden spots.
+
+📱 WORKS OFFLINE
+Downloaded guides and plans stay available even without a signal — perfect for subway tunnels and remote areas.
+
+💬 TRAVELER COMMUNITY
+Share your discoveries, rate spots, and read honest reviews from fellow Japan lovers worldwide.
+
+🔒 PRIVACY FIRST
+We never sell your data. Analytics are anonymized, and you control everything from your profile settings.
+
+— FREE FEATURES —
+• Browse curated spots and categories
+• Generate 1 AI travel plan per day
+• Join cultural challenges
+• Community posts and ratings
+• Offline mode for saved content
+• 5 language support
+
+— PREMIUM (Japan Explorer Pro) —
+• Unlimited AI audio guides
+• Unlimited travel plan generation
+• Exclusive hidden gems curation
+• Advanced AR landmark recognition
+• Priority AI response speed
+• Ad-free experience
+
+Start your Japan adventure today. Download free.
+
+KEYWORDS (Play Store — comma-separated, 100 chars each):
+japan travel guide, japan tourism, kyoto guide, tokyo guide, japan itinerary, audio guide japan, AI travel, japan culture, travel planner, japan trip
+
+CATEGORY:
+Travel & Local
+
+CONTENT RATING:
+Everyone
+
+WEBSITE:
+https://japanexplorer.app
+
+EMAIL:
+support@funvestment.com
+
+PRIVACY POLICY:
+https://japanexplorer.app/privacy
+
+========================================================

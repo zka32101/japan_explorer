@@ -1,0 +1,369 @@
+{
+  "app_name": "Japan Explorer",
+  "common": {
+    "next": "次へ",
+    "back": "戻る",
+    "skip": "スキップ",
+    "done": "完了",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "ok": "OK",
+    "close": "閉じる",
+    "error": "エラーが発生しました",
+    "loading": "読み込み中...",
+    "retry": "再試行",
+    "confirm": "確認",
+    "delete": "削除",
+    "edit": "編集",
+    "share": "シェア",
+    "search": "検索",
+    "see_all": "すべて見る"
+  },
+  "onboarding": {
+    "step0": {
+      "title": "Japan Explorer\nへようこそ",
+      "subtitle": "言語を選択してください"
+    },
+    "step1": {
+      "title": "興味のあることは？",
+      "subtitle": "カテゴリを選んでパーソナライズしましょう",
+      "hint": "1つ以上選択してください"
+    },
+    "step2": {
+      "title": "旅のスタイルは？",
+      "subtitle": "最適な体験をおすすめします",
+      "style_label": "旅のスタイル",
+      "duration_label": "旅行期間",
+      "solo": "一人旅",
+      "couple": "カップル",
+      "family": "ファミリー",
+      "group": "グループ",
+      "weekend": "週末",
+      "one_week": "1週間",
+      "two_weeks": "2週間",
+      "month_plus": "1ヶ月以上"
+    },
+    "step3": {
+      "title": "最新情報を受け取る",
+      "subtitle": "イベント・チャレンジ・ストリークの通知を受け取れます",
+      "allow": "通知を許可する",
+      "later": "あとで設定する",
+      "challenge": "毎日のトラベルチャレンジ",
+      "streak": "ストリークリマインダー",
+      "events": "近くのローカルイベント",
+      "meetup": "ホストとのミートアップ"
+    },
+    "step4": {
+      "title": "準備完了！",
+      "subtitle": "日本の旅が今始まります",
+      "cta": "探索を始める"
+    }
+  },
+  "category": {
+    "shrine": "神社",
+    "temple": "お寺",
+    "nature": "自然",
+    "food": "グルメ",
+    "culture": "文化",
+    "modern": "現代",
+    "nightlife": "ナイトライフ",
+    "shopping": "ショッピング"
+  },
+  "nav": {
+    "home": "ホーム",
+    "search": "検索",
+    "my_plan": "マイプラン",
+    "profile": "プロフィール"
+  },
+  "home": {
+    "title": "日本を発見しよう",
+    "trending": "トレンド",
+    "featured": "おすすめ",
+    "near_you": "近くのスポット",
+    "all_categories": "すべてのカテゴリ"
+  },
+  "search": {
+    "hint": "場所・食事・文化を検索...",
+    "recent": "最近の検索",
+    "no_results": "結果が見つかりません",
+    "try_different": "別のキーワードを試してください"
+  },
+  "detail": {
+    "audio_guide": "音声ガイド",
+    "save": "保存",
+    "share": "シェア",
+    "directions": "ルートを見る",
+    "reviews": "レビュー",
+    "practical_info": "実用情報",
+    "nearby": "近くのスポット"
+  },
+  "audio_guide": {
+    "generating": "音声ガイドを生成中...",
+    "play": "再生",
+    "pause": "一時停止",
+    "stop": "停止",
+    "uses_remaining": "今日残り{count}回",
+    "limit_reached": "本日の制限に達しました"
+  },
+  "planner": {
+    "title": "AIトリッププランナー",
+    "subtitle": "完璧な旅程を作成しましょう",
+    "generate": "プランを生成",
+    "generating": "プランを作成中...",
+    "interests": "興味",
+    "days": "日数",
+    "budget": "予算",
+    "uses_remaining": "今週残り{count}回"
+  },
+  "profile": {
+    "level": "レベル{level}",
+    "xp": "{xp} XP",
+    "streak": "{days}日連続",
+    "premium_member": "プレミアム会員",
+    "premium_active": "有効",
+    "unlock_premium": "プレミアムに登録",
+    "settings": "設定",
+    "my_posts": "マイ投稿",
+    "saved": "保存済みスポット"
+  },
+  "settings": {
+    "title": "設定",
+    "appearance": "外観",
+    "theme": "テーマ",
+    "theme_system": "システム",
+    "theme_light": "ライト",
+    "theme_dark": "ダーク",
+    "notifications": "通知",
+    "notif_streak": "ストリークリマインダー",
+    "notif_challenge": "チャレンジ更新",
+    "notif_meetup": "ホストミートアップ",
+    "language": "言語",
+    "data_privacy": "データとプライバシー",
+    "clear_history": "検索履歴をクリア",
+    "privacy_policy": "プライバシーポリシー",
+    "delete_account": "アカウントを削除",
+    "about": "について",
+    "version": "バージョン{version}",
+    "terms": "利用規約",
+    "licenses": "オープンソースライセンス"
+  },
+  "premium": {
+    "title": "プレミアムに登録",
+    "subtitle": "完全な日本体験をお楽しみください",
+    "cta": "無料トライアルを始める",
+    "restore": "購入を復元",
+    "best_value": "お得",
+    "features": {
+      "audio": "音声ガイド無制限",
+      "planner": "AIプランナー無制限",
+      "offline": "オフラインマップ",
+      "host": "ホストマッチング優先",
+      "challenges": "限定チャレンジ",
+      "badge": "プレミアムバッジ"
+    }
+  },
+  "auth": {
+    "welcome": "ようこそ",
+    "tagline": "本当の日本を発見しよう",
+    "sign_in_google": "Googleで続ける",
+    "sign_in_apple": "Appleで続ける",
+    "terms_note": "続けることで利用規約に同意したことになります",
+    "sign_out": "サインアウト",
+    "or": "または",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "sign_in": "サインイン",
+    "sign_up": "アカウントを作成",
+    "has_account": "すでにアカウントをお持ちですか？サインイン",
+    "no_account": "アカウントをお持ちでないですか？登録する",
+    "email_error": "有効なメールアドレスを入力してください",
+    "password_error": "6文字以上で入力してください"
+  },
+  "share": {
+    "spot": "このスポットをシェア",
+    "app": "Japan Explorerをシェア"
+  },
+  "review": {
+    "rate_us": "評価する"
+  },
+  "detail": {
+    "audio_guide": "音声ガイド",
+    "save": "保存",
+    "share": "シェア",
+    "directions": "ルートを見る",
+    "reviews": "レビュー",
+    "practical_info": "実用情報",
+    "nearby": "近くのスポット",
+    "want_to_go": "行きたい",
+    "recommend": "おすすめ度",
+    "submit_rating": "評価を投稿",
+    "rating_submitted": "評価を投稿しました！",
+    "rate_required": "両方の項目を評価してください"
+  },
+  "challenge": {
+    "title": "デイリーチャレンジ",
+    "complete": "完了する",
+    "completed": "完了！",
+    "xp_reward": "+{xp} XP",
+    "streak": "現在のストリーク",
+    "no_challenges": "今日のチャレンジはありません"
+  },
+  "phrases": {
+    "title": "日本語フレーズ",
+    "play": "聴く",
+    "copied": "コピーしました！",
+    "search": "フレーズを検索..."
+  },
+  "errors": {
+    "network": "インターネット接続がありません",
+    "server": "サーバーエラーが発生しました。再試行してください。",
+    "auth": "認証に失敗しました",
+    "permission": "権限がありません",
+    "unknown": "予期しないエラーが発生しました",
+    "generic": "エラーが発生しました。再試行してください。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "search": "検索",
+    "community": "コミュニティ",
+    "my_plan": "プラン",
+    "profile": "プロフィール"
+  },
+  "community": {
+    "title": "コミュニティ",
+    "create_post": "投稿する",
+    "post": "投稿",
+    "empty_title": "まだ投稿がありません",
+    "empty_body": "日本の体験を最初にシェアしよう！",
+    "no_comments": "まだコメントがありません。最初のコメントをどうぞ！",
+    "no_image": "写真を選択してください。",
+    "no_caption": "キャプションを入力してください。",
+    "post_shared": "投稿しました！",
+    "caption": "キャプション",
+    "caption_hint": "この瞬間の特別なところを教えてください...",
+    "tap_to_add_photo": "タップして写真を追加",
+    "photo_guidelines": "旅行に関連した礼儀正しい写真のみシェアしてください。",
+    "add_comment": "コメントを追加...",
+    "delete_post": "投稿を削除",
+    "delete_confirm": "この投稿を削除しますか？この操作は取り消せません。"
+  },
+  "seasons": {
+    "title": "日本の季節とイベント",
+    "happening_now": "現在開催中",
+    "all_events": "すべてのイベント",
+    "now": "NOW",
+    "year_round": "通年"
+  },
+  "common": {
+    "just_now": "たった今",
+    "minutes_ago": "{}分前",
+    "hours_ago": "{}時間前",
+    "days_ago": "{}日前",
+    "camera": "カメラ",
+    "gallery": "フォトライブラリ",
+    "share": "シェア",
+    "cancel": "キャンセル",
+    "delete": "削除"
+  },
+  "offline": {
+    "section_title": "オフラインコンテンツ",
+    "manage_title": "ダウンロード済みコンテンツ",
+    "downloaded": "ダウンロード済み",
+    "not_downloaded": "未ダウンロード",
+    "title": "オフラインモード",
+    "banner": "オフラインです — キャッシュされたコンテンツを表示しています",
+    "storage_used": "使用ストレージ",
+    "synced": "同期済み",
+    "download_title": "オフライン用にダウンロード",
+    "download_subtitle": "スポットとコンテンツをデバイスに保存。インターネット接続なしでJapan Explorerを使用できます。",
+    "start_sync": "今すぐダウンロード",
+    "resync": "ダウンロードを更新",
+    "clear_title": "ダウンロードを削除",
+    "clear_confirm": "デバイスからすべてのオフラインコンテンツを削除します。いつでも再ダウンロードできます。",
+    "clear_btn": "すべて削除",
+    "available_title": "オフラインで利用可能なコンテンツ",
+    "available_spots": "すべての日本のスポット＆詳細",
+    "available_phrases": "日本語旅行フレーズ",
+    "available_seasons": "季節イベント＆カレンダー",
+    "available_planner": "保存済みプラン"
+  },
+  "journal": {
+    "title": "旅行日記",
+    "subtitle": "日本での思い出を記録しよう",
+    "write_btn": "日記",
+    "write_title": "日記を書く",
+    "edit_title": "日記を編集",
+    "entry_title": "日記エントリー",
+    "empty_title": "日記がまだありません",
+    "empty_body": "訪れたスポットの思い出をここに記録しましょう。",
+    "explore_cta": "スポットを探す",
+    "mood": "どうでしたか？",
+    "visit_date": "訪問日",
+    "add_photo": "写真を追加",
+    "your_notes": "メモ",
+    "content_hint": "この体験の特別なところは？その場所にいてどんな気持ちでしたか？",
+    "content_required": "保存する前に何か書いてください。",
+    "written": "記録日",
+    "delete_title": "エントリーを削除",
+    "delete_confirm": "この日記エントリーは完全に削除されます。",
+    "entry_count": "{count}件"
+  },
+  "what_is_this": {
+    "title": "これ何？",
+    "select_image": "日本文化を識別する\n写真を選択してください",
+    "analyzing": "AIが分析中...",
+    "instructions": "日本のものを撮影すると、AIがその文化的背景を説明します！",
+    "description": "これは何ですか",
+    "history": "歴史的背景",
+    "how_to_experience": "体験方法"
+  }
+,
+  "menu_translator": {
+    "title": "メニュー翻訳",
+    "select_menu": "メニューを撮影して
+食事制限オプションを識別",
+    "analyzing": "メニューを分析中...",
+    "instructions": "日本のメニューを撮影すると、AIがハラル・ベジタリアン・アレルゲン情報を識別します！",
+    "dietary_summary": "利用可能な食事オプション",
+    "menu_items": "メニュー項目",
+    "common_allergens": "一般的なアレルゲン"
+  },
+  "culture_hub": {
+    "title": "日本文化を学ぶ",
+    "search_hint": "文化を検索...",
+    "no_results": "コンテンツが見つかりません",
+    "beginner": "初級",
+    "intermediate": "中級",
+    "advanced": "上級",
+    "min_read": "{}分で読める",
+    "overview": "概要",
+    "video": "動画",
+    "source": "ソース",
+    "categories": {
+      "culture": "文化",
+      "food": "食文化",
+      "region": "地域物語",
+      "art": "美術・デザイン",
+      "language": "言語・表現"
+    }
+  },
+  "community": {
+    "title": "コミュニティの回答",
+    "share_answer": "回答を共有",
+    "community_answers": "コミュニティの回答",
+    "no_answers": "コミュニティの回答がまだありません",
+    "be_first": "最初に共有してください！",
+    "helpful": "参考になった",
+    "you_voted": "投票済み",
+    "share": "共有",
+    "submit": "送信",
+    "title_hint": "簡潔な説明...",
+    "description_hint": "あなたの知識と洞察を共有してください...",
+    "thank_you": "共有いただきありがとうございます！ 🙏",
+    "shared": "共有済み: {}",
+    "creator_earned": "クリエイターが稼いだ: ${}",
+    "vote_count": "{}",
+    "no_answers_yet": "コミュニティの回答がまだありません",
+    "fill_all_fields": "すべてのフィールドに入力してください"
+  }
+}

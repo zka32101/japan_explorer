@@ -1,0 +1,74 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+    function isImageFile() {
+      return request.resource.contentType.matches('image/.*');
+    }
+    function isAudioFile() {
+      return request.resource.contentType.matches('audio/.*');
+    }
+    function isSmallEnough(maxMB) {
+      return request.resource.size <= maxMB * 1024 * 1024;
+    }
+
+    // User profile images
+    // Path: users/{uid}/avatar.jpg
+    match /users/{uid}/{fileName} {
+      allow read:  if isAuthenticated();
+      allow write: if isOwner(uid)
+                   && isImageFile()
+                   && isSmallEnough(5);
+      allow delete: if isOwner(uid);
+    }
+
+    // Host profile images
+    // Path: hosts/{uid}/{fileName}
+    match /hosts/{uid}/{allPaths=**} {
+      allow read:  if isAuthenticated();
+      allow write: if isOwner(uid)
+                   && isImageFile()
+                   && isSmallEnough(10);
+      allow delete: if isOwner(uid);
+    }
+
+    // Post images uploaded by users
+    // Path: posts/{uid}/{fileName}
+    match /posts/{uid}/{fileName} {
+      allow read:   if isAuthenticated();
+      allow write:  if isOwner(uid)
+                    && isImageFile()
+                    && isSmallEnough(10);
+      allow delete: if isOwner(uid);
+    }
+
+    // AI-generated audio guides (written by Cloud Functions service account)
+    // Path: audio_guides/{curationId}/{lang}.mp3
+    match /audio_guides/{curationId}/{fileName} {
+      allow read:  if isAuthenticated();
+      allow write: if false;   // Cloud Functions only
+      allow delete: if false;
+    }
+
+    // Curation cover images (managed by admin / Cloud Functions)
+    // Path: curations/{curationId}/cover.jpg
+    match /curations/{curationId}/{fileName} {
+      allow read:  if true;    // public read for SEO / social sharing
+      allow write: if false;   // Cloud Functions / admin SDK only
+      allow delete: if false;
+    }
+
+    // Deny everything else
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

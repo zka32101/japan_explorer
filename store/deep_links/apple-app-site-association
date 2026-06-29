@@ -1,0 +1,30 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["REPLACE_WITH_TEAM_ID.com.petitworksapps.japanexplorer"],
+        "components": [
+          {
+            "/": "/spots/*",
+            "comment": "Matches any curation/spot detail URL"
+          },
+          {
+            "/": "/plans/*",
+            "comment": "Matches any travel plan URL"
+          },
+          {
+            "/": "/profile/*",
+            "comment": "Matches any user profile URL"
+          },
+          {
+            "/": "/challenge/*",
+            "comment": "Matches any challenge URL"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["REPLACE_WITH_TEAM_ID.com.petitworksapps.japanexplorer"]
+  }
+}

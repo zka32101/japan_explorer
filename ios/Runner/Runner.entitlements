@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Universal Links — requires apple-app-site-association hosted at:
+         https://japanexplorer.app/.well-known/apple-app-site-association
+         See: store/deep_links/apple-app-site-association              -->
+    <key>com.apple.developer.associated-domains</key>
+    <array>
+        <string>applinks:japanexplorer.app</string>
+    </array>
+
+    <!-- Push Notifications -->
+    <key>aps-environment</key>
+    <string>production</string>
+</dict>
+</plist>

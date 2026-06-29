@@ -1,0 +1,17 @@
+/* Japan Explorer — Simplified Chinese permission descriptions */
+
+NSCameraUsageDescription = "Japan Explorer使用您的相机通过AI识别日本地标、神社和文化场所。";
+
+NSPhotoLibraryUsageDescription = "Japan Explorer读取您的照片库，以便您与社区分享旅行体验。";
+
+NSPhotoLibraryAddUsageDescription = "Japan Explorer将AI分析的景点图片保存到您的照片库。";
+
+NSLocationWhenInUseUsageDescription = "Japan Explorer使用您的位置在地图上显示附近景点并识别地标。";
+
+NSLocationAlwaysAndWhenInUseUsageDescription = "Japan Explorer使用您的位置显示附近景点并在探索时自动识别地标。";
+
+NSMicrophoneUsageDescription = "Japan Explorer使用麦克风进行与AI旅行指南的语音交互。";
+
+NSSpeechRecognitionUsageDescription = "Japan Explorer使用语音识别，让您可以通过语音向AI指南提问。";
+
+NSUserTrackingUsageDescription = "Japan Explorer使用匿名分析来改进应用功能并个性化推荐。";
