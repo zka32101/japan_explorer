@@ -320,8 +320,7 @@
 ,
   "menu_translator": {
     "title": "メニュー翻訳",
-    "select_menu": "メニューを撮影して
-食事制限オプションを識別",
+    "select_menu": "メニューを撮影して\n食事制限オプションを識別",
     "analyzing": "メニューを分析中...",
     "instructions": "日本のメニューを撮影すると、AIがハラル・ベジタリアン・アレルゲン情報を識別します！",
     "dietary_summary": "利用可能な食事オプション",

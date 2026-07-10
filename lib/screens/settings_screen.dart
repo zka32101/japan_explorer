@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../config/theme.dart';
+import '../providers/language_provider.dart';
 import '../providers/offline_provider.dart';
 import '../providers/settings_provider.dart';
 import '../utils/constants.dart';
@@ -89,12 +90,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
           // ── Language ─────────────────────────────────────────────────────
           _SectionHeader(title: 'Language', icon: Icons.language_outlined),
-          ListTile(
-            leading: const Icon(Icons.translate_outlined),
-            title: const Text('App Language'),
-            subtitle: const Text('English'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: _showLanguageDialog,
+          Consumer(
+            builder: (context, ref, _) {
+              final currentLang = ref.watch(languageProvider);
+              return ListTile(
+                leading: const Icon(Icons.translate_outlined),
+                title: const Text('App Language'),
+                subtitle: Text(currentLang.displayName),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => _showLanguageDialog(ref),
+              );
+            },
           ),
           const Divider(height: 1),
 
@@ -183,7 +189,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   // ── Dialogs ──────────────────────────────────────────────────────────────────
 
-  void _showLanguageDialog() {
+  void _showLanguageDialog(WidgetRef ref) {
+    final currentLang = ref.read(languageProvider);
+
     showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -192,26 +200,55 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             _LangTile(
-                flag: '🇬🇧',
-                name: 'English',
-                selected: true,
-                onTap: () => Navigator.pop(ctx)),
+              flag: '🇬🇧',
+              name: 'English',
+              selected: currentLang == Language.en,
+              onTap: () {
+                ref.read(languageProvider.notifier).setLanguage(Language.en);
+                context.setLocale(const Locale('en'));
+                Navigator.pop(ctx);
+              },
+            ),
             _LangTile(
-                flag: '🇯🇵',
-                name: '日本語',
-                onTap: () => Navigator.pop(ctx)),
+              flag: '🇯🇵',
+              name: '日本語',
+              selected: currentLang == Language.ja,
+              onTap: () {
+                ref.read(languageProvider.notifier).setLanguage(Language.ja);
+                context.setLocale(const Locale('ja'));
+                Navigator.pop(ctx);
+              },
+            ),
             _LangTile(
-                flag: '🇨🇳',
-                name: '中文',
-                onTap: () => Navigator.pop(ctx)),
+              flag: '🇨🇳',
+              name: '中文',
+              selected: currentLang == Language.zh,
+              onTap: () {
+                ref.read(languageProvider.notifier).setLanguage(Language.zh);
+                context.setLocale(const Locale('zh'));
+                Navigator.pop(ctx);
+              },
+            ),
             _LangTile(
-                flag: '🇰🇷',
-                name: '한국어',
-                onTap: () => Navigator.pop(ctx)),
+              flag: '🇰🇷',
+              name: '한국어',
+              selected: currentLang == Language.ko,
+              onTap: () {
+                ref.read(languageProvider.notifier).setLanguage(Language.ko);
+                context.setLocale(const Locale('ko'));
+                Navigator.pop(ctx);
+              },
+            ),
             _LangTile(
-                flag: '🇫🇷',
-                name: 'Français',
-                onTap: () => Navigator.pop(ctx)),
+              flag: '🇫🇷',
+              name: 'Français',
+              selected: currentLang == Language.fr,
+              onTap: () {
+                ref.read(languageProvider.notifier).setLanguage(Language.fr);
+                context.setLocale(const Locale('fr'));
+                Navigator.pop(ctx);
+              },
+            ),
           ],
         ),
         actions: [
