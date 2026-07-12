@@ -55,7 +55,7 @@
     "shrine": "Shrines",
     "temple": "Temples",
     "nature": "Nature",
-    "food": "Food",
+    "food": "Gourmet",
     "culture": "Culture",
     "modern": "Modern",
     "nightlife": "Nightlife",
@@ -90,7 +90,7 @@
     "practical_info": "Practical Information",
     "nearby": "Nearby Spots",
     "want_to_go": "Want to go",
-    "recommend": "Rating",
+    "recommend": "Recommendation",
     "submit_rating": "Submit Rating",
     "rating_submitted": "Rating submitted!",
     "rate_required": "Please rate both items"

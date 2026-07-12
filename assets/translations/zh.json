@@ -43,7 +43,7 @@
       "challenge": "每日旅行挑战",
       "streak": "连续记录提醒",
       "events": "附近的本地活动",
-      "meetup": "与当地房东聚会"
+      "meetup": "与当地达人见面"
     },
     "step4": {
       "title": "准备就绪！",
@@ -134,7 +134,7 @@
     "notifications": "通知",
     "notif_streak": "连续记录提醒",
     "notif_challenge": "挑战更新",
-    "notif_meetup": "Host 见面会",
+    "notif_meetup": "达人见面会",
     "language": "语言",
     "data_privacy": "数据与隐私",
     "clear_history": "清除搜索历史",
@@ -155,7 +155,7 @@
       "audio": "无限语音导览",
       "planner": "无限 AI 规划师",
       "offline": "离线地图",
-      "host": "优先匹配 Host",
+      "host": "优先匹配达人",
       "challenges": "限定挑战",
       "badge": "高级徽章"
     }

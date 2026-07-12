@@ -41,7 +41,7 @@
       "allow": "알림 허용",
       "later": "나중에 설정하기",
       "challenge": "일일 여행 챌린지",
-      "streak": "스트릭 리마인더",
+      "streak": "연속 기록 알림",
       "events": "주변 로컬 이벤트",
       "meetup": "호스트 미트업"
     },
@@ -116,7 +116,7 @@
   "profile": {
     "level": "레벨 {level}",
     "xp": "{xp} XP",
-    "streak": "{days}일 연속",
+    "streak": "{days}일 연속 기록",
     "premium_member": "프리미엄 회원",
     "premium_active": "활성화됨",
     "unlock_premium": "프리미엄 구독하기",
@@ -132,7 +132,7 @@
     "theme_light": "라이트",
     "theme_dark": "다크",
     "notifications": "알림",
-    "notif_streak": "스트릭 리마인더",
+    "notif_streak": "연속 기록 알림",
     "notif_challenge": "챌린지 업데이트",
     "notif_meetup": "호스트 미트업",
     "language": "언어",
@@ -150,7 +150,7 @@
     "subtitle": "완벽한 일본 체험을 즐겨보세요",
     "cta": "무료 체험 시작하기",
     "restore": "구매 복원",
-    "best_value": "추천",
+    "best_value": "최고 혜택",
     "features": {
       "audio": "음성 가이드 무제한",
       "planner": "AI 플래너 무제한",
@@ -189,7 +189,7 @@
     "complete": "완료하기",
     "completed": "완료!",
     "xp_reward": "+{xp} XP",
-    "streak": "현재 스트릭",
+    "streak": "현재 연속 기록",
     "no_challenges": "오늘의 챌린지가 없습니다"
   },
   "phrases": {
@@ -288,7 +288,7 @@
     "title": "메뉴 번역",
     "select_menu": "메뉴를 촬영하여\n식사 제한 옵션을 식별",
     "analyzing": "메뉴 분석 중...",
-    "instructions": "일본 메뉴를 촬영하면 AI가 할랄, 비건, 알레르기 유발 물질 정보를 식별합니다!",
+    "instructions": "일본 메뉴를 촬영하면 AI가 할랄, 채식, 알레르기 유발 물질 정보를 식별합니다!",
     "dietary_summary": "이용 가능한 식사 옵션",
     "menu_items": "메뉴 항목",
     "common_allergens": "일반적인 알레르기 유발 물질"

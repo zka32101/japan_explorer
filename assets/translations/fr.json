@@ -167,7 +167,7 @@
     "sign_in_apple": "Continuer avec Apple",
     "terms_note": "En continuant, vous acceptez les conditions d'utilisation",
     "sign_out": "Se déconnecter",
-    "or": "Ou",
+    "or": "ou",
     "email": "Adresse e-mail",
     "password": "Mot de passe",
     "sign_in": "Se connecter",
@@ -229,7 +229,7 @@
     "title": "Saisons et événements du Japon",
     "happening_now": "En cours actuellement",
     "all_events": "Tous les événements",
-    "now": "EN CE MOMENT",
+    "now": "MAINTENANT",
     "year_round": "Toute l'année"
   },
   "offline": {
