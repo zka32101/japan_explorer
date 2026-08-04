@@ -12,6 +12,8 @@ class AppColors {
   static const onSurface = Color(0xFF1D1D1D);
   static const textSecondary = Color(0xFF6B6B6B);
   static const divider = Color(0xFFE0E0E0);
+  static const border = Color(0xFFE0E0E0);
+  static const backgroundSecondary = Color(0xFFF5F5F5);
   static const sakura = Color(0xFFFFB7C5);
   static const matcha = Color(0xFF8B9E6A);
   static const indigo = Color(0xFF3D405B);

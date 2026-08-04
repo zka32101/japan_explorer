@@ -7,7 +7,7 @@
     "rules": "storage.rules"
   },
   "functions": {
-    "source": "functions",
+    "source": "cloud_functions",
     "ignore": [
       "node_modules",
       ".git",

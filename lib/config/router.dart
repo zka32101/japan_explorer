@@ -8,6 +8,7 @@ import 'package:easy_localization/easy_localization.dart';
 import '../services/analytics_service.dart';
 import '../utils/app_navigator.dart';
 import '../widgets/offline_banner.dart';
+import '../widgets/banner_ad_widget.dart';
 import '../screens/home_screen.dart';
 import '../screens/login_screen.dart';
 import '../screens/onboarding_screen.dart';
@@ -40,6 +41,7 @@ import '../screens/vision_cache_history_screen.dart';
 import '../screens/culture_hub_screen.dart';
 import '../screens/culture_detail_screen.dart';
 import '../screens/collection_screen.dart';
+import '../screens/invite_friends_screen.dart';
 import '../utils/constants.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -132,6 +134,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.premium,
         builder: (context, state) => const PremiumScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.inviteFriends,
+        builder: (context, state) => const InviteFriendsScreen(),
       ),
       GoRoute(
         path: AppRoutes.seasonEvents,
@@ -273,6 +279,7 @@ class _MainShellState extends State<MainShell> {
         children: [
           const OfflineBanner(),
           Expanded(child: widget.child),
+          const BannerAdWidget(),
         ],
       ),
       bottomNavigationBar: NavigationBar(

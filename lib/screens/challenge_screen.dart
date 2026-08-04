@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../config/theme.dart';
@@ -20,7 +21,7 @@ class ChallengeScreen extends ConsumerWidget {
           children: [
             Text(challenge.category.emoji),
             const SizedBox(width: 8),
-            const Text('Daily Challenge'),
+            Text(tr('challenge.title')),
           ],
         ),
         actions: [
@@ -130,8 +131,8 @@ class ChallengeScreen extends ConsumerWidget {
             Expanded(
               child: Text(
                 state.isCorrect
-                    ? 'You nailed today\'s challenge! Come back tomorrow.'
-                    : 'Today\'s challenge complete. Try again tomorrow!',
+                    ? tr('challenge.result_correct_banner')
+                    : tr('challenge.result_incorrect_banner'),
                 style: const TextStyle(
                     color: AppColors.textSecondary, fontSize: 13),
               ),
@@ -149,29 +150,29 @@ class ChallengeScreen extends ConsumerWidget {
         ),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: const Row(
+      child: Row(
         children: [
-          Text('🧠', style: TextStyle(fontSize: 28)),
-          SizedBox(width: 12),
+          const Text('🧠', style: TextStyle(fontSize: 28)),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Daily Cultural Challenge',
-                    style: TextStyle(
+                Text(tr('challenge.header_title'),
+                    style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 15)),
-                SizedBox(height: 2),
-                Text('Answer correctly to earn 15 XP',
-                    style: TextStyle(color: Colors.white70, fontSize: 12)),
+                const SizedBox(height: 2),
+                Text(tr('challenge.header_subtitle'),
+                    style: const TextStyle(color: Colors.white70, fontSize: 12)),
               ],
             ),
           ),
           Column(
             children: [
-              Text('⭐ 15', style: TextStyle(color: Colors.white, fontSize: 16)),
-              Text('XP', style: TextStyle(color: Colors.white70, fontSize: 11)),
+              const Text('⭐ 15', style: TextStyle(color: Colors.white, fontSize: 16)),
+              Text(tr('challenge.xp_label'), style: const TextStyle(color: Colors.white70, fontSize: 11)),
             ],
           ),
         ],
@@ -205,7 +206,7 @@ class ChallengeScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  isCorrect ? 'Correct!' : 'Not quite…',
+                  isCorrect ? tr('challenge.correct_title') : tr('challenge.incorrect_title'),
                   style: TextStyle(
                     color: isCorrect ? Colors.green.shade800 : Colors.orange.shade800,
                     fontWeight: FontWeight.bold,
@@ -215,8 +216,8 @@ class ChallengeScreen extends ConsumerWidget {
                 const SizedBox(height: 4),
                 Text(
                   isCorrect
-                      ? '+${state.xpEarned} XP earned 🌟'
-                      : '+${state.xpEarned} XP for trying',
+                      ? tr('challenge.xp_earned_correct', args: ['${state.xpEarned}'])
+                      : tr('challenge.xp_earned_incorrect', args: ['${state.xpEarned}']),
                   style: TextStyle(
                     color: isCorrect ? Colors.green.shade700 : Colors.orange.shade700,
                     fontSize: 13,
@@ -242,12 +243,12 @@ class ChallengeScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Icon(Icons.menu_book, color: AppColors.secondary, size: 18),
-              SizedBox(width: 8),
-              Text('Explanation',
-                  style: TextStyle(
+              const Icon(Icons.menu_book, color: AppColors.secondary, size: 18),
+              const SizedBox(width: 8),
+              Text(tr('challenge.explanation'),
+                  style: const TextStyle(
                       color: AppColors.secondary,
                       fontWeight: FontWeight.bold,
                       fontSize: 13)),
@@ -269,9 +270,9 @@ class ChallengeScreen extends ConsumerWidget {
       children: [
         const Icon(Icons.schedule, size: 16, color: AppColors.textSecondary),
         const SizedBox(width: 6),
-        const Text(
-          'A new challenge awaits tomorrow',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
+        Text(
+          tr('challenge.next_challenge_info'),
+          style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
         ),
       ],
     );

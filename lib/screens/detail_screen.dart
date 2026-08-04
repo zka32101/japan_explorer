@@ -20,6 +20,8 @@ import '../screens/post_screen.dart';
 import '../screens/audio_guide_screen.dart';
 import '../screens/journal_entry_screen.dart';
 import '../widgets/post_widget.dart';
+import '../providers/premium_provider.dart';
+import '../services/ads_service.dart';
 import '../utils/constants.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
@@ -35,6 +37,14 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
   double _recommend = 0;
   bool _isSubmitting = false;
   int _currentImageIndex = 0;
+
+  @override
+  void dispose() {
+    // Fire-and-forget: no-ops for premium users or if the frequency cap /
+    // preload isn't ready — safe to call unconditionally on leaving a spot.
+    adsService.maybeShowInterstitial(isPremium: ref.read(isPremiumProvider));
+    super.dispose();
+  }
 
   Future<void> _submitRating() async {
     if (_wantToGo == 0 || _recommend == 0) {
@@ -75,10 +85,10 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     return Scaffold(
       body: curationAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) => Center(child: Text(tr('detail.error_prefix', args: [e.toString()]))),
         data: (curation) {
           if (curation == null) {
-            return const Center(child: Text('Spot not found'));
+            return Center(child: Text(tr('detail.spot_not_found')));
           }
           return CustomScrollView(
             slivers: [
@@ -190,7 +200,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
             const Spacer(),
             if (curation.overallRank > 0)
               Text(
-                '#${curation.overallRank} Overall',
+                tr('detail.overall_rank', args: ['${curation.overallRank}']),
                 style: const TextStyle(
                   color: AppColors.primary,
                   fontWeight: FontWeight.bold,
@@ -220,19 +230,19 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         Row(
           children: [
             _StatChip(
-              label: 'Want to Go',
+              label: tr('detail.want_to_go'),
               value: curation.averageWantToGo,
               color: AppColors.primary,
             ),
             const SizedBox(width: 12),
             _StatChip(
-              label: 'Recommend',
+              label: tr('detail.recommend'),
               value: curation.averageRecommend,
               color: AppColors.secondary,
             ),
             const Spacer(),
             Text(
-              '${curation.totalRatings} ratings',
+              tr('detail.ratings_count', args: ['${curation.totalRatings}']),
               style: const TextStyle(
                   color: AppColors.textSecondary, fontSize: 12),
             ),
@@ -250,7 +260,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Rate this spot',
+              tr('detail.rate_this_spot'),
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
@@ -258,13 +268,13 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
             ),
             const SizedBox(height: 12),
             _RatingRow(
-              label: 'Want to Go',
+              label: tr('detail.want_to_go'),
               value: _wantToGo,
               onChanged: (v) => setState(() => _wantToGo = v),
             ),
             const SizedBox(height: 8),
             _RatingRow(
-              label: 'Recommend',
+              label: tr('detail.recommend'),
               value: _recommend,
               onChanged: (v) => setState(() => _recommend = v),
             ),
@@ -282,7 +292,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                           color: Colors.white,
                         ),
                       )
-                    : const Text('Submit Rating'),
+                    : Text(tr('detail.submit_rating')),
               ),
             ),
           ],
@@ -296,7 +306,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'About',
+          tr('detail.about'),
           style: Theme.of(context)
               .textTheme
               .titleMedium
@@ -340,7 +350,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Practical Info',
+              tr('detail.practical_info'),
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
@@ -405,7 +415,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                         ),
                       ),
               icon: const Text('🎧', style: TextStyle(fontSize: 16)),
-              label: const Text('Audio Guide'),
+              label: Text(tr('detail.audio_guide')),
               style: OutlinedButton.styleFrom(
                 foregroundColor: AppColors.secondary,
                 side: const BorderSide(color: AppColors.secondary),
@@ -440,7 +450,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                       : () => _showAddToPlan(curation.id, curation.title,
                           curation.imageUrls.firstOrNull),
                   icon: const Icon(Icons.add, size: 16),
-                  label: const Text('Plan'),
+                  label: Text(tr('nav.my_plan')),
                 ),
               ),
               const SizedBox(width: 8),
@@ -453,7 +463,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                           curation.location.longitude,
                           curation.title),
                   icon: const Icon(Icons.navigation, size: 16),
-                  label: const Text('Go'),
+                  label: Text(tr('detail.go_button')),
                 ),
               ),
             ],
@@ -469,9 +479,9 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     if (plans.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: const Text('No plans yet. Create one first!'),
+          content: Text(tr('detail.no_plans_yet')),
           action: SnackBarAction(
-            label: 'My Plans',
+            label: tr('detail.my_plans'),
             onPressed: () => context.go('/my-plan'),
           ),
         ),
@@ -490,13 +500,13 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Add to Plan',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(tr('detail.add_to_plan'),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             ...plans.map((p) => ListTile(
                   leading: const Icon(Icons.map, color: AppColors.primary),
                   title: Text(p.title),
-                  subtitle: Text('${p.spots.length} spots'),
+                  subtitle: Text(tr('detail.spots_count', args: ['${p.spots.length}'])),
                   onTap: () => Navigator.pop(context, p.id),
                 )),
           ],
@@ -516,8 +526,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         );
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Added to plan!'),
+      SnackBar(
+        content: Text(tr('detail.added_to_plan')),
         backgroundColor: Colors.green,
       ),
     );

@@ -31,6 +31,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAPS_API_KEY}"/>
 
+        <!-- AdMob App ID — TEST ID (Google's official sample app ID).
+             MUST be replaced with the real AdMob app ID from
+             https://apps.admob.com before release build/submission. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
         <!-- FCM: high-importance channel -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"

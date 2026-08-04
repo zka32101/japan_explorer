@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -26,16 +27,16 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Learn Japanese Culture'),
+        title: Text(tr('culture_hub.title')),
         elevation: 0,
         actions: [
           if (!isPremium)
             TextButton.icon(
               onPressed: () => showPremiumPaywall(context),
               icon: const Text('✨', style: TextStyle(fontSize: 14)),
-              label: const Text(
-                'Premium',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              label: Text(
+                tr('culture_hub.premium_badge'),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
         ],
@@ -61,7 +62,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
             child: TextField(
               onChanged: (val) => setState(() => _searchTerm = val),
               decoration: InputDecoration(
-                hintText: 'Search culture...',
+                hintText: tr('culture_hub.search_hint'),
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -95,7 +96,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                       children: [
                         Icon(Icons.search_off, size: 48, color: AppColors.textSecondary),
                         const SizedBox(height: 16),
-                        Text('No content found',
+                        Text(tr('culture_hub.no_results'),
                             style: TextStyle(color: AppColors.textSecondary)),
                       ],
                     ),
@@ -111,7 +112,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
               },
               loading: () =>
                   const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-              error: (e, st) => Center(child: Text('Error: $e')),
+              error: (e, st) => Center(child: Text(tr('culture_hub.error_prefix', args: ['$e']))),
             ),
           ),
         ],
@@ -135,21 +136,21 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
           children: [
             const Text('✨', style: TextStyle(fontSize: 18)),
             const SizedBox(width: 10),
-            const Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Unlock 18 premium deep-dive articles',
-                    style: TextStyle(
+                    tr('culture_hub.premium_banner_title'),
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
                     ),
                   ),
                   Text(
-                    'Geisha, Bunraku, Irezumi, advanced language & more',
-                    style: TextStyle(color: Colors.white70, fontSize: 11),
+                    tr('culture_hub.premium_banner_subtitle'),
+                    style: const TextStyle(color: Colors.white70, fontSize: 11),
                   ),
                 ],
               ),
@@ -243,14 +244,14 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  content.title,
+                                  content.localizedTitle(context.locale.languageCode),
                                   style: Theme.of(context).textTheme.titleMedium,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  content.subtitle,
+                                  content.localizedSubtitle(context.locale.languageCode),
                                   style: TextStyle(
                                       color: AppColors.textSecondary, fontSize: 12),
                                   maxLines: 1,
@@ -292,7 +293,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                           Icon(Icons.schedule,
                               size: 14, color: AppColors.textSecondary),
                           const SizedBox(width: 4),
-                          Text('${content.readTime} min read',
+                          Text(tr('culture_hub.min_read', args: ['${content.readTime}']),
                               style: TextStyle(
                                   fontSize: 12, color: AppColors.textSecondary)),
                           const Spacer(),
@@ -325,15 +326,15 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                             ),
                             borderRadius: BorderRadius.circular(6),
                           ),
-                          child: const Row(
+                          child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text('✨',
+                              const Text('✨',
                                   style: TextStyle(fontSize: 11)),
-                              SizedBox(width: 4),
+                              const SizedBox(width: 4),
                               Text(
-                                'Unlock with Premium',
-                                style: TextStyle(
+                                tr('culture_hub.unlock_premium'),
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 11,
                                     fontWeight: FontWeight.bold),

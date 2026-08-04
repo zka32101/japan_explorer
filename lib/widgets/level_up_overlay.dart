@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../models/user.dart';
 import '../config/theme.dart';
 
@@ -102,9 +103,9 @@ class _LevelUpOverlayState extends State<LevelUpOverlay>
                         color: Colors.white.withValues(alpha: 0.15),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Text(
-                        'LEVEL UP!',
-                        style: TextStyle(
+                      child: Text(
+                        'widgets.level_up_label'.tr(),
+                        style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 13,
                           fontWeight: FontWeight.bold,
@@ -115,7 +116,7 @@ class _LevelUpOverlayState extends State<LevelUpOverlay>
                     const SizedBox(height: 20),
                     // Level number
                     Text(
-                      'Lv.${widget.newLevel}',
+                      'profile.level'.tr(namedArgs: {'level': '${widget.newLevel}'}),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 56,
@@ -134,9 +135,9 @@ class _LevelUpOverlayState extends State<LevelUpOverlay>
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 6),
-                    const Text(
-                      'Keep exploring Japan!',
-                      style: TextStyle(color: Colors.white60, fontSize: 13),
+                    Text(
+                      'widgets.level_up_keep_exploring'.tr(),
+                      style: const TextStyle(color: Colors.white60, fontSize: 13),
                     ),
                     const SizedBox(height: 28),
                     // Stars decoration
@@ -160,8 +161,8 @@ class _LevelUpOverlayState extends State<LevelUpOverlay>
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(22)),
                       ),
-                      child: const Text('Awesome! 🎉',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text('widgets.level_up_awesome'.tr(),
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),

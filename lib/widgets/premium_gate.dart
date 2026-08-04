@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../providers/premium_provider.dart';
 import '../screens/premium_screen.dart';
@@ -101,9 +102,9 @@ class PremiumGate extends ConsumerWidget {
                       ),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: const Text(
-                      '✨ Unlock Premium',
-                      style: TextStyle(
+                    child: Text(
+                      'widgets.unlock_premium'.tr(),
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
@@ -139,7 +140,7 @@ class PremiumBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        '✨ Premium',
+        'widgets.premium_badge'.tr(),
         style: TextStyle(
           color: Colors.white,
           fontSize: mini ? 9 : 11,
@@ -151,89 +152,3 @@ class PremiumBadge extends StatelessWidget {
   }
 }
 
-// ── UsageBanner ───────────────────────────────────────────────────────────────
-
-/// Shows free-tier usage remaining (e.g. "2 / 3 audio guides used today").
-/// Hides automatically for premium users.
-class UsageBanner extends ConsumerWidget {
-  final int used;
-  final int limit;
-  final String label;
-  final String period;
-
-  const UsageBanner({
-    super.key,
-    required this.used,
-    required this.limit,
-    required this.label,
-    required this.period,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isPremium = ref.watch(isPremiumProvider);
-    if (isPremium) return const SizedBox.shrink();
-
-    final remaining = limit - used;
-    final isCritical = remaining <= 1;
-
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-      decoration: BoxDecoration(
-        color: isCritical
-            ? Colors.orange.withValues(alpha: 0.12)
-            : AppColors.primary.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: isCritical
-              ? Colors.orange.withValues(alpha: 0.3)
-              : AppColors.primary.withValues(alpha: 0.2),
-        ),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  remaining > 0
-                      ? '$remaining $label remaining $period'
-                      : 'No $label remaining $period',
-                  style: TextStyle(
-                    color: isCritical ? Colors.orange : AppColors.primary,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 13,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(2),
-                  child: LinearProgressIndicator(
-                    value: used / limit,
-                    minHeight: 4,
-                    backgroundColor: Colors.grey.withValues(alpha: 0.2),
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                        isCritical ? Colors.orange : AppColors.primary),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 12),
-          TextButton(
-            onPressed: () => showPremiumPaywall(context),
-            style: TextButton.styleFrom(
-              foregroundColor: AppColors.primary,
-              padding: EdgeInsets.zero,
-              minimumSize: const Size(60, 32),
-            ),
-            child: const Text('Upgrade',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
-          ),
-        ],
-      ),
-    );
-  }
-}

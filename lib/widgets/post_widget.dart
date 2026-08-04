@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/post.dart';
 
@@ -125,10 +126,10 @@ class PostCard extends StatelessWidget {
     if (diff.inDays > 30) {
       return '${dt.year}/${dt.month.toString().padLeft(2, '0')}/${dt.day.toString().padLeft(2, '0')}';
     }
-    if (diff.inDays > 0) return '${diff.inDays}d ago';
-    if (diff.inHours > 0) return '${diff.inHours}h ago';
-    if (diff.inMinutes > 0) return '${diff.inMinutes}m ago';
-    return 'Just now';
+    if (diff.inDays > 0) return 'common.days_ago'.tr(args: ['${diff.inDays}']);
+    if (diff.inHours > 0) return 'common.hours_ago'.tr(args: ['${diff.inHours}']);
+    if (diff.inMinutes > 0) return 'common.minutes_ago'.tr(args: ['${diff.inMinutes}']);
+    return 'common.just_now'.tr();
   }
 }
 
@@ -156,7 +157,7 @@ class PostsSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Visitor Posts (${posts.length})',
+              'widgets.visitor_posts_count'.tr(args: ['${posts.length}']),
               style: const TextStyle(
                   fontSize: 16, fontWeight: FontWeight.bold),
             ),
@@ -164,18 +165,18 @@ class PostsSection extends StatelessWidget {
               TextButton.icon(
                 onPressed: onAddPost,
                 icon: const Icon(Icons.add, size: 18),
-                label: const Text('Share'),
+                label: Text('common.share'.tr()),
               ),
           ],
         ),
         const SizedBox(height: 8),
         if (posts.isEmpty)
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
             child: Center(
               child: Text(
-                'Be the first to share your experience!',
-                style: TextStyle(color: AppColors.textSecondary),
+                'widgets.post_empty'.tr(),
+                style: const TextStyle(color: AppColors.textSecondary),
               ),
             ),
           )

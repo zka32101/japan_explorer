@@ -18,6 +18,7 @@ import 'services/offline_cache_service.dart';
 import 'services/purchase_service.dart';
 import 'services/vision_cache_service.dart';
 import 'services/culture_content_seeder.dart';
+import 'services/ads_service.dart';
 
 // ── Background FCM handler (top-level, required by Firebase) ──────────────────
 @pragma('vm:entry-point')
@@ -57,6 +58,10 @@ void main() async {
 
   // RevenueCat: configure anonymously — user ID is set after sign-in
   await purchaseService.configure();
+
+  // AdMob: init once at startup; banner/interstitial creation happens
+  // lazily where they're shown, gated on premium status.
+  await adsService.init();
 
   // Hive: offline cache (must init before runApp)
   await offlineCacheService.init();

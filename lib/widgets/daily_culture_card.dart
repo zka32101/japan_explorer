@@ -15,7 +15,6 @@ class DailyCultureCard extends ConsumerWidget {
     final content = ref.watch(dailyCultureProvider);
     final hasRead = ref.watch(dailyCultureReadTodayProvider);
     final language = ref.watch(languageProvider);
-    final isEnglish = language == Language.en;
 
     return GestureDetector(
       onTap: () => _onTap(context, ref, content, hasRead),
@@ -86,7 +85,7 @@ class DailyCultureCard extends ConsumerWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      content.getTitle(isEnglish),
+                      content.localizedTitle(language.code),
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -97,7 +96,7 @@ class DailyCultureCard extends ConsumerWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      content.getSubtitle(isEnglish),
+                      content.localizedSubtitle(language.code),
                       style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 11,

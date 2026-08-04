@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../config/theme.dart';
@@ -73,18 +74,18 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           children: [
-            Text('🤖', style: TextStyle(fontSize: 18)),
-            SizedBox(width: 8),
-            Text('AI Trip Planner'),
+            const Text('🤖', style: TextStyle(fontSize: 18)),
+            const SizedBox(width: 8),
+            Text(tr('planner.title')),
           ],
         ),
         actions: [
           if (plannerState.itinerary != null)
             TextButton(
               onPressed: () => ref.read(plannerNotifierProvider.notifier).reset(),
-              child: const Text('Reset'),
+              child: Text(tr('planner.reset')),
             ),
         ],
       ),
@@ -111,18 +112,18 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
             ),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Column(
+          child: Column(
             children: [
-              Text('🗾', style: TextStyle(fontSize: 48)),
-              SizedBox(height: 8),
-              Text('Plan your perfect Japan trip',
-                  style: TextStyle(
+              const Text('🗾', style: TextStyle(fontSize: 48)),
+              const SizedBox(height: 8),
+              Text(tr('planner.hero_title'),
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.bold)),
-              SizedBox(height: 4),
-              Text('Tell us your preferences and AI will create a custom day-by-day itinerary',
-                  style: TextStyle(color: Colors.white70, fontSize: 12),
+              const SizedBox(height: 4),
+              Text(tr('planner.hero_subtitle'),
+                  style: const TextStyle(color: Colors.white70, fontSize: 12),
                   textAlign: TextAlign.center),
             ],
           ),
@@ -130,7 +131,7 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
         const SizedBox(height: 28),
 
         // ── City ──────────────────────────────────────────────────────
-        _SectionHeader(icon: Icons.location_on, title: 'Destination'),
+        _SectionHeader(icon: Icons.location_on, title: tr('planner.destination')),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,
@@ -173,12 +174,12 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
         const SizedBox(height: 28),
 
         // ── Days ──────────────────────────────────────────────────────
-        _SectionHeader(icon: Icons.calendar_today, title: 'Duration'),
+        _SectionHeader(icon: Icons.calendar_today, title: tr('planner.duration')),
         const SizedBox(height: 8),
         Row(
           children: [
             Text(
-              '$_days days',
+              tr('planner.days_count', args: ['$_days']),
               style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -203,7 +204,7 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
         const SizedBox(height: 24),
 
         // ── Interests ─────────────────────────────────────────────────
-        _SectionHeader(icon: Icons.interests, title: 'Interests'),
+        _SectionHeader(icon: Icons.interests, title: tr('planner.interests')),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,
@@ -232,7 +233,7 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
         const SizedBox(height: 24),
 
         // ── Budget ────────────────────────────────────────────────────
-        _SectionHeader(icon: Icons.wallet, title: 'Budget'),
+        _SectionHeader(icon: Icons.wallet, title: tr('planner.budget')),
         const SizedBox(height: 12),
         Row(
           children: TripBudget.values.map((b) {
@@ -285,16 +286,16 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
         ElevatedButton.icon(
           onPressed: _selectedInterests.isEmpty ? null : _checkAndGenerate,
           icon: const Text('✨', style: TextStyle(fontSize: 18)),
-          label: Text('Generate $_days-Day $_cityName Itinerary'),
+          label: Text(tr('planner.generate_button', args: ['$_days', _cityName])),
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(double.infinity, 52),
             textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Powered by Gemini AI • Takes ~10 seconds',
-          style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
+        Text(
+          tr('planner.powered_by'),
+          style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
           textAlign: TextAlign.center,
         ),
       ],
@@ -315,18 +316,18 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
                 color: AppColors.primary, strokeWidth: 3),
           ),
           const SizedBox(height: 24),
-          const Text('✨ Planning your trip…',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(tr('planner.planning_trip'),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
           Text(
-            'Creating $days-day $city itinerary',
+            tr('planner.creating_itinerary', args: ['$days', city]),
             style: const TextStyle(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 4),
-          const Text(
-            'This takes about 10–15 seconds',
+          Text(
+            tr('planner.takes_time'),
             style:
-                TextStyle(color: AppColors.textSecondary, fontSize: 12),
+                const TextStyle(color: AppColors.textSecondary, fontSize: 12),
           ),
         ],
       ),
@@ -411,7 +412,7 @@ class _ItineraryViewState extends ConsumerState<_ItineraryView> {
                   child: CircularProgressIndicator(
                       color: Colors.white, strokeWidth: 2))
               : const Icon(Icons.save_outlined),
-          label: Text(_saving ? 'Saving…' : 'Save as Travel Plan'),
+          label: Text(_saving ? tr('planner.saving') : tr('planner.save_as_plan')),
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(double.infinity, 52),
           ),
@@ -448,7 +449,7 @@ class _ItineraryViewState extends ConsumerState<_ItineraryView> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('"${it.tripTitle}" saved to My Plans! 🗺️'),
+            content: Text(tr('planner.saved_to_plans', args: [it.tripTitle])),
             backgroundColor: AppColors.primary,
           ),
         );
@@ -456,7 +457,7 @@ class _ItineraryViewState extends ConsumerState<_ItineraryView> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to save: $e')),
+          SnackBar(content: Text(tr('planner.save_failed', args: ['$e']))),
         );
       }
     } finally {
@@ -513,7 +514,7 @@ class _DayCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Day ${day.day}',
+                        Text(tr('planner.day_number', args: ['${day.day}']),
                             style: const TextStyle(
                                 color: AppColors.textSecondary, fontSize: 12)),
                         Text(day.theme,
@@ -537,19 +538,19 @@ class _DayCard extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  _ActivityRow(time: 'Morning', emoji: '🌅', activity: day.morning),
+                  _ActivityRow(time: tr('planner.morning'), emoji: '🌅', activity: day.morning),
                   if (day.lunchTip != null) ...[
                     const SizedBox(height: 8),
                     _InfoRow(icon: Icons.restaurant_outlined, text: day.lunchTip!),
                   ],
                   const SizedBox(height: 8),
-                  _ActivityRow(time: 'Afternoon', emoji: '☀️', activity: day.afternoon),
+                  _ActivityRow(time: tr('planner.afternoon'), emoji: '☀️', activity: day.afternoon),
                   if (day.transportTip != null) ...[
                     const SizedBox(height: 8),
                     _InfoRow(icon: Icons.directions_subway_outlined, text: day.transportTip!),
                   ],
                   const SizedBox(height: 8),
-                  _ActivityRow(time: 'Evening', emoji: '🌆', activity: day.evening),
+                  _ActivityRow(time: tr('planner.evening'), emoji: '🌆', activity: day.evening),
                 ],
               ),
             ),
@@ -675,12 +676,12 @@ class _TipCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Text('💡', style: TextStyle(fontSize: 16)),
-              SizedBox(width: 8),
-              Text('Trip Tips',
-                  style: TextStyle(
+              const Text('💡', style: TextStyle(fontSize: 16)),
+              const SizedBox(width: 8),
+              Text(tr('planner.trip_tips'),
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: AppColors.secondary)),
             ],

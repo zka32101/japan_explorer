@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -60,7 +61,7 @@ class _PostScreenState extends ConsumerState<PostScreen> {
   Future<void> _submit() async {
     if (_commentCtrl.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please write a comment')),
+        SnackBar(content: Text(tr('community.no_caption'))),
       );
       return;
     }
@@ -79,16 +80,16 @@ class _PostScreenState extends ConsumerState<PostScreen> {
 
     if (success) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('✅ Post submitted! It will appear after review.'),
+        SnackBar(
+          content: Text(tr('community.post_submitted_pending_review')),
           backgroundColor: Colors.green,
         ),
       );
       Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to submit. Please try again.'),
+        SnackBar(
+          content: Text(tr('community.post_submit_failed')),
           backgroundColor: Colors.red,
         ),
       );
@@ -99,7 +100,7 @@ class _PostScreenState extends ConsumerState<PostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Share Your Experience'),
+        title: Text(tr('community.share_experience_title')),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8),
@@ -111,9 +112,9 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                       height: 18,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text(
-                      'Post',
-                      style: TextStyle(
+                  : Text(
+                      tr('community.post'),
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 16),
                     ),
             ),
@@ -155,7 +156,7 @@ class _PostScreenState extends ConsumerState<PostScreen> {
 
             // Rating
             _Section(
-              title: 'Overall Rating',
+              title: tr('community.overall_rating'),
               child: Row(
                 children: List.generate(5, (i) {
                   final star = (i + 1).toDouble();
@@ -179,7 +180,7 @@ class _PostScreenState extends ConsumerState<PostScreen> {
 
             // Photo picker
             _Section(
-              title: 'Photo (optional)',
+              title: tr('community.photo_optional'),
               child: GestureDetector(
                 onTap: _pickImage,
                 child: _imageFile != null
@@ -223,15 +224,15 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                                 .withValues(alpha: 0.3),
                           ),
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.add_photo_alternate_outlined,
+                            const Icon(Icons.add_photo_alternate_outlined,
                                 size: 36,
                                 color: AppColors.textSecondary),
-                            SizedBox(height: 8),
-                            Text('Add Photo',
-                                style: TextStyle(
+                            const SizedBox(height: 8),
+                            Text(tr('community.tap_to_add_photo'),
+                                style: const TextStyle(
                                     color: AppColors.textSecondary)),
                           ],
                         ),
@@ -242,15 +243,14 @@ class _PostScreenState extends ConsumerState<PostScreen> {
 
             // Comment
             _Section(
-              title: 'Your Experience',
+              title: tr('community.your_experience_section'),
               child: TextField(
                 controller: _commentCtrl,
                 maxLines: 4,
                 maxLength: 500,
-                decoration: const InputDecoration(
-                  hintText:
-                      'Share what made this spot special for you...',
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  hintText: tr('community.experience_hint'),
+                  border: const OutlineInputBorder(),
                   alignLabelWithHint: true,
                 ),
               ),
@@ -259,7 +259,7 @@ class _PostScreenState extends ConsumerState<PostScreen> {
 
             // Tags
             _Section(
-              title: 'Tags',
+              title: tr('community.tags_label'),
               child: Wrap(
                 spacing: 8,
                 runSpacing: 8,
@@ -296,18 +296,18 @@ class _PostScreenState extends ConsumerState<PostScreen> {
                             strokeWidth: 2, color: Colors.white),
                       )
                     : const Icon(Icons.send_rounded),
-                label: const Text('Share Experience',
-                    style: TextStyle(fontSize: 16)),
+                label: Text(tr('community.share_experience_button'),
+                    style: const TextStyle(fontSize: 16)),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
               ),
             ),
             const SizedBox(height: 8),
-            const Center(
+            Center(
               child: Text(
-                'Posts are reviewed before being published',
-                style: TextStyle(
+                tr('community.post_review_notice'),
+                style: const TextStyle(
                     fontSize: 12, color: AppColors.textSecondary),
               ),
             ),

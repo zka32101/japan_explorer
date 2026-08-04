@@ -6,6 +6,7 @@ class UserContribution {
   final String imageHash;
   final String analysisType;
   final String title;
+  final String answerTitle;
   final String description;
   final String imageUrl;
   final int voteCount;
@@ -21,6 +22,7 @@ class UserContribution {
     required this.imageHash,
     required this.analysisType,
     required this.title,
+    this.answerTitle = '',
     required this.description,
     required this.imageUrl,
     required this.voteCount,
@@ -38,6 +40,7 @@ class UserContribution {
       imageHash: map['imageHash'] ?? '',
       analysisType: map['analysisType'] ?? 'what_is_this',
       title: map['title'] ?? '',
+      answerTitle: map['answerTitle'] ?? '',
       description: map['description'] ?? '',
       imageUrl: map['imageUrl'] ?? '',
       voteCount: map['voteCount'] ?? 0,
@@ -57,6 +60,7 @@ class UserContribution {
     'imageHash': imageHash,
     'analysisType': analysisType,
     'title': title,
+    'answerTitle': answerTitle,
     'description': description,
     'imageUrl': imageUrl,
     'voteCount': voteCount,

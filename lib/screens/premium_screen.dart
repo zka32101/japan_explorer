@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -8,12 +9,12 @@ import '../providers/premium_provider.dart';
 // ── Feature list ──────────────────────────────────────────────────────────────
 
 const _features = [
-  (icon: '🎧', text: 'Unlimited AI Audio Guides in 5 languages'),
-  (icon: '✨', text: 'Unlimited AI Trip Planning'),
-  (icon: '🧠', text: 'Unlimited Daily Challenges & detailed analytics'),
-  (icon: '🤝', text: 'Priority host matching & unlimited meetup requests'),
-  (icon: '📶', text: 'Offline curation cache for travel without internet'),
-  (icon: '🚫', text: 'No usage limits — ever'),
+  (icon: '🎧', key: 'premium.features.audio_guides'),
+  (icon: '✨', key: 'premium.features.trip_planning'),
+  (icon: '🧠', key: 'premium.features.daily_challenges'),
+  (icon: '🤝', key: 'premium.features.host_matching'),
+  (icon: '📶', key: 'premium.features.offline_cache'),
+  (icon: '🚫', key: 'premium.features.no_limits'),
 ];
 
 // ── Screen ────────────────────────────────────────────────────────────────────
@@ -105,9 +106,9 @@ class PremiumScreen extends ConsumerWidget {
               style: TextStyle(fontSize: 52, color: Colors.white)),
         ),
         const SizedBox(height: 12),
-        const Text(
-          'Japan Explorer Premium',
-          style: TextStyle(
+        Text(
+          tr('premium.hero_title'),
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -117,7 +118,7 @@ class PremiumScreen extends ConsumerWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Unlock the complete Japan experience',
+          tr('premium.subtitle'),
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.65),
             fontSize: 15,
@@ -151,7 +152,7 @@ class PremiumScreen extends ConsumerWidget {
                       const SizedBox(width: 14),
                       Expanded(
                         child: Text(
-                          f.text,
+                          tr(f.key),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 14,
@@ -209,9 +210,9 @@ class PremiumScreen extends ConsumerWidget {
       children: [
         Expanded(
           child: _StaticPlanCard(
-            label: 'Monthly',
+            label: tr('premium.plan_monthly'),
             price: '\$4.99',
-            sub: 'per month',
+            sub: tr('premium.per_month'),
             id: 'monthly',
             isSelected: state.selectedId == 'monthly' ||
                 (state.selectedId == null),
@@ -222,9 +223,9 @@ class PremiumScreen extends ConsumerWidget {
         const SizedBox(width: 12),
         Expanded(
           child: _StaticPlanCard(
-            label: 'Annual',
+            label: tr('premium.plan_annual'),
             price: '\$39.99',
-            sub: '\$3.33/mo · Save 33%',
+            sub: tr('premium.annual_price_note'),
             id: 'annual',
             isBestValue: true,
             isSelected: state.selectedId == 'annual',
@@ -271,9 +272,9 @@ class PremiumScreen extends ConsumerWidget {
                     child: CircularProgressIndicator(
                         color: Colors.white, strokeWidth: 2.5),
                   )
-                : const Text(
-                    'Continue with Premium',
-                    style: TextStyle(
+                : Text(
+                    tr('premium.continue_cta'),
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -308,13 +309,14 @@ class PremiumScreen extends ConsumerWidget {
                       await ref.read(paywallProvider.notifier).restore();
                   if (!ok && context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          content: Text('No previous purchases found')),
+                      SnackBar(
+                          content:
+                              Text(tr('premium.no_previous_purchases'))),
                     );
                   }
                 },
           child: Text(
-            'Restore Purchases',
+            tr('premium.restore'),
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.55),
               fontSize: 13,
@@ -330,13 +332,13 @@ class PremiumScreen extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _FooterLink(
-            label: 'Terms',
+            label: tr('premium.footer_terms'),
             url: 'https://japan-explorer.app/terms'),
         Text(' · ',
             style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.3), fontSize: 12)),
         _FooterLink(
-            label: 'Privacy',
+            label: tr('premium.footer_privacy'),
             url: 'https://japan-explorer.app/privacy'),
       ],
     );
@@ -388,9 +390,9 @@ class _PlanCard extends StatelessWidget {
                   color: const Color(0xFFFFD700),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text(
-                  'BEST VALUE',
-                  style: TextStyle(
+                child: Text(
+                  tr('premium.best_value').toUpperCase(),
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 9,
                     fontWeight: FontWeight.bold,
@@ -400,7 +402,7 @@ class _PlanCard extends StatelessWidget {
               ),
             if (_isAnnual) const SizedBox(height: 8),
             Text(
-              _isAnnual ? 'Annual' : 'Monthly',
+              _isAnnual ? tr('premium.plan_annual') : tr('premium.plan_monthly'),
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.7),
                 fontSize: 13,
@@ -418,8 +420,8 @@ class _PlanCard extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               _isAnnual
-                  ? 'per year · save ~33%'
-                  : 'per month',
+                  ? tr('premium.per_year_save')
+                  : tr('premium.per_month'),
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.5),
                 fontSize: 11,
@@ -483,9 +485,9 @@ class _StaticPlanCard extends StatelessWidget {
                   color: const Color(0xFFFFD700),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text(
-                  'BEST VALUE',
-                  style: TextStyle(
+                child: Text(
+                  tr('premium.best_value').toUpperCase(),
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 9,
                     fontWeight: FontWeight.bold,

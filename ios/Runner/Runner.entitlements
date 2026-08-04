@@ -13,5 +13,15 @@
     <!-- Push Notifications -->
     <key>aps-environment</key>
     <string>production</string>
+
+    <!-- Sign In with Apple — used by sign_in_with_apple package -->
+    <key>com.apple.developer.applesignin</key>
+    <array>
+        <string>Default</string>
+    </array>
+
+    <!-- App Attest — used by firebase_app_check AppleProvider.appAttest -->
+    <key>com.apple.developer.devicecheck.appattest-environment</key>
+    <string>production</string>
 </dict>
 </plist>

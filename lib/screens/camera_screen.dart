@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -96,18 +97,18 @@ ${explanation.howToExperience}
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        title: const Row(
+        title: Row(
           children: [
-            Icon(Icons.auto_awesome, color: AppColors.accent, size: 18),
-            SizedBox(width: 8),
-            Text('AI Culture Lens'),
+            const Icon(Icons.auto_awesome, color: AppColors.accent, size: 18),
+            const SizedBox(width: 8),
+            Text(tr('camera.title')),
           ],
         ),
         actions: [
           // History button
           IconButton(
             icon: const Icon(Icons.history, color: Colors.white70),
-            tooltip: 'Scan History',
+            tooltip: tr('camera.scan_history'),
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
@@ -175,8 +176,8 @@ ${explanation.howToExperience}
       child: Row(
         children: [
           const SizedBox(width: 12),
-          const Text('Lang:',
-              style: TextStyle(color: Colors.white54, fontSize: 12)),
+          Text(tr('camera.lang_label'),
+              style: const TextStyle(color: Colors.white54, fontSize: 12)),
           const SizedBox(width: 8),
           Expanded(
             child: ListView(
@@ -228,14 +229,14 @@ ${explanation.howToExperience}
           const SizedBox(height: 24),
           Text(
             state.usedFallback
-                ? 'Analyzing with Claude AI...'
-                : 'Analyzing with Gemini AI...',
+                ? tr('camera.analyzing_claude')
+                : tr('camera.analyzing_gemini'),
             style: const TextStyle(color: Colors.white70, fontSize: 16),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Identifying cultural context',
-            style: TextStyle(color: Colors.white38, fontSize: 13),
+          Text(
+            tr('camera.identifying_context'),
+            style: const TextStyle(color: Colors.white38, fontSize: 13),
           ),
         ],
       ),
@@ -294,14 +295,14 @@ ${explanation.howToExperience}
           child: const Icon(Icons.camera_alt, size: 64, color: Colors.white24),
         ),
         const SizedBox(height: 24),
-        const Text(
-          'Point at anything in Japan',
-          style: TextStyle(color: Colors.white70, fontSize: 18),
+        Text(
+          tr('camera.point_at_anything'),
+          style: const TextStyle(color: Colors.white70, fontSize: 18),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Shrines • Food • Signs • Art • Architecture',
-          style: TextStyle(color: Colors.white38, fontSize: 13),
+        Text(
+          tr('camera.category_list'),
+          style: const TextStyle(color: Colors.white38, fontSize: 13),
         ),
       ],
     );
@@ -316,7 +317,7 @@ ${explanation.howToExperience}
         children: [
           _ControlButton(
             icon: Icons.photo_library,
-            label: 'Gallery',
+            label: tr('common.gallery'),
             onTap: () => _pickImage(ImageSource.gallery),
           ),
           GestureDetector(
@@ -339,7 +340,7 @@ ${explanation.howToExperience}
           ),
           _ControlButton(
             icon: Icons.tips_and_updates_outlined,
-            label: 'Tips',
+            label: tr('camera.tips_button'),
             onTap: () => _showTipsDialog(context),
           ),
         ],
@@ -352,25 +353,25 @@ ${explanation.howToExperience}
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: const Color(0xFF1E1E1E),
-        title: const Text('AI Lens Tips',
-            style: TextStyle(color: Colors.white)),
-        content: const Column(
+        title: Text(tr('camera.tips_dialog_title'),
+            style: const TextStyle(color: Colors.white)),
+        content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _TipRow('📸', 'Take clear, well-lit photos'),
-            _TipRow('🎯', 'Focus on the main subject'),
-            _TipRow('🗺️', 'Works on signs, food, architecture, art'),
-            _TipRow('💬', 'Ask follow-up questions after scan'),
-            _TipRow('📍', 'Walk near spots for auto-hints'),
-            _TipRow('🌐', 'Change language in the top bar'),
+            _TipRow('📸', tr('camera.tip_clear_photo')),
+            _TipRow('🎯', tr('camera.tip_focus_subject')),
+            _TipRow('🗺️', tr('camera.tip_works_on')),
+            _TipRow('💬', tr('camera.tip_follow_up')),
+            _TipRow('📍', tr('camera.tip_walk_near')),
+            _TipRow('🌐', tr('camera.tip_change_language')),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Got it',
-                style: TextStyle(color: AppColors.accent)),
+            child: Text(tr('camera.got_it'),
+                style: const TextStyle(color: AppColors.accent)),
           ),
         ],
       ),
@@ -399,9 +400,9 @@ ${explanation.howToExperience}
                   const SizedBox(height: 16),
                   _buildAudioControls(explanation),
                   const SizedBox(height: 16),
-                  _buildSection('About', explanation.description),
-                  _buildSection('History', explanation.historicalBackground),
-                  _buildSection('How to Experience', explanation.howToExperience),
+                  _buildSection(tr('what_is_this.description'), explanation.description),
+                  _buildSection(tr('what_is_this.history'), explanation.historicalBackground),
+                  _buildSection(tr('what_is_this.how_to_experience'), explanation.howToExperience),
                   _buildPhraseCard(explanation.phrase),
                   if (_showFollowUp) _buildFollowUpInput(),
                   const SizedBox(height: 80),
@@ -418,7 +419,8 @@ ${explanation.howToExperience}
   Widget _buildNameHeader(CameraExplanation explanation, CameraState state) {
     final isGemini = state.lastProvider == AiProvider.gemini;
     final badgeColor = isGemini ? const Color(0xFF4285F4) : AppColors.accent;
-    final badgeLabel = isGemini ? 'Gemini Flash' : 'Claude AI';
+    final badgeLabel =
+        isGemini ? tr('camera.gemini_flash_badge') : tr('camera.claude_ai_badge');
     final badgeIcon = isGemini ? Icons.bolt : Icons.auto_awesome;
 
     return Column(
@@ -459,7 +461,7 @@ ${explanation.howToExperience}
           Padding(
             padding: const EdgeInsets.only(top: 4),
             child: Text(
-              'Gemini unavailable — used Claude',
+              tr('camera.gemini_unavailable_fallback'),
               style: TextStyle(
                   color: AppColors.accent.withValues(alpha: 0.7), fontSize: 11),
             ),
@@ -472,7 +474,7 @@ ${explanation.howToExperience}
                 const Icon(Icons.star, color: AppColors.accent, size: 14),
                 const SizedBox(width: 4),
                 Text(
-                  '+50 XP earned',
+                  tr('camera.xp_earned', args: const ['50']),
                   style: TextStyle(
                       color: AppColors.accent.withValues(alpha: 0.8),
                       fontSize: 11),
@@ -511,7 +513,9 @@ ${explanation.howToExperience}
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    _isSpeaking ? 'Stop Audio' : 'Play Audio',
+                    _isSpeaking
+                        ? tr('camera.stop_audio')
+                        : tr('camera.play_audio'),
                     style: TextStyle(
                         color: _isSpeaking ? AppColors.primary : Colors.white70),
                   ),
@@ -583,12 +587,12 @@ ${explanation.howToExperience}
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Text('🗣️', style: TextStyle(fontSize: 16)),
-              SizedBox(width: 8),
-              Text('Useful Japanese',
-                  style: TextStyle(
+              const Text('🗣️', style: TextStyle(fontSize: 16)),
+              const SizedBox(width: 8),
+              Text(tr('camera.useful_japanese'),
+                  style: const TextStyle(
                       color: AppColors.sakura,
                       fontWeight: FontWeight.bold,
                       fontSize: 13)),
@@ -619,8 +623,8 @@ ${explanation.howToExperience}
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Ask AI a question',
-              style: TextStyle(color: AppColors.secondary, fontSize: 12)),
+          Text(tr('camera.ask_ai_question'),
+              style: const TextStyle(color: AppColors.secondary, fontSize: 12)),
           const SizedBox(height: 8),
           Row(
             children: [
@@ -628,9 +632,9 @@ ${explanation.howToExperience}
                 child: TextField(
                   controller: _followUpController,
                   style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
-                    hintText: 'e.g. When was this built?',
-                    hintStyle: TextStyle(color: Colors.white38),
+                  decoration: InputDecoration(
+                    hintText: tr('camera.follow_up_hint'),
+                    hintStyle: const TextStyle(color: Colors.white38),
                     border: InputBorder.none,
                     isDense: true,
                   ),
@@ -667,8 +671,8 @@ ${explanation.howToExperience}
                 _tts.stop();
               },
               icon: const Icon(Icons.camera_alt, color: Colors.white70),
-              label: const Text('New Photo',
-                  style: TextStyle(color: Colors.white70)),
+              label: Text(tr('camera.new_photo'),
+                  style: const TextStyle(color: Colors.white70)),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.white24),
               ),
@@ -679,7 +683,7 @@ ${explanation.howToExperience}
             child: ElevatedButton.icon(
               onPressed: () => _showAddToPlanSheet(context, state),
               icon: const Icon(Icons.add),
-              label: const Text('Add to Plan'),
+              label: Text(tr('camera.add_to_plan')),
             ),
           ),
         ],
@@ -699,7 +703,7 @@ ${explanation.howToExperience}
         landmarkName: cameraState.explanation?.name ?? '',
         imageUrl: cameraState.capturedImage?.path,
         onAdded: () => ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Added to plan! 🗺️')),
+          SnackBar(content: Text(tr('camera.added_to_plan'))),
         ),
       ),
     );
@@ -740,7 +744,7 @@ class _AddToPlanSheet extends ConsumerWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Add "$landmarkName" to plan',
+            tr('camera.add_landmark_to_plan', args: [landmarkName]),
             style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
@@ -750,8 +754,8 @@ class _AddToPlanSheet extends ConsumerWidget {
           plansAsync.when(
             loading: () => const Center(
                 child: CircularProgressIndicator(color: AppColors.accent)),
-            error: (_, __) => const Text('Failed to load plans',
-                style: TextStyle(color: Colors.white54)),
+            error: (_, __) => Text(tr('camera.failed_load_plans'),
+                style: const TextStyle(color: Colors.white54)),
             data: (plans) => Column(
               children: [
                 // Existing plans
@@ -761,7 +765,8 @@ class _AddToPlanSheet extends ConsumerWidget {
                         const Icon(Icons.map_outlined, color: AppColors.accent),
                     title: Text(plan.title,
                         style: const TextStyle(color: Colors.white)),
-                    subtitle: Text('${plan.spots.length} spots',
+                    subtitle: Text(
+                        tr('camera.spots_count', args: ['${plan.spots.length}']),
                         style: const TextStyle(color: Colors.white54)),
                     onTap: () async {
                       final spot = PlanSpot(
@@ -783,8 +788,8 @@ class _AddToPlanSheet extends ConsumerWidget {
                 ListTile(
                   leading:
                       const Icon(Icons.add_circle_outline, color: AppColors.secondary),
-                  title: const Text('Create new plan',
-                      style: TextStyle(color: AppColors.secondary)),
+                  title: Text(tr('camera.create_new_plan'),
+                      style: const TextStyle(color: AppColors.secondary)),
                   onTap: () => _createAndAdd(context, ref, plans.length),
                 ),
               ],
@@ -803,7 +808,8 @@ class _AddToPlanSheet extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: const Color(0xFF1E1E1E),
-        title: const Text('Plan name', style: TextStyle(color: Colors.white)),
+        title: Text(tr('camera.plan_name_title'),
+            style: const TextStyle(color: Colors.white)),
         content: TextField(
           controller: controller,
           autofocus: true,
@@ -817,12 +823,12 @@ class _AddToPlanSheet extends ConsumerWidget {
         actions: [
           TextButton(
               onPressed: () => Navigator.pop(ctx),
-              child: const Text('Cancel')),
+              child: Text(tr('common.cancel'))),
           TextButton(
             onPressed: () =>
                 Navigator.pop(ctx, controller.text.trim()),
-            child: const Text('Create',
-                style: TextStyle(color: AppColors.accent)),
+            child: Text(tr('camera.create'),
+                style: const TextStyle(color: AppColors.accent)),
           ),
         ],
       ),
@@ -870,7 +876,8 @@ class _NearbyBanner extends StatelessWidget {
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              '📍 ${distanceMeters.round()}m away: $spotName',
+              tr('camera.nearby_distance',
+                  args: ['${distanceMeters.round()}', spotName]),
               style: const TextStyle(color: Colors.white70, fontSize: 12),
               overflow: TextOverflow.ellipsis,
             ),

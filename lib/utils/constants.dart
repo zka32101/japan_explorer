@@ -17,6 +17,7 @@ class AppConstants {
   static const xpQuizCorrect = 15;
   static const xpLevelUpBonus = 300;
   static const xpCultureRead = 20;
+  static const xpReferralBonus = 200;
 
   // Badge IDs (kept here for reference)
   static const badgeFirstVisit = 'first_visit';
@@ -33,6 +34,7 @@ class AppConstants {
   static const badgeLevel5 = 'level_5';
   static const badgeLevel7 = 'level_7';
   static const badgeJapanMaster = 'japan_master';
+  static const badgeAmbassador = 'ambassador';
 }
 
 class AppRoutes {
@@ -69,6 +71,7 @@ class AppRoutes {
   static const cultureHub = '/culture';
   static const cultureDetail = '/culture/:id';
   static const collection = '/collection';
+  static const inviteFriends = '/invite';
 }
 
 class FirestoreCollections {
@@ -81,4 +84,8 @@ class FirestoreCollections {
   static const rankings = 'rankings';
   static const hosts = 'hosts';
   static const hostRequests = 'host_requests';
+  static const referralCodes = 'referral_codes';
+  static const referrals = 'referrals';
+  static const userContributions = 'user_contributions';
+  static const contributionVotes = 'contribution_votes';
 }

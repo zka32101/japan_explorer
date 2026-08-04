@@ -45,21 +45,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final settings = ref.watch(settingsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      appBar: AppBar(title: Text(tr('settings.title'))),
       body: ListView(
         children: [
           // ── Appearance ───────────────────────────────────────────────────
-          _SectionHeader(title: 'Appearance', icon: Icons.palette_outlined),
+          _SectionHeader(
+              title: tr('settings.appearance'), icon: Icons.palette_outlined),
           _ThemeTile(currentMode: settings.themeMode),
           const Divider(height: 1),
 
           // ── Notifications ────────────────────────────────────────────────
           _SectionHeader(
-              title: 'Notifications', icon: Icons.notifications_outlined),
+              title: tr('settings.notifications'),
+              icon: Icons.notifications_outlined),
           SwitchListTile(
             secondary: const Icon(Icons.local_fire_department_outlined),
-            title: const Text('Streak Reminders'),
-            subtitle: const Text('Daily reminder to keep your streak alive'),
+            title: Text(tr('settings.notif_streak')),
+            subtitle: Text(tr('settings.notif_streak_desc')),
             value: settings.notifStreak,
             onChanged: (_) =>
                 ref.read(settingsProvider.notifier).toggleNotifStreak(),
@@ -68,8 +70,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           const Divider(height: 1, indent: 72),
           SwitchListTile(
             secondary: const Icon(Icons.quiz_outlined),
-            title: const Text('Daily Challenge'),
-            subtitle: const Text('Notify when a new challenge is available'),
+            title: Text(tr('settings.notif_challenge')),
+            subtitle: Text(tr('settings.notif_challenge_desc')),
             value: settings.notifChallenge,
             onChanged: (_) =>
                 ref.read(settingsProvider.notifier).toggleNotifChallenge(),
@@ -78,9 +80,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           const Divider(height: 1, indent: 72),
           SwitchListTile(
             secondary: const Icon(Icons.handshake_outlined),
-            title: const Text('Meetup Requests'),
-            subtitle:
-                const Text('When a host accepts or sends you a request'),
+            title: Text(tr('settings.notif_meetup')),
+            subtitle: Text(tr('settings.notif_meetup_desc')),
             value: settings.notifMeetup,
             onChanged: (_) =>
                 ref.read(settingsProvider.notifier).toggleNotifMeetup(),
@@ -89,13 +90,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           const Divider(height: 1),
 
           // ── Language ─────────────────────────────────────────────────────
-          _SectionHeader(title: 'Language', icon: Icons.language_outlined),
+          _SectionHeader(
+              title: tr('settings.language'), icon: Icons.language_outlined),
           Consumer(
             builder: (context, ref, _) {
               final currentLang = ref.watch(languageProvider);
               return ListTile(
                 leading: const Icon(Icons.translate_outlined),
-                title: const Text('App Language'),
+                title: Text(tr('settings.app_language')),
                 subtitle: Text(currentLang.displayName),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => _showLanguageDialog(ref),
@@ -131,34 +133,35 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               icon: Icons.security_outlined),
           ListTile(
             leading: const Icon(Icons.history_outlined),
-            title: const Text('Clear Scan History'),
-            subtitle: const Text('Delete all camera AI scan records'),
+            title: Text(tr('settings.clear_scan_history')),
+            subtitle: Text(tr('settings.clear_scan_history_desc')),
             trailing: const Icon(Icons.chevron_right),
             onTap: _showClearHistoryDialog,
           ),
           const Divider(height: 1, indent: 72),
           ListTile(
             leading: const Icon(Icons.privacy_tip_outlined),
-            title: const Text('Privacy Policy'),
+            title: Text(tr('settings.privacy_policy')),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () => _showTextPage(context, 'Privacy Policy', _kPrivacyPolicy),
+            onTap: () =>
+                _showTextPage(context, tr('settings.privacy_policy'), _kPrivacyPolicy),
           ),
           const Divider(height: 1, indent: 72),
           ListTile(
             leading: const Icon(Icons.delete_outline, color: Colors.red),
-            title: const Text('Delete Account',
-                style: TextStyle(color: Colors.red)),
-            subtitle: const Text('Permanently remove your account and data'),
+            title: Text(tr('settings.delete_account'),
+                style: const TextStyle(color: Colors.red)),
+            subtitle: Text(tr('settings.delete_account_desc')),
             trailing: const Icon(Icons.chevron_right, color: Colors.red),
             onTap: _showDeleteAccountDialog,
           ),
           const Divider(height: 1),
 
           // ── About ────────────────────────────────────────────────────────
-          _SectionHeader(title: 'About', icon: Icons.info_outline),
+          _SectionHeader(title: tr('settings.about'), icon: Icons.info_outline),
           ListTile(
             leading: const Icon(Icons.apps_outlined),
-            title: const Text('Version'),
+            title: Text(tr('settings.version_label')),
             trailing: Text(
               _version.isEmpty ? '—' : '$_version+$_buildNumber',
               style: const TextStyle(
@@ -168,14 +171,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           const Divider(height: 1, indent: 72),
           ListTile(
             leading: const Icon(Icons.description_outlined),
-            title: const Text('Terms of Service'),
+            title: Text(tr('settings.terms')),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () => _showTextPage(context, 'Terms of Service', _kTermsOfService),
+            onTap: () =>
+                _showTextPage(context, tr('settings.terms'), _kTermsOfService),
           ),
           const SizedBox(height: 36),
           Center(
             child: Text(
-              '© 2024–2026 Japan Explorer',
+              tr('settings.copyright'),
               style: TextStyle(
                   color: AppColors.textSecondary.withValues(alpha: 0.6),
                   fontSize: 12),
@@ -195,7 +199,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('App Language'),
+        title: Text(tr('settings.app_language')),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -254,7 +258,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: Text(tr('common.cancel')),
           ),
         ],
       ),
@@ -265,15 +269,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Clear Scan History?'),
-        content: const Text(
-          'All your local camera AI scan records will be deleted. '
-          'This action cannot be undone.',
-        ),
+        title: Text(tr('settings.clear_scan_history_title')),
+        content: Text(tr('settings.clear_scan_history_body')),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: Text(tr('common.cancel')),
           ),
           TextButton(
             onPressed: () {
@@ -282,12 +283,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               // wire it here once you expose it via a provider.
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Scan history cleared')),
+                  SnackBar(content: Text(tr('settings.scan_history_cleared'))),
                 );
               }
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Clear'),
+            child: Text(tr('settings.clear')),
           ),
         ],
       ),
@@ -299,15 +300,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         icon: const Icon(Icons.warning_rounded, color: Colors.red, size: 36),
-        title: const Text('Delete Account?'),
-        content: const Text(
-          'Your account, all plans, reviews, and cultural progress will be '
-          'permanently deleted. This cannot be undone.',
-        ),
+        title: Text(tr('settings.delete_account_title')),
+        content: Text(tr('settings.delete_account_body')),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: Text(tr('common.cancel')),
           ),
           FilledButton(
             onPressed: () {
@@ -315,14 +313,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               // TODO: Trigger server-side account deletion (Cloud Function)
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Account deletion will be processed shortly'),
+                  SnackBar(
+                    content: Text(tr('settings.delete_account_processing')),
                   ),
                 );
               }
             },
             style: FilledButton.styleFrom(backgroundColor: Colors.red),
-            child: const Text('Delete Forever'),
+            child: Text(tr('settings.delete_forever')),
           ),
         ],
       ),
@@ -474,7 +472,7 @@ class _ThemeTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       leading: Icon(_icon(currentMode)),
-      title: const Text('Theme'),
+      title: Text(tr('settings.theme')),
       subtitle: Text(_label(currentMode)),
       trailing: const Icon(Icons.chevron_right),
       onTap: () => _showPicker(context, ref),
@@ -488,9 +486,9 @@ class _ThemeTile extends ConsumerWidget {
       };
 
   String _label(ThemeMode m) => switch (m) {
-        ThemeMode.dark => 'Dark',
-        ThemeMode.light => 'Light',
-        _ => 'System default',
+        ThemeMode.dark => tr('settings.theme_dark'),
+        ThemeMode.light => tr('settings.theme_light'),
+        _ => tr('settings.theme_system'),
       };
 
   void _showPicker(BuildContext context, WidgetRef ref) {
@@ -513,9 +511,9 @@ class _ThemeTile extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Choose Theme',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Text(
+              tr('settings.choose_theme'),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             for (final mode in ThemeMode.values)

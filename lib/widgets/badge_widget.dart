@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 
 class BadgeDefinition {
   final String id;
   final String emoji;
-  final String name;
-  final String description;
+  /// Translation key for the badge name — call `tr(nameKey)` to display.
+  final String nameKey;
+  /// Translation key for the badge description — call `tr(descriptionKey)` to display.
+  final String descriptionKey;
   final Color color;
 
   const BadgeDefinition({
     required this.id,
     required this.emoji,
-    required this.name,
-    required this.description,
+    required this.nameKey,
+    required this.descriptionKey,
     required this.color,
   });
 }
@@ -22,86 +25,93 @@ class AppBadges {
     BadgeDefinition(
       id: 'first_visit',
       emoji: '🗾',
-      name: 'First Step',
-      description: 'Visited your first spot',
+      nameKey: 'badges.first_visit_name',
+      descriptionKey: 'badges.first_visit_desc',
       color: Color(0xFF4CAF50),
     ),
     BadgeDefinition(
       id: 'photo_lover',
       emoji: '📸',
-      name: 'Shutter Bug',
-      description: 'Uploaded 10 photos',
+      nameKey: 'badges.photo_lover_name',
+      descriptionKey: 'badges.photo_lover_desc',
       color: Color(0xFF2196F3),
     ),
     BadgeDefinition(
       id: 'streak_7',
       emoji: '🔥',
-      name: 'Week Warrior',
-      description: '7-day streak',
+      nameKey: 'badges.streak_7_name',
+      descriptionKey: 'badges.streak_7_desc',
       color: Color(0xFFFF9800),
     ),
     BadgeDefinition(
       id: 'streak_30',
       emoji: '⚡',
-      name: 'Monthly Master',
-      description: '30-day streak',
+      nameKey: 'badges.streak_30_name',
+      descriptionKey: 'badges.streak_30_desc',
       color: Color(0xFFFF5722),
     ),
     BadgeDefinition(
       id: 'rater_10',
       emoji: '⭐',
-      name: 'Critic',
-      description: 'Rated 10 spots',
+      nameKey: 'badges.rater_10_name',
+      descriptionKey: 'badges.rater_10_desc',
       color: Color(0xFFFFD700),
     ),
     BadgeDefinition(
       id: 'planner',
       emoji: '🗺️',
-      name: 'Planner',
-      description: 'Created 3 travel plans',
+      nameKey: 'badges.planner_name',
+      descriptionKey: 'badges.planner_desc',
       color: Color(0xFF9C27B0),
     ),
     BadgeDefinition(
       id: 'culture_fan',
       emoji: '⛩️',
-      name: 'Culture Fan',
-      description: 'Visited 5 shrines/temples',
+      nameKey: 'badges.culture_fan_name',
+      descriptionKey: 'badges.culture_fan_desc',
       color: Color(0xFFE91E63),
     ),
     BadgeDefinition(
       id: 'foodie',
       emoji: '🍜',
-      name: 'Foodie',
-      description: 'Explored 10 food spots',
+      nameKey: 'badges.foodie_name',
+      descriptionKey: 'badges.foodie_desc',
       color: Color(0xFFFF6F00),
     ),
     BadgeDefinition(
       id: 'ai_explorer',
       emoji: '🤖',
-      name: 'AI Explorer',
-      description: 'Used AI Lens 20 times',
+      nameKey: 'badges.ai_explorer_name',
+      descriptionKey: 'badges.ai_explorer_desc',
       color: Color(0xFF00BCD4),
     ),
     BadgeDefinition(
       id: 'level_5',
       emoji: '🗺️',
-      name: 'Explorer',
-      description: 'Reached Level 5',
+      nameKey: 'badges.level_5_name',
+      descriptionKey: 'badges.level_5_desc',
       color: Color(0xFF607D8B),
     ),
     BadgeDefinition(
       id: 'level_7',
       emoji: '🎌',
-      name: 'Cultural Ambassador',
-      description: 'Reached Level 7',
+      nameKey: 'badges.level_7_name',
+      descriptionKey: 'badges.level_7_desc',
       color: Color(0xFFE63946),
     ),
     BadgeDefinition(
       id: 'japan_master',
       emoji: '👑',
-      name: 'Japan Master',
-      description: 'Reached Level 10',
+      nameKey: 'badges.japan_master_name',
+      descriptionKey: 'badges.japan_master_desc',
       color: Color(0xFFFFD700),
+    ),
+    BadgeDefinition(
+      id: 'ambassador',
+      emoji: '🎁',
+      nameKey: 'badges.ambassador_name',
+      descriptionKey: 'badges.ambassador_desc',
+      color: Color(0xFFE65100),
     ),
   ];
 
@@ -168,7 +178,7 @@ class BadgeChip extends StatelessWidget {
             Text(badge.emoji, style: const TextStyle(fontSize: 48)),
             const SizedBox(height: 8),
             Text(
-              badge.name,
+              tr(badge.nameKey),
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -176,15 +186,15 @@ class BadgeChip extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              badge.description,
+              tr(badge.descriptionKey),
               style: const TextStyle(color: AppColors.textSecondary),
               textAlign: TextAlign.center,
             ),
             if (!unlocked) ...[
               const SizedBox(height: 8),
-              const Text(
-                'Not yet unlocked',
-                style: TextStyle(color: AppColors.textSecondary, fontSize: 12),
+              Text(
+                'widgets.badge_not_unlocked'.tr(),
+                style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
               ),
             ],
           ],
@@ -209,9 +219,9 @@ class BadgeGrid extends StatelessWidget {
     final badges = showAll ? AppBadges.all : AppBadges.all.where((b) => unlockedIds.contains(b.id)).toList();
 
     if (badges.isEmpty) {
-      return const Text(
-        'Complete activities to earn badges!',
-        style: TextStyle(color: AppColors.textSecondary),
+      return Text(
+        'widgets.badge_empty'.tr(),
+        style: const TextStyle(color: AppColors.textSecondary),
       );
     }
 
@@ -283,15 +293,15 @@ class _NewBadgeAnimationState extends State<NewBadgeAnimation>
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      '🎉 Badge Unlocked!',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    Text(
+                      'widgets.badge_unlocked_title'.tr(),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 16),
                     Text(badge.emoji, style: const TextStyle(fontSize: 64)),
                     const SizedBox(height: 8),
                     Text(
-                      badge.name,
+                      badge.nameKey.tr(),
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -299,13 +309,13 @@ class _NewBadgeAnimationState extends State<NewBadgeAnimation>
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      badge.description,
+                      badge.descriptionKey.tr(),
                       style: const TextStyle(color: AppColors.textSecondary),
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: widget.onDismiss,
-                      child: const Text('Awesome!'),
+                      child: Text('widgets.badge_awesome'.tr()),
                     ),
                   ],
                 ),

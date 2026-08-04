@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/scan_history.dart';
 
@@ -20,11 +21,11 @@ class CameraHistoryScreen extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        title: const Row(
+        title: Row(
           children: [
-            Icon(Icons.history, color: AppColors.accent, size: 18),
-            SizedBox(width: 8),
-            Text('Scan History'),
+            const Icon(Icons.history, color: AppColors.accent, size: 18),
+            const SizedBox(width: 8),
+            Text(tr('camera.scan_history')),
           ],
         ),
         actions: [
@@ -33,18 +34,17 @@ class CameraHistoryScreen extends ConsumerWidget {
               final confirmed = await showDialog<bool>(
                 context: context,
                 builder: (ctx) => AlertDialog(
-                  title: const Text('Clear history?'),
-                  content:
-                      const Text('All scan records will be deleted locally.'),
+                  title: Text(tr('settings.clear_scan_history_title')),
+                  content: Text(tr('settings.clear_scan_history_body')),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(ctx, false),
-                      child: const Text('Cancel'),
+                      child: Text(tr('common.cancel')),
                     ),
                     TextButton(
                       onPressed: () => Navigator.pop(ctx, true),
-                      child: const Text('Clear',
-                          style: TextStyle(color: Colors.red)),
+                      child: Text(tr('settings.clear'),
+                          style: const TextStyle(color: Colors.red)),
                     ),
                   ],
                 ),
@@ -54,7 +54,8 @@ class CameraHistoryScreen extends ConsumerWidget {
                 ref.invalidate(_scanHistoryProvider);
               }
             },
-            child: const Text('Clear', style: TextStyle(color: Colors.white54)),
+            child: Text(tr('settings.clear'),
+                style: const TextStyle(color: Colors.white54)),
           ),
         ],
       ),
@@ -62,8 +63,8 @@ class CameraHistoryScreen extends ConsumerWidget {
         loading: () =>
             const Center(child: CircularProgressIndicator(color: AppColors.accent)),
         error: (e, _) => Center(
-          child: Text('Failed to load history',
-              style: TextStyle(color: Colors.white54)),
+          child: Text(tr('camera.failed_load_history'),
+              style: const TextStyle(color: Colors.white54)),
         ),
         data: (records) => records.isEmpty
             ? _buildEmpty()
@@ -90,14 +91,14 @@ class CameraHistoryScreen extends ConsumerWidget {
         children: [
           Icon(Icons.photo_camera_outlined, size: 64, color: Colors.white24),
           const SizedBox(height: 16),
-          const Text(
-            'No scans yet',
-            style: TextStyle(color: Colors.white54, fontSize: 18),
+          Text(
+            tr('camera.no_scans_yet'),
+            style: const TextStyle(color: Colors.white54, fontSize: 18),
           ),
           const SizedBox(height: 8),
-          const Text(
-            'Use AI Lens to identify spots in Japan',
-            style: TextStyle(color: Colors.white38, fontSize: 13),
+          Text(
+            tr('camera.no_scans_hint'),
+            style: const TextStyle(color: Colors.white38, fontSize: 13),
           ),
         ],
       ),
@@ -233,9 +234,11 @@ class _ScanCard extends StatelessWidget {
   String _formatDate(DateTime dt) {
     final now = DateTime.now();
     final diff = now.difference(dt);
-    if (diff.inDays == 0) return 'Today';
-    if (diff.inDays == 1) return 'Yesterday';
-    if (diff.inDays < 7) return '${diff.inDays}d ago';
+    if (diff.inDays == 0) return tr('camera.today');
+    if (diff.inDays == 1) return tr('camera.yesterday');
+    if (diff.inDays < 7) {
+      return tr('common.days_ago', args: ['${diff.inDays}']);
+    }
     return '${dt.month}/${dt.day}';
   }
 }
@@ -276,9 +279,10 @@ class _ScanDetailSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          _Section('About', record.description),
-          _Section('History', record.historicalBackground),
-          _Section('How to Experience', record.howToExperience),
+          _Section(tr('detail.about'), record.description),
+          _Section(tr('what_is_this.history'), record.historicalBackground),
+          _Section(
+              tr('what_is_this.how_to_experience'), record.howToExperience),
           if (record.phraseJapanese.isNotEmpty) ...[
             const SizedBox(height: 8),
             Container(
@@ -292,8 +296,8 @@ class _ScanDetailSheet extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('🗣️ Useful Japanese',
-                      style: TextStyle(
+                  Text('🗣️ ${tr('camera.useful_japanese')}',
+                      style: const TextStyle(
                           color: AppColors.sakura,
                           fontWeight: FontWeight.bold)),
                   const SizedBox(height: 8),

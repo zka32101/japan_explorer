@@ -46,7 +46,7 @@ android {
 
     defaultConfig {
         applicationId   = "com.petitworksapps.japanexplorer"
-        minSdk          = 21   // firebase_messaging, RevenueCat, App Check all require API 21+
+        minSdk = 21   // firebase_messaging, RevenueCat, App Check all require API 21+
         targetSdk       = flutter.targetSdkVersion
         versionCode     = flutter.versionCode
         versionName     = flutter.versionName

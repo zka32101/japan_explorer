@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../config/theme.dart';
@@ -18,11 +19,11 @@ class ProgressScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           children: [
-            Text('🏆', style: TextStyle(fontSize: 18)),
-            SizedBox(width: 8),
-            Text('Cultural Progress'),
+            const Text('🏆', style: TextStyle(fontSize: 18)),
+            const SizedBox(width: 8),
+            Text(tr('profile.feature_progress_title')),
           ],
         ),
         actions: [
@@ -36,10 +37,11 @@ class ProgressScreen extends ConsumerWidget {
       ),
       body: userAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) => Center(
+            child: Text(tr('profile.error_message', args: [e.toString()]))),
         data: (user) {
           if (user == null) {
-            return const Center(child: Text('Not logged in'));
+            return Center(child: Text(tr('profile.not_logged_in')));
           }
           return RefreshIndicator(
             onRefresh: () async =>
@@ -55,7 +57,8 @@ class ProgressScreen extends ConsumerWidget {
                 progressAsync.when(
                   loading: () => const Center(
                       child: CircularProgressIndicator()),
-                  error: (e, _) => Text('Failed to load: $e'),
+                  error: (e, _) => Text(
+                      tr('progress.failed_to_load', args: [e.toString()])),
                   data: (summary) => Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -113,10 +116,10 @@ class _LevelHeroCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Current Level',
-                      style: TextStyle(
+                  Text(tr('progress.current_level'),
+                      style: const TextStyle(
                           color: Colors.white60, fontSize: 12)),
-                  Text('Lv.${user.level}',
+                  Text(tr('progress.level_number', args: [user.level.toString()]),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 48,
@@ -161,16 +164,19 @@ class _LevelHeroCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('${user.xp} XP',
+              Text(tr('profile.xp', args: [user.xp.toString()]),
                   style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold)),
               if (user.level < 10)
-                Text('$xpToNext XP to next level',
+                Text(
+                    tr('progress.xp_to_next_level',
+                        args: [xpToNext.toString()]),
                     style: const TextStyle(
                         color: Colors.white60, fontSize: 12))
               else
-                const Text('MAX LEVEL 🎉',
-                    style: TextStyle(color: Colors.white60, fontSize: 12)),
+                Text(tr('progress.max_level'),
+                    style: const TextStyle(
+                        color: Colors.white60, fontSize: 12)),
             ],
           ),
         ],
@@ -199,7 +205,7 @@ class _QuizSummaryCard extends StatelessWidget {
             Expanded(
               child: _StatBlock(
                 value: '$answered',
-                label: 'Challenges',
+                label: tr('progress.challenges'),
                 emoji: '🧠',
                 color: AppColors.primary,
               ),
@@ -208,7 +214,7 @@ class _QuizSummaryCard extends StatelessWidget {
             Expanded(
               child: _StatBlock(
                 value: pctStr,
-                label: 'Accuracy',
+                label: tr('progress.accuracy'),
                 emoji: '🎯',
                 color: pct >= 0.7 ? Colors.green : AppColors.accent,
               ),
@@ -217,7 +223,7 @@ class _QuizSummaryCard extends StatelessWidget {
             Expanded(
               child: _StatBlock(
                 value: '${summary.totalXpFromChallenges}',
-                label: 'Quiz XP',
+                label: tr('progress.quiz_xp'),
                 emoji: '⭐',
                 color: AppColors.secondary,
               ),
@@ -226,7 +232,7 @@ class _QuizSummaryCard extends StatelessWidget {
             Expanded(
               child: _StatBlock(
                 value: '${summary.scanCount}',
-                label: 'Scans',
+                label: tr('progress.scans'),
                 emoji: '📷',
                 color: const Color(0xFF00BCD4),
               ),
@@ -281,9 +287,9 @@ class _CategoryProgressSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Knowledge by Category',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        Text(
+          tr('progress.knowledge_by_category'),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ...summary.categories.map(
@@ -356,8 +362,11 @@ class _CategoryBar extends StatelessWidget {
           const SizedBox(height: 3),
           Text(
             progress.questionsAnswered == 0
-                ? 'No questions answered yet'
-                : '${progress.correctCount}/${progress.questionsAnswered} correct',
+                ? tr('progress.no_questions_answered')
+                : tr('progress.correct_count', args: [
+                    progress.correctCount.toString(),
+                    progress.questionsAnswered.toString(),
+                  ]),
             style: const TextStyle(
                 color: AppColors.textSecondary, fontSize: 11),
           ),
@@ -382,7 +391,7 @@ class _StatsRow extends StatelessWidget {
           child: _InfoTile(
             emoji: '🔥',
             value: '${user.streakDays}',
-            label: 'Day Streak',
+            label: tr('progress.day_streak'),
             color: const Color(0xFFFF9800),
           ),
         ),
@@ -391,7 +400,7 @@ class _StatsRow extends StatelessWidget {
           child: _InfoTile(
             emoji: '🏅',
             value: '${user.badges.length}',
-            label: 'Badges',
+            label: tr('progress.badges_title'),
             color: const Color(0xFF9C27B0),
           ),
         ),
@@ -400,7 +409,7 @@ class _StatsRow extends StatelessWidget {
           child: _InfoTile(
             emoji: '⭐',
             value: '${user.xp}',
-            label: 'Total XP',
+            label: tr('progress.total_xp'),
             color: AppColors.primary,
           ),
         ),
@@ -463,8 +472,8 @@ class _BadgesSection extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text('Badges',
-                style: TextStyle(
+            Text(tr('progress.badges_title'),
+                style: const TextStyle(
                     fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(width: 8),
             Container(
@@ -487,11 +496,11 @@ class _BadgesSection extends StatelessWidget {
         const SizedBox(height: 12),
         BadgeGrid(unlockedIds: unlockedIds, showAll: true),
         if (unlockedIds.isEmpty)
-          const Padding(
-            padding: EdgeInsets.only(top: 8),
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
             child: Text(
-              'Complete activities and quizzes to unlock badges!',
-              style: TextStyle(
+              tr('progress.badges_empty'),
+              style: const TextStyle(
                   color: AppColors.textSecondary, fontSize: 13),
             ),
           ),

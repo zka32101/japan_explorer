@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 
 /// Generic error view used across screens.
@@ -25,7 +26,7 @@ class AppErrorWidget extends StatelessWidget {
             Icon(icon, size: 56, color: AppColors.textSecondary),
             const SizedBox(height: 16),
             Text(
-              message ?? 'Something went wrong',
+              message ?? 'widgets.error_default'.tr(),
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 16,
@@ -37,7 +38,7 @@ class AppErrorWidget extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: onRetry,
                 icon: const Icon(Icons.refresh),
-                label: const Text('Try Again'),
+                label: Text('widgets.try_again'.tr()),
               ),
             ],
           ],
@@ -78,8 +79,8 @@ class AppErrorBanner extends StatelessWidget {
           if (onRetry != null)
             TextButton(
               onPressed: onRetry,
-              child: const Text('Retry',
-                  style: TextStyle(color: Colors.red, fontSize: 13)),
+              child: Text('common.retry'.tr(),
+                  style: const TextStyle(color: Colors.red, fontSize: 13)),
             ),
         ],
       ),
@@ -102,14 +103,14 @@ extension AsyncValueErrorExt<T> on AsyncValue<T> {
   String _friendlyMessage(Object e) {
     final msg = e.toString();
     if (msg.contains('network') || msg.contains('SocketException')) {
-      return 'No internet connection. Check your network and retry.';
+      return 'widgets.error_network_detail'.tr();
     }
     if (msg.contains('permission') || msg.contains('PERMISSION_DENIED')) {
-      return 'You don\'t have permission to view this content.';
+      return 'widgets.error_permission_detail'.tr();
     }
     if (msg.contains('not-found')) {
-      return 'This content no longer exists.';
+      return 'widgets.error_not_found'.tr();
     }
-    return 'Failed to load data. Please try again.';
+    return 'widgets.error_load_failed'.tr();
   }
 }

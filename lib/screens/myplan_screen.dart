@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/plan_provider.dart';
@@ -14,23 +15,24 @@ class MyPlanScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Plans'),
+        title: Text(tr('myplan.title')),
         actions: [
           IconButton(
             icon: const Text('✨', style: TextStyle(fontSize: 18)),
-            tooltip: 'Generate with AI',
+            tooltip: tr('myplan.generate_with_ai'),
             onPressed: () => context.push('/ai-planner'),
           ),
           IconButton(
             icon: const Icon(Icons.map_outlined),
-            tooltip: 'View on Map',
+            tooltip: tr('myplan.view_on_map'),
             onPressed: () => context.go('/map'),
           ),
         ],
       ),
       body: plansAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) =>
+            Center(child: Text(tr('myplan.error_prefix', args: ['$e']))),
         data: (plans) => plans.isEmpty
             ? _buildEmpty(context)
             : _buildPlanList(context, ref, plans),
@@ -38,7 +40,7 @@ class MyPlanScreen extends ConsumerWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _showCreateDialog(context, ref),
         icon: const Icon(Icons.add),
-        label: const Text('New Plan'),
+        label: Text(tr('myplan.new_plan')),
       ),
     );
   }
@@ -58,22 +60,22 @@ class MyPlanScreen extends ConsumerWidget {
                 size: 56, color: AppColors.primary),
           ),
           const SizedBox(height: 20),
-          const Text('No plans yet',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(tr('myplan.no_plans_title'),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          const Text('Create your Japan travel plan',
-              style: TextStyle(color: AppColors.textSecondary)),
+          Text(tr('myplan.no_plans_subtitle'),
+              style: const TextStyle(color: AppColors.textSecondary)),
           const SizedBox(height: 24),
           ElevatedButton.icon(
             onPressed: () => _showCreateDialog(context, null),
             icon: const Icon(Icons.add),
-            label: const Text('Create First Plan'),
+            label: Text(tr('myplan.create_first_plan')),
           ),
           const SizedBox(height: 12),
           OutlinedButton.icon(
             onPressed: () => context.push('/ai-planner'),
             icon: const Text('✨', style: TextStyle(fontSize: 16)),
-            label: const Text('Generate with AI'),
+            label: Text(tr('myplan.generate_with_ai')),
           ),
         ],
       ),
@@ -119,16 +121,16 @@ class MyPlanScreen extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text('Create New Plan',
-                  style:
+              Text(tr('myplan.create_new_plan'),
+                  style: const
                       TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               TextField(
                 controller: ctrl,
                 autofocus: true,
-                decoration: const InputDecoration(
-                  labelText: 'Plan Name',
-                  hintText: 'e.g. Tokyo 3 Days, Kyoto Weekend',
+                decoration: InputDecoration(
+                  labelText: tr('myplan.plan_name_label'),
+                  hintText: tr('myplan.plan_name_hint'),
                 ),
               ),
               const SizedBox(height: 16),
@@ -140,7 +142,7 @@ class MyPlanScreen extends ConsumerWidget {
                       .createPlan(ctrl.text.trim());
                   if (ctx.mounted) Navigator.pop(ctx);
                 },
-                child: const Text('Create'),
+                child: Text(tr('myplan.create')),
               ),
             ],
           ),
@@ -154,16 +156,16 @@ class MyPlanScreen extends ConsumerWidget {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Delete Plan'),
-        content: Text('Delete "$title"?'),
+        title: Text(tr('myplan.delete_plan_title')),
+        content: Text(tr('myplan.delete_plan_confirm', args: [title])),
         actions: [
           TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel')),
+              child: Text(tr('common.cancel'))),
           TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Delete',
-                  style: TextStyle(color: Colors.red))),
+              child: Text(tr('common.delete'),
+                  style: const TextStyle(color: Colors.red))),
         ],
       ),
     );
@@ -212,7 +214,9 @@ class _PlanCard extends StatelessWidget {
                         Text(plan.title,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text('${plan.spots.length} spots',
+                        Text(
+                            tr('myplan.spots_count',
+                                args: ['${plan.spots.length}']),
                             style: const TextStyle(
                                 color: AppColors.textSecondary, fontSize: 13)),
                       ],
@@ -223,14 +227,14 @@ class _PlanCard extends StatelessWidget {
                       if (v == 'delete') onDelete();
                     },
                     itemBuilder: (_) => [
-                      const PopupMenuItem(
+                      PopupMenuItem(
                         value: 'delete',
                         child: Row(children: [
-                          Icon(Icons.delete_outline,
+                          const Icon(Icons.delete_outline,
                               color: Colors.red, size: 18),
-                          SizedBox(width: 8),
-                          Text('Delete',
-                              style: TextStyle(color: Colors.red)),
+                          const SizedBox(width: 8),
+                          Text(tr('common.delete'),
+                              style: const TextStyle(color: Colors.red)),
                         ]),
                       ),
                     ],
@@ -274,7 +278,9 @@ class _PlanCard extends StatelessWidget {
                       ),
                     )),
                 if (plan.spots.length > 3)
-                  Text('+${plan.spots.length - 3} more spots',
+                  Text(
+                      tr('myplan.more_spots',
+                          args: ['${plan.spots.length - 3}']),
                       style: const TextStyle(
                           color: AppColors.textSecondary, fontSize: 12)),
               ],
@@ -342,11 +348,11 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
           const Icon(Icons.add_location_alt_outlined,
               size: 56, color: AppColors.textSecondary),
           const SizedBox(height: 16),
-          const Text('No spots added yet',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(tr('myplan.no_spots_title'),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          const Text('Browse spots and tap "Add to Plan"',
-              style: TextStyle(color: AppColors.textSecondary)),
+          Text(tr('myplan.no_spots_subtitle'),
+              style: const TextStyle(color: AppColors.textSecondary)),
           const SizedBox(height: 20),
           ElevatedButton.icon(
             onPressed: () {
@@ -354,7 +360,7 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
               context.go('/home');
             },
             icon: const Icon(Icons.explore),
-            label: const Text('Explore Spots'),
+            label: Text(tr('myplan.explore_spots')),
           ),
         ],
       ),
@@ -377,7 +383,7 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
                 context.go('/home');
               },
               icon: const Icon(Icons.add_location_alt),
-              label: const Text('Add Spots'),
+              label: Text(tr('myplan.add_spots')),
             ),
           ),
           const SizedBox(width: 12),
@@ -387,7 +393,7 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
                   ? null
                   : () => context.go('/map'),
               icon: const Icon(Icons.map),
-              label: const Text('View on Map'),
+              label: Text(tr('myplan.view_on_map')),
             ),
           ),
         ],

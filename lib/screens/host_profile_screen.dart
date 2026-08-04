@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/host_profile.dart';
 import '../providers/auth_provider.dart';
@@ -19,10 +20,10 @@ class HostProfileScreen extends ConsumerWidget {
     return Scaffold(
       body: hostAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) => Center(child: Text(tr('hosts.error_with_message', args: ['$e']))),
         data: (host) {
           if (host == null) {
-            return const Center(child: Text('Host not found'));
+            return Center(child: Text(tr('hosts.not_found')));
           }
           return CustomScrollView(
             slivers: [
@@ -36,12 +37,12 @@ class HostProfileScreen extends ConsumerWidget {
                     _buildBio(host),
                     const SizedBox(height: 20),
                     _buildChips(
-                        '📍 Areas',
+                        tr('hosts.areas'),
                         host.areas,
                         AppColors.primary),
                     const SizedBox(height: 16),
                     _buildChips(
-                        '⚡ Interests',
+                        tr('hosts.interests'),
                         host.interests
                             .map((i) =>
                                 '${_interestEmoji(i)} ${i[0].toUpperCase()}${i.substring(1)}')
@@ -140,8 +141,8 @@ class HostProfileScreen extends ConsumerWidget {
                             color: Colors.red.withValues(alpha: 0.8),
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: const Text('Inactive',
-                              style: TextStyle(
+                          child: Text(tr('hosts.inactive'),
+                              style: const TextStyle(
                                   color: Colors.white, fontSize: 11)),
                         ),
                       ],
@@ -166,19 +167,19 @@ class HostProfileScreen extends ConsumerWidget {
               value: host.reviewCount > 0
                   ? host.rating.toStringAsFixed(1)
                   : '--',
-              label: 'Rating',
+              label: tr('hosts.rating'),
               icon: '⭐',
             ),
             _divider(),
             _StatCol(
               value: '${host.reviewCount}',
-              label: 'Reviews',
+              label: tr('hosts.reviews'),
               icon: '💬',
             ),
             _divider(),
             _StatCol(
               value: '${host.meetupsCompleted}',
-              label: 'Meetups',
+              label: tr('hosts.meetups'),
               icon: '✅',
             ),
           ],
@@ -195,9 +196,9 @@ class HostProfileScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('About',
+        Text(tr('settings.about'),
             style:
-                TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         Text(host.bio,
             style: const TextStyle(height: 1.6, fontSize: 14)),
@@ -238,27 +239,38 @@ class HostProfileScreen extends ConsumerWidget {
   }
 
   Widget _buildLanguages(List<String> langs) {
-    const labels = {
-      'en': '🇬🇧 English',
-      'ja': '🇯🇵 Japanese',
-      'zh': '🇨🇳 Chinese',
-      'ko': '🇰🇷 Korean',
-      'fr': '🇫🇷 French',
-      'es': '🇪🇸 Spanish',
-      'de': '🇩🇪 German',
+    const flags = {
+      'en': '🇬🇧',
+      'ja': '🇯🇵',
+      'zh': '🇨🇳',
+      'ko': '🇰🇷',
+      'fr': '🇫🇷',
+      'es': '🇪🇸',
+      'de': '🇩🇪',
+    };
+    const nameKeys = {
+      'en': 'hosts.lang_en',
+      'ja': 'hosts.lang_ja',
+      'zh': 'hosts.lang_zh',
+      'ko': 'hosts.lang_ko',
+      'fr': 'hosts.lang_fr',
+      'es': 'hosts.lang_es',
+      'de': 'hosts.lang_de',
     };
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('🗣️ Languages',
-            style: TextStyle(
+        Text(tr('hosts.languages'),
+            style: const TextStyle(
                 fontSize: 14, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         Wrap(
           spacing: 8,
           runSpacing: 6,
           children: langs.map((l) {
-            final label = labels[l] ?? l.toUpperCase();
+            final flag = flags[l] ?? '🌐';
+            final name = nameKeys[l] != null ? tr(nameKeys[l]!) : l.toUpperCase();
+            final label = '$flag $name';
             return Container(
               padding: const EdgeInsets.symmetric(
                   horizontal: 12, vertical: 6),
@@ -328,7 +340,7 @@ class _RequestButtonState extends ConsumerState<_RequestButton> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Request a meetup with ${widget.host.displayName}',
+              tr('hosts.request_meetup_with', args: [widget.host.displayName]),
               style: const TextStyle(
                   fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -337,10 +349,9 @@ class _RequestButtonState extends ConsumerState<_RequestButton> {
               controller: messageCtrl,
               maxLines: 4,
               autofocus: true,
-              decoration: const InputDecoration(
-                labelText: 'Message',
-                hintText:
-                    'Tell them about yourself and what you\'d like to explore…',
+              decoration: InputDecoration(
+                labelText: tr('hosts.message_label'),
+                hintText: tr('hosts.message_hint'),
               ),
             ),
             const SizedBox(height: 16),
@@ -350,7 +361,7 @@ class _RequestButtonState extends ConsumerState<_RequestButton> {
                 Navigator.pop(ctx);
                 await _sendRequest(messageCtrl.text.trim());
               },
-              child: const Text('Send Request'),
+              child: Text(tr('hosts.send_request')),
             ),
           ],
         ),
@@ -376,7 +387,7 @@ class _RequestButtonState extends ConsumerState<_RequestButton> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-                'Request sent to ${widget.host.displayName}! 🎉'),
+                tr('hosts.request_sent', args: [widget.host.displayName])),
             backgroundColor: AppColors.primary,
           ),
         );
@@ -384,7 +395,7 @@ class _RequestButtonState extends ConsumerState<_RequestButton> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to send request: $e')),
+          SnackBar(content: Text(tr('hosts.request_failed', args: ['$e']))),
         );
       }
     } finally {
@@ -407,8 +418,8 @@ class _RequestButtonState extends ConsumerState<_RequestButton> {
                   color: Colors.white, strokeWidth: 2))
           : const Text('🤝', style: TextStyle(fontSize: 18)),
       label: Text(widget.host.isActive
-          ? 'Request a Meetup'
-          : 'Currently Unavailable'),
+          ? tr('hosts.request_a_meetup')
+          : tr('hosts.currently_unavailable')),
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(double.infinity, 52),
       ),
@@ -426,12 +437,12 @@ class _ActiveToggle extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       child: SwitchListTile(
-        title: const Text('Accept new meetup requests',
-            style: TextStyle(fontWeight: FontWeight.w600)),
+        title: Text(tr('hosts.accept_requests_title'),
+            style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text(
             host.isActive
-                ? 'Guests can request a meetup with you'
-                : 'You are currently not accepting requests',
+                ? tr('hosts.accept_requests_on')
+                : tr('hosts.accept_requests_off'),
             style:
                 const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
         value: host.isActive,

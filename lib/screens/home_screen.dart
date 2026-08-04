@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../models/curation.dart';
@@ -73,42 +74,42 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     TextButton.icon(
                       onPressed: () => context.push(AppRoutes.seasonEvents),
                       icon: const Text('🌸', style: TextStyle(fontSize: 14)),
-                      label: const Text('Seasons'),
+                      label: Text(tr('home.nav_seasons')),
                     ),
                     TextButton.icon(
                       onPressed: () => context.go('/phrases'),
                       icon: const Text('🇯🇵', style: TextStyle(fontSize: 14)),
-                      label: const Text('Phrases'),
+                      label: Text(tr('home.nav_phrases')),
                     ),
                     TextButton.icon(
                       onPressed: () => context.push('/hosts'),
                       icon: const Text('🤝', style: TextStyle(fontSize: 14)),
-                      label: const Text('Locals'),
+                      label: Text(tr('home.nav_locals')),
                     ),
                     TextButton.icon(
                       onPressed: () => context.go('/home/ranking'),
                       icon: const Icon(Icons.leaderboard, size: 16),
-                      label: const Text('Rankings'),
+                      label: Text(tr('home.nav_rankings')),
                     ),
                     TextButton.icon(
                       onPressed: () => context.push(AppRoutes.whatIsThis),
                       icon: const Text('❓', style: TextStyle(fontSize: 14)),
-                      label: const Text('What?'),
+                      label: Text(tr('home.nav_what')),
                     ),
                     TextButton.icon(
                       onPressed: () => context.push(AppRoutes.menuTranslator),
                       icon: const Text('🍽️', style: TextStyle(fontSize: 14)),
-                      label: const Text('Menu'),
+                      label: Text(tr('home.nav_menu')),
                     ),
                     TextButton.icon(
                       onPressed: () => context.push(AppRoutes.cultureHub),
                       icon: const Text('📚', style: TextStyle(fontSize: 14)),
-                      label: const Text('Learn'),
+                      label: Text(tr('home.nav_learn')),
                     ),
                     TextButton.icon(
                       onPressed: () => context.push(AppRoutes.collection),
                       icon: const Text('🗂️', style: TextStyle(fontSize: 14)),
-                      label: const Text('Collection'),
+                      label: Text(tr('home.nav_collection')),
                     ),
                   ],
                 ),
@@ -139,21 +140,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   children: [
                     const Text('🧠', style: TextStyle(fontSize: 22)),
                     const SizedBox(width: 12),
-                    const Expanded(
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Today's Challenge",
-                            style: TextStyle(
+                            tr('challenge.title'),
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                             ),
                           ),
                           Text(
-                            'Test your Japan knowledge — 1 question daily',
-                            style: TextStyle(color: Colors.white70, fontSize: 12),
+                            tr('home.challenge_subtitle'),
+                            style: const TextStyle(color: Colors.white70, fontSize: 12),
                           ),
                         ],
                       ),
@@ -174,14 +175,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   children: [
                     const Icon(Icons.wifi_off, size: 48, color: AppColors.textSecondary),
                     const SizedBox(height: 16),
-                    const Text(
-                      'Could not load spots',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    Text(
+                      tr('home.error_load_title'),
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      'Check your connection and try again',
-                      style: TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                    Text(
+                      tr('home.error_load_subtitle'),
+                      style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
                     ),
                     const SizedBox(height: 20),
                     FilledButton.icon(
@@ -189,7 +190,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           .read(curationsNotifierProvider.notifier)
                           .loadInitial(),
                       icon: const Icon(Icons.refresh),
-                      label: const Text('Retry'),
+                      label: Text(tr('common.retry')),
                     ),
                   ],
                 ),
@@ -204,7 +205,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onPressed: () => context.go('/camera'),
         backgroundColor: AppColors.primary,
         icon: const Icon(Icons.camera_alt, color: Colors.white),
-        label: const Text('AI Lens', style: TextStyle(color: Colors.white)),
+        label: Text(tr('home.ai_lens_label'), style: const TextStyle(color: Colors.white)),
       ),
     );
   }
@@ -220,12 +221,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              name != null ? 'Hello, $name' : 'Japan Explorer',
+              name != null ? tr('home.greeting', args: [name]) : tr('app_name'),
               style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
             ),
-            const Text(
-              'Discover Japan',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Text(
+              tr('home.title'),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -285,7 +286,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   Widget _buildCategoryFilter() {
-    final categories = ['All', ...CurationCategory.all];
+    final categories = [tr('home.category_all'), ...CurationCategory.all];
     return SliverToBoxAdapter(
       child: SizedBox(
         height: 48,
@@ -297,7 +298,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           itemBuilder: (context, index) {
             final cat = index == 0 ? null : categories[index];
             final label = index == 0
-                ? 'All'
+                ? tr('home.category_all')
                 : '${CurationCategory.emoji(categories[index])} ${CurationCategory.label(categories[index])}';
             final isSelected = _selectedCategory == cat;
 
@@ -323,8 +324,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   Widget _buildCurationsList(List<Curation> curations) {
     if (curations.isEmpty) {
-      return const SliverFillRemaining(
-        child: Center(child: Text('No spots found')),
+      return SliverFillRemaining(
+        child: Center(child: Text(tr('home.no_spots_found'))),
       );
     }
 
@@ -343,12 +344,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           child:
                               CircularProgressIndicator(strokeWidth: 2)),
                     )
-                  : const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Center(
                         child: Text(
-                          "You've seen all spots! 🗾",
-                          style: TextStyle(color: Colors.grey),
+                          tr('home.all_spots_seen'),
+                          style: const TextStyle(color: Colors.grey),
                         ),
                       ),
                     );

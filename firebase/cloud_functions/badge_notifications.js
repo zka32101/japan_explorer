@@ -4,7 +4,7 @@
  * when new badges are unlocked (new_badges field is set).
  */
 
-const functions = require('firebase-functions');
+const functions = require('firebase-functions/v1');
 const admin = require('firebase-admin');
 
 // Initialize admin only once across all functions

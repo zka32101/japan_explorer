@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/host_profile.dart';
 import '../providers/auth_provider.dart';
@@ -8,7 +9,17 @@ import 'host_profile_screen.dart';
 import 'host_register_screen.dart';
 
 // ── Filter options ────────────────────────────────────────────────────────────
+// Values are stable canonical ids matched against Firestore host records —
+// only the display label is localized (see `hosts.city_*` / `category.*`).
 const _cities = ['Tokyo', 'Kyoto', 'Osaka', 'Nara', 'Hiroshima', 'Fukuoka'];
+const _cityLabelKeys = {
+  'Tokyo': 'hosts.city_tokyo',
+  'Kyoto': 'hosts.city_kyoto',
+  'Osaka': 'hosts.city_osaka',
+  'Nara': 'hosts.city_nara',
+  'Hiroshima': 'hosts.city_hiroshima',
+  'Fukuoka': 'hosts.city_fukuoka',
+};
 const _interests = [
   ('culture', '⛩️'),
   ('food', '🍜'),
@@ -17,6 +28,14 @@ const _interests = [
   ('modern', '🏙️'),
   ('shopping', '🛍️'),
 ];
+const _interestLabelKeys = {
+  'culture': 'category.culture',
+  'food': 'category.food',
+  'nature': 'category.nature',
+  'history': 'category.history',
+  'modern': 'category.modern',
+  'shopping': 'category.shopping',
+};
 const _languages = {
   'en': '🇬🇧',
   'ja': '🇯🇵',
@@ -38,11 +57,11 @@ class HostDiscoveryScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           children: [
-            Text('🤝', style: TextStyle(fontSize: 18)),
-            SizedBox(width: 8),
-            Text('Meet a Local'),
+            const Text('🤝', style: TextStyle(fontSize: 18)),
+            const SizedBox(width: 8),
+            Text(tr('hosts.title')),
           ],
         ),
         actions: [
@@ -62,7 +81,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
                     icon: Icon(
                         isHost ? Icons.manage_accounts : Icons.add_circle_outline,
                         size: 18),
-                    label: Text(isHost ? 'My Host' : 'Become a Host'),
+                    label: Text(isHost ? tr('hosts.my_host') : tr('hosts.become_host')),
                   ),
                 ) ??
                 const SizedBox.shrink(),
@@ -79,11 +98,11 @@ class HostDiscoveryScreen extends ConsumerWidget {
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Failed to load hosts'),
+                  Text(tr('hosts.load_failed')),
                   TextButton(
                     onPressed: () =>
                         ref.invalidate(hostsProvider(filter)),
-                    child: const Text('Retry'),
+                    child: Text(tr('common.retry')),
                   ),
                 ],
               )),
@@ -111,7 +130,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
             child: Row(
               children: [
                 _FilterChip(
-                  label: 'All Cities',
+                  label: tr('hosts.all_cities'),
                   selected: filter.city == null,
                   onTap: () => ref
                       .read(hostFilterProvider.notifier)
@@ -120,7 +139,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
                 ..._cities.map((c) => Padding(
                       padding: const EdgeInsets.only(left: 6),
                       child: _FilterChip(
-                        label: c,
+                        label: tr(_cityLabelKeys[c]!),
                         selected: filter.city == c,
                         onTap: () => ref
                             .read(hostFilterProvider.notifier)
@@ -143,7 +162,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
                       return Padding(
                         padding: const EdgeInsets.only(right: 6),
                         child: _FilterChip(
-                          label: '$emoji ${id[0].toUpperCase()}${id.substring(1)}',
+                          label: '$emoji ${tr(_interestLabelKeys[id]!)}',
                           selected: filter.interest == id,
                           onTap: () => ref
                               .read(hostFilterProvider.notifier)
@@ -176,7 +195,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
                 itemBuilder: (_) => [
                   PopupMenuItem(
                     value: '',
-                    child: const Text('All Languages'),
+                    child: Text(tr('hosts.all_languages')),
                     onTap: () => ref
                         .read(hostFilterProvider.notifier)
                         .state = filter.copyWith(clearLanguage: true),
@@ -204,12 +223,12 @@ class HostDiscoveryScreen extends ConsumerWidget {
         children: [
           const Text('🤝', style: TextStyle(fontSize: 56)),
           const SizedBox(height: 16),
-          const Text('No hosts found',
+          Text(tr('hosts.no_hosts_found'),
               style:
-                  TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          const Text('Try adjusting your filters or come back later',
-              style: TextStyle(color: AppColors.textSecondary),
+          Text(tr('hosts.no_hosts_hint'),
+              style: const TextStyle(color: AppColors.textSecondary),
               textAlign: TextAlign.center),
         ],
       ),
@@ -330,8 +349,8 @@ class _HostCard extends StatelessWidget {
                                   color: AppColors.textSecondary,
                                   fontSize: 11)),
                         ] else
-                          const Text('New host',
-                              style: TextStyle(
+                          Text(tr('hosts.new_host'),
+                              style: const TextStyle(
                                   color: AppColors.textSecondary,
                                   fontSize: 11)),
                         const Spacer(),

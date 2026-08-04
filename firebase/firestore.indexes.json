@@ -136,13 +136,6 @@
       "collectionGroup": "posts",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "created_at", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "posts",
-      "queryScope": "COLLECTION",
-      "fields": [
         { "fieldPath": "author_id",  "order": "ASCENDING"  },
         { "fieldPath": "created_at", "order": "DESCENDING" }
       ]
@@ -161,6 +154,15 @@
       "fields": [
         { "fieldPath": "uid",     "order": "ASCENDING" },
         { "fieldPath": "post_id", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "user_contributions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "analysisType", "order": "ASCENDING"  },
+        { "fieldPath": "title",        "order": "ASCENDING"  },
+        { "fieldPath": "voteCount",    "order": "DESCENDING" }
       ]
     }
   ],

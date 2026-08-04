@@ -1,0 +1,75 @@
+========================================================
+APPLE APP STORE — 简体中文 (zh) LISTING
+========================================================
+
+APP NAME (max 30 chars):
+Japan Explorer：AI日本导游
+
+SUBTITLE (max 30 chars):
+语音导览 · 行程规划 · 日本自由行
+
+PROMOTIONAL TEXT (max 170 chars — not indexed, update anytime):
+全新推出：AR 地标识别与离线语音导览——用你的 AI 旅行助手探索日本小众秘境。
+
+DESCRIPTION (max 4000 chars):
+Japan Explorer 是专为探索日本打造的 AI 智能旅行助手。无论是首次到访，还是重游你所热爱的国度，Japan Explorer 都能带你深入其中。
+
+精选景点
+寺庙、神社、隐秘小巷、当地市场、季节祭典——由日本专家精选，并以 AI 补充文化背景。
+
+AI 语音导览
+把手机对准地标，立即获得母语讲解的沉浸式语音导览。AI 会依据你的兴趣与旅行风格个性化内容，而非照读百科摘要。
+
+智能行程规划
+输入旅行日期与偏好，Japan Explorer 数秒内生成专属的每日行程，旅途中可随时调整。
+
+支持 5 种语言
+完整支持简体中文、日语（日本語）、English、한국어 与 Français，覆盖全部使用体验。
+
+文化挑战
+完成文化任务赢取经验值与徽章：品尝当地特色、参加季节活动、练习实用短语、解锁独家隐藏景点。
+
+离线模式
+已下载的导览与行程在无网络时仍可查看，适合日本的地铁隧道与乡村行程。
+
+旅行者社区
+分享照片与心得、为景点评分，阅读全球日本爱好者的真实评价。
+
+免费功能：
+• 浏览全部精选景点与分类
+• 每天生成 1 份 AI 行程
+• 参加文化挑战并赢取徽章
+• 社区发帖、照片与评分
+• 已保存内容离线可用
+• 完整 5 种语言支持
+
+JAPAN EXPLORER PRO（订阅）：
+• 无限 AI 语音导览
+• 无限行程生成
+• 独家小众景点合集
+• 进阶 AR 地标识别
+• AI 优先响应速度
+• 无广告体验
+
+KEYWORDS (App Store Connect — 100 chars total, comma-separated):
+日本旅游,日本自由行,日本攻略,京都,东京,语音导览,AI导游,行程规划,日本文化,旅行
+
+PRIMARY CATEGORY:
+Travel
+
+SECONDARY CATEGORY:
+Reference
+
+AGE RATING:
+4+ (no objectionable content)
+
+SUPPORT URL:
+https://japanexplorer.app/support
+
+MARKETING URL:
+https://japanexplorer.app
+
+PRIVACY POLICY URL:
+https://japanexplorer.app/privacy
+
+========================================================

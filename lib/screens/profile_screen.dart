@@ -20,7 +20,7 @@ class ProfileScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Text(tr('nav.profile')),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings_outlined),
@@ -30,9 +30,12 @@ class ProfileScreen extends ConsumerWidget {
       ),
       body: userAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Error: $e')),
+        error: (e, _) =>
+            Center(child: Text(tr('profile.error_message', args: ['$e']))),
         data: (user) {
-          if (user == null) return const Center(child: Text('Not logged in'));
+          if (user == null) {
+            return Center(child: Text(tr('profile.not_logged_in')));
+          }
           return ListView(
             padding: const EdgeInsets.all(20),
             children: [
@@ -53,7 +56,7 @@ class ProfileScreen extends ConsumerWidget {
                   if (context.mounted) context.go('/login');
                 },
                 icon: const Icon(Icons.logout),
-                label: const Text('Sign Out'),
+                label: Text(tr('auth.sign_out')),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.red,
                   side: const BorderSide(color: Colors.red),
@@ -111,7 +114,10 @@ class ProfileScreen extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  'Lv.${user.level} ${user.levelTitle}',
+                  tr('profile.level_badge', namedArgs: {
+                    'level': '${user.level}',
+                    'title': '${user.levelTitle}',
+                  }),
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -142,12 +148,12 @@ class ProfileScreen extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'XP Progress',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Text(
+                  tr('profile.xp_progress'),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '${user.xp} XP',
+                  tr('profile.xp', namedArgs: {'xp': '${user.xp}'}),
                   style: const TextStyle(
                     color: AppColors.primary,
                     fontWeight: FontWeight.bold,
@@ -170,7 +176,8 @@ class ProfileScreen extends ConsumerWidget {
             Row(
               children: [
                 Text(
-                  'Next level: ${user.levelXpRequired} XP',
+                  tr('profile.next_level_xp',
+                      namedArgs: {'xp': '${user.levelXpRequired}'}),
                   style: const TextStyle(
                       fontSize: 12, color: AppColors.textSecondary),
                 ),
@@ -208,21 +215,21 @@ class ProfileScreen extends ConsumerWidget {
           ),
           borderRadius: BorderRadius.circular(14),
         ),
-        child: const Row(
+        child: Row(
           children: [
-            Text('✨', style: TextStyle(fontSize: 18)),
-            SizedBox(width: 10),
+            const Text('✨', style: TextStyle(fontSize: 18)),
+            const SizedBox(width: 10),
             Text(
-              'Premium Member',
-              style: TextStyle(
+              tr('profile.premium_member'),
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 14,
               ),
             ),
-            Spacer(),
-            Text('Active',
-                style: TextStyle(color: Colors.white70, fontSize: 12)),
+            const Spacer(),
+            Text(tr('profile.premium_active'),
+                style: const TextStyle(color: Colors.white70, fontSize: 12)),
           ],
         ),
       );
@@ -248,21 +255,21 @@ class ProfileScreen extends ConsumerWidget {
           children: [
             const Text('✨', style: TextStyle(fontSize: 18)),
             const SizedBox(width: 10),
-            const Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Unlock Premium',
-                    style: TextStyle(
+                    tr('profile.unlock_premium'),
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 14,
                       color: AppColors.primary,
                     ),
                   ),
                   Text(
-                    'Unlimited AI guides, plans & more',
-                    style: TextStyle(
+                    tr('profile.premium_banner_subtitle'),
+                    style: const TextStyle(
                         fontSize: 11, color: AppColors.textSecondary),
                   ),
                 ],
@@ -279,9 +286,9 @@ class ProfileScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Features',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        Text(
+          tr('profile.features_title'),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         Row(
@@ -289,8 +296,8 @@ class ProfileScreen extends ConsumerWidget {
             Expanded(
               child: _FeatureTile(
                 emoji: '🧠',
-                title: 'Daily Challenge',
-                subtitle: 'Test your Japan knowledge',
+                title: tr('challenge.title'),
+                subtitle: tr('profile.feature_challenge_subtitle'),
                 color: const Color(0xFF1A237E),
                 onTap: () => context.push('/challenge'),
               ),
@@ -299,8 +306,8 @@ class ProfileScreen extends ConsumerWidget {
             Expanded(
               child: _FeatureTile(
                 emoji: '✨',
-                title: 'AI Trip Planner',
-                subtitle: 'Generate a custom itinerary',
+                title: tr('planner.title'),
+                subtitle: tr('profile.feature_planner_subtitle'),
                 color: const Color(0xFF00695C),
                 onTap: () => context.push('/ai-planner'),
               ),
@@ -313,8 +320,8 @@ class ProfileScreen extends ConsumerWidget {
             Expanded(
               child: _FeatureTile(
                 emoji: '🇯🇵',
-                title: 'Phrasebook',
-                subtitle: 'Learn Japanese phrases',
+                title: tr('profile.feature_phrasebook'),
+                subtitle: tr('profile.feature_phrasebook_subtitle'),
                 color: const Color(0xFFB71C1C),
                 onTap: () => context.push('/phrases'),
               ),
@@ -323,8 +330,8 @@ class ProfileScreen extends ConsumerWidget {
             Expanded(
               child: _FeatureTile(
                 emoji: '📷',
-                title: 'Camera AI',
-                subtitle: 'Scan & identify landmarks',
+                title: tr('profile.feature_camera_title'),
+                subtitle: tr('profile.feature_camera_subtitle'),
                 color: const Color(0xFF4527A0),
                 onTap: () => context.push('/camera'),
               ),
@@ -334,8 +341,8 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 12),
         _FeatureTile(
           emoji: '🏆',
-          title: 'Cultural Progress',
-          subtitle: 'View your knowledge stats, badges & level history',
+          title: tr('profile.feature_progress_title'),
+          subtitle: tr('profile.feature_progress_subtitle'),
           color: const Color(0xFF00695C),
           onTap: () => context.push('/progress'),
         ),
@@ -356,10 +363,18 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 12),
         _FeatureTile(
           emoji: '🤝',
-          title: 'Meet a Local',
-          subtitle: 'Connect with local hosts for a personal Japan experience',
+          title: tr('profile.feature_hosts_title'),
+          subtitle: tr('profile.feature_hosts_subtitle'),
           color: const Color(0xFF6A1B9A),
           onTap: () => context.push('/hosts'),
+        ),
+        const SizedBox(height: 12),
+        _FeatureTile(
+          emoji: '🎁',
+          title: tr('referral.title'),
+          subtitle: tr('referral.subtitle'),
+          color: const Color(0xFFE65100),
+          onTap: () => context.push(AppRoutes.inviteFriends),
         ),
       ],
     );
@@ -370,7 +385,10 @@ class ProfileScreen extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Badges (${badges.length}/${AppBadges.all.length})',
+          tr('profile.badges_count', namedArgs: {
+            'unlocked': '${badges.length}',
+            'total': '${AppBadges.all.length}',
+          }),
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),

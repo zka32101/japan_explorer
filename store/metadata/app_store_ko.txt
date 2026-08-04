@@ -1,0 +1,75 @@
+========================================================
+APPLE APP STORE — 한국어 (ko) LISTING
+========================================================
+
+APP NAME (max 30 chars):
+Japan Explorer: AI 일본 가이드
+
+SUBTITLE (max 30 chars):
+오디오 가이드 · 일본 여행 코스
+
+PROMOTIONAL TEXT (max 170 chars — not indexed, update anytime):
+새 기능: AR 명소 인식과 오프라인 오디오 가이드 — AI 여행 도우미와 함께 일본의 숨은 명소를 만나보세요.
+
+DESCRIPTION (max 4000 chars):
+Japan Explorer는 일본을 탐험하기 위한 AI 여행 도우미입니다. 처음 방문하든, 사랑하는 나라를 다시 찾든, Japan Explorer가 더 깊이 있는 여행을 도와드립니다.
+
+엄선된 명소
+사찰, 신사, 숨은 골목, 현지 시장, 계절 축제 — 일본 전문가가 직접 고르고 AI가 문화적 배경을 더했습니다.
+
+AI 오디오 가이드
+명소에 스마트폰을 비추면 내 언어로 즉시 몰입형 오디오 가이드를 들을 수 있습니다. AI가 관심사와 여행 스타일에 맞춰 내용을 개인화합니다.
+
+스마트 여행 플래너
+여행 날짜와 취향을 입력하면 Japan Explorer가 몇 초 만에 나만의 일자별 일정을 생성합니다. 여행 중에도 자유롭게 수정하세요.
+
+5개 언어 지원
+한국어, 일본어(日本語), English, 中文, Français를 앱 전체에서 완벽 지원합니다.
+
+문화 챌린지
+문화 미션을 완료해 XP와 배지를 획득하세요. 현지 특산품 맛보기, 계절 행사 참여, 필수 표현 익히기, 숨은 명소 잠금 해제.
+
+오프라인 모드
+다운로드한 가이드와 일정은 네트워크 없이도 이용 가능 — 지하철 터널과 시골 여행에 안성맞춤입니다.
+
+여행자 커뮤니티
+사진과 팁을 공유하고 명소를 평가하며, 전 세계 일본 애호가들의 진솔한 후기를 확인하세요.
+
+무료:
+• 모든 엄선 명소와 카테고리 둘러보기
+• 하루 1개 AI 여행 일정 생성
+• 문화 챌린지 참여 및 배지 획득
+• 커뮤니티 게시물, 사진, 평가
+• 저장한 콘텐츠 오프라인 이용
+• 완전한 5개 언어 지원
+
+JAPAN EXPLORER PRO (구독):
+• 무제한 AI 오디오 가이드
+• 무제한 일정 생성
+• 독점 숨은 명소 컬렉션
+• 고급 AR 명소 인식
+• AI 우선 응답 속도
+• 광고 없는 경험
+
+KEYWORDS (App Store Connect — 100 chars total, comma-separated):
+일본여행,일본자유여행,교토,도쿄,여행코스,오디오가이드,AI가이드,일정,일본문화,여행계획
+
+PRIMARY CATEGORY:
+Travel
+
+SECONDARY CATEGORY:
+Reference
+
+AGE RATING:
+4+ (no objectionable content)
+
+SUPPORT URL:
+https://japanexplorer.app/support
+
+MARKETING URL:
+https://japanexplorer.app
+
+PRIVACY POLICY URL:
+https://japanexplorer.app/privacy
+
+========================================================

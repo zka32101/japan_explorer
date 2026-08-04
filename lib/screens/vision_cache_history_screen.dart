@@ -15,7 +15,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Analysis History'),
+        title: Text(tr('vision_cache.title')),
         actions: [
           if (history.isNotEmpty)
             IconButton(
@@ -47,7 +47,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
           Icon(Icons.history, size: 48, color: AppColors.textSecondary),
           const SizedBox(height: 16),
           Text(
-            'No analysis history yet',
+            tr('vision_cache.empty'),
             style: TextStyle(color: AppColors.textSecondary),
           ),
         ],
@@ -69,7 +69,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Cache Storage',
+              tr('vision_cache.storage'),
               style: TextStyle(
                 color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
@@ -85,7 +85,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
           ],
         ),
         loading: () => const CircularProgressIndicator(),
-        error: (err, st) => Text('Error: $err'),
+        error: (err, st) => Text(tr('myplan.error_prefix', args: ['$err'])),
       ),
     );
   }
@@ -97,7 +97,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${history.length} Analyses',
+            tr('vision_cache.analyses_count', args: ['${history.length}']),
             style: TextStyle(
               color: AppColors.textSecondary,
               fontWeight: FontWeight.w600,
@@ -128,8 +128,8 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
                     children: [
                       Text(
                         item.analysisType == 'what_is_this'
-                            ? 'What is This?'
-                            : 'Menu Translator',
+                            ? tr('what_is_this.title')
+                            : tr('menu_translator.title'),
                         style: Theme.of(null!).textTheme.titleSmall,
                       ),
                       Text(
@@ -184,11 +184,11 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
     final diff = now.difference(date);
 
     if (diff.inMinutes < 60) {
-      return '${diff.inMinutes}m ago';
+      return tr('vision_cache.time_min_ago', args: ['${diff.inMinutes}']);
     } else if (diff.inHours < 24) {
-      return '${diff.inHours}h ago';
+      return tr('vision_cache.time_hour_ago', args: ['${diff.inHours}']);
     } else if (diff.inDays < 7) {
-      return '${diff.inDays}d ago';
+      return tr('vision_cache.time_day_ago', args: ['${diff.inDays}']);
     } else {
       return DateFormat('MMM dd').format(date);
     }
@@ -198,12 +198,12 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Clear Cache?'),
-        content: const Text('This will delete all cached analyses.'),
+        title: Text(tr('vision_cache.clear_dialog_title')),
+        content: Text(tr('vision_cache.clear_dialog_content')),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: Text(tr('common.cancel')),
           ),
           TextButton(
             onPressed: () {
@@ -211,7 +211,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
               Navigator.pop(ctx);
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Clear All'),
+            child: Text(tr('vision_cache.clear_all')),
           ),
         ],
       ),

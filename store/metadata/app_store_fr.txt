@@ -1,0 +1,75 @@
+========================================================
+APPLE APP STORE — Français (fr) LISTING
+========================================================
+
+APP NAME (max 30 chars):
+Japan Explorer : Guide IA
+
+SUBTITLE (max 30 chars):
+Voyage Japon, audioguides IA
+
+PROMOTIONAL TEXT (max 170 chars — not indexed, update anytime):
+Nouveau : reconnaissance AR des monuments et audioguides hors ligne — explorez les lieux secrets du Japon avec votre compagnon IA.
+
+DESCRIPTION (max 4000 chars):
+Japan Explorer est votre compagnon de voyage IA pour explorer le Japon. Que ce soit votre premier séjour ou une redécouverte d'un pays que vous aimez, Japan Explorer vous aide à aller plus loin.
+
+DES LIEUX SÉLECTIONNÉS
+Temples, sanctuaires, ruelles secrètes, marchés locaux, festivals de saison — choisis par des spécialistes du Japon et enrichis d'un contexte culturel par l'IA.
+
+AUDIOGUIDES IA
+Pointez vers un monument et obtenez un audioguide immersif instantané dans votre langue. L'IA personnalise le contenu selon vos centres d'intérêt et votre style de voyage — bien plus qu'un résumé d'encyclopédie.
+
+PLANIFICATEUR INTELLIGENT
+Saisissez vos dates et préférences. Japan Explorer génère un itinéraire jour par jour personnalisé en quelques secondes. Ajustez vos plans en cours de route.
+
+5 LANGUES
+Prise en charge complète du français, japonais (日本語), anglais, chinois simplifié (中文) et coréen (한국어) dans toute l'application.
+
+DÉFIS CULTURELS
+Accomplissez des missions culturelles pour gagner de l'XP et des badges. Goûtez aux spécialités locales, assistez aux événements de saison, apprenez des phrases essentielles et débloquez des lieux exclusifs.
+
+MODE HORS LIGNE
+Les guides et itinéraires téléchargés restent accessibles sans connexion. Idéal pour le métro japonais et les escapades rurales.
+
+COMMUNAUTÉ DE VOYAGEURS
+Partagez photos et conseils, notez les lieux et lisez les avis authentiques de passionnés du Japon du monde entier.
+
+GRATUIT :
+• Parcourir tous les lieux et catégories sélectionnés
+• Générer 1 plan de voyage IA par jour
+• Participer aux défis culturels et gagner des badges
+• Publications, photos et avis de la communauté
+• Accès hors ligne au contenu enregistré
+• Prise en charge complète de 5 langues
+
+JAPAN EXPLORER PRO (abonnement) :
+• Audioguides IA illimités
+• Génération d'itinéraires illimitée
+• Collection exclusive de lieux secrets
+• Reconnaissance AR avancée des monuments
+• Vitesse de réponse IA prioritaire
+• Expérience sans publicité
+
+KEYWORDS (App Store Connect — 100 chars total, comma-separated):
+Japon,voyage,guide,Kyoto,Tokyo,itinéraire,audioguide,culture,tourisme,IA,visiter
+
+PRIMARY CATEGORY:
+Travel
+
+SECONDARY CATEGORY:
+Reference
+
+AGE RATING:
+4+ (no objectionable content)
+
+SUPPORT URL:
+https://japanexplorer.app/support
+
+MARKETING URL:
+https://japanexplorer.app
+
+PRIVACY POLICY URL:
+https://japanexplorer.app/privacy
+
+========================================================

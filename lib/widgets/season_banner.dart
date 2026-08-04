@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/season_event.dart';
 import '../providers/season_provider.dart';
@@ -133,13 +134,13 @@ class _SeasonEventSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
-            'What\'s Happening in Japan',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          Text(
+            'widgets.season_whats_happening'.tr(),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(
-            'Active seasonal events right now',
+            'widgets.season_active_events_subtitle'.tr(),
             style: TextStyle(color: Colors.grey.shade600),
           ),
           const SizedBox(height: 16),
