@@ -161,29 +161,26 @@ Future<bool> runSubmitPost(
   AppUser user, {
   required String curationId,
   required String curationTitle,
-  required String comment,
-  required double rating,
-  List<String> tags = const [],
+  required String caption,
   File? imageFile,
 }) async {
-  String? imageUrl;
+  String imageUrl = '';
   if (imageFile != null) {
     imageUrl = await uploadService.uploadPostImage(user.uid, imageFile);
   }
 
   final post = Post(
     id: '',
-    userId: user.uid,
-    userName: user.displayName.isNotEmpty ? user.displayName : 'Explorer',
-    userAvatarUrl: user.photoUrl,
+    authorId: user.uid,
+    authorName: user.displayName.isNotEmpty ? user.displayName : 'Explorer',
+    authorAvatarUrl: user.photoUrl ?? '',
     curationId: curationId,
     curationTitle: curationTitle,
     imageUrl: imageUrl,
-    comment: comment,
-    rating: rating,
-    tags: tags,
+    caption: caption,
+    likeCount: 0,
+    commentCount: 0,
     createdAt: DateTime.now(),
-    moderationStatus: 'pending',
   );
 
   await db.collection(FirestoreCollections.posts).add(post.toFirestore());
@@ -330,8 +327,7 @@ void main() {
         user,
         curationId: 'curation-123',
         curationTitle: 'Fushimi Inari',
-        comment: 'Amazing torii gates!',
-        rating: 4.5,
+        caption: 'Amazing torii gates!',
         imageFile: FakeFile(),
       );
 
@@ -343,7 +339,7 @@ void main() {
 
       final data = posts.docs.first.data();
       expect(data['curation_id'], 'curation-123');
-      expect(data['comment'], 'Amazing torii gates!');
+      expect(data['caption'], 'Amazing torii gates!');
       expect(data['image_url'], 'https://test.example.com/photo.jpg');
 
       // Upload was invoked once with the user uid.
