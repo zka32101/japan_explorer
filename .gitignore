@@ -16,5 +16,3 @@ firebase_options.dart
 xcuserdata/
 ios-signing/
 .translation_cache/
-GoogleService-Info.plist
-google-services.json
