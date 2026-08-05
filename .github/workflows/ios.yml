@@ -85,12 +85,9 @@ jobs:
 
       - run: flutter pub get
 
-      - name: Set manual signing in Xcode project
-        run: |
-          sed -i '' \
-            -e "s/CODE_SIGN_STYLE = Automatic;/CODE_SIGN_STYLE = Manual;\n\t\t\t\tDEVELOPMENT_TEAM = 6UWJGP52W5;\n\t\t\t\tCODE_SIGN_IDENTITY = \"Apple Distribution\";\n\t\t\t\tPROVISIONING_PROFILE_SPECIFIER = \"JapanExplorer_App_Store\";/g" \
-            ios/Runner.xcodeproj/project.pbxproj
-
+      # Manual signing (CODE_SIGN_STYLE/DEVELOPMENT_TEAM/CODE_SIGN_IDENTITY/
+      # PROVISIONING_PROFILE_SPECIFIER) is committed directly in the Runner
+      # target's Release config in project.pbxproj — no CI-side sed needed.
       - run: flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
 
       - name: Upload to TestFlight
