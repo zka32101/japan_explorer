@@ -16,3 +16,12 @@ firebase_options.dart
 xcuserdata/
 ios-signing/
 .translation_cache/
+
+# Firebase configuration (DO NOT COMMIT)
+google-services.json
+GoogleService-Info.plist
+.firebaserc
+*.mobileprovision
+*.p8
+*.p12
+
