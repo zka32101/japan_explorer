@@ -238,18 +238,8 @@
     "welcome": "ようこそ",
     "tagline": "本当の日本を発見しよう",
     "sign_in_google": "Googleで続ける",
-    "sign_in_apple": "Appleで続ける",
     "terms_note": "続けることで利用規約に同意したことになります",
-    "sign_out": "サインアウト",
-    "or": "または",
-    "email": "メールアドレス",
-    "password": "パスワード",
-    "sign_in": "サインイン",
-    "sign_up": "アカウントを作成",
-    "has_account": "すでにアカウントをお持ちですか？サインイン",
-    "no_account": "アカウントをお持ちでないですか？登録する",
-    "email_error": "有効なメールアドレスを入力してください",
-    "password_error": "6文字以上で入力してください"
+    "sign_out": "サインアウト"
   },
   "share": {
     "spot": "このスポットをシェア",

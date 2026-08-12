@@ -27,7 +27,6 @@ dependencies:
 
   # Auth
   google_sign_in: ^6.2.2
-  sign_in_with_apple: ^6.1.3
 
   # Navigation
   go_router: ^14.8.1

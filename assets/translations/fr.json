@@ -271,18 +271,8 @@
     "welcome": "Bienvenue",
     "tagline": "Découvrez le vrai Japon",
     "sign_in_google": "Continuer avec Google",
-    "sign_in_apple": "Continuer avec Apple",
     "terms_note": "En continuant, vous acceptez les conditions d'utilisation",
-    "sign_out": "Se déconnecter",
-    "or": "ou",
-    "email": "Adresse e-mail",
-    "password": "Mot de passe",
-    "sign_in": "Se connecter",
-    "sign_up": "Créer un compte",
-    "has_account": "Vous avez déjà un compte ? Se connecter",
-    "no_account": "Vous n'avez pas de compte ? S'inscrire",
-    "email_error": "Veuillez saisir une adresse e-mail valide",
-    "password_error": "Veuillez saisir au moins 6 caractères"
+    "sign_out": "Se déconnecter"
   },
   "share": {
     "spot": "Partager ce lieu",

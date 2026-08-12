@@ -33,34 +33,6 @@ class AuthService {
     }
   }
 
-  Future<AppUser?> signInWithEmail(String email, String password) async {
-    try {
-      final userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return _handleSignIn(userCredential);
-    } catch (e) {
-      _logger.e('Email Sign-In error', error: e);
-      rethrow;
-    }
-  }
-
-  Future<AppUser?> registerWithEmail(
-      String email, String password, String displayName) async {
-    try {
-      final userCredential = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      await userCredential.user?.updateDisplayName(displayName);
-      return _handleSignIn(userCredential);
-    } catch (e) {
-      _logger.e('Registration error', error: e);
-      rethrow;
-    }
-  }
-
   Future<void> signOut() async {
     await Future.wait([
       _auth.signOut(),
