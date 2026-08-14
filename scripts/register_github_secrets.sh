@@ -75,7 +75,7 @@ SECRETS=(
   "APPSTORE_KEY_ID|plain|APPSTORE_KEY_ID|App Store Connect API Key ID"
   "ANDROID_KEYSTORE_PASSWORD|plain|ANDROID_KEYSTORE_PASSWORD|Android keystore password"
   "ANDROID_KEY_ALIAS|plain|ANDROID_KEY_ALIAS|Android key alias (e.g. japan_explorer)"
-  "ANDROID_KEY_PASSWORD|plain|ANDROID_KEY_PASSWORD|Android key password"
+  "ANDROID_KEY_PASSWORD|plain|ANDROID_KEY_PASSWORD|Android key password (same as keystore password for PKCS12 keystores — see generate_android_keystore.sh)"
   "GOOGLE_MAPS_API_KEY|plain|GOOGLE_MAPS_API_KEY|Google Maps API key"
 )
 
