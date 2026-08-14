@@ -1,4 +1,4 @@
-﻿name: Build and Deploy APK
+name: Build and Deploy Android Release
 
 on:
   push:
@@ -9,13 +9,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
+      - uses: actions/checkout@v4
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.x'
-      
+
       - name: Get dependencies
         run: flutter pub get
 
@@ -31,8 +31,49 @@ jobs:
         run: |
           echo "${{ secrets.ANDROID_GOOGLE_SERVICES_JSON_BASE64 }}" | base64 --decode > android/app/google-services.json
 
-      - name: Build APK
-        run: flutter build apk --release
-      
-      - name: Upload APK
-        run: echo "APK built and ready for deployment"
+      # local.properties (gitignored) holds the Google Maps API key that
+      # android/app/build.gradle.kts reads into manifestPlaceholders.
+      - name: Write local.properties
+        run: echo "MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" > local.properties
+
+      # android/keystore/*.jks and key.properties are both gitignored —
+      # anyone with them could re-sign and impersonate this app on the Play
+      # Store, so they only ever exist as repo secrets, decoded here.
+      # Without these, build.gradle.kts silently falls back to debug
+      # signing (see its buildTypes.release block), which Play Console
+      # rejects — so an unset secret here surfaces as a Play Store upload
+      # failure, not a silently-broken release.
+      - name: Decode signing keystore
+        run: |
+          mkdir -p android/keystore
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/keystore/japan_explorer_release.jks
+          cat > android/key.properties <<EOF
+          storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
+          keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
+          storeFile=keystore/japan_explorer_release.jks
+          EOF
+
+      - name: Build App Bundle
+        run: flutter build appbundle --release
+
+      # Uploads to the "internal" track as a draft — a human still has to
+      # promote it to production (or a wider track) from Play Console.
+      # Requires a Play Console service account (Setup > API access) with
+      # Release Manager permission, JSON key stored as a repo secret.
+      - name: Upload to Google Play (internal track, draft)
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.yourwish.japanexplorer
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          track: internal
+          status: draft
+
+      - name: Upload AAB artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: japan-explorer-aab
+          path: build/app/outputs/bundle/release/*.aab
+          retention-days: 7
