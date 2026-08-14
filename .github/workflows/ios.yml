@@ -38,6 +38,54 @@ jobs:
         with:
           flutter-version: '3.x'
       - run: flutter pub get
+
+      # ios/Runner/GoogleService-Info.plist is intentionally gitignored (real
+      # Firebase credentials must never be committed — see .gitignore). Xcode
+      # still requires the file to exist as a Copy Bundle Resources input, so
+      # this job writes throwaway placeholder values good enough to satisfy
+      # the build step. This build is --no-codesign and never run or
+      # shipped, so a non-functional Firebase config is fine here. The real
+      # signed/TestFlight build (build-ios-signed) decodes the actual config
+      # from a repo secret instead — see that job below.
+      - name: Write placeholder GoogleService-Info.plist (build-only, not real credentials)
+        run: |
+          cat > ios/Runner/GoogleService-Info.plist <<'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>CLIENT_ID</key>
+            <string>000000000000-ci0000000000000000000000000.apps.googleusercontent.com</string>
+            <key>REVERSED_CLIENT_ID</key>
+            <string>com.googleusercontent.apps.000000000000-ci0000000000000000000000000</string>
+            <key>API_KEY</key>
+            <string>CI-PLACEHOLDER-NOT-A-REAL-KEY</string>
+            <key>GCM_SENDER_ID</key>
+            <string>000000000000</string>
+            <key>PLIST_VERSION</key>
+            <string>1</string>
+            <key>BUNDLE_ID</key>
+            <string>com.yourwish.japanexplorer</string>
+            <key>PROJECT_ID</key>
+            <string>ci-placeholder-project</string>
+            <key>STORAGE_BUCKET</key>
+            <string>ci-placeholder-project.appspot.com</string>
+            <key>IS_ADS_ENABLED</key>
+            <false/>
+            <key>IS_ANALYTICS_ENABLED</key>
+            <false/>
+            <key>IS_APPINVITE_ENABLED</key>
+            <false/>
+            <key>IS_GCM_ENABLED</key>
+            <true/>
+            <key>IS_SIGNIN_ENABLED</key>
+            <true/>
+            <key>GOOGLE_APP_ID</key>
+            <string>1:000000000000:ios:0000000000000000000000</string>
+          </dict>
+          </plist>
+          EOF
+
       - run: flutter build ios --release --no-codesign
 
   build-ios-signed:
@@ -49,6 +97,16 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.x'
+
+      # ios/Runner/GoogleService-Info.plist is intentionally gitignored (real
+      # Firebase credentials must never be committed). This is the real,
+      # signed TestFlight build, so — unlike build-ios-unsigned's throwaway
+      # placeholder — it needs the actual production Firebase config,
+      # decoded here from a repo secret (base64 of the real file from the
+      # Firebase console, same pattern as the signing cert/profile below).
+      - name: Decode GoogleService-Info.plist
+        run: |
+          echo "${{ secrets.IOS_GOOGLESERVICE_INFO_PLIST_BASE64 }}" | base64 --decode > ios/Runner/GoogleService-Info.plist
 
       - name: Decode signing certificate
         run: |
