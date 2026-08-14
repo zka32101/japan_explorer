@@ -16,6 +16,8 @@ dart pub global activate flutterfire_cli
 flutterfire configure --project=japan-explorer-prod
 ```
 
+Firebaseプロジェクト作成〜SHA登録〜ルール/Functionsデプロイ〜GitHub Secrets登録までの一連の流れを自動化したスクリプトが `scripts/` にあります。詳細は [`scripts/README.md`](scripts/README.md) を参照してください。
+
 ### 2. 環境変数
 
 ```bash
