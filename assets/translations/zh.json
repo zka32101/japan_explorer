@@ -271,18 +271,8 @@
     "welcome": "欢迎",
     "tagline": "发现真正的日本",
     "sign_in_google": "使用 Google 继续",
-    "sign_in_apple": "使用 Apple 继续",
     "terms_note": "继续操作即表示您同意使用条款",
-    "sign_out": "退出登录",
-    "or": "或",
-    "email": "电子邮箱",
-    "password": "密码",
-    "sign_in": "登录",
-    "sign_up": "创建账号",
-    "has_account": "已有账号？登录",
-    "no_account": "没有账号？注册",
-    "email_error": "请输入有效的电子邮箱地址",
-    "password_error": "请输入至少 6 个字符"
+    "sign_out": "退出登录"
   },
   "share": {
     "spot": "分享此地点",

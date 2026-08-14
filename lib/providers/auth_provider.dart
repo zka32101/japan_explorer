@@ -49,30 +49,6 @@ class AuthNotifier extends StateNotifier<AsyncValue<AppUser?>> {
     }
   }
 
-  Future<void> signInWithEmail(String email, String password) async {
-    state = const AsyncValue.loading();
-    try {
-      final user = await _authService.signInWithEmail(email, password);
-      state = AsyncValue.data(user);
-      if (user != null) await _onSignIn(user);
-    } catch (e, st) {
-      state = AsyncValue.error(e, st);
-    }
-  }
-
-  Future<void> register(
-      String email, String password, String displayName) async {
-    state = const AsyncValue.loading();
-    try {
-      final user = await _authService.registerWithEmail(
-          email, password, displayName);
-      state = AsyncValue.data(user);
-      if (user != null) await _onSignIn(user);
-    } catch (e, st) {
-      state = AsyncValue.error(e, st);
-    }
-  }
-
   Future<void> signOut() async {
     final uid = state.valueOrNull?.uid;
     await _authService.signOut();
