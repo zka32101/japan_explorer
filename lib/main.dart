@@ -19,6 +19,7 @@ import 'services/purchase_service.dart';
 import 'services/vision_cache_service.dart';
 import 'services/culture_content_seeder.dart';
 import 'services/ads_service.dart';
+import 'utils/firestore_instance.dart';
 
 // ── Background FCM handler (top-level, required by Firebase) ──────────────────
 @pragma('vm:entry-point')
@@ -71,7 +72,7 @@ void main() async {
   await visionCacheService.initialize();
 
   // Firestore: seed culture content (force reseed in debug to pick up isPremium changes)
-  final firestore = FirebaseFirestore.instance;
+  final firestore = db;
   if (kDebugMode) {
     await CultureContentSeeder.forceReseed(firestore);
   } else {

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
+import '../utils/firestore_instance.dart';
 
 class NotificationService {
   static final _messaging = FirebaseMessaging.instance;
@@ -47,7 +48,7 @@ class NotificationService {
     try {
       final token = await _messaging.getToken();
       if (token == null) return;
-      await FirebaseFirestore.instance.collection('users').doc(userId).update({
+      await db.collection('users').doc(userId).update({
         'fcm_token': token,
         'fcm_token_updated': FieldValue.serverTimestamp(),
       });
@@ -55,7 +56,7 @@ class NotificationService {
 
       // トークン更新時に再保存
       _messaging.onTokenRefresh.listen((newToken) async {
-        await FirebaseFirestore.instance
+        await db
             .collection('users')
             .doc(userId)
             .update({'fcm_token': newToken});

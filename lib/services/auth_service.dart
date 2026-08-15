@@ -4,10 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 import '../models/user.dart';
 import '../utils/constants.dart';
+import '../utils/firestore_instance.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = db;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final _logger = Logger();
 

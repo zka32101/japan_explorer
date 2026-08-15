@@ -5,13 +5,14 @@ import '../models/post.dart';
 import '../providers/auth_provider.dart';
 import '../services/upload_service.dart';
 import '../utils/constants.dart';
+import '../utils/firestore_instance.dart';
 
 // ── Stream providers ────────────────────────────────────────────────
 
 /// Posts for a specific curation spot
 final curationPostsProvider =
     StreamProvider.family<List<Post>, String>((ref, curationId) {
-  return FirebaseFirestore.instance
+  return db
       .collection(FirestoreCollections.posts)
       .where('curation_id', isEqualTo: curationId)
       .orderBy('created_at', descending: true)
@@ -24,7 +25,7 @@ final curationPostsProvider =
 final myPostsProvider = StreamProvider<List<Post>>((ref) {
   final user = ref.watch(appUserProvider).valueOrNull;
   if (user == null) return Stream.value([]);
-  return FirebaseFirestore.instance
+  return db
       .collection(FirestoreCollections.posts)
       .where('author_id', isEqualTo: user.uid)
       .orderBy('created_at', descending: true)
@@ -71,15 +72,15 @@ class PostNotifier extends StateNotifier<AsyncValue<void>> {
         likedByMe: false,
       );
 
-      await FirebaseFirestore.instance
+      await db
           .collection(FirestoreCollections.posts)
           .add(post.toFirestore());
 
       // Award XP for posting
-      final docRef = FirebaseFirestore.instance
+      final docRef = db
           .collection(FirestoreCollections.users)
           .doc(user.uid);
-      await FirebaseFirestore.instance.runTransaction((tx) async {
+      await db.runTransaction((tx) async {
         final snap = await tx.get(docRef);
         if (snap.exists) {
           final currentXp = (snap.data()?['xp'] ?? 0) as int;

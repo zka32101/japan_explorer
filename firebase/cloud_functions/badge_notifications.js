@@ -5,30 +5,34 @@
  */
 
 const functions = require('firebase-functions/v1');
+const { onDocumentUpdated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
+const { getFirestore } = require('firebase-admin/firestore');
 
 // Initialize admin only once across all functions
 if (!admin.apps.length) admin.initializeApp();
 
-const db = admin.firestore();
+// This app hosts multiple projects on one Firebase project (app1-6c108) —
+// Japan Explorer uses its own named database, not "(default)".
+const db = getFirestore(admin.app(), 'japanexplorer');
 const messaging = admin.messaging();
 
 /**
  * Firestore trigger: users/{userId}
  * Fires when new_badges field appears, sends FCM to the user's device.
  */
-exports.onBadgeUnlock = functions.firestore
-  .document('users/{userId}')
-  .onUpdate(async (change, context) => {
-    const before = change.before.data();
-    const after = change.after.data();
-    const userId = context.params.userId;
+exports.onBadgeUnlock = onDocumentUpdated(
+  { document: 'users/{userId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  async (event) => {
+    const before = event.data.before.data();
+    const after = event.data.after.data();
+    const userId = event.params.userId;
 
     const newBadges = after.new_badges;
     if (!newBadges || !newBadges.length) return null;
 
     // Clear the ephemeral field so it doesn't re-trigger
-    await change.after.ref.update({ new_badges: admin.firestore.FieldValue.delete() });
+    await event.data.after.ref.update({ new_badges: admin.firestore.FieldValue.delete() });
 
     const fcmToken = after.fcm_token;
     if (!fcmToken) {
@@ -79,7 +83,8 @@ exports.onBadgeUnlock = functions.firestore
     }
 
     return null;
-  });
+  }
+);
 
 // ── Daily streak reminder ────────────────────────────────────────────
 /**

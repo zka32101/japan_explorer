@@ -1,13 +1,16 @@
-const functions = require('firebase-functions/v1');
+const { onDocumentWritten } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
+const { getFirestore } = require('firebase-admin/firestore');
 
 admin.initializeApp();
-const db = admin.firestore();
+// This app hosts multiple projects on one Firebase project (app1-6c108) —
+// Japan Explorer uses its own named database, not "(default)".
+const db = getFirestore(admin.app(), 'japanexplorer');
 
-exports.aggregateRatings = functions.firestore
-  .document('ratings/{ratingId}')
-  .onWrite(async (change, context) => {
-    const data = change.after.exists ? change.after.data() : null;
+exports.aggregateRatings = onDocumentWritten(
+  { document: 'ratings/{ratingId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  async (event) => {
+    const data = event.data.after.exists ? event.data.after.data() : null;
     if (!data) return;
 
     const curationId = data.curation_id;
@@ -31,7 +34,8 @@ exports.aggregateRatings = functions.firestore
       total_ratings: ratings.length,
       updated_at: admin.firestore.FieldValue.serverTimestamp(),
     });
-  });
+  }
+);
 
 function removeOutliers(values) {
   if (values.length < 5) return values;
