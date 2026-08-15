@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 import '../models/host_profile.dart';
+import '../utils/firestore_instance.dart';
 
 const _hostsCollection = 'hosts';
 const _requestsCollection = 'host_requests';
 
 class HostService {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db = db;
   final _logger = Logger();
 
   // ── Read ──────────────────────────────────────────────────────────────────

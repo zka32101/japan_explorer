@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/journal_entry.dart';
 import '../providers/auth_provider.dart';
+import '../utils/firestore_instance.dart';
 
 // ── Hive cache ───────────────────────────────────────────────────────────────
 
@@ -74,7 +75,7 @@ class JournalNotifier extends StateNotifier<JournalState> {
   String? get _uid => _ref.read(appUserProvider).valueOrNull?.uid;
 
   CollectionReference<Map<String, dynamic>> _col(String uid) =>
-      FirebaseFirestore.instance
+      db
           .collection('users')
           .doc(uid)
           .collection(_kJournalCol);

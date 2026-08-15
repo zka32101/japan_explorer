@@ -1,7 +1,11 @@
 const functions = require('firebase-functions/v1');
+const { onDocumentUpdated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
+const { getFirestore } = require('firebase-admin/firestore');
 
-const db = admin.firestore();
+// This app hosts multiple projects on one Firebase project (app1-6c108) —
+// Japan Explorer uses its own named database, not "(default)".
+const db = getFirestore(admin.app(), 'japanexplorer');
 const messaging = admin.messaging();
 
 exports.sendDailyPhrase = functions.pubsub
@@ -34,11 +38,11 @@ exports.sendDailyPhrase = functions.pubsub
 // or direct Firestore writes from admin tools).
 // It deliberately does NOT interfere with normal 1-day gaps, which
 // streak_provider handles with optional recovery.
-exports.updateStreak = functions.firestore
-  .document('users/{userId}')
-  .onUpdate(async (change, context) => {
-    const before = change.before.data();
-    const after = change.after.data();
+exports.updateStreak = onDocumentUpdated(
+  { document: 'users/{userId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  async (event) => {
+    const before = event.data.before.data();
+    const after = event.data.after.data();
 
     // Only act when last_active_date actually changed
     if (before.last_active_date?.toMillis() === after.last_active_date?.toMillis()) return;
@@ -54,7 +58,8 @@ exports.updateStreak = functions.firestore
 
     // Safety-net: reset only after a 3+ day absence (not 1-day gaps)
     if (diffDays >= 3) {
-      await change.after.ref.update({ streak_days: 1 });
-      console.log(`Streak reset for user ${context.params.userId} after ${diffDays}-day absence`);
+      await event.data.after.ref.update({ streak_days: 1 });
+      console.log(`Streak reset for user ${event.params.userId} after ${diffDays}-day absence`);
     }
-  });
+  }
+);

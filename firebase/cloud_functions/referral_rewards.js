@@ -1,8 +1,11 @@
-const functions = require('firebase-functions/v1');
+const { onDocumentCreated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
+const { getFirestore } = require('firebase-admin/firestore');
 
 if (!admin.apps.length) admin.initializeApp();
-const db = admin.firestore();
+// This app hosts multiple projects on one Firebase project (app1-6c108) —
+// Japan Explorer uses its own named database, not "(default)".
+const db = getFirestore(admin.app(), 'japanexplorer');
 
 const REFERRAL_XP_BONUS = 200;
 const AMBASSADOR_BADGE = 'ambassador';
@@ -11,9 +14,10 @@ const AMBASSADOR_BADGE = 'ambassador';
 // inviter's "ambassador" badge on their first successful referral.
 // Runs with Admin privileges so it can write to the inviter's user
 // document — a client can only ever write its own.
-exports.grantReferralReward = functions.firestore
-  .document('referrals/{referralId}')
-  .onCreate(async (snap) => {
+exports.grantReferralReward = onDocumentCreated(
+  { document: 'referrals/{referralId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  async (event) => {
+    const snap = event.data;
     const { inviter_uid: inviterUid, invitee_uid: inviteeUid } = snap.data();
     if (!inviterUid || !inviteeUid || inviterUid === inviteeUid) return;
 
@@ -47,4 +51,5 @@ exports.grantReferralReward = functions.firestore
       };
       tx.set(inviterRef, inviterUpdate, { merge: true });
     });
-  });
+  }
+);

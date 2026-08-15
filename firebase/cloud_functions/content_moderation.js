@@ -1,9 +1,12 @@
-const functions = require('firebase-functions/v1');
+const { onDocumentCreated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
+const { getFirestore } = require('firebase-admin/firestore');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Anthropic = require('@anthropic-ai/sdk');
 
-const db = admin.firestore();
+// This app hosts multiple projects on one Firebase project (app1-6c108) —
+// Japan Explorer uses its own named database, not "(default)".
+const db = getFirestore(admin.app(), 'japanexplorer');
 const gemini = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const claude = new Anthropic.Anthropic({ apiKey: process.env.CLAUDE_API_KEY });
 
@@ -11,11 +14,12 @@ const MODERATION_PROMPT = `Moderate this user post for a Japan travel community 
 Check for: spam, hate speech, adult content, violence, off-topic content.
 Respond ONLY in JSON (no markdown): {"status": "approved"|"flagged"|"rejected", "score": 0.0-1.0, "reason": "brief reason"}`;
 
-exports.moderatePost = functions.firestore
-  .document('posts/{postId}')
-  .onCreate(async (snap, context) => {
+exports.moderatePost = onDocumentCreated(
+  { document: 'posts/{postId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  async (event) => {
+    const snap = event.data;
     const post = snap.data();
-    const postId = context.params.postId;
+    const postId = event.params.postId;
 
     try {
       const result = await moderateWithFallback(post.text);
@@ -36,7 +40,8 @@ exports.moderatePost = functions.firestore
       console.error('Moderation failed entirely:', error);
       await snap.ref.update({ moderation_status: 'pending' });
     }
-  });
+  }
+);
 
 async function moderateWithFallback(text) {
   // 1st: Gemini Flash（廉価）

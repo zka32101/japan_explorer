@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/curation.dart';
 import '../services/firebase_service.dart';
+import '../utils/firestore_instance.dart';
 
 enum RankingFilter { overall, weekly, category }
 
@@ -10,7 +11,6 @@ final rankingCategoryProvider = StateProvider<String?>((ref) => null);
 
 final rankingProvider = FutureProvider.family<List<Curation>, RankingFilter>(
   (ref, filter) async {
-    final db = FirebaseFirestore.instance;
     final category = ref.watch(rankingCategoryProvider);
 
     Query query = db

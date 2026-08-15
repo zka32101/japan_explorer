@@ -4,6 +4,7 @@ import '../models/curation.dart';
 import '../models/rating.dart';
 import '../models/user.dart';
 import '../utils/constants.dart';
+import '../utils/firestore_instance.dart';
 
 // ── XP update result ─────────────────────────────────────────────────────────
 
@@ -38,7 +39,7 @@ int computeUserLevel(int xp) {
 }
 
 class FirebaseService {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db = db;
   final _logger = Logger();
 
   // Curations

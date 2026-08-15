@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/post.dart';
 import '../services/analytics_service.dart';
 import '../services/review_service.dart';
+import '../utils/firestore_instance.dart';
 
 // ── Feed state ────────────────────────────────────────────────────────────────
 
@@ -44,7 +45,7 @@ class PostFeedNotifier extends StateNotifier<PostFeedState> {
   }
 
   static const _pageSize = 12;
-  final _col = FirebaseFirestore.instance.collection('posts');
+  final _col = db.collection('posts');
   DocumentSnapshot? _lastDoc;
 
   Future<void> loadInitial() async {
@@ -109,12 +110,12 @@ class PostFeedNotifier extends StateNotifier<PostFeedState> {
     state = state.copyWith(posts: updated);
 
     try {
-      final likeRef = FirebaseFirestore.instance
+      final likeRef = db
           .collection('post_likes')
           .doc('${uid}_$postId');
       final postRef = _col.doc(postId);
 
-      await FirebaseFirestore.instance.runTransaction((tx) async {
+      await db.runTransaction((tx) async {
         if (nowLiked) {
           tx.set(likeRef, {'uid': uid, 'post_id': postId});
           tx.update(postRef, {'like_count': FieldValue.increment(1)});
@@ -143,7 +144,7 @@ class PostFeedNotifier extends StateNotifier<PostFeedState> {
     // Batch-check which posts the current user has liked
     final likeIds = posts.map((p) => '${uid}_${p.id}').toList();
     final futures = likeIds
-        .map((id) => FirebaseFirestore.instance
+        .map((id) => db
             .collection('post_likes')
             .doc(id)
             .get())
@@ -164,7 +165,7 @@ final postFeedProvider =
 
 final postCommentsProvider =
     StreamProvider.family<List<PostComment>, String>((ref, postId) {
-  return FirebaseFirestore.instance
+  return db
       .collection('posts')
       .doc(postId)
       .collection('comments')
@@ -178,7 +179,7 @@ final postCommentsProvider =
 class PostService {
   PostService._();
 
-  final _firestore = FirebaseFirestore.instance;
+  final _firestore = db;
   final _storage = FirebaseStorage.instance;
 
   /// Upload image to Storage → create post document → return new [Post].
@@ -246,7 +247,7 @@ class PostService {
       createdAt: DateTime.now(),
     );
 
-    await FirebaseFirestore.instance.runTransaction((tx) async {
+    await db.runTransaction((tx) async {
       tx.set(commentRef, comment.toFirestore());
       tx.update(
         _firestore.collection('posts').doc(postId),
