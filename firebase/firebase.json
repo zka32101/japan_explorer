@@ -13,7 +13,8 @@
       ".git",
       "firebase-debug.log",
       "firebase-debug.*.log"
-    ]
+    ],
+    "codebase": "japanexplorer"
   },
   "hosting": {
     "public": "public",
