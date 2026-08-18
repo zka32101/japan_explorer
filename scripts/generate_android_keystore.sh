@@ -24,6 +24,12 @@
 # ANDROID_KEY_PASSWORD — asking for two and writing them separately would
 # produce a key.properties that doesn't match what keytool actually did.
 #
+# JDK 17+ also changed the default PKCS12 encryption to PBES2/AES-256,
+# which Android's bundletool (used by `flutter build appbundle`) fails to
+# parse ("Failed to read key ...: Tag number over 30 is not supported").
+# -J-Dkeystore.pkcs12.legacy forces the older, bundletool-compatible
+# encryption scheme at generation time.
+#
 set -euo pipefail
 
 command -v keytool >/dev/null 2>&1 || {
@@ -52,7 +58,8 @@ keytool -genkey -v \
   -alias "$KEY_ALIAS" \
   -keyalg RSA -keysize 2048 -validity 10000 \
   -storepass "$ANDROID_KEYSTORE_PASSWORD" \
-  -dname "CN=Japan Explorer, OU=Petit Works Apps, O=Petit Works Apps, L=, ST=, C=JP"
+  -dname "CN=Japan Explorer, OU=Petit Works Apps, O=Petit Works Apps, L=, ST=, C=JP" \
+  -J-Dkeystore.pkcs12.legacy
 
 cat > android/key.properties <<EOF
 storePassword=$ANDROID_KEYSTORE_PASSWORD
