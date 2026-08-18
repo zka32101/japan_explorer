@@ -38,7 +38,10 @@ android {
             if (keystorePropertiesFile.exists()) {
                 keyAlias      = keystoreProperties["keyAlias"]      as String
                 keyPassword   = keystoreProperties["keyPassword"]   as String
-                storeFile     = file(keystoreProperties["storeFile"] as String)
+                // storeFile is relative to android/ (rootProject), not android/app/ —
+                // both the local keystore setup and deploy.yml place the .jks at
+                // android/keystore/*.jks, so this must resolve from rootProject.
+                storeFile     = rootProject.file(keystoreProperties["storeFile"] as String)
                 storePassword = keystoreProperties["storePassword"] as String
             }
         }
