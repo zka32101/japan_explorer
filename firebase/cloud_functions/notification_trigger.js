@@ -1,11 +1,8 @@
 const functions = require('firebase-functions/v1');
 const { onDocumentUpdated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
-const { getFirestore } = require('firebase-admin/firestore');
 
-// This app hosts multiple projects on one Firebase project (app1-6c108) —
-// Japan Explorer uses its own named database, not "(default)".
-const db = getFirestore(admin.app(), 'japanexplorer');
+const db = admin.firestore();
 const messaging = admin.messaging();
 
 exports.sendDailyPhrase = functions.pubsub
@@ -39,7 +36,7 @@ exports.sendDailyPhrase = functions.pubsub
 // It deliberately does NOT interfere with normal 1-day gaps, which
 // streak_provider handles with optional recovery.
 exports.updateStreak = onDocumentUpdated(
-  { document: 'users/{userId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  { document: 'users/{userId}', region: 'asia-northeast1' },
   async (event) => {
     const before = event.data.before.data();
     const after = event.data.after.data();

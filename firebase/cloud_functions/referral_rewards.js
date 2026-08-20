@@ -1,11 +1,8 @@
 const { onDocumentCreated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
-const { getFirestore } = require('firebase-admin/firestore');
 
 if (!admin.apps.length) admin.initializeApp();
-// This app hosts multiple projects on one Firebase project (app1-6c108) —
-// Japan Explorer uses its own named database, not "(default)".
-const db = getFirestore(admin.app(), 'japanexplorer');
+const db = admin.firestore();
 
 const REFERRAL_XP_BONUS = 200;
 const AMBASSADOR_BADGE = 'ambassador';
@@ -15,7 +12,7 @@ const AMBASSADOR_BADGE = 'ambassador';
 // Runs with Admin privileges so it can write to the inviter's user
 // document — a client can only ever write its own.
 exports.grantReferralReward = onDocumentCreated(
-  { document: 'referrals/{referralId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  { document: 'referrals/{referralId}', region: 'asia-northeast1' },
   async (event) => {
     const snap = event.data;
     const { inviter_uid: inviterUid, invitee_uid: inviteeUid } = snap.data();

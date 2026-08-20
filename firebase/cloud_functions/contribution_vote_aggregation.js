@@ -1,18 +1,15 @@
 const { onDocumentWritten } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
-const { getFirestore } = require('firebase-admin/firestore');
 
 if (!admin.apps.length) admin.initializeApp();
-// This app hosts multiple projects on one Firebase project (app1-6c108) —
-// Japan Explorer uses its own named database, not "(default)".
-const db = getFirestore(admin.app(), 'japanexplorer');
+const db = admin.firestore();
 
 // Recomputes user_contributions.voteCount whenever a vote is added or removed.
 // Clients can only write their own contribution_votes doc (rules-enforced);
 // the authoritative count is derived here with Admin privileges, since
 // user_contributions is immutable to clients.
 exports.aggregateContributionVotes = onDocumentWritten(
-  { document: 'contribution_votes/{voteId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  { document: 'contribution_votes/{voteId}', region: 'asia-northeast1' },
   async (event) => {
     const data = event.data.after.exists ? event.data.after.data() : event.data.before.data();
     if (!data || !data.contributionId) return;
