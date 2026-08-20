@@ -1,11 +1,8 @@
 {
-  "firestore": [
-    {
-      "database": "japanexplorer",
-      "rules": "firestore.rules",
-      "indexes": "firestore.indexes.json"
-    }
-  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "storage": {
     "rules": "storage.rules"
   },
@@ -16,8 +13,7 @@
       ".git",
       "firebase-debug.log",
       "firebase-debug.*.log"
-    ],
-    "codebase": "japanexplorer"
+    ]
   },
   "hosting": {
     "public": "public",
