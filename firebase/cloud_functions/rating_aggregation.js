@@ -1,14 +1,11 @@
 const { onDocumentWritten } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
-const { getFirestore } = require('firebase-admin/firestore');
 
 admin.initializeApp();
-// This app hosts multiple projects on one Firebase project (app1-6c108) —
-// Japan Explorer uses its own named database, not "(default)".
-const db = getFirestore(admin.app(), 'japanexplorer');
+const db = admin.firestore();
 
 exports.aggregateRatings = onDocumentWritten(
-  { document: 'ratings/{ratingId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  { document: 'ratings/{ratingId}', region: 'asia-northeast1' },
   async (event) => {
     const data = event.data.after.exists ? event.data.after.data() : null;
     if (!data) return;

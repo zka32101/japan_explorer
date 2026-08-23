@@ -7,14 +7,11 @@
 const functions = require('firebase-functions/v1');
 const { onDocumentUpdated } = require('firebase-functions/v2/firestore');
 const admin = require('firebase-admin');
-const { getFirestore } = require('firebase-admin/firestore');
 
 // Initialize admin only once across all functions
 if (!admin.apps.length) admin.initializeApp();
 
-// This app hosts multiple projects on one Firebase project (app1-6c108) —
-// Japan Explorer uses its own named database, not "(default)".
-const db = getFirestore(admin.app(), 'japanexplorer');
+const db = admin.firestore();
 const messaging = admin.messaging();
 
 /**
@@ -22,7 +19,7 @@ const messaging = admin.messaging();
  * Fires when new_badges field appears, sends FCM to the user's device.
  */
 exports.onBadgeUnlock = onDocumentUpdated(
-  { document: 'users/{userId}', database: 'japanexplorer', region: 'asia-northeast1' },
+  { document: 'users/{userId}', region: 'asia-northeast1' },
   async (event) => {
     const before = event.data.before.data();
     const after = event.data.after.data();

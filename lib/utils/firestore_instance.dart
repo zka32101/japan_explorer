@@ -1,15 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 /// The Firestore database used by this app.
 ///
-/// The Firebase project (app1-6c108) hosts multiple apps that share a
-/// single project but not a single Firestore database — this app uses its
-/// own named database ("japanexplorer"), separate from the project's
-/// "(default)" and "fortune" databases used elsewhere. Always go through
-/// this instance rather than `FirebaseFirestore.instance` (which points at
-/// "(default)") so every read/write lands in the right place.
-final db = FirebaseFirestore.instanceFor(
-  app: Firebase.app(),
-  databaseId: 'japanexplorer',
-);
+/// Japan Explorer now has its own dedicated Firebase project
+/// (japanexplorer-4c1ea), so it uses that project's "(default)" database.
+/// Kept as a shared accessor (rather than switching every call site back
+/// to `FirebaseFirestore.instance`) so a future move to a named database
+/// only requires a change here.
+final db = FirebaseFirestore.instance;
