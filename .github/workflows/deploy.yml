@@ -47,7 +47,19 @@ jobs:
       - name: Decode signing keystore
         run: |
           mkdir -p android/keystore
-          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/keystore/japan_explorer_release.jks
+          # Write base64 to a file first to avoid shell interpretation issues
+          echo -n "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" > /tmp/keystore.b64
+          # Validate base64 format before decoding
+          if ! base64 -v -d < /tmp/keystore.b64 > android/keystore/japan_explorer_release.jks 2>/dev/null; then
+            echo "Error: Failed to decode keystore. The base64 secret may be corrupted."
+            echo "Secret length: $(wc -c < /tmp/keystore.b64) bytes"
+            exit 1
+          fi
+          # Verify the decoded file is a valid Java keystore
+          if ! keytool -list -keystore android/keystore/japan_explorer_release.jks -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >/dev/null 2>&1; then
+            echo "Error: Decoded keystore is invalid or password is incorrect"
+            exit 1
+          fi
           cat > android/key.properties <<EOF
           storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
