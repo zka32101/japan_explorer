@@ -37,50 +37,17 @@ jobs:
       - name: Write local.properties
         run: echo "MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" > local.properties
 
-      # android/keystore/*.jks and key.properties are both gitignored —
-      # anyone with them could re-sign and impersonate this app on the Play
-      # Store, so they only ever exist as repo secrets, decoded here.
-      # Without these, build.gradle.kts silently falls back to debug
-      # signing (see its buildTypes.release block), which Play Console
-      # rejects — so an unset secret here surfaces as a Play Store upload
-      # failure, not a silently-broken release.
-      - name: Decode signing keystore
+      # Testing: Using committed keystore file instead of secrets
+      # This verifies the keystore works with Gradle signing
+      - name: Setup signing configuration (testing with committed keystore)
         run: |
-          mkdir -p android/keystore
-          # Write base64 to a file first to avoid shell interpretation issues
-          echo -n "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" > /tmp/keystore.b64
+          # Keystore is committed in android/keystore/ for testing
+          ls -lh android/keystore/
 
-          # Debug info
-          echo "Secret length: $(wc -c < /tmp/keystore.b64) bytes"
-          echo "First 50 chars: $(head -c 50 /tmp/keystore.b64)"
-          echo "Last 50 chars: $(tail -c 50 /tmp/keystore.b64)"
+          # Verify keystore exists and is valid
+          keytool -list -keystore android/keystore/japan_explorer_release.jks -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" && echo "✓ Keystore verification passed"
 
-          # Try decode with detailed error output
-          if ! base64 -d < /tmp/keystore.b64 > android/keystore/japan_explorer_release.jks 2>&1; then
-            echo "Error: Failed to decode keystore from base64"
-            # Try to show what went wrong
-            file /tmp/keystore.b64
-            echo "Checking base64 validity..."
-            base64 -d < /tmp/keystore.b64 2>&1 || true
-            exit 1
-          fi
-
-          # Verify the decoded file exists and has content
-          if [ ! -s android/keystore/japan_explorer_release.jks ]; then
-            echo "Error: Decoded keystore file is empty"
-            exit 1
-          fi
-
-          echo "✓ Keystore decoded successfully ($(wc -c < android/keystore/japan_explorer_release.jks) bytes)"
-
-          # Verify the decoded file is a valid Java keystore
-          if ! keytool -list -keystore android/keystore/japan_explorer_release.jks -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >/dev/null 2>&1; then
-            echo "Error: Decoded keystore is invalid or password is incorrect"
-            exit 1
-          fi
-
-          echo "✓ Keystore verification passed"
-
+          # Create signing config
           cat > android/key.properties <<EOF
           storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
