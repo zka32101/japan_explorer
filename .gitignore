@@ -6,8 +6,7 @@ node_modules/
 .env
 .env.local
 firebase_options.dart
-# Temporarily allow .jks for testing - will be removed after verification
-# *.jks
+*.jks
 *.keystore
 *.apk
 *.aab

@@ -37,17 +37,16 @@ jobs:
       - name: Write local.properties
         run: echo "MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" > local.properties
 
-      # Testing: Using committed keystore file instead of secrets
-      # This verifies the keystore works with Gradle signing
-      - name: Setup signing configuration (testing with committed keystore)
+      # Decode keystore from base64-encoded GitHub secret and set up signing
+      - name: Decode keystore and setup signing configuration
         run: |
-          # Keystore is committed in android/keystore/ for testing
-          ls -lh android/keystore/
+          # Decode base64 keystore from GitHub secret
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/keystore/japan_explorer_release.jks
 
-          # Verify keystore exists and is valid
+          # Verify keystore is valid and can be opened with the store password
           keytool -list -keystore android/keystore/japan_explorer_release.jks -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" && echo "✓ Keystore verification passed"
 
-          # Create signing config
+          # Create signing config file that Gradle will read
           cat > android/key.properties <<EOF
           storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
