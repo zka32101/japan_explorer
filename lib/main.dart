@@ -72,14 +72,22 @@ void main() async {
   await visionCacheService.initialize();
 
   // Firestore: seed culture content (force reseed in debug to pick up isPremium changes)
-  final firestore = db;
-  if (kDebugMode) {
-    await CultureContentSeeder.forceReseed(firestore);
-  } else {
-    final alreadySeeded = await CultureContentSeeder.hasSeeded(firestore);
-    if (!alreadySeeded) {
-      await CultureContentSeeder.seedCultureContent(firestore);
+  // Wrapped in try-catch: seeding requires Firestore write permission (typically
+  // only granted to an authenticated/admin user). A permission-denied error here
+  // must not block runApp() below — the app should still start and show its UI,
+  // just without freshly-seeded content, and retry seeding on a later launch.
+  try {
+    final firestore = db;
+    if (kDebugMode) {
+      await CultureContentSeeder.forceReseed(firestore);
+    } else {
+      final alreadySeeded = await CultureContentSeeder.hasSeeded(firestore);
+      if (!alreadySeeded) {
+        await CultureContentSeeder.seedCultureContent(firestore);
+      }
     }
+  } catch (e, stack) {
+    debugPrint('[main] CultureContentSeeder failed (continuing without it): $e\n$stack');
   }
 
   // Set Analytics user properties (non-PII)
