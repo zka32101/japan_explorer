@@ -1,0 +1,50 @@
+name: Daily Translation Sync
+
+# Run every day at 2 AM UTC (adjust timezone as needed)
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install google-genai
+
+      - name: Run daily translation (all languages)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          cd japan_explorer/.translation_cache
+          python resume_all.py
+
+      - name: Commit and push translations if changed
+        run: |
+          cd japan_explorer
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .translation_cache/culture_content_*.json
+          if git diff --cached --quiet; then
+            echo "No changes in translation files"
+          else
+            git commit -m "chore: update translations via daily sync"
+            git push
+          fi
+        continue-on-error: true
+
+      - name: Report workflow status
+        if: failure()
+        run: |
+          echo "⚠️ Translation workflow failed — check logs and resume manually if needed"
+          exit 1
