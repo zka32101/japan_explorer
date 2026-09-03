@@ -37,17 +37,16 @@ jobs:
       - name: Write local.properties
         run: echo "MAPS_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" > local.properties
 
-      # android/keystore/*.jks and key.properties are both gitignored —
-      # anyone with them could re-sign and impersonate this app on the Play
-      # Store, so they only ever exist as repo secrets, decoded here.
-      # Without these, build.gradle.kts silently falls back to debug
-      # signing (see its buildTypes.release block), which Play Console
-      # rejects — so an unset secret here surfaces as a Play Store upload
-      # failure, not a silently-broken release.
-      - name: Decode signing keystore
+      # Decode keystore from base64-encoded GitHub secret and set up signing
+      - name: Decode keystore and setup signing configuration
         run: |
-          mkdir -p android/keystore
+          # Decode base64 keystore from GitHub secret
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/keystore/japan_explorer_release.jks
+
+          # Verify keystore is valid and can be opened with the store password
+          keytool -list -keystore android/keystore/japan_explorer_release.jks -storepass "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" && echo "✓ Keystore verification passed"
+
+          # Create signing config file that Gradle will read
           cat > android/key.properties <<EOF
           storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}
