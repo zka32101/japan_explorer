@@ -61,10 +61,10 @@ class AppUser {
       languageCode: data['language_code'] ?? 'en',
       createdAt: data['created_at'] != null
           ? (data['created_at'] as Timestamp).toDate()
-          : DateTime.now(),
+          : throw StateError('User document ${doc.id} missing required createdAt'),
       updatedAt: data['updated_at'] != null
           ? (data['updated_at'] as Timestamp).toDate()
-          : DateTime.now(),
+          : throw StateError('User document ${doc.id} missing required updatedAt'),
     );
   }
 
