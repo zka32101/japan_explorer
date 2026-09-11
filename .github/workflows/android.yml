@@ -36,6 +36,22 @@ jobs:
           flutter-version: '3.x'
       - run: flutter pub get
 
+      - name: Write placeholder google-services.json (build-only, not real credentials)
+        run: |
+          cat > android/app/google-services.json <<'EOF'
+          {
+            "type": "service_account",
+            "project_id": "ci-placeholder-project",
+            "private_key_id": "key-id",
+            "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7W...\n-----END PRIVATE KEY-----\n",
+            "client_email": "firebase-adminsdk@ci-placeholder-project.iam.gserviceaccount.com",
+            "client_id": "123456789",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs"
+          }
+          EOF
+
       - name: Build APK (unsigned, PR only)
         run: flutter build apk --release
 
@@ -56,6 +72,10 @@ jobs:
         with:
           flutter-version: '3.x'
       - run: flutter pub get
+
+      - name: Write google-services.json from secret
+        run: |
+          echo "${{ secrets.ANDROID_GOOGLE_SERVICES_JSON }}" > android/app/google-services.json
 
       - name: Decode Keystore
         run: |
