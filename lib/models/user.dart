@@ -38,7 +38,10 @@ class AppUser {
   });
 
   factory AppUser.fromFirestore(DocumentSnapshot doc) {
-    final data = doc.data() as Map<String, dynamic>;
+    final data = doc.data() as Map<String, dynamic>?;
+    if (data == null) {
+      throw StateError('User document ${doc.id} exists but contains no data');
+    }
     return AppUser(
       uid: doc.id,
       email: data['email'] ?? '',
