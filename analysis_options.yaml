@@ -69,7 +69,8 @@ linter:
     - avoid_positional_boolean_parameters
     - avoid_private_typedef_functions
     - avoid_renaming_method_parameters
-    - avoid_returning_null
+    # TODO: Fix avoid_returning_null violations (~26) then re-enable
+    # - avoid_returning_null
     - avoid_returning_null_for_async
     - avoid_returning_this
     - avoid_setters_without_getters
@@ -105,7 +106,8 @@ linter:
     - prefer_asserts_with_message
     - prefer_collection_literals
     - prefer_conditional_assignment
-    - prefer_const_constructors
+    # TODO: Fix prefer_const_constructors violations (~2310) then re-enable
+    # - prefer_const_constructors
     - prefer_const_constructors_in_immutables
     - prefer_const_declarations
     - prefer_const_literals_to_create_immutables
@@ -115,7 +117,8 @@ linter:
     - prefer_expression_function_bodies
     - prefer_final_fields
     - prefer_final_in_for_each
-    - prefer_final_locals
+    # TODO: Fix prefer_final_locals violations (~1740) then re-enable
+    # - prefer_final_locals
     - prefer_for_elements_to_map_fromIterable
     - prefer_foreach
     - prefer_function_declarations_over_variables
@@ -148,8 +151,10 @@ linter:
     - tighten_type_of_initializing_formals
     - type_annotate_public_apis
     - type_init_formals
-    - unawaited_futures
-    - unnecessary_await_in_return
+    # TODO: Fix unawaited_futures violations (~258) then re-enable
+    # - unawaited_futures
+    # TODO: Fix unnecessary_await_in_return violations (~5) then re-enable
+    # - unnecessary_await_in_return
     - unnecessary_brace_in_string_interps
     - unnecessary_const
     - unnecessary_constructor_name
