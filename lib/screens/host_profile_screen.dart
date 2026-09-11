@@ -491,4 +491,3 @@ class _StatCol extends StatelessWidget {
     );
   }
 }
-

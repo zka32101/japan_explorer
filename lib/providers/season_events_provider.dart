@@ -25,4 +25,3 @@ final eventsForMonthProvider =
     return mid >= start || mid <= end;
   }).toList();
 });
-

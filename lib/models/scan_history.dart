@@ -115,4 +115,3 @@ class ScanHistoryRepository {
 }
 
 final scanHistoryRepository = ScanHistoryRepository();
-

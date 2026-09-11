@@ -145,4 +145,3 @@ class JournalEntry {
   factory JournalEntry.fromJson(String src) =>
       JournalEntry.fromMap(json.decode(src) as Map<String, dynamic>);
 }
-

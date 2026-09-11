@@ -146,4 +146,3 @@ final dailyCultureReadTodayProvider = Provider<bool>((ref) {
   final notifier = ref.read(cultureReadProvider.notifier);
   return notifier.hasReadToday;
 });
-

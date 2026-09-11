@@ -215,4 +215,3 @@ class _RankingTile extends StatelessWidget {
     );
   }
 }
-

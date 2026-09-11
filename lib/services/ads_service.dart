@@ -114,4 +114,3 @@ class AdsService {
 }
 
 final adsService = AdsService.instance;
-

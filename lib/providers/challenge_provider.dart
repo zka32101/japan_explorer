@@ -153,4 +153,3 @@ final challengeNotifierProvider =
     StateNotifierProvider<ChallengeNotifier, ChallengeState>((ref) {
   return ChallengeNotifier(ref);
 });
-

@@ -48,4 +48,3 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
     );
   }
 }
-

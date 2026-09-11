@@ -113,4 +113,3 @@ String formatStorageMb(double mb) {
   if (mb < 1024) return '${mb.toStringAsFixed(1)} MB';
   return '${(mb / 1024).toStringAsFixed(2)} GB';
 }
-

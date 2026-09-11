@@ -47,4 +47,3 @@ class AudioGuide {
     return (words / 130 * 60).round(); // 130 words/min
   }
 }
-

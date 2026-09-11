@@ -216,4 +216,3 @@ class _RatingChip extends StatelessWidget {
     );
   }
 }
-

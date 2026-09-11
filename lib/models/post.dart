@@ -123,4 +123,3 @@ class PostComment {
     'created_at': FieldValue.serverTimestamp(),
   };
 }
-

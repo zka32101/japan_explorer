@@ -363,4 +363,3 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
     }
   }
 }
-

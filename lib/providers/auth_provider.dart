@@ -78,4 +78,3 @@ final authNotifierProvider =
     StateNotifierProvider<AuthNotifier, AsyncValue<AppUser?>>((ref) {
   return AuthNotifier(ref.read(authServiceProvider));
 });
-

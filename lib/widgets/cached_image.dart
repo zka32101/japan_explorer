@@ -48,4 +48,3 @@ class CachedImage extends StatelessWidget {
     return image;
   }
 }
-

@@ -140,4 +140,3 @@ extension TripBudgetExt on TripBudget {
     }
   }
 }
-

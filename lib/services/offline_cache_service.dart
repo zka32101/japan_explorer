@@ -121,4 +121,3 @@ class OfflineCacheService {
 }
 
 final offlineCacheService = OfflineCacheService._();
-

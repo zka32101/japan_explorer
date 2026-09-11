@@ -71,4 +71,3 @@ final plannerNotifierProvider =
     StateNotifierProvider<PlannerNotifier, PlannerState>((ref) {
   return PlannerNotifier(ref.read(aiPlannerServiceProvider));
 });
-

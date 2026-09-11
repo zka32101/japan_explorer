@@ -250,4 +250,3 @@ Be concise — the explanation should be readable in 2-3 minutes.''';
     }
   }
 }
-

@@ -97,4 +97,3 @@ class NotificationService {
     await _messaging.deleteToken();
   }
 }
-

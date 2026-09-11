@@ -102,4 +102,3 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     );
   }
 }
-

@@ -115,4 +115,3 @@ extension AsyncValueErrorExt<T> on AsyncValue<T> {
     return 'widgets.error_load_failed'.tr();
   }
 }
-

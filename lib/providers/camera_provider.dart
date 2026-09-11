@@ -276,4 +276,3 @@ final cameraNotifierProvider =
     StateNotifierProvider<CameraNotifier, CameraState>((ref) {
   return CameraNotifier(ref.read(aiVisionServiceProvider), ref);
 });
-

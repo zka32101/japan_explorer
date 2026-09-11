@@ -137,4 +137,3 @@ class OfflineSyncService {
 }
 
 final offlineSyncService = OfflineSyncService._();
-

@@ -216,4 +216,3 @@ final communityContributionsProvider = StateNotifierProvider.family<
     CommunityContributionsParams>(
   (ref, params) => CommunityContributionsNotifier(params),
 );
-

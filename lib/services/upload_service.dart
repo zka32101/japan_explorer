@@ -58,4 +58,3 @@ class UploadService {
 }
 
 final uploadServiceProvider = Provider<UploadService>((_) => UploadService());
-

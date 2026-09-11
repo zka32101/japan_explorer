@@ -82,4 +82,3 @@ class AuthService {
     return AppUser.fromFirestore(doc);
   }
 }
-

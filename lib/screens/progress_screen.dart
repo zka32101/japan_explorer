@@ -508,4 +508,3 @@ class _BadgesSection extends StatelessWidget {
     );
   }
 }
-

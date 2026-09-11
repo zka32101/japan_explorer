@@ -83,4 +83,3 @@ extension SeasonTypeExt on SeasonType {
     }
   }
 }
-

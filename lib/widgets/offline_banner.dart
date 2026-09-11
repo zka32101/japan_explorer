@@ -63,4 +63,3 @@ class OfflineAwarePage extends ConsumerWidget {
     );
   }
 }
-

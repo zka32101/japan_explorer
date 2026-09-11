@@ -155,4 +155,3 @@ class _SpotMapWidgetState extends State<SpotMapWidget> {
     );
   }
 }
-

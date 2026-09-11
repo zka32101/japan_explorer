@@ -90,4 +90,3 @@ class CulturalProgressSummary {
             .toList(),
       );
 }
-

@@ -972,4 +972,3 @@ class _Step4CompleteState extends State<_Step4Complete>
     );
   }
 }
-

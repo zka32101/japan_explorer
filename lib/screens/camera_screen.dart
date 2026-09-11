@@ -942,4 +942,3 @@ class _TipRow extends StatelessWidget {
     );
   }
 }
-

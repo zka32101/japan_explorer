@@ -37,4 +37,3 @@ final rankingProvider = FutureProvider.family<List<Curation>, RankingFilter>(
     return snapshot.docs.map((doc) => Curation.fromFirestore(doc)).toList();
   },
 );
-

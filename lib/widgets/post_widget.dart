@@ -186,4 +186,3 @@ class PostsSection extends StatelessWidget {
     );
   }
 }
-

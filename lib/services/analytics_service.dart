@@ -141,4 +141,3 @@ class AppAnalyticsObserver extends NavigatorObserver {
     }
   }
 }
-

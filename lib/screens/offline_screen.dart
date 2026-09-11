@@ -272,4 +272,3 @@ class _ClearButton extends StatelessWidget {
     );
   }
 }
-

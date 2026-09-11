@@ -274,4 +274,3 @@ class SeasonService {
   /// Returns all events.
   static List<SeasonEvent> getAllEvents() => List.unmodifiable(_events);
 }
-

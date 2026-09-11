@@ -490,4 +490,3 @@ class _SpotTile extends StatelessWidget {
     );
   }
 }
-

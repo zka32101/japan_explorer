@@ -141,4 +141,3 @@ class HostService {
         .update({'status': status.name});
   }
 }
-

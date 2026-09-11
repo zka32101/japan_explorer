@@ -76,4 +76,3 @@ class VisionCacheHistoryNotifier extends StateNotifier<List<CachedAnalysis>> {
     state = [];
   }
 }
-

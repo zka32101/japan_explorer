@@ -11,4 +11,3 @@ final activeSeasonEventsProvider = Provider<List<SeasonEvent>>((ref) {
 final currentSeasonProvider = Provider<SeasonType>((ref) {
   return SeasonService.getCurrentSeason(DateTime.now());
 });
-

@@ -303,4 +303,3 @@ class FcmService {
 
 /// Singleton instance used across the app
 final fcmService = FcmService._();
-

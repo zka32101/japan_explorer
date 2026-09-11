@@ -743,4 +743,3 @@ class _SectionHeader extends StatelessWidget {
     );
   }
 }
-

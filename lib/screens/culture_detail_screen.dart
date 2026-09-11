@@ -681,4 +681,3 @@ class _VideoSectionState extends State<_VideoSection> {
     );
   }
 }
-

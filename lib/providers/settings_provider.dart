@@ -115,4 +115,3 @@ final settingsProvider =
     StateNotifierProvider<SettingsNotifier, AppSettings>(
   (ref) => SettingsNotifier(),
 );
-

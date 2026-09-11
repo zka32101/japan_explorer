@@ -641,4 +641,3 @@ class ChallengeBank {
     return all[index];
   }
 }
-

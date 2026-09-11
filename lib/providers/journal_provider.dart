@@ -230,4 +230,3 @@ final curationJournalProvider =
       .where((e) => e.curationId == curationId)
       .toList();
 });
-

@@ -365,4 +365,3 @@ class _RecentReadItem extends ConsumerWidget {
     }
   }
 }
-

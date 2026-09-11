@@ -366,4 +366,3 @@ Color _seasonColor(SeasonType s) {
     case SeasonType.yearRound:  return AppColors.accent;
   }
 }
-

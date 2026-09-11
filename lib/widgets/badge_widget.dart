@@ -327,4 +327,3 @@ class _NewBadgeAnimationState extends State<NewBadgeAnimation>
     );
   }
 }
-
