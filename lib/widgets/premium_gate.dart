@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../config/theme.dart';
 import '../providers/premium_provider.dart';
 import '../screens/premium_screen.dart';
 

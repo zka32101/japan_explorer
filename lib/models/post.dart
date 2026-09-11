@@ -55,6 +55,10 @@ class Post {
     if (m == null) {
       throw StateError('Post document ${doc.id} exists but contains no data');
     }
+    final createdAt = (m['created_at'] as Timestamp?)?.toDate();
+    if (createdAt == null) {
+      throw StateError('Post document ${doc.id} missing required createdAt');
+    }
     return Post(
       id: doc.id,
       authorId: m['author_id'] as String? ?? '',
@@ -66,8 +70,7 @@ class Post {
       curationTitle: m['curation_title'] as String? ?? '',
       likeCount: (m['like_count'] as num?)?.toInt() ?? 0,
       commentCount: (m['comment_count'] as num?)?.toInt() ?? 0,
-      createdAt: (m['created_at'] as Timestamp?)?.toDate()
-          ?? throw StateError('Post document ${doc.id} missing required createdAt'),
+      createdAt: createdAt,
     );
   }
 
@@ -110,6 +113,10 @@ class PostComment {
     if (m == null) {
       throw StateError('PostComment document ${doc.id} exists but contains no data');
     }
+    final createdAt = (m['created_at'] as Timestamp?)?.toDate();
+    if (createdAt == null) {
+      throw StateError('PostComment document ${doc.id} missing required createdAt');
+    }
     return PostComment(
       id: doc.id,
       postId: m['post_id'] as String? ?? '',
@@ -117,8 +124,7 @@ class PostComment {
       authorName: m['author_name'] as String? ?? '',
       authorAvatarUrl: m['author_avatar_url'] as String? ?? '',
       text: m['text'] as String? ?? '',
-      createdAt: (m['created_at'] as Timestamp?)?.toDate()
-          ?? throw StateError('PostComment document ${doc.id} missing required createdAt'),
+      createdAt: createdAt,
     );
   }
 
