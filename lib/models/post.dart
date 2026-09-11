@@ -51,7 +51,10 @@ class Post {
       );
 
   factory Post.fromFirestore(DocumentSnapshot doc) {
-    final m = doc.data() as Map<String, dynamic>;
+    final m = doc.data() as Map<String, dynamic>?;
+    if (m == null) {
+      throw StateError('Post document ${doc.id} exists but contains no data');
+    }
     return Post(
       id: doc.id,
       authorId: m['author_id'] as String? ?? '',
@@ -102,7 +105,10 @@ class PostComment {
   final DateTime createdAt;
 
   factory PostComment.fromFirestore(DocumentSnapshot doc) {
-    final m = doc.data() as Map<String, dynamic>;
+    final m = doc.data() as Map<String, dynamic>?;
+    if (m == null) {
+      throw StateError('PostComment document ${doc.id} exists but contains no data');
+    }
     return PostComment(
       id: doc.id,
       postId: m['post_id'] as String? ?? '',
