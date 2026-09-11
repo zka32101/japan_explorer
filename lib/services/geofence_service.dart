@@ -17,7 +17,7 @@ class GeofenceTarget {
     required this.name,
     required this.latitude,
     required this.longitude,
-    this.radiusMeters = 200,
+    this.radiusMeters = 200.0,
   });
 
   factory GeofenceTarget.fromCuration(Curation c) => GeofenceTarget(

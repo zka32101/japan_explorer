@@ -34,7 +34,7 @@ class AudioGuideState {
     this.isGenerating = false,
     this.isCached = false,
     this.playback = AudioGuidePlayback.idle,
-    this.speechRate = 1,
+    this.speechRate = 1.0,
     this.language = 'en',
     this.error,
     this.highlightParagraph = 0,
@@ -142,7 +142,7 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
 
     await _tts.setLanguage(_ttsLocale(state.language));
     await _tts.setSpeechRate(state.speechRate);
-    await _tts.setPitch(1);
+    await _tts.setPitch(1.0);
 
     if (state.isPaused) {
       // Resume — re-speak from current paragraph

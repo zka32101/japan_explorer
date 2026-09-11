@@ -89,7 +89,7 @@ void main() {
         // Two full PostCards overflow the default 600px test viewport height
         // — widen it so nothing off-screen gets treated as a render error.
         tester.view.physicalSize = const Size(800, 2400);
-        tester.view.devicePixelRatio = 1;
+        tester.view.devicePixelRatio = 1.0;
         addTearDown(tester.view.resetPhysicalSize);
         addTearDown(tester.view.resetDevicePixelRatio);
 

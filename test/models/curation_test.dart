@@ -70,7 +70,7 @@ void main() {
         'prefecture': 'Hokkaido',
         'city': 'Sapporo',
         'address': '',
-        'location': const GeoPoint(43, 141),
+        'location': const GeoPoint(43.0, 141.0),
         'is_active': true,
       });
 

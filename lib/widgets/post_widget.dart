@@ -49,7 +49,7 @@ class PostCard extends StatelessWidget {
                     child: const Center(
                         child: CircularProgressIndicator(strokeWidth: 2)),
                   ),
-                  errorWidget: (_, _, ___) => const SizedBox.shrink(),
+                  errorWidget: (_, __, ___) => const SizedBox.shrink(),
                 ),
               ),
               const SizedBox(height: 10),

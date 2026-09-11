@@ -22,7 +22,7 @@ class PostScreen extends ConsumerStatefulWidget {
 
 class _PostScreenState extends ConsumerState<PostScreen> {
   final _commentCtrl = TextEditingController();
-  double _rating = 3;
+  double _rating = 3.0;
   File? _imageFile;
   final List<String> _selectedTags = [];
   bool _isSubmitting = false;

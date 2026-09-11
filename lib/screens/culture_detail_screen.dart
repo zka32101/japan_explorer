@@ -56,7 +56,7 @@ class CultureDetailScreen extends ConsumerWidget {
                           ? Image.network(
                               content.imageUrl,
                               fit: BoxFit.cover,
-                              errorBuilder: (_, _, ___) => Container(
+                              errorBuilder: (_, __, ___) => Container(
                                 color: AppColors.surface,
                                 child: const Center(
                                     child: Icon(Icons.image_not_supported)),
@@ -298,7 +298,7 @@ class CultureDetailScreen extends ConsumerWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [Colors.black, Colors.transparent],
-            stops: [0.4, 1],
+            stops: [0.4, 1.0],
           ).createShader(bounds),
           blendMode: BlendMode.dstIn,
           child: Text(
@@ -563,7 +563,7 @@ class _RelatedCard extends StatelessWidget {
                       width: 64,
                       height: 64,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, _, ___) => Container(
+                      errorBuilder: (_, __, ___) => Container(
                         width: 64,
                         height: 64,
                         color: AppColors.primary.withOpacity(0.15),

@@ -15,7 +15,7 @@ class CategoryProgress {
     this.xpEarned = 0,
   });
 
-  /// 0 – 1 correctness rate (0 if unanswered).
+  /// 0.0 – 1.0 correctness rate (0 if unanswered).
   double get accuracy =>
       questionsAnswered == 0 ? 0 : correctCount / questionsAnswered;
 

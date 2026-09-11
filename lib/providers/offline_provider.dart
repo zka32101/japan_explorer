@@ -7,7 +7,7 @@ import '../providers/curations_provider.dart';
 
 class OfflineSyncState {
   final bool isSyncing;
-  final double progress;      // 0–1.0
+  final double progress;      // 0.0–1.0
   final String statusText;
   final double storageMb;
   final bool hasSynced;

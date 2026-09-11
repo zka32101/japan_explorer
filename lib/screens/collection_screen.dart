@@ -25,7 +25,7 @@ class CollectionScreen extends ConsumerWidget {
     final notifier = ref.read(cultureReadProvider.notifier);
     final total = CultureContentSeeder.allContent.length;
     final readCount = readIds.length;
-    final progress = total == 0 ? 0 : readCount / total;
+    final progress = total == 0 ? 0.0 : readCount / total;
 
     return Scaffold(
       appBar: AppBar(
@@ -200,7 +200,7 @@ class _CategoryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pct = total == 0 ? 0 : read / total;
+    final pct = total == 0 ? 0.0 : read / total;
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Column(
@@ -232,7 +232,7 @@ class _CategoryRow extends StatelessWidget {
               value: pct,
               backgroundColor: AppColors.surface,
               valueColor: AlwaysStoppedAnimation<Color>(
-                pct >= 1 ? Colors.green : AppColors.primary,
+                pct >= 1.0 ? Colors.green : AppColors.primary,
               ),
               minHeight: 6,
             ),

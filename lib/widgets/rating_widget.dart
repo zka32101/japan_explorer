@@ -26,7 +26,7 @@ class RatingWidget extends StatelessWidget {
           child: Text(label, style: const TextStyle(fontSize: 14)),
         ),
         ...List.generate(5, (i) {
-          final star = i + 1;
+          final star = i + 1.0;
           final filled = star <= value;
           final half = !filled && star - 0.5 <= value;
           return GestureDetector(

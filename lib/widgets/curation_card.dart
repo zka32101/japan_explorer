@@ -123,7 +123,7 @@ class _HeroImage extends StatelessWidget {
                     color: AppColors.divider,
                     child: const Center(child: CircularProgressIndicator()),
                   ),
-                  errorWidget: (_, _, ___) => _PlaceholderImage(),
+                  errorWidget: (_, __, ___) => _PlaceholderImage(),
                 )
               : _PlaceholderImage(),
         ),

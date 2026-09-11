@@ -31,7 +31,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
       duration: const Duration(milliseconds: 1200),
     );
     _fadeAnim = CurvedAnimation(parent: _animCtrl, curve: Curves.easeIn);
-    _scaleAnim = Tween<double>(begin: 0.8, end: 1).animate(
+    _scaleAnim = Tween<double>(begin: 0.8, end: 1.0).animate(
       CurvedAnimation(parent: _animCtrl, curve: Curves.elasticOut),
     );
     _animCtrl.forward();
