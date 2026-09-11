@@ -64,6 +64,11 @@ class StreakNotifier extends StateNotifier<AsyncValue<int>> {
         'last_active_date': Timestamp.fromDate(today),
       };
 
+      // Reset recovery allowance at month boundary (applies to all paths)
+      if (today.month != lastDay.month) {
+        updates['streak_recovery_used'] = 0;
+      }
+
       int newStreak;
       if (diff == 1) {
         // Consecutive day
@@ -74,15 +79,11 @@ class StreakNotifier extends StateNotifier<AsyncValue<int>> {
         // Streak recovery (1 miss per month allowed)
         newStreak = currentStreak + 1;
         updates['streak_days'] = newStreak;
-        updates['streak_recovery_used'] = recoveryUsed + 1;
+        updates['streak_recovery_used'] = (updates['streak_recovery_used'] as int?) ?? (recoveryUsed + 1);
       } else {
         // Streak broken
         newStreak = 1;
         updates['streak_days'] = 1;
-        // Reset recovery allowance at new month
-        if (today.month != lastDay.month) {
-          updates['streak_recovery_used'] = 0;
-        }
       }
 
       await docRef.update(updates);
