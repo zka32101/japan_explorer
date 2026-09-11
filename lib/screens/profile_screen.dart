@@ -134,8 +134,8 @@ class ProfileScreen extends ConsumerWidget {
 
   Widget _buildLevelCard(BuildContext context, user) {
     final progress = user.levelXpRequired > 0
-        ? (user.xp / user.levelXpRequired).clamp(0.0, 1.0)
-        : 1.0;
+        ? (user.xp / user.levelXpRequired).clamp(0, 1)
+        : 1;
     return Card(
       child: InkWell(
         onTap: () => context.push('/progress'),

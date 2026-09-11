@@ -91,7 +91,7 @@ Analyze the image and respond ONLY in this exact JSON format (no markdown, no ex
           'parts': [
             {
               'text': '''Moderate this user post for a Japan travel community app.
-Respond ONLY in JSON: {"status": "approved"|"flagged"|"rejected", "score": 0.0-1.0, "reason": "brief"}
+Respond ONLY in JSON: {"status": "approved"|"flagged"|"rejected", "score": 0-1.0, "reason": "brief"}
 
 Post: "$text"'''
             }

@@ -32,7 +32,7 @@ class CachedImage extends StatelessWidget {
           child: CircularProgressIndicator(strokeWidth: 2),
         ),
       ),
-      errorWidget: (_, __, ___) => Container(
+      errorWidget: (_, _, ___) => Container(
         color: Theme.of(context).colorScheme.surfaceVariant,
         child: Icon(
           Icons.broken_image_outlined,

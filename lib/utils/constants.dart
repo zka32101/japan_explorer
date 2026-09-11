@@ -1,10 +1,10 @@
 class AppConstants {
   static const appName = 'Japan Explorer';
-  static const appVersion = '1.0.0';
+  static const appVersion = '1.0';
 
   static const pageSize = 20;
   static const searchDebounceMs = 500;
-  static const geofenceRadiusMeters = 200.0;
+  static const geofenceRadiusMeters = 200;
   static const imageMaxSizeBytes = 1024 * 1024; // 1MB
 
   static const streakRecoveryPerMonth = 1;

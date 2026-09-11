@@ -595,7 +595,7 @@ class _RatingRow extends StatelessWidget {
           child: Text(label, style: const TextStyle(fontSize: 14)),
         ),
         ...List.generate(5, (i) {
-          final star = i + 1.0;
+          final star = i + 1;
           return GestureDetector(
             onTap: () => onChanged(star),
             child: Icon(

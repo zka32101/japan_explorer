@@ -144,7 +144,7 @@ class BadgeChip extends StatelessWidget {
     return GestureDetector(
       onTap: () => _showTooltip(context, badge),
       child: Opacity(
-        opacity: unlocked ? 1.0 : 0.35,
+        opacity: unlocked ? 1 : 0.35,
         child: Container(
           width: size,
           height: size,

@@ -561,7 +561,7 @@ class _SakuraBgPainter extends CustomPainter {
     final paintWarm = Paint()
       ..shader = RadialGradient(
         center: const Alignment(0.8, -0.8),
-        radius: 1.0,
+        radius: 1,
         colors: [
           const Color(0xFFE63946).withValues(alpha: 0.12),
           Colors.transparent,
@@ -571,7 +571,7 @@ class _SakuraBgPainter extends CustomPainter {
     final paintCool = Paint()
       ..shader = RadialGradient(
         center: const Alignment(-0.8, 0.8),
-        radius: 1.0,
+        radius: 1,
         colors: [
           const Color(0xFF457B9D).withValues(alpha: 0.08),
           Colors.transparent,

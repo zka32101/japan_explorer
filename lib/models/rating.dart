@@ -25,8 +25,8 @@ class Rating {
       id: doc.id,
       curationId: data['curation_id'] ?? '',
       userId: data['user_id'] ?? '',
-      wantToGo: (data['want_to_go'] ?? 0.0).toDouble(),
-      recommend: (data['recommend'] ?? 0.0).toDouble(),
+      wantToGo: (data['want_to_go'] ?? 0).toDouble(),
+      recommend: (data['recommend'] ?? 0).toDouble(),
       isOutlier: data['is_outlier'] ?? false,
       createdAt: (data['created_at'] as Timestamp).toDate(),
     );

@@ -94,8 +94,8 @@ class _LevelHeroCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final progress = user.levelXpRequired > 0
-        ? (user.xp / user.levelXpRequired).clamp(0.0, 1.0)
-        : 1.0;
+        ? (user.xp / user.levelXpRequired).clamp(0, 1)
+        : 1;
     final xpToNext = (user.levelXpRequired - user.xp).clamp(0, 999999);
 
     return Container(
