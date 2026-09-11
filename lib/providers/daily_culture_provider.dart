@@ -1,6 +1,8 @@
 import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import '../models/culture_content.dart';
 import '../services/culture_content_seeder.dart';
 import '../utils/constants.dart';

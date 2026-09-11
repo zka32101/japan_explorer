@@ -1,9 +1,11 @@
 import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:image_picker/image_picker.dart';
+
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/camera_provider.dart';

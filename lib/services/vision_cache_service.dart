@@ -1,5 +1,6 @@
-import 'package:hive_flutter/hive_flutter.dart';
 import 'dart:io';
+
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 /// Cache for "What is This" and "Menu Translator" analyses

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
+
 import '../models/host_profile.dart';
 import '../utils/firestore_instance.dart';
 

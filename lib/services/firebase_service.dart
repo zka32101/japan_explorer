@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
+
 import '../models/curation.dart';
 import '../models/rating.dart';
 import '../models/user.dart';

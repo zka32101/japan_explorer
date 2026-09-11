@@ -1,6 +1,8 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
+
 import '../models/ai_itinerary.dart';
 
 class AiPlannerService {

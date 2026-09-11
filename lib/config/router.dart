@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import '../providers/auth_provider.dart';
 import '../providers/onboarding_provider.dart';
 import '../screens/splash_screen.dart';
+
 import 'package:easy_localization/easy_localization.dart';
+
 import '../services/analytics_service.dart';
 import '../utils/app_navigator.dart';
 import '../widgets/offline_banner.dart';

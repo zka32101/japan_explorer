@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+
 import '../config/theme.dart';
 import '../services/claude_vision_service.dart';
 import 'community_contributions_screen.dart';

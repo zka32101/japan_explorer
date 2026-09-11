@@ -1,7 +1,9 @@
 import 'dart:async';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:logger/logger.dart';
+
 import '../models/curation.dart';
 
 /// Lightweight target for geofence checking.

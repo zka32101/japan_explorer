@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/ai_itinerary.dart';
 import '../services/ai_planner_service.dart';
 

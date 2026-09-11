@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/curation.dart';
 import '../services/analytics_service.dart';
 import '../services/firebase_service.dart';
