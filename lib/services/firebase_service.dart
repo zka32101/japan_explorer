@@ -330,3 +330,4 @@ class FirebaseService {
         .map((doc) => AppUser.fromFirestore(doc));
   }
 }
+

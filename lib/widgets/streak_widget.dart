@@ -157,3 +157,4 @@ class WeeklyStreakCalendar extends StatelessWidget {
     );
   }
 }
+

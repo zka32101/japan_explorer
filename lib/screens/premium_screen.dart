@@ -587,3 +587,4 @@ class _SakuraBgPainter extends CustomPainter {
   @override
   bool shouldRepaint(_) => false;
 }
+

@@ -67,3 +67,4 @@ final languageProvider = StateNotifierProvider<LanguageNotifier, Language>(
 extension Localized on String? {
   String orEmpty() => this ?? '';
 }
+

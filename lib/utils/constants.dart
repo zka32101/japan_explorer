@@ -89,3 +89,4 @@ class FirestoreCollections {
   static const userContributions = 'user_contributions';
   static const contributionVotes = 'contribution_votes';
 }
+

@@ -185,3 +185,4 @@ class HostRequest {
         'created_at': FieldValue.serverTimestamp(),
       };
 }
+

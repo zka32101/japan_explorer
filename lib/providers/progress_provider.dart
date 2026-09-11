@@ -69,3 +69,4 @@ Future<void> accumulateChallengeResult({
 
   await prefs.setString(challengeProgressKey, jsonEncode(json));
 }
+

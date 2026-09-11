@@ -65,3 +65,4 @@ class LocationService {
   static String mapsViewUrl(double lat, double lng) =>
       'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
 }
+

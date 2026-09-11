@@ -115,3 +115,4 @@ final curationsNotifierProvider =
     StateNotifierProvider<CurationsNotifier, AsyncValue<List<Curation>>>((ref) {
   return CurationsNotifier(ref.read(firebaseServiceProvider));
 });
+

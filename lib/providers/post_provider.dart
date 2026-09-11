@@ -105,3 +105,4 @@ final postNotifierProvider =
     StateNotifierProvider<PostNotifier, AsyncValue<void>>(
   (ref) => PostNotifier(ref),
 );
+

@@ -158,3 +158,4 @@ class VisionCacheEntryAdapter extends TypeAdapter<VisionCacheEntry> {
     writer.writeInt(obj.cachedAt.millisecondsSinceEpoch);
   }
 }
+

@@ -609,3 +609,4 @@ class _RatingRow extends StatelessWidget {
     );
   }
 }
+

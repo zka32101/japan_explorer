@@ -85,3 +85,4 @@ final planNotifierProvider =
   }
   return PlanNotifier(ref.read(firebaseServiceProvider), user.uid);
 });
+

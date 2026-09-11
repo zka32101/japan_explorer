@@ -80,3 +80,4 @@ final nearbySpotProvider =
 
   return notifier;
 });
+

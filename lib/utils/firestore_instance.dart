@@ -8,3 +8,4 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 /// to `FirebaseFirestore.instance`) so a future move to a named database
 /// only requires a change here.
 final db = FirebaseFirestore.instance;
+

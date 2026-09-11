@@ -159,3 +159,4 @@ class PlanSpot {
         visitTime: visitTime ?? this.visitTime,
       );
 }
+

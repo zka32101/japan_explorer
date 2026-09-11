@@ -782,3 +782,4 @@ class TravelPhrases {
         .toList();
   }
 }
+

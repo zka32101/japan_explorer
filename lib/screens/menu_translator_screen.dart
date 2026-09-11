@@ -461,3 +461,4 @@ class DietaryInfo {
     required this.commonAllergens,
   });
 }
+

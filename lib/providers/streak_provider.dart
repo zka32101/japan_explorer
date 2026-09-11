@@ -140,3 +140,4 @@ final streakNotifierProvider =
     StateNotifierProvider<StreakNotifier, AsyncValue<int>>(
   (ref) => StreakNotifier(ref),
 );
+

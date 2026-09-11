@@ -143,3 +143,4 @@ final referralCountProvider = StreamProvider<int>((ref) {
       .snapshots()
       .map((snap) => snap.docs.length);
 });
+

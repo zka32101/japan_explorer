@@ -284,3 +284,4 @@ class _PhraseCard extends StatelessWidget {
     );
   }
 }
+

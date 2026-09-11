@@ -143,3 +143,4 @@ class JapanExplorerApp extends ConsumerWidget {
     );
   }
 }
+

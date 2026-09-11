@@ -130,3 +130,4 @@ Include exactly ${prefs.days} days. Each day should have morning, afternoon, and
     return jsonDecode(match.group(0)!) as Map<String, dynamic>;
   }
 }
+

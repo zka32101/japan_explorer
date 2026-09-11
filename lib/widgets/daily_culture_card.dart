@@ -158,3 +158,4 @@ class DailyCultureCard extends ConsumerWidget {
     }
   }
 }
+

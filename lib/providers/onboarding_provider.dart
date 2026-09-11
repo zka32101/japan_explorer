@@ -108,3 +108,4 @@ final onboardingProvider =
     StateNotifierProvider<OnboardingNotifier, OnboardingState>(
   (ref) => OnboardingNotifier(ref),
 );
+

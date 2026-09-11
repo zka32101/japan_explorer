@@ -20,3 +20,4 @@ class ConnectivityService {
 }
 
 final connectivityService = ConnectivityService._();
+

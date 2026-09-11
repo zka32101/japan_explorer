@@ -18,3 +18,4 @@ final isOnlineProvider = Provider<bool>((ref) {
     orElse: () => true, // assume online until we know otherwise
   );
 });
+

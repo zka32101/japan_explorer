@@ -204,3 +204,4 @@ class _RedeemCodeFieldState extends ConsumerState<_RedeemCodeField> {
     );
   }
 }
+

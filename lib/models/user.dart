@@ -169,3 +169,4 @@ class AppUser {
         updatedAt: DateTime.now(),
       );
 }
+

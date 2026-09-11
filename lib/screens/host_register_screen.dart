@@ -511,3 +511,4 @@ class _NavButtons extends StatelessWidget {
     );
   }
 }
+

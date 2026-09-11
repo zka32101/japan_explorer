@@ -92,3 +92,4 @@ class PurchaseService {
 
 /// Singleton instance used across the app
 final purchaseService = PurchaseService._();
+
