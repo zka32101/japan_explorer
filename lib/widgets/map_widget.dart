@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../config/theme.dart';
 import '../models/curation.dart';
 import '../models/rating.dart';
