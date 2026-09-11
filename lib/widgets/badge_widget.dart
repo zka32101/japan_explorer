@@ -193,7 +193,7 @@ class BadgeChip extends StatelessWidget {
             if (!unlocked) ...[
               const SizedBox(height: 8),
               Text(
-                'widgets.badge_not_unlocked'.tr(),
+                tr('widgets.badge_not_unlocked'),
                 style: const TextStyle(color: AppColors.textSecondary, fontSize: 12),
               ),
             ],
@@ -220,7 +220,7 @@ class BadgeGrid extends StatelessWidget {
 
     if (badges.isEmpty) {
       return Text(
-        'widgets.badge_empty'.tr(),
+        tr('widgets.badge_empty'),
         style: const TextStyle(color: AppColors.textSecondary),
       );
     }

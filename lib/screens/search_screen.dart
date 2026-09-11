@@ -32,7 +32,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           controller: _controller,
           autofocus: true,
           decoration: InputDecoration(
-            hintText: 'Search spots, food, culture...',
+            hintText: tr('search.hint'),
             border: InputBorder.none,
             suffixIcon: _query.isNotEmpty
                 ? IconButton(
@@ -87,13 +87,13 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         children: [
           const Icon(Icons.search, size: 64, color: AppColors.textSecondary),
           const SizedBox(height: 16),
-          const Text(
-            'Search for spots',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          Text(
+            tr('search.empty_title'),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
-            'Try: "Kyoto shrine", "sushi Tokyo", "cherry blossom"',
+            tr('search.empty_hint'),
             style: const TextStyle(color: AppColors.textSecondary),
             textAlign: TextAlign.center,
           ),
