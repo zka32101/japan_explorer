@@ -286,20 +286,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   Widget _buildCategoryFilter() {
-    final categories = [tr('home.category_all'), ...CurationCategory.all];
+    final categories = CurationCategory.all;
     return SliverToBoxAdapter(
       child: SizedBox(
         height: 48,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          itemCount: categories.length,
+          itemCount: categories.length + 1,
           separatorBuilder: (_, __) => const SizedBox(width: 8),
           itemBuilder: (context, index) {
-            final cat = index == 0 ? null : categories[index];
+            final cat = index == 0 ? null : categories[index - 1];
             final label = index == 0
                 ? tr('home.category_all')
-                : '${CurationCategory.emoji(categories[index])} ${CurationCategory.label(categories[index])}';
+                : '${CurationCategory.emoji(categories[index - 1])} ${CurationCategory.label(categories[index - 1])}';
             final isSelected = _selectedCategory == cat;
 
             return FilterChip(
