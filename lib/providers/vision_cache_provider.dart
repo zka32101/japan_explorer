@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../services/vision_cache_service.dart';
 
 final visionCacheServiceProvider = Provider<VisionCacheService>((ref) {

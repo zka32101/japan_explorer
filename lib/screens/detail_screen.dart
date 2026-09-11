@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
+
 import '../providers/curations_provider.dart';
 import '../providers/auth_provider.dart';
 import '../providers/plan_provider.dart';

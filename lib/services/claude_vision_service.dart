@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:logger/logger.dart';
 import 'package:image/image.dart' as img;
+import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 class CameraExplanation {

@@ -1,4 +1,5 @@
 import 'dart:ui' show Color;
+
 import 'cultural_challenge.dart';
 
 /// Aggregated quiz stats for one challenge category.

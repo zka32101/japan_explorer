@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/rating.dart';
 import '../services/firebase_service.dart';
 import 'auth_provider.dart';

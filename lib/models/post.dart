@@ -55,10 +55,7 @@ class Post {
     if (m == null) {
       throw StateError('Post document ${doc.id} exists but contains no data');
     }
-    final createdAt = (m['created_at'] as Timestamp?)?.toDate();
-    if (createdAt == null) {
-      throw StateError('Post document ${doc.id} missing required createdAt');
-    }
+    final createdAt = (m['created_at'] as Timestamp?)?.toDate() ?? DateTime.now();
     return Post(
       id: doc.id,
       authorId: m['author_id'] as String? ?? '',

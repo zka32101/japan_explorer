@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 /// Hive-based offline cache with a configurable TTL.

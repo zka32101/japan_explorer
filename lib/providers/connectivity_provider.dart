@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../services/connectivity_service.dart';
 
 /// Emits `true` when online, `false` when offline.

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
+
 import '../config/theme.dart';
 import '../models/season_event.dart';
 import '../providers/season_provider.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../services/offline_sync_service.dart';
 import '../providers/curations_provider.dart';
 

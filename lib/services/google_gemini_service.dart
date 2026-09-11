@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as img;
 import 'package:logger/logger.dart';
+
 import 'claude_vision_service.dart';
 
 class GeminiVisionService {

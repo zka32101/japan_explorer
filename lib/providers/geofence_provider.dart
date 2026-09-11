@@ -1,6 +1,8 @@
 import 'dart:async';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/curation.dart';
 import '../services/firebase_service.dart';
 import '../services/geofence_service.dart';
