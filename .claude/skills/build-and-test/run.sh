@@ -69,9 +69,11 @@ if $ADB install -r "$APK_PATH" > /tmp/adb_install.log 2>&1; then
     echo "✅ インストール完了"
     TEST_RESULTS["install"]=1
 else
-    echo "⚠️  インストール結果:"
+    echo "❌ インストール失敗:"
     cat /tmp/adb_install.log | tail -5
     TEST_RESULTS["install"]=0
+    echo "   テスト中止"
+    exit 1
 fi
 
 # 清理し、ログ収集準備
@@ -81,7 +83,7 @@ sleep 1
 # 4. 起動テスト
 echo ""
 echo "🚀 起動テスト..."
-LAUNCH_INTENT="$PACKAGE_NAME/com.yourwish.japan_explorer.MainActivity"
+LAUNCH_INTENT="$PACKAGE_NAME/com.yourwish.japanexplorer.MainActivity"
 echo "   起動対象: $LAUNCH_INTENT"
 
 if $ADB shell am start -n "$LAUNCH_INTENT" > /dev/null 2>&1; then
@@ -96,10 +98,13 @@ fi
 echo "   ⏳ 初期化完了待ち（10秒）..."
 sleep 10
 
-# 5. クラッシュ判定
+# 5. ログ一括取得（効率化）
+FULL_LOGCAT=$($ADB logcat -d 2>/dev/null || echo "")
+
+# 6. クラッシュ判定
 echo ""
 echo "🔍 クラッシュチェック..."
-CRASH_LOG=$($ADB logcat -d 2>/dev/null | grep -iE "FATAL|CRASH|ANR" || echo "")
+CRASH_LOG=$(echo "$FULL_LOGCAT" | grep -iE "FATAL|CRASH|ANR" || echo "")
 if [ -z "$CRASH_LOG" ]; then
     echo "✅ クラッシュなし"
     TEST_RESULTS["crash_free"]=1
@@ -109,10 +114,10 @@ else
     TEST_RESULTS["crash_free"]=0
 fi
 
-# 6. 連携テスト
+# 7. 連携テスト
 echo ""
 echo "🔗 連携テスト（API、Firebase）..."
-API_LOGS=$($ADB logcat -d 2>/dev/null | grep -iE "http|api|connection|network|firebase" || echo "")
+API_LOGS=$(echo "$FULL_LOGCAT" | grep -iE "http|api|connection|network|firebase" || echo "")
 if echo "$API_LOGS" | grep -iq "error\|fail\|exception"; then
     echo "⚠️  API エラー検出:"
     echo "$API_LOGS" | grep -iE "error|fail|exception" | head -2
@@ -122,10 +127,10 @@ else
     TEST_RESULTS["connectivity"]=1
 fi
 
-# 7. 購入画面テスト
+# 8. 購入画面テスト
 echo ""
 echo "💰 購入画面テスト（Google Play Billing）..."
-BILLING_LOGS=$($ADB logcat -d 2>/dev/null | grep -iE "billing|purchase|payment" || echo "")
+BILLING_LOGS=$(echo "$FULL_LOGCAT" | grep -iE "billing|purchase|payment" || echo "")
 if echo "$BILLING_LOGS" | grep -iq "error\|fail\|exception"; then
     echo "⚠️  購入機能エラー検出:"
     echo "$BILLING_LOGS" | grep -iE "error|fail|exception" | head -2
@@ -135,10 +140,10 @@ else
     TEST_RESULTS["billing"]=1
 fi
 
-# 8. 認証テスト
+# 9. 認証テスト
 echo ""
 echo "🔐 認証テスト（ログイン、Firebase Auth）..."
-AUTH_LOGS=$($ADB logcat -d 2>/dev/null | grep -iE "auth|login|token|credential|firebase" || echo "")
+AUTH_LOGS=$(echo "$FULL_LOGCAT" | grep -iE "auth|login|token|credential|firebase" || echo "")
 if echo "$AUTH_LOGS" | grep -iq "error\|fail\|invalid\|unauthorized"; then
     echo "⚠️  認証エラー検出:"
     echo "$AUTH_LOGS" | grep -iE "error|fail|invalid|unauthorized" | head -2
@@ -148,10 +153,10 @@ else
     TEST_RESULTS["auth"]=1
 fi
 
-# 9. 広告テスト
+# 10. 広告テスト
 echo ""
 echo "📣 広告テスト（Google Mobile Ads）..."
-AD_LOGS=$($ADB logcat -d 2>/dev/null | grep -iE "admob|ads|advertisement" || echo "")
+AD_LOGS=$(echo "$FULL_LOGCAT" | grep -iE "admob|ads|advertisement" || echo "")
 if echo "$AD_LOGS" | grep -iq "error\|fail\|exception"; then
     echo "⚠️  広告機能エラー検出:"
     echo "$AD_LOGS" | grep -iE "error|fail|exception" | head -2
@@ -166,12 +171,12 @@ else
     fi
 fi
 
-# 10. アプリ終了
+# 11. アプリ終了
 echo ""
 echo "🛑 クリーンアップ..."
 $ADB shell am force-stop "$PACKAGE_NAME" > /dev/null 2>&1 || true
 
-# 11. 最終レポート
+# 12. 最終レポート
 echo ""
 echo "========================================="
 echo "📊 テスト結果レポート: $APP_NAME"
@@ -192,6 +197,7 @@ check_result() {
 }
 
 echo "テスト観点別結果:"
+check_result "install"
 check_result "launch"
 check_result "crash_free"
 check_result "connectivity"
