@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:share_plus/share_plus.dart';
 import '../models/curation.dart';
 import 'analytics_service.dart';
