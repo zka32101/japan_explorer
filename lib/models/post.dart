@@ -66,7 +66,8 @@ class Post {
       curationTitle: m['curation_title'] as String? ?? '',
       likeCount: (m['like_count'] as num?)?.toInt() ?? 0,
       commentCount: (m['comment_count'] as num?)?.toInt() ?? 0,
-      createdAt: (m['created_at'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      createdAt: (m['created_at'] as Timestamp?)?.toDate()
+          ?? throw StateError('Post document ${doc.id} missing required createdAt'),
     );
   }
 
@@ -116,7 +117,8 @@ class PostComment {
       authorName: m['author_name'] as String? ?? '',
       authorAvatarUrl: m['author_avatar_url'] as String? ?? '',
       text: m['text'] as String? ?? '',
-      createdAt: (m['created_at'] as Timestamp?)?.toDate() ?? DateTime.now(),
+      createdAt: (m['created_at'] as Timestamp?)?.toDate()
+          ?? throw StateError('PostComment document ${doc.id} missing required createdAt'),
     );
   }
 
