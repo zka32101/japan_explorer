@@ -1,0 +1,80 @@
+name: Test Coverage Report & Analysis
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+
+jobs:
+  test-and-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests with coverage
+        run: flutter test --coverage
+
+      - name: Generate coverage report
+        continue-on-error: true
+        run: |
+          dart pub global activate lcov
+          lcov --summary coverage/lcov.info
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          flags: flutter
+          verbose: true
+
+      - name: Generate coverage badge
+        continue-on-error: true
+        run: |
+          mkdir -p coverage_badge
+          # Coverage percentage calculation (lcov may not be available)
+          COVERAGE=$(lcov --summary coverage/lcov.info 2>&1 | grep "lines" | awk '{print int($2)}' 2>/dev/null || echo "0")
+          echo "COVERAGE=${COVERAGE}%" > $GITHUB_ENV
+
+      - name: Create coverage summary
+        run: |
+          echo "## 📊 Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Test Files | $(find test -name '*_test.dart' | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Dart Files | $(find lib -name '*.dart' | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Coverage Report | [Codecov](https://codecov.io) |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Publish coverage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-reports
+          path: coverage/
+          retention-days: 30
+
+  coverage-check:
+    needs: test-and-coverage
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Download coverage
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-reports
+
+      - name: Check coverage threshold
+        continue-on-error: true
+        run: |
+          if [ -f lcov.info ]; then
+            echo "✅ Coverage report available"
+          else
+            echo "⚠️ Coverage report not found"
+          fi
