@@ -1,3 +1,4 @@
+import 'package:async/async.dart' show unawaited;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -64,14 +65,16 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     if (isLoggedIn) {
       final onboardingDone = ref.read(onboardingStatusProvider);
-      ref
-          .read(streakNotifierProvider.notifier)
-          .checkAndUpdateStreak()
-          .then((_) {
-        if (!mounted) return;
-        context.go(
-            onboardingDone ? AppRoutes.home : AppRoutes.onboarding);
-      });
+      unawaited(
+        ref
+            .read(streakNotifierProvider.notifier)
+            .checkAndUpdateStreak()
+            .then((_) {
+          if (!mounted) return;
+          context.go(
+              onboardingDone ? AppRoutes.home : AppRoutes.onboarding);
+        }),
+      );
     } else {
       context.go(AppRoutes.login);
     }
