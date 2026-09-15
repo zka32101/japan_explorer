@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 /// Cache for "What is This" and "Menu Translator" analyses
 class VisionCacheService {
   static const _visionCacheBox = 'vision_cache';
   static const _cacheDir = 'vision_cache_images';
+  static final _logger = Logger();
 
   late Box<VisionCacheEntry> _box;
 
@@ -38,7 +40,7 @@ class VisionCacheService {
 
       await _box.put(imageHash, entry);
     } catch (e) {
-      print('Error caching analysis: $e');
+      _logger.e('Error caching analysis', error: e);
     }
   }
 
@@ -67,7 +69,7 @@ class VisionCacheService {
             await File(entry.imagePath).delete();
           }
         } catch (e) {
-          print('Error deleting cached image: $e');
+          _logger.w('Error deleting cached image', error: e);
         }
       }
     }
@@ -103,7 +105,7 @@ class VisionCacheService {
       }
       await _box.clear();
     } catch (e) {
-      print('Error clearing cache: $e');
+      _logger.e('Error clearing cache', error: e);
     }
   }
 
