@@ -31,7 +31,7 @@ String referralCodeFor(String uid) {
   final b = _fnv1a32(uid, 0x811c9dc5 ^ 0x5bd1e995);
   final buf = StringBuffer();
   var h = a;
-  for (final i = 0; i < 8; i++) {
+  for (var i = 0; i < 8; i++) {
     if (i == 4) h = b; // second half draws from the independent hash
     buf.write(_codeAlphabet[h & 0x1F]);
     h >>= 5;
