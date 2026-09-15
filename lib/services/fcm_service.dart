@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -28,6 +30,10 @@ class FcmService {
 
   bool _initialized = false;
 
+  StreamSubscription<RemoteMessage>? _onMessageSubscription;
+  StreamSubscription<RemoteMessage>? _onMessageOpenedAppSubscription;
+  StreamSubscription<String>? _onTokenRefreshSubscription;
+
   /// Call once in main() after Firebase.initializeApp()
   /// NOTE: FirebaseMessaging.onBackgroundMessage() must be registered in main()
   /// before calling this, as it requires a top-level function.
@@ -39,10 +45,12 @@ class FcmService {
     await _initLocalNotifications();
 
     // Foreground message → show as local notification
-    FirebaseMessaging.onMessage.listen(_showLocalNotification);
+    _onMessageSubscription =
+        FirebaseMessaging.onMessage.listen(_showLocalNotification);
 
     // Notification tapped while app was in background/terminated
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleTap);
+    _onMessageOpenedAppSubscription =
+        FirebaseMessaging.onMessageOpenedApp.listen(_handleTap);
 
     // Check if app launched from notification
     final initial = await _messaging.getInitialMessage();
@@ -162,7 +170,9 @@ class FcmService {
       await _persistToken(userId, token);
 
       // Auto-refresh
-      _messaging.onTokenRefresh.listen((t) => _persistToken(userId, t));
+      _onTokenRefreshSubscription?.cancel();
+      _onTokenRefreshSubscription =
+          _messaging.onTokenRefresh.listen((t) => _persistToken(userId, t));
     } catch (_) {
       // Non-fatal — app functions without push notifications
     }
@@ -181,6 +191,13 @@ class FcmService {
       await _db.collection('users').doc(userId).update({'fcm_token': null});
       await _messaging.deleteToken();
     } catch (_) {}
+  }
+
+  /// Cancel all Firebase message subscriptions
+  Future<void> cancelAllSubscriptions() async {
+    await _onMessageSubscription?.cancel();
+    await _onMessageOpenedAppSubscription?.cancel();
+    await _onTokenRefreshSubscription?.cancel();
   }
 
   // ── Streak reminder (local notification scheduled daily) ────────────────────

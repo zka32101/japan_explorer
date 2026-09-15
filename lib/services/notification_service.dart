@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -10,6 +12,10 @@ class NotificationService {
   static final _messaging = FirebaseMessaging.instance;
   static final _localNotifications = FlutterLocalNotificationsPlugin();
   static final _logger = Logger();
+
+  static StreamSubscription<RemoteMessage>? _onMessageSubscription;
+  static StreamSubscription<RemoteMessage>? _onMessageOpenedAppSubscription;
+  static StreamSubscription<String>? _onTokenRefreshSubscription;
 
   static Future<void> initialize(String? userId) async {
     // 通知許可リクエスト
@@ -36,10 +42,12 @@ class NotificationService {
     }
 
     // フォアグラウンドメッセージ受信
-    FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
+    _onMessageSubscription =
+        FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
 
     // バックグラウンドからの起動
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleMessageOpenedApp);
+    _onMessageOpenedAppSubscription =
+        FirebaseMessaging.onMessageOpenedApp.listen(_handleMessageOpenedApp);
 
     // Daily Phraseトピック購読
     await _messaging.subscribeToTopic('daily_phrase');
@@ -56,7 +64,8 @@ class NotificationService {
       _logger.i('FCM token saved');
 
       // トークン更新時に再保存
-      _messaging.onTokenRefresh.listen((newToken) async {
+      _onTokenRefreshSubscription?.cancel();
+      _onTokenRefreshSubscription = _messaging.onTokenRefresh.listen((newToken) async {
         await db
             .collection('users')
             .doc(userId)
@@ -96,5 +105,11 @@ class NotificationService {
   static Future<void> unsubscribeAll() async {
     await _messaging.unsubscribeFromTopic('daily_phrase');
     await _messaging.deleteToken();
+  }
+
+  static Future<void> cancelAllSubscriptions() async {
+    await _onMessageSubscription?.cancel();
+    await _onMessageOpenedAppSubscription?.cancel();
+    await _onTokenRefreshSubscription?.cancel();
   }
 }
