@@ -1,4 +1,3 @@
-import 'package:async/async.dart' show unawaited;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -692,9 +691,10 @@ class _Step3NotificationsState extends State<_Step3Notifications>
     _bellAnim = Tween<double>(begin: -0.1, end: 0.1).animate(
       CurvedAnimation(parent: _bellCtrl, curve: Curves.elasticIn),
     );
-    unawaited(Future.delayed(const Duration(milliseconds: 400), () {
+    // ignore: unawaited_futures
+    Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) _bellCtrl.repeat(reverse: true, period: const Duration(seconds: 1));
-    }));
+    });
   }
 
   @override
@@ -851,12 +851,14 @@ class _Step4CompleteState extends State<_Step4Complete>
     _scaleAnim = CurvedAnimation(parent: _scaleCtrl, curve: Curves.elasticOut);
     _fadeAnim = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeIn);
 
-    unawaited(Future.delayed(const Duration(milliseconds: 200), () {
+    // ignore: unawaited_futures
+    Future.delayed(const Duration(milliseconds: 200), () {
       if (mounted) _scaleCtrl.forward();
-    }));
-    unawaited(Future.delayed(const Duration(milliseconds: 400), () {
+    });
+    // ignore: unawaited_futures
+    Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) _fadeCtrl.forward();
-    }));
+    });
   }
 
   @override
