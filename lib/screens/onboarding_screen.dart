@@ -691,6 +691,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
     _bellAnim = Tween<double>(begin: -0.1, end: 0.1).animate(
       CurvedAnimation(parent: _bellCtrl, curve: Curves.elasticIn),
     );
+    // ignore: unawaited_futures
     Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) _bellCtrl.repeat(reverse: true, period: const Duration(seconds: 1));
     });
@@ -850,9 +851,11 @@ class _Step4CompleteState extends State<_Step4Complete>
     _scaleAnim = CurvedAnimation(parent: _scaleCtrl, curve: Curves.elasticOut);
     _fadeAnim = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeIn);
 
+    // ignore: unawaited_futures
     Future.delayed(const Duration(milliseconds: 200), () {
       if (mounted) _scaleCtrl.forward();
     });
+    // ignore: unawaited_futures
     Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) _fadeCtrl.forward();
     });

@@ -64,6 +64,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     if (isLoggedIn) {
       final onboardingDone = ref.read(onboardingStatusProvider);
+      // ignore: unawaited_futures
       ref
           .read(streakNotifierProvider.notifier)
           .checkAndUpdateStreak()
