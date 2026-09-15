@@ -169,6 +169,8 @@ class _HeroImage extends StatelessWidget {
 }
 
 class _PlaceholderImage extends StatelessWidget {
+  const _PlaceholderImage();
+
   @override
   Widget build(BuildContext context) {
     return Container(
