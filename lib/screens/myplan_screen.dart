@@ -170,7 +170,7 @@ class MyPlanScreen extends ConsumerWidget {
         ],
       ),
     );
-    if (confirmed == true) {
+    if (confirmed) {
       await ref.read(planNotifierProvider.notifier).deletePlan(planId);
     }
   }

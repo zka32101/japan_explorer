@@ -425,7 +425,7 @@ class JournalEntryScreen extends ConsumerWidget {
         ],
       ),
     );
-    if (ok == true && context.mounted) {
+    if (ok && context.mounted) {
       await ref.read(journalProvider.notifier).deleteEntry(entry.id);
       Navigator.pop(context);
     }

@@ -264,7 +264,7 @@ class _ClearButton extends StatelessWidget {
             ],
           ),
         );
-        if (ok == true) {
+        if (ok) {
           await ref.read(offlineSyncProvider.notifier).clearDownloads();
         }
       },
