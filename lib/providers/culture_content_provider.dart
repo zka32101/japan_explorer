@@ -21,11 +21,11 @@ class RelatedContentParams {
       other is RelatedContentParams &&
       other.contentId == contentId &&
       other.categoryId == categoryId &&
-      other.tags.join(',') == tags.join(',') &&
-      other.seeAlso.join(',') == seeAlso.join(',');
+      other.tags == tags &&
+      other.seeAlso == seeAlso;
 
   @override
-  int get hashCode => Object.hash(contentId, categoryId, tags.join(','), seeAlso.join(','));
+  int get hashCode => Object.hash(contentId, categoryId, Object.hashAll(tags), Object.hashAll(seeAlso));
 }
 
 final cultureContentProvider = FutureProvider.family<
