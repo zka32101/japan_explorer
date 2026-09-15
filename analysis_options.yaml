@@ -56,8 +56,9 @@ linter:
     - unrelated_type_equality_checks
 
     # Style Rules
-    # TODO: Re-enable and fix style rules incrementally after base branch is green
-    # (Temporarily disabled all style rules to get base branch CI passing)
+    - prefer_const_constructors
+    - prefer_final_locals
+    - unawaited_futures
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

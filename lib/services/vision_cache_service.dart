@@ -59,7 +59,7 @@ class VisionCacheService {
     final cutoffDate = DateTime.now().subtract(Duration(days: daysOld));
     final keysToDelete = <String>[];
 
-    for (var entry in _box.values) {
+    for (final entry in _box.values) {
       if (entry.cachedAt.isBefore(cutoffDate)) {
         keysToDelete.add(entry.imageHash);
         try {
@@ -72,7 +72,7 @@ class VisionCacheService {
       }
     }
 
-    for (var key in keysToDelete) {
+    for (final key in keysToDelete) {
       await _box.delete(key);
     }
   }
@@ -85,7 +85,7 @@ class VisionCacheService {
     if (!cacheDir.existsSync()) return 0;
 
     final files = cacheDir.listSync();
-    for (var file in files) {
+    for (final file in files) {
       if (file is File) {
         totalSize += file.lengthSync();
       }
