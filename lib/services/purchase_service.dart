@@ -89,6 +89,11 @@ class PurchaseService {
 
   /// Restore past purchases — required by App Store / Play Store guidelines.
   Future<CustomerInfo> restorePurchases() => Purchases.restorePurchases();
+
+  /// Close the StreamController (call before app termination)
+  Future<void> dispose() async {
+    await _customerInfoController.close();
+  }
 }
 
 /// Singleton instance used across the app

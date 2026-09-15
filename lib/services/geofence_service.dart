@@ -98,6 +98,11 @@ class GeofenceService {
     _controller = null;
   }
 
+  /// Dispose of all resources (call before service destruction)
+  Future<void> dispose() async {
+    stop();
+  }
+
   void _onPosition(Position position) {
     NearbySpotState nearest = const NearbySpotState();
     double? nearestDist;
