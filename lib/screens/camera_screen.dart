@@ -13,6 +13,7 @@ import '../providers/geofence_provider.dart';
 import '../providers/plan_provider.dart';
 import '../services/ai_vision_service.dart';
 import '../services/claude_vision_service.dart';
+import '../utils/app_navigator.dart';
 import 'camera_history_screen.dart';
 import '../widgets/badge_widget.dart';
 import '../widgets/level_up_overlay.dart';
@@ -111,11 +112,7 @@ ${explanation.howToExperience}
           IconButton(
             icon: const Icon(Icons.history, color: Colors.white70),
             tooltip: tr('camera.scan_history'),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => const CameraHistoryScreen()),
-            ),
+            onPressed: () => AppNavigator.push(context, const CameraHistoryScreen()),
           ),
           if (cameraState.explanation != null)
             IconButton(
