@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,7 +36,7 @@ class _CommunityScreenState extends ConsumerState<CommunityScreen> {
   void _onScroll() {
     if (_scrollCtrl.position.pixels >=
         _scrollCtrl.position.maxScrollExtent - 300) {
-      ref.read(postFeedProvider.notifier).loadMore();
+      unawaited(ref.read(postFeedProvider.notifier).loadMore());
     }
   }
 
@@ -54,7 +56,7 @@ class _CommunityScreenState extends ConsumerState<CommunityScreen> {
         ],
       ),
       body: RefreshIndicator(
-        onRefresh: () => ref.read(postFeedProvider.notifier).loadInitial(),
+        onRefresh: () async => await ref.read(postFeedProvider.notifier).loadInitial(),
         child: feedState.isLoading && feedState.posts.isEmpty
             ? const Center(child: CircularProgressIndicator())
             : feedState.posts.isEmpty
