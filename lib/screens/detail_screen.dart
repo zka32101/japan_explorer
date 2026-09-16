@@ -117,6 +117,10 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                                     imageUrl: url,
                                     fit: BoxFit.cover,
                                     width: double.infinity,
+                                    fadeInDuration: const Duration(milliseconds: 300),
+                                    fadeOutDuration: const Duration(milliseconds: 200),
+                                    memCacheHeight: 400,
+                                    memCacheWidth: 600,
                                   ),
                                 )
                                 .toList()

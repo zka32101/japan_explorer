@@ -120,6 +120,10 @@ class _HeroImage extends StatelessWidget {
               ? CachedNetworkImage(
                   imageUrl: imageUrl!,
                   fit: BoxFit.cover,
+                  fadeInDuration: const Duration(milliseconds: 300),
+                  fadeOutDuration: const Duration(milliseconds: 200),
+                  memCacheHeight: 300,
+                  memCacheWidth: 800,
                   placeholder: (_, _) => Container(
                     color: AppColors.divider,
                     child: const Center(child: CircularProgressIndicator()),
