@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 /// Lightweight wrapper around [CachedNetworkImage] with built-in
-/// loading shimmer and error placeholder.
+/// loading shimmer and error placeholder. Optimized for memory efficiency.
 class CachedImage extends StatelessWidget {
   const CachedImage({
     super.key,
@@ -26,6 +26,10 @@ class CachedImage extends StatelessWidget {
       fit: fit,
       width: width,
       height: height,
+      fadeInDuration: const Duration(milliseconds: 300),
+      fadeOutDuration: const Duration(milliseconds: 200),
+      memCacheHeight: height?.toInt(),
+      memCacheWidth: width?.toInt(),
       placeholder: (_, _) => Container(
         color: Theme.of(context).colorScheme.surfaceVariant,
         child: const Center(

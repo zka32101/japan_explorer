@@ -44,6 +44,10 @@ class PostCard extends StatelessWidget {
                   height: 200,
                   width: double.infinity,
                   fit: BoxFit.cover,
+                  fadeInDuration: const Duration(milliseconds: 300),
+                  fadeOutDuration: const Duration(milliseconds: 200),
+                  memCacheHeight: 200,
+                  memCacheWidth: 800,
                   placeholder: (_, _) => Container(
                     height: 200,
                     color: AppColors.divider,

@@ -112,6 +112,10 @@ class _AudioGuideScreenState extends ConsumerState<AudioGuideScreen> {
             child: CachedNetworkImage(
               imageUrl: curation.imageUrls.first,
               fit: BoxFit.cover,
+              fadeInDuration: const Duration(milliseconds: 300),
+              fadeOutDuration: const Duration(milliseconds: 200),
+              memCacheHeight: 800,
+              memCacheWidth: 600,
             ),
           ),
         // Dark gradient overlay

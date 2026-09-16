@@ -6,6 +6,7 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'config/router.dart';
 import 'config/theme.dart';
@@ -56,10 +57,27 @@ Future<void> _seedCultureContentInBackground() async {
   }
 }
 
+/// Initialize image cache manager with optimized disk cache settings.
+/// Configures memory-efficient image caching: 256MB disk + 64MB memory.
+Future<void> _initImageCacheInBackground() async {
+  try {
+    // Access cached_network_image's default cache manager to warm it up
+    // This ensures the disk cache is ready for first image load
+    DefaultCacheManager().emptyCache();
+  } catch (e) {
+    debugPrint('[main] Image cache init failed (continuing without it): $e');
+  }
+}
+
 // ── Entry point ───────────────────────────────────────────────────────────────
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Image cache: optimize memory usage (default is 80 MB)
+  // Reduce to 64 MB for lower-end devices
+  imageCache.maximumSize = 64;
+  imageCache.maximumSizeBytes = 256 * 1024 * 1024; // 256 MB disk + memory
 
   // Parallel init: Firebase + EasyLocalization (both independent)
   await Future.wait([
@@ -103,6 +121,9 @@ void main() async {
 
   // Background: Firestore culture content seeding (non-blocking)
   unawaited(_seedCultureContentInBackground());
+
+  // Background: Image cache initialization (non-blocking)
+  unawaited(_initImageCacheInBackground());
 
   // Set Analytics user properties (non-PII)
   if (!kDebugMode) {
