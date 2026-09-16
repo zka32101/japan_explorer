@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import '../models/culture_content.dart';
 import '../providers/daily_culture_provider.dart';
 import '../providers/language_provider.dart';
-import '../utils/constants.dart';
 
 class DailyCultureCard extends ConsumerWidget {
   const DailyCultureCard({super.key});
