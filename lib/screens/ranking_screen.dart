@@ -20,7 +20,7 @@ class RankingScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          _buildFilterTabs(context, ref, filter),
+          _RankingFilterTabs(current: filter),
           if (filter == RankingFilter.category) _buildCategoryPicker(ref),
           Expanded(
             child: rankingsAsync.when(
@@ -34,56 +34,6 @@ class RankingScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildFilterTabs(BuildContext context, WidgetRef ref, RankingFilter current) {
-    final filters = [
-      (RankingFilter.overall, 'Overall', Icons.leaderboard),
-      (RankingFilter.weekly, 'Trending', Icons.trending_up),
-      (RankingFilter.category, 'Category', Icons.category),
-    ];
-
-    return Container(
-      color: AppColors.surface,
-      child: Row(
-        children: filters.map((f) {
-          final isSelected = f.$1 == current;
-          return Expanded(
-            child: GestureDetector(
-              onTap: () => ref.read(rankingFilterProvider.notifier).state = f.$1,
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: isSelected ? AppColors.primary : Colors.transparent,
-                      width: 2,
-                    ),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      f.$3,
-                      size: 16,
-                      color: isSelected ? AppColors.primary : AppColors.textSecondary,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      f.$2,
-                      style: TextStyle(
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                        color: isSelected ? AppColors.primary : AppColors.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
 
   Widget _buildCategoryPicker(WidgetRef ref) {
     final selected = ref.watch(rankingCategoryProvider);
@@ -212,6 +162,64 @@ class _RankingTile extends StatelessWidget {
         ),
         trailing: const Icon(Icons.chevron_right),
         onTap: onTap,
+      ),
+    );
+  }
+}
+
+class _RankingFilterTabs extends ConsumerWidget {
+  final RankingFilter current;
+
+  const _RankingFilterTabs({required this.current});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final filters = [
+      (RankingFilter.overall, 'Overall', Icons.leaderboard),
+      (RankingFilter.weekly, 'Trending', Icons.trending_up),
+      (RankingFilter.category, 'Category', Icons.category),
+    ];
+
+    return Container(
+      color: AppColors.surface,
+      child: Row(
+        children: filters.map((f) {
+          final isSelected = f.$1 == current;
+          return Expanded(
+            child: GestureDetector(
+              onTap: () => ref.read(rankingFilterProvider.notifier).state = f.$1,
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: isSelected ? AppColors.primary : Colors.transparent,
+                      width: 2,
+                    ),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      f.$3,
+                      size: 16,
+                      color: isSelected ? AppColors.primary : AppColors.textSecondary,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      f.$2,
+                      style: TextStyle(
+                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        color: isSelected ? AppColors.primary : AppColors.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
