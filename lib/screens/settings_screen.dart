@@ -66,7 +66,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             value: settings.notifStreak,
             onChanged: (_) =>
                 ref.read(settingsProvider.notifier).toggleNotifStreak(),
-            activeColor: AppColors.primary,
+            activeThumbColor: AppColors.primary,
           ),
           const Divider(height: 1, indent: 72),
           SwitchListTile(
@@ -76,7 +76,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             value: settings.notifChallenge,
             onChanged: (_) =>
                 ref.read(settingsProvider.notifier).toggleNotifChallenge(),
-            activeColor: AppColors.primary,
+            activeThumbColor: AppColors.primary,
           ),
           const Divider(height: 1, indent: 72),
           SwitchListTile(
@@ -86,7 +86,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             value: settings.notifMeetup,
             onChanged: (_) =>
                 ref.read(settingsProvider.notifier).toggleNotifMeetup(),
-            activeColor: AppColors.primary,
+            activeThumbColor: AppColors.primary,
           ),
           const Divider(height: 1),
 
@@ -523,7 +523,7 @@ class _ThemeTile extends ConsumerWidget {
                 groupValue: currentMode,
                 secondary: Icon(_icon(mode)),
                 title: Text(_label(mode)),
-                activeColor: AppColors.primary,
+                fillColor: WidgetStateProperty.all(AppColors.primary),
                 onChanged: (m) {
                   if (m != null) {
                     ref.read(settingsProvider.notifier).setThemeMode(m);

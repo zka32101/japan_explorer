@@ -221,7 +221,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                       if (isLocked)
                         Positioned.fill(
                           child: Container(
-                            color: Colors.black.withOpacity(0.45),
+                            color: Colors.black.withValues(alpha: 0.45),
                             child: const Center(
                               child: Icon(Icons.lock_outline,
                                   color: Colors.white, size: 36),
@@ -304,7 +304,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 6, vertical: 2),
                                   decoration: BoxDecoration(
-                                    color: AppColors.primary.withOpacity(0.2),
+                                    color: AppColors.primary.withValues(alpha: 0.2),
                                     borderRadius: BorderRadius.circular(3),
                                   ),
                                   child: Text(tag,

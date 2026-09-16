@@ -447,7 +447,7 @@ class _ActiveToggle extends ConsumerWidget {
             style:
                 const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
         value: host.isActive,
-        activeColor: AppColors.primary,
+        activeThumbColor: AppColors.primary,
         onChanged: (v) async {
           await ref
               .read(hostServiceProvider)

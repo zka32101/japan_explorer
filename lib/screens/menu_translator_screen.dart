@@ -272,7 +272,7 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
       children: [
         // Dietary summary
         Card(
-          color: AppColors.primary.withOpacity(0.1),
+          color: AppColors.primary.withValues(alpha: 0.1),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -355,7 +355,7 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.primary.withOpacity(0.2),
+        color: AppColors.primary.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Text('$emoji $label', style: const TextStyle(fontSize: 12)),
@@ -405,9 +405,9 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: color.withOpacity(0.3)),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Text(
         item.recommendation,
