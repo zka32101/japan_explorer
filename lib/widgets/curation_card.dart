@@ -176,7 +176,7 @@ class _PlaceholderImage extends StatelessWidget {
     return Container(
       color: AppColors.divider,
       child: const Center(
-        child: const Icon(Icons.image_outlined, size: 48, color: AppColors.textSecondary),
+        child: Icon(Icons.image_outlined, size: 48, color: AppColors.textSecondary),
       ),
     );
   }
