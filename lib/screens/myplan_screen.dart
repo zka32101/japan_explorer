@@ -88,7 +88,7 @@ class MyPlanScreen extends ConsumerWidget {
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
       itemCount: plans.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 12),
+      separatorBuilder: (_, _) => const SizedBox(height: 12),
       itemBuilder: (_, i) => _PlanCard(
         plan: plans[i],
         onTap: () => Navigator.push(

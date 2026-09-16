@@ -88,7 +88,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         'assets/icons/google.png',
         width: 20,
         height: 20,
-        errorBuilder: (_, __, ___) =>
+        errorBuilder: (_, _, _) =>
             const Icon(Icons.g_mobiledata, size: 24),
       ),
       label: Text(tr('auth.sign_in_google')),

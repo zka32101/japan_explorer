@@ -212,7 +212,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                         height: 160,
                         width: double.infinity,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => Container(
+                        errorBuilder: (_, _, _) => Container(
                           height: 160,
                           color: AppColors.surface,
                           child: const Center(child: Icon(Icons.image_not_supported)),

@@ -68,7 +68,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 return ListView.separated(
                   padding: const EdgeInsets.all(16),
                   itemCount: curations.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 12),
+                  separatorBuilder: (_, _) => const SizedBox(height: 12),
                   itemBuilder: (context, index) {
                     final curation = curations[index];
                     return CurationCard(

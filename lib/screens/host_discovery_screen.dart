@@ -70,7 +70,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
           if (user != null)
             isHostAsync?.when(
                   loading: () => const SizedBox.shrink(),
-                  error: (_, __) => const SizedBox.shrink(),
+                  error: (_, _) => const SizedBox.shrink(),
                   data: (isHost) => TextButton.icon(
                     onPressed: () => Navigator.push(
                       context,

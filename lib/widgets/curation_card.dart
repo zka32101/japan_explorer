@@ -120,11 +120,11 @@ class _HeroImage extends StatelessWidget {
               ? CachedNetworkImage(
                   imageUrl: imageUrl!,
                   fit: BoxFit.cover,
-                  placeholder: (_, __) => Container(
+                  placeholder: (_, _) => Container(
                     color: AppColors.divider,
                     child: const Center(child: CircularProgressIndicator()),
                   ),
-                  errorWidget: (_, __, ___) => _PlaceholderImage(),
+                  errorWidget: (_, _, _) => _PlaceholderImage(),
                 )
               : _PlaceholderImage(),
         ),

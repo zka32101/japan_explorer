@@ -57,7 +57,7 @@ class CultureDetailScreen extends ConsumerWidget {
                           ? Image.network(
                               content.imageUrl,
                               fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) => Container(
+                              errorBuilder: (_, _, _) => Container(
                                 color: AppColors.surface,
                                 child: const Center(
                                     child: const Icon(Icons.image_not_supported)),
@@ -520,7 +520,7 @@ class _RelatedContentSection extends ConsumerWidget {
 
     return relatedAsync.when(
       loading: () => const SizedBox.shrink(),
-      error: (_, __) => const SizedBox.shrink(),
+      error: (_, _) => const SizedBox.shrink(),
       data: (items) {
         if (items.isEmpty) return const SizedBox.shrink();
         return Column(
@@ -564,7 +564,7 @@ class _RelatedCard extends StatelessWidget {
                       width: 64,
                       height: 64,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => Container(
+                      errorBuilder: (_, _, _) => Container(
                         width: 64,
                         height: 64,
                         color: AppColors.primary.withOpacity(0.15),

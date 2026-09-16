@@ -57,7 +57,7 @@ class InviteFriendsScreen extends ConsumerWidget {
                   const SizedBox(height: 8),
                   codeAsync.when(
                     loading: () => const CircularProgressIndicator(),
-                    error: (_, __) => Text(tr('common.error')),
+                    error: (_, _) => Text(tr('common.error')),
                     data: (code) => Text(
                       code ?? '—',
                       style: const TextStyle(
@@ -107,7 +107,7 @@ class InviteFriendsScreen extends ConsumerWidget {
 
             countAsync.when(
               loading: () => const SizedBox.shrink(),
-              error: (_, __) => const SizedBox.shrink(),
+              error: (_, _) => const SizedBox.shrink(),
               data: (count) => count > 0
                   ? Text(
                       tr('referral.invited_count', args: ['$count']),

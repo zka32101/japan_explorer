@@ -300,7 +300,7 @@ class _Step0Language extends ConsumerWidget {
           Expanded(
             child: ListView.separated(
               itemCount: _languages.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 10),
+              separatorBuilder: (_, _) => const SizedBox(height: 10),
               itemBuilder: (context, i) {
                 final (code, flag, native, english) = _languages[i];
                 final isSelected = selected == code;
