@@ -90,23 +90,28 @@ class HostDiscoveryScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          _buildFilters(context, ref, filter),
+          RepaintBoundary(
+            child: _buildFilters(context, ref, filter),
+          ),
           Expanded(
             child: hostsAsync.when(
-              loading: () =>
-                  const Center(child: CircularProgressIndicator()),
-              error: (e, _) => Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(tr('hosts.load_failed')),
-                  TextButton(
-                    onPressed: () =>
-                        ref.invalidate(hostsProvider(filter)),
-                    child: Text(tr('common.retry')),
-                  ),
-                ],
-              )),
+              loading: () => RepaintBoundary(
+                child: const Center(child: CircularProgressIndicator()),
+              ),
+              error: (e, _) => RepaintBoundary(
+                child: Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(tr('hosts.load_failed')),
+                    TextButton(
+                      onPressed: () =>
+                          ref.invalidate(hostsProvider(filter)),
+                      child: Text(tr('common.retry')),
+                    ),
+                  ],
+                )),
+              ),
               data: (hosts) => hosts.isEmpty
                   ? _buildEmpty(context)
                   : _buildHostGrid(context, hosts),
@@ -218,20 +223,22 @@ class HostDiscoveryScreen extends ConsumerWidget {
   }
 
   Widget _buildEmpty(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text('🤝', style: TextStyle(fontSize: 56)),
-          const SizedBox(height: 16),
-          Text(tr('hosts.no_hosts_found'),
-              style:
-                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 8),
-          Text(tr('hosts.no_hosts_hint'),
-              style: const TextStyle(color: AppColors.textSecondary),
-              textAlign: TextAlign.center),
-        ],
+    return RepaintBoundary(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('🤝', style: TextStyle(fontSize: 56)),
+            const SizedBox(height: 16),
+            Text(tr('hosts.no_hosts_found'),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            Text(tr('hosts.no_hosts_hint'),
+                style: const TextStyle(color: AppColors.textSecondary),
+                textAlign: TextAlign.center),
+          ],
+        ),
       ),
     );
   }
@@ -246,12 +253,14 @@ class HostDiscoveryScreen extends ConsumerWidget {
         mainAxisSpacing: 12,
       ),
       itemCount: hosts.length,
-      itemBuilder: (_, i) => _HostCard(
-        host: hosts[i],
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (_) => HostProfileScreen(hostUid: hosts[i].uid)),
+      itemBuilder: (_, i) => RepaintBoundary(
+        child: _HostCard(
+          host: hosts[i],
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => HostProfileScreen(hostUid: hosts[i].uid)),
+          ),
         ),
       ),
     );

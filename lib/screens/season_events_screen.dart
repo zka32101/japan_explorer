@@ -70,38 +70,42 @@ class _SeasonEventsScreenState extends ConsumerState<SeasonEventsScreen>
           // ── Happening Now ────────────────────────────────────────────────
           if (activeEvents.isNotEmpty && _selectedSeason == null) ...[
             SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 8,
-                      height: 8,
-                      decoration: const BoxDecoration(
-                        color: Colors.red,
-                        shape: BoxShape.circle,
+              child: RepaintBoundary(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 8,
+                        height: 8,
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          shape: BoxShape.circle,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      tr('seasons.happening_now'),
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      Text(
+                        tr('seasons.happening_now'),
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
             SliverToBoxAdapter(
-              child: SizedBox(
-                height: 160,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  itemCount: activeEvents.length,
-                  itemBuilder: (ctx, i) =>
-                      _ActiveEventChip(event: activeEvents[i]),
+              child: RepaintBoundary(
+                child: SizedBox(
+                  height: 160,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    itemCount: activeEvents.length,
+                    itemBuilder: (ctx, i) =>
+                        _ActiveEventChip(event: activeEvents[i]),
+                  ),
                 ),
               ),
             ),
@@ -112,15 +116,17 @@ class _SeasonEventsScreenState extends ConsumerState<SeasonEventsScreen>
 
           // ── Section heading ──────────────────────────────────────────────
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
-              child: Text(
-                _selectedSeason == null
-                    ? tr('seasons.all_events')
-                    : _selectedSeason!.label,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+            child: RepaintBoundary(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                child: Text(
+                  _selectedSeason == null
+                      ? tr('seasons.all_events')
+                      : _selectedSeason!.label,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
               ),
             ),
           ),
@@ -128,7 +134,9 @@ class _SeasonEventsScreenState extends ConsumerState<SeasonEventsScreen>
           // ── Event cards ──────────────────────────────────────────────────
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (ctx, i) => _EventCard(event: filteredEvents[i]),
+              (ctx, i) => RepaintBoundary(
+                child: _EventCard(event: filteredEvents[i]),
+              ),
               childCount: filteredEvents.length,
             ),
           ),
