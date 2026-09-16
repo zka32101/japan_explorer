@@ -94,8 +94,8 @@ class Plan {
         'title': title,
         'description': description,
         'spots': spots.map((s) => s.toMap()).toList(),
-        'start_date': startDate == null ? null : Timestamp.fromDate(startDate),
-        'end_date': endDate == null ? null : Timestamp.fromDate(endDate),
+        'start_date': startDate == null ? null : Timestamp.fromDate(startDate!),
+        'end_date': endDate == null ? null : Timestamp.fromDate(endDate!),
         'is_public': isPublic,
         'created_at': Timestamp.fromDate(createdAt),
         'updated_at': Timestamp.fromDate(updatedAt),
@@ -140,7 +140,7 @@ class PlanSpot {
         'order': order,
         'day_number': dayNumber,
         'note': note,
-        'visit_time': visitTime == null ? null : Timestamp.fromDate(visitTime),
+        'visit_time': visitTime == null ? null : Timestamp.fromDate(visitTime!),
       };
 
   PlanSpot copyWith({

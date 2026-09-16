@@ -789,7 +789,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
           const Spacer(),
 
           // Allow button
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             height: 52,
             child: ElevatedButton(
@@ -808,13 +808,13 @@ class _Step3NotificationsState extends State<_Step3Notifications>
             ),
           ),
           const SizedBox(height: 12),
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: TextButton(
               onPressed: () => _goNext(context),
               child: Text(
                 tr('onboarding.step3.later'),
-                style: TextStyle(color: AppColors.textSecondary),
+                style: const TextStyle(color: AppColors.textSecondary),
               ),
             ),
           ),
@@ -931,7 +931,7 @@ class _Step4CompleteState extends State<_Step4Complete>
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 48),
-                    const SizedBox(
+                    SizedBox(
                       width: double.infinity,
                       height: 56,
                       child: ElevatedButton(

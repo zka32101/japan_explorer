@@ -78,7 +78,7 @@ class AppUser {
         'badges': badges,
         'streak_days': streakDays,
         'last_active_date':
-            lastActiveDate == null ? null : Timestamp.fromDate(lastActiveDate),
+            lastActiveDate == null ? null : Timestamp.fromDate(lastActiveDate!),
         'streak_recovery_used': streakRecoveryUsed,
         'saved_curation_ids': savedCurationIds,
         'read_culture_ids': readCultureIds,
