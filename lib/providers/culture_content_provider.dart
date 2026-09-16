@@ -31,6 +31,7 @@ class RelatedContentParams {
 final cultureContentProvider = FutureProvider.family<
     List<CultureContent>,
     String>((ref, categoryId) async {
+  ref.keepAlive();
   final snapshot = await db
       .collection('culture_content')
       .where('categoryId', isEqualTo: categoryId)
@@ -47,6 +48,7 @@ final cultureContentProvider = FutureProvider.family<
 
 final allCultureCategoriesProvider = FutureProvider<
     List<CultureCategory>>((ref) async {
+  ref.keepAlive();
   return [
     CultureCategory(
       id: 'culture',
@@ -89,6 +91,7 @@ final allCultureCategoriesProvider = FutureProvider<
 final cultureCategoryProvider = FutureProvider.family<
     CultureCategory?,
     String>((ref, categoryId) async {
+  ref.keepAlive();
   final categories = await ref.watch(allCultureCategoriesProvider.future);
   return categories.firstWhere(
     (cat) => cat.id == categoryId,
@@ -99,6 +102,7 @@ final cultureCategoryProvider = FutureProvider.family<
 final cultureContentSearchProvider = FutureProvider.family<
     List<CultureContent>,
     String>((ref, searchTerm) async {
+  ref.keepAlive();
   final snapshot = await db
       .collection('culture_content')
       .where('tags', arrayContains: searchTerm.toLowerCase())
@@ -116,6 +120,7 @@ final cultureContentSearchProvider = FutureProvider.family<
 final relatedCultureContentProvider = FutureProvider.family<
     List<CultureContent>,
     RelatedContentParams>((ref, params) async {
+  ref.keepAlive();
   final List<CultureContent> results = [];
 
   // Priority 1: explicit seeAlso IDs

@@ -51,13 +51,17 @@ final hostsProvider = FutureProvider.autoDispose
 // ── Single host ───────────────────────────────────────────────────────────────
 
 final hostDetailProvider = FutureProvider.family<HostProfile?, String>(
-  (ref, uid) => ref.read(hostServiceProvider).getHost(uid),
+  (ref, uid) {
+    ref.keepAlive();
+    return ref.read(hostServiceProvider).getHost(uid);
+  },
 );
 
 // ── Is registered host ─────────────────────────────────────────────────────────
 
 final isRegisteredHostProvider =
     FutureProvider.family<bool, String>((ref, uid) async {
+  ref.keepAlive();
   return ref.read(hostServiceProvider).isRegisteredHost(uid);
 });
 

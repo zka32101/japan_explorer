@@ -5,6 +5,7 @@ import '../services/firebase_service.dart';
 import 'auth_provider.dart';
 
 final userPlansProvider = FutureProvider<List<Plan>>((ref) async {
+  ref.keepAlive();
   final user = ref.watch(appUserProvider).valueOrNull;
   if (user == null) return [];
   return ref.read(firebaseServiceProvider).getUserPlans(user.uid);

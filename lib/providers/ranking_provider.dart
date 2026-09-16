@@ -11,6 +11,7 @@ final rankingCategoryProvider = StateProvider<String?>((ref) => null);
 
 final rankingProvider = FutureProvider.family<List<Curation>, RankingFilter>(
   (ref, filter) async {
+    ref.keepAlive();
     final category = ref.watch(rankingCategoryProvider);
 
     Query query = db

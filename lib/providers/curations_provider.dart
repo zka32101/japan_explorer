@@ -13,12 +13,14 @@ final searchQueryProvider = StateProvider<String>((ref) => '');
 
 final curationsProvider =
     FutureProvider.family<List<Curation>, String?>((ref, category) async {
+  ref.keepAlive();
   final service = ref.read(firebaseServiceProvider);
   return service.getCurations(category: category);
 });
 
 final curationDetailProvider =
     FutureProvider.family<Curation?, String>((ref, id) async {
+  ref.keepAlive();
   final service = ref.read(firebaseServiceProvider);
   return service.getCuration(id);
 });
@@ -26,6 +28,7 @@ final curationDetailProvider =
 final searchResultsProvider =
     FutureProvider.family<List<Curation>, String>((ref, query) async {
   if (query.isEmpty) return [];
+  ref.keepAlive();
   final service = ref.read(firebaseServiceProvider);
   return service.searchCurations(query);
 });

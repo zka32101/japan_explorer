@@ -131,6 +131,7 @@ final referralNotifierProvider =
 
 /// Own referral code — creates the lookup doc on first access.
 final myReferralCodeProvider = FutureProvider<String?>((ref) {
+  ref.keepAlive();
   return ref.read(referralNotifierProvider.notifier).ensureCode();
 });
 
