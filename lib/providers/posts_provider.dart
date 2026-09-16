@@ -153,7 +153,7 @@ class PostFeedNotifier extends StateNotifier<PostFeedState> {
         .toList();
     final results = await Future.wait(futures);
     return [
-      for (var i = 0; i < posts.length; i++)
+      for (int i = 0; i < posts.length; i++)
         posts[i].copyWith(likedByMe: results[i].exists),
     ];
   }

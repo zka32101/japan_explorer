@@ -51,7 +51,7 @@ class CameraHistoryScreen extends ConsumerWidget {
                   ],
                 ),
               );
-              if (confirmed) {
+              if (confirmed ?? false) {
                 await scanHistoryRepository.clear();
                 ref.invalidate(_scanHistoryProvider);
               }

@@ -49,7 +49,7 @@ class NearbySpotState {
       other is NearbySpotState && other.curationId == curationId;
 
   @override
-  int get hashCode => Object.hash(curationId);
+  int get hashCode => Object.hash(curationId, '');
 }
 
 /// Streams the nearest known spot within geofence radius.
