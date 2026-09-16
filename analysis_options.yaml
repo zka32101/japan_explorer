@@ -32,8 +32,7 @@ linter:
   rules:
     # Error Rules
     - avoid_empty_else
-    # TODO: Fix avoid_print violations then re-enable
-    # - avoid_print
+    - avoid_print
     - avoid_relative_lib_imports
     - avoid_returning_null_for_future
     - avoid_slow_async_io
