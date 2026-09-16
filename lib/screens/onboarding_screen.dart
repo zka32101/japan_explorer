@@ -7,7 +7,6 @@ import '../config/theme.dart';
 import '../models/curation.dart';
 import '../providers/auth_provider.dart';
 import '../providers/onboarding_provider.dart';
-import '../services/firebase_service.dart';
 
 // ─── Main screen ──────────────────────────────────────────────────────────────
 

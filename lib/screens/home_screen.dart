@@ -17,9 +17,7 @@ import '../widgets/offline_banner.dart';
 import '../config/theme.dart';
 import '../utils/constants.dart';
 import '../providers/streak_provider.dart';
-import '../providers/daily_culture_provider.dart';
 import '../widgets/daily_culture_card.dart';
-import 'vision_cache_history_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});

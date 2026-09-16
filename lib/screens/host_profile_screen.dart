@@ -6,7 +6,6 @@ import '../config/theme.dart';
 import '../models/host_profile.dart';
 import '../providers/auth_provider.dart';
 import '../providers/host_provider.dart';
-import '../services/host_service.dart';
 
 class HostProfileScreen extends ConsumerWidget {
   final String hostUid;

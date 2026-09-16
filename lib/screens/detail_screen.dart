@@ -10,8 +10,6 @@ import '../providers/curations_provider.dart';
 import '../providers/auth_provider.dart';
 import '../providers/plan_provider.dart';
 import '../providers/post_provider.dart';
-import '../services/analytics_service.dart';
-import '../services/firebase_service.dart';
 import '../services/location_service.dart';
 import '../services/review_service.dart';
 import '../services/share_service.dart';
@@ -23,7 +21,6 @@ import '../screens/journal_entry_screen.dart';
 import '../widgets/post_widget.dart';
 import '../providers/premium_provider.dart';
 import '../services/ads_service.dart';
-import '../utils/constants.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
   final String curationId;

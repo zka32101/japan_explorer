@@ -7,7 +7,6 @@ import '../models/cultural_challenge.dart';
 import '../models/cultural_progress.dart';
 import '../providers/auth_provider.dart';
 import '../providers/progress_provider.dart';
-import '../services/firebase_service.dart';
 import '../widgets/badge_widget.dart';
 
 class ProgressScreen extends ConsumerWidget {
