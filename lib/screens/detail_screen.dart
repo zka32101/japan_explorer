@@ -416,7 +416,6 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                 curationId: curation.id,
                 curationTitle: curation.title,
               ),
-              ),
             ),
             onPlanTap: curation == null ? null : () => _showAddToPlan(curation.id, curation.title, curation.imageUrls.firstOrNull),
             onNavigateTap: curation == null ? null : () => _navigate(curation.location.latitude, curation.location.longitude, curation.title),
