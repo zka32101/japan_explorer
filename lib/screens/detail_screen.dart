@@ -101,59 +101,61 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                   ),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
-                  background: Stack(
-                    children: [
-                      CarouselSlider(
-                        options: CarouselOptions(
-                          height: 320,
-                          viewportFraction: 1,
-                          onPageChanged: (index, _) =>
-                              setState(() => _currentImageIndex = index),
-                        ),
-                        items: curation.imageUrls.isNotEmpty
-                            ? curation.imageUrls
-                                .map(
-                                  (url) => CachedNetworkImage(
-                                    imageUrl: url,
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                    fadeInDuration: const Duration(milliseconds: 300),
-                                    fadeOutDuration: const Duration(milliseconds: 200),
-                                    memCacheHeight: 400,
-                                    memCacheWidth: 600,
-                                  ),
-                                )
-                                .toList()
-                            : [
-                                Container(
-                                  color: AppColors.divider,
-                                  child: const Icon(Icons.image, size: 80),
-                                )
-                              ],
-                      ),
-                      if (curation.imageUrls.length > 1)
-                        Positioned(
-                          bottom: 16,
-                          left: 0,
-                          right: 0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: curation.imageUrls.asMap().entries.map((e) {
-                              return Container(
-                                width: _currentImageIndex == e.key ? 16 : 8,
-                                height: 8,
-                                margin: const EdgeInsets.symmetric(horizontal: 3),
-                                decoration: BoxDecoration(
-                                  color: _currentImageIndex == e.key
-                                      ? AppColors.primary
-                                      : Colors.white54,
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                              );
-                            }).toList(),
+                  background: RepaintBoundary(
+                    child: Stack(
+                      children: [
+                        CarouselSlider(
+                          options: CarouselOptions(
+                            height: 320,
+                            viewportFraction: 1,
+                            onPageChanged: (index, _) =>
+                                setState(() => _currentImageIndex = index),
                           ),
+                          items: curation.imageUrls.isNotEmpty
+                              ? curation.imageUrls
+                                  .map(
+                                    (url) => CachedNetworkImage(
+                                      imageUrl: url,
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      fadeInDuration: const Duration(milliseconds: 300),
+                                      fadeOutDuration: const Duration(milliseconds: 200),
+                                      memCacheHeight: 400,
+                                      memCacheWidth: 600,
+                                    ),
+                                  )
+                                  .toList()
+                              : [
+                                  Container(
+                                    color: AppColors.divider,
+                                    child: const Icon(Icons.image, size: 80),
+                                  )
+                                ],
                         ),
-                    ],
+                        if (curation.imageUrls.length > 1)
+                          Positioned(
+                            bottom: 16,
+                            left: 0,
+                            right: 0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: curation.imageUrls.asMap().entries.map((e) {
+                                return Container(
+                                  width: _currentImageIndex == e.key ? 16 : 8,
+                                  height: 8,
+                                  margin: const EdgeInsets.symmetric(horizontal: 3),
+                                  decoration: BoxDecoration(
+                                    color: _currentImageIndex == e.key
+                                        ? AppColors.primary
+                                        : Colors.white54,
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -161,15 +163,15 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                 padding: const EdgeInsets.all(20),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
-                    _buildHeader(curation),
+                    RepaintBoundary(child: _buildHeader(curation)),
                     const SizedBox(height: 20),
-                    _buildRatingSection(),
+                    RepaintBoundary(child: _buildRatingSection()),
                     const SizedBox(height: 20),
-                    _buildDescriptionSection(curation.description),
+                    RepaintBoundary(child: _buildDescriptionSection(curation.description)),
                     const SizedBox(height: 20),
-                    _buildPracticalInfo(curation.practicalInfo),
+                    RepaintBoundary(child: _buildPracticalInfo(curation.practicalInfo)),
                     const SizedBox(height: 20),
-                    _buildPostsSection(curation),
+                    RepaintBoundary(child: _buildPostsSection(curation)),
                     const SizedBox(height: 80),
                   ]),
                 ),

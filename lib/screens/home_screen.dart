@@ -66,57 +66,68 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           _buildAppBar(user?.displayName),
           if (user != null)
             SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                child: Row(
-                  children: [
-                    StreakWidget(streakDays: user.streakDays, compact: true),
-                    const Spacer(),
-                    const _NavigationButtons(),
-                  ],
+              child: RepaintBoundary(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                  child: Row(
+                    children: [
+                      StreakWidget(streakDays: user.streakDays, compact: true),
+                      const Spacer(),
+                      const _NavigationButtons(),
+                    ],
+                  ),
                 ),
               ),
             ),
           // ── Season banner ──────────────────────────────────────────
           const SliverToBoxAdapter(
-            child: SeasonBanner(),
+            child: RepaintBoundary(
+              child: SeasonBanner(),
+            ),
           ),
           // ── Daily culture card ─────────────────────────────────────
           const SliverToBoxAdapter(
-            child: DailyCultureCard(),
+            child: RepaintBoundary(
+              child: DailyCultureCard(),
+            ),
           ),
           // ── Daily challenge CTA ────────────────────────────────────
           SliverToBoxAdapter(
-            child: _DailyChallengeCard(onTap: () => context.push(AppRoutes.challenge)),
+            child: RepaintBoundary(
+              child: _DailyChallengeCard(onTap: () => context.push(AppRoutes.challenge)),
+            ),
           ),
           _buildCategoryFilter(),
+          // ── Curations list (repaint boundary) ──────────────────────
           curationsState.when(
-            loading: () => const CurationListSkeleton(count: 3),
-            error: (e, _) => SliverFillRemaining(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.wifi_off, size: 48, color: AppColors.textSecondary),
-                    const SizedBox(height: 16),
-                    Text(
-                      tr('home.error_load_title'),
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      tr('home.error_load_subtitle'),
-                      style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
-                    ),
-                    const SizedBox(height: 20),
-                    FilledButton.icon(
-                      onPressed: () => ref
-                          .read(curationsNotifierProvider.notifier)
-                          .loadInitial(),
-                      icon: const Icon(Icons.refresh),
-                      label: Text(tr('common.retry')),
-                    ),
-                  ],
+            loading: () => const RepaintBoundary(child: CurationListSkeleton(count: 3)),
+            error: (e, _) => RepaintBoundary(
+              child: SliverFillRemaining(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.wifi_off, size: 48, color: AppColors.textSecondary),
+                      const SizedBox(height: 16),
+                      Text(
+                        tr('home.error_load_title'),
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        tr('home.error_load_subtitle'),
+                        style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                      ),
+                      const SizedBox(height: 20),
+                      FilledButton.icon(
+                        onPressed: () => ref
+                            .read(curationsNotifierProvider.notifier)
+                            .loadInitial(),
+                        icon: const Icon(Icons.refresh),
+                        label: Text(tr('common.retry')),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
