@@ -87,15 +87,15 @@ class JournalEntry {
       content: d['content'] ?? '',
       imageUrl: d['image_url'] ?? '',
       mood: JournalMoodX.fromString(d['mood'] ?? 'good'),
-      visitDate: d['visit_date'] != null
-          ? (d['visit_date'] as Timestamp).toDate()
-          : DateTime.now(),
-      createdAt: d['created_at'] != null
-          ? (d['created_at'] as Timestamp).toDate()
-          : DateTime.now(),
-      updatedAt: d['updated_at'] != null
-          ? (d['updated_at'] as Timestamp).toDate()
-          : DateTime.now(),
+      visitDate: d['visit_date'] == null
+          ? DateTime.now()
+          : (d['visit_date'] as Timestamp).toDate(),
+      createdAt: d['created_at'] == null
+          ? DateTime.now()
+          : (d['created_at'] as Timestamp).toDate(),
+      updatedAt: d['updated_at'] == null
+          ? DateTime.now()
+          : (d['updated_at'] as Timestamp).toDate(),
     );
   }
 

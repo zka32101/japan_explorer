@@ -77,12 +77,12 @@ class Plan {
       spots: (data['spots'] as List? ?? [])
           .map((s) => PlanSpot.fromMap(s as Map<String, dynamic>))
           .toList(),
-      startDate: data['start_date'] != null
-          ? (data['start_date'] as Timestamp).toDate()
-          : null,
-      endDate: data['end_date'] != null
-          ? (data['end_date'] as Timestamp).toDate()
-          : null,
+      startDate: data['start_date'] == null
+          ? null
+          : (data['start_date'] as Timestamp).toDate(),
+      endDate: data['end_date'] == null
+          ? null
+          : (data['end_date'] as Timestamp).toDate(),
       isPublic: data['is_public'] ?? false,
       createdAt: (data['created_at'] as Timestamp).toDate(),
       updatedAt: (data['updated_at'] as Timestamp).toDate(),
@@ -94,8 +94,8 @@ class Plan {
         'title': title,
         'description': description,
         'spots': spots.map((s) => s.toMap()).toList(),
-        'start_date': startDate != null ? Timestamp.fromDate(startDate!) : null,
-        'end_date': endDate != null ? Timestamp.fromDate(endDate!) : null,
+        'start_date': startDate == null ? null : Timestamp.fromDate(startDate),
+        'end_date': endDate == null ? null : Timestamp.fromDate(endDate),
         'is_public': isPublic,
         'created_at': Timestamp.fromDate(createdAt),
         'updated_at': Timestamp.fromDate(updatedAt),
@@ -128,9 +128,9 @@ class PlanSpot {
         order: map['order'] ?? 0,
         dayNumber: map['day_number'],
         note: map['note'],
-        visitTime: map['visit_time'] != null
-            ? (map['visit_time'] as Timestamp).toDate()
-            : null,
+        visitTime: map['visit_time'] == null
+            ? null
+            : (map['visit_time'] as Timestamp).toDate(),
       );
 
   Map<String, dynamic> toMap() => {
@@ -140,7 +140,7 @@ class PlanSpot {
         'order': order,
         'day_number': dayNumber,
         'note': note,
-        'visit_time': visitTime != null ? Timestamp.fromDate(visitTime!) : null,
+        'visit_time': visitTime == null ? null : Timestamp.fromDate(visitTime),
       };
 
   PlanSpot copyWith({

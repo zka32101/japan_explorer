@@ -270,7 +270,7 @@ class HostProfileScreen extends ConsumerWidget {
           runSpacing: 6,
           children: langs.map((l) {
             final flag = flags[l] ?? '🌐';
-            final name = nameKeys[l] != null ? tr(nameKeys[l]!) : l.toUpperCase();
+            final name = nameKeys[l] == null ? l.toUpperCase() : tr(nameKeys[l]!);
             final label = '$flag $name';
             return Container(
               padding: const EdgeInsets.symmetric(

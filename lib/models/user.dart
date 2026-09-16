@@ -52,19 +52,19 @@ class AppUser {
       level: data['level'] ?? 1,
       badges: List<String>.from(data['badges'] ?? []),
       streakDays: data['streak_days'] ?? 0,
-      lastActiveDate: data['last_active_date'] != null
-          ? (data['last_active_date'] as Timestamp).toDate()
-          : null,
+      lastActiveDate: data['last_active_date'] == null
+          ? null
+          : (data['last_active_date'] as Timestamp).toDate(),
       streakRecoveryUsed: data['streak_recovery_used'] ?? 0,
       savedCurationIds: List<String>.from(data['saved_curation_ids'] ?? []),
       readCultureIds: List<String>.from(data['read_culture_ids'] ?? []),
       languageCode: data['language_code'] ?? 'en',
-      createdAt: data['created_at'] != null
-          ? (data['created_at'] as Timestamp).toDate()
-          : throw StateError('User document ${doc.id} missing required createdAt'),
-      updatedAt: data['updated_at'] != null
-          ? (data['updated_at'] as Timestamp).toDate()
-          : throw StateError('User document ${doc.id} missing required updatedAt'),
+      createdAt: data['created_at'] == null
+          ? throw StateError('User document ${doc.id} missing required createdAt')
+          : (data['created_at'] as Timestamp).toDate(),
+      updatedAt: data['updated_at'] == null
+          ? throw StateError('User document ${doc.id} missing required updatedAt')
+          : (data['updated_at'] as Timestamp).toDate(),
     );
   }
 
@@ -78,7 +78,7 @@ class AppUser {
         'badges': badges,
         'streak_days': streakDays,
         'last_active_date':
-            lastActiveDate != null ? Timestamp.fromDate(lastActiveDate!) : null,
+            lastActiveDate == null ? null : Timestamp.fromDate(lastActiveDate),
         'streak_recovery_used': streakRecoveryUsed,
         'saved_curation_ids': savedCurationIds,
         'read_culture_ids': readCultureIds,

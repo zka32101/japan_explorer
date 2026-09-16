@@ -77,7 +77,7 @@ class ProfileScreen extends ConsumerWidget {
           radius: 36,
           backgroundColor: AppColors.primary,
           backgroundImage:
-              user.photoUrl != null ? NetworkImage(user.photoUrl!) : null,
+              user.photoUrl == null ? null : NetworkImage(user.photoUrl),
           child: user.photoUrl == null
               ? Text(
                   user.displayName.isNotEmpty

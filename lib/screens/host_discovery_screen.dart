@@ -54,7 +54,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
     final hostsAsync = ref.watch(hostsProvider(filter));
     final user = ref.watch(appUserProvider).valueOrNull;
     final isHostAsync =
-        user != null ? ref.watch(isRegisteredHostProvider(user.uid)) : null;
+        user == null ? null : ref.watch(isRegisteredHostProvider(user.uid));
 
     return Scaffold(
       appBar: AppBar(
