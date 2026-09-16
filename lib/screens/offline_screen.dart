@@ -166,8 +166,8 @@ class _SyncCard extends StatelessWidget {
               child: FilledButton.icon(
                 onPressed: state.isSyncing
                     ? null
-                    : () =>
-                        ref.read(offlineSyncProvider.notifier).startSync(),
+                    : () async =>
+                        await ref.read(offlineSyncProvider.notifier).startSync(),
                 icon: state.isSyncing
                     ? const SizedBox(
                         width: 16,

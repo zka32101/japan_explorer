@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,7 +38,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     _scrollController.addListener(_onScroll);
     // Update streak on every home screen open (debounced inside provider)
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(streakNotifierProvider.notifier).checkAndUpdateStreak();
+      unawaited(ref.read(streakNotifierProvider.notifier).checkAndUpdateStreak());
     });
   }
 
@@ -49,7 +51,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void _onScroll() {
     if (_scrollController.position.pixels >=
         _scrollController.position.maxScrollExtent - 200) {
-      ref.read(curationsNotifierProvider.notifier).loadMore();
+      unawaited(ref.read(curationsNotifierProvider.notifier).loadMore());
     }
   }
 

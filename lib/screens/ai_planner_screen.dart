@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -59,14 +61,14 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
       return;
     }
     await UsageLimitService.recordAiPlannerUse();
-    ref.read(plannerNotifierProvider.notifier).generate(
+    unawaited(ref.read(plannerNotifierProvider.notifier).generate(
           TripPreferences(
             city: _cityName,
             days: _days,
             interests: _selectedInterests.toList(),
             budget: _budget,
           ),
-        );
+        ));
   }
 
   @override

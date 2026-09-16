@@ -57,7 +57,7 @@ class _CreatePostScreenState extends ConsumerState<CreatePostScreen> {
         caption: _captionCtrl.text.trim(),
       );
       // Prepend to feed without full reload
-      ref.read(postFeedProvider.notifier).loadInitial();
+      await ref.read(postFeedProvider.notifier).loadInitial();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(tr('community.post_shared'))));
