@@ -31,7 +31,7 @@ class RatingWidget extends StatelessWidget {
           final filled = star <= value;
           final half = !filled && star - 0.5 <= value;
           return GestureDetector(
-            onTap: onChanged != null ? () => onChanged!(star) : null,
+            onTap: onChanged == null ? null : () => onChanged!(star),
             child: Icon(
               half ? Icons.star_half : filled ? Icons.star : Icons.star_outline,
               color: color,

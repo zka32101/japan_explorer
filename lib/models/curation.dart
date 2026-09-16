@@ -66,12 +66,12 @@ class Curation {
       practicalInfo: Map<String, dynamic>.from(data['practical_info'] ?? {}),
       tags: List<String>.from(data['tags'] ?? []),
       isActive: data['is_active'] ?? true,
-      createdAt: data['created_at'] != null
-          ? (data['created_at'] as Timestamp).toDate()
-          : DateTime.now(),
-      updatedAt: data['updated_at'] != null
-          ? (data['updated_at'] as Timestamp).toDate()
-          : DateTime.now(),
+      createdAt: data['created_at'] == null
+          ? DateTime.now()
+          : (data['created_at'] as Timestamp).toDate(),
+      updatedAt: data['updated_at'] == null
+          ? DateTime.now()
+          : (data['updated_at'] as Timestamp).toDate(),
     );
   }
 

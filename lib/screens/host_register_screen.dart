@@ -71,7 +71,7 @@ class _HostRegisterScreenState extends ConsumerState<HostRegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            widget.existingUid != null ? 'Edit Host Profile' : 'Become a Local Host'),
+            widget.existingUid == null ? 'Become a Local Host' : 'Edit Host Profile'),
       ),
       body: Column(
         children: [

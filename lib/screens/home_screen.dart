@@ -224,7 +224,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              name != null ? tr('home.greeting', args: [name]) : tr('app_name'),
+              name == null ? tr('app_name') : tr('home.greeting', args: [name]),
               style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
             ),
             Text(

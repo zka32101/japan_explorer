@@ -48,9 +48,9 @@ class HostProfile {
       reviewCount: d['review_count'] as int? ?? 0,
       meetupsCompleted: d['meetups_completed'] as int? ?? 0,
       isActive: d['is_active'] as bool? ?? true,
-      createdAt: d['created_at'] != null
-          ? (d['created_at'] as Timestamp).toDate()
-          : DateTime.now(),
+      createdAt: d['created_at'] == null
+          ? DateTime.now()
+          : (d['created_at'] as Timestamp).toDate(),
     );
   }
 
@@ -167,9 +167,9 @@ class HostRequest {
         (s) => s.name == (d['status'] as String? ?? 'pending'),
         orElse: () => RequestStatus.pending,
       ),
-      createdAt: d['created_at'] != null
-          ? (d['created_at'] as Timestamp).toDate()
-          : DateTime.now(),
+      createdAt: d['created_at'] == null
+          ? DateTime.now()
+          : (d['created_at'] as Timestamp).toDate(),
     );
   }
 
