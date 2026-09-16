@@ -76,29 +76,31 @@ class _PhrasesScreenState extends State<PhrasesScreen>
       body: Column(
         children: [
           // ── Search bar ────────────────────────────────────────────
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Search phrases...',
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: _searchQuery.isNotEmpty
-                    ? IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          _searchController.clear();
-                          setState(() => _searchQuery = '');
-                        },
-                      )
-                    : null,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
+          RepaintBoundary(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search phrases...',
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: _searchQuery.isNotEmpty
+                      ? IconButton(
+                          icon: const Icon(Icons.clear),
+                          onPressed: () {
+                            _searchController.clear();
+                            setState(() => _searchQuery = '');
+                          },
+                        )
+                      : null,
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
+                onChanged: (v) => setState(() => _searchQuery = v.trim()),
               ),
-              onChanged: (v) => setState(() => _searchQuery = v.trim()),
             ),
           ),
           // ── Content ────────────────────────────────────────────────
@@ -124,15 +126,17 @@ class _PhrasesScreenState extends State<PhrasesScreen>
   Widget _buildSearchResults() {
     final results = TravelPhrases.search(_searchQuery);
     if (results.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.search_off, size: 48, color: Colors.grey),
-            const SizedBox(height: 12),
-            Text('No phrases found for "$_searchQuery"',
-                style: const TextStyle(color: Colors.grey)),
-          ],
+      return RepaintBoundary(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.search_off, size: 48, color: Colors.grey),
+              const SizedBox(height: 12),
+              Text('No phrases found for "$_searchQuery"',
+                  style: const TextStyle(color: Colors.grey)),
+            ],
+          ),
         ),
       );
     }
@@ -161,10 +165,12 @@ class _PhraseList extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(12, 0, 12, 24),
       itemCount: phrases.length,
       separatorBuilder: (_, _) => const SizedBox(height: 8),
-      itemBuilder: (_, i) => _PhraseCard(
-        phrase: phrases[i],
-        isSpeaking: speakingId == phrases[i].id,
-        onSpeak: () => onSpeak(phrases[i]),
+      itemBuilder: (_, i) => RepaintBoundary(
+        child: _PhraseCard(
+          phrase: phrases[i],
+          isSpeaking: speakingId == phrases[i].id,
+          onSpeak: () => onSpeak(phrases[i]),
+        ),
       ),
     );
   }

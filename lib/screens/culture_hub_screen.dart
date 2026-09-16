@@ -45,32 +45,39 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
       body: Column(
         children: [
           // Category tabs
-          categoriesAsync.when(
-            data: (categories) => _buildCategoryTabs(categories),
-            loading: () => const SizedBox(
-              height: 48,
-              child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+          RepaintBoundary(
+            child: categoriesAsync.when(
+              data: (categories) => _buildCategoryTabs(categories),
+              loading: () => const SizedBox(
+                height: 48,
+                child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+              ),
+              error: (e, st) => const SizedBox(height: 48),
             ),
-            error: (e, st) => const SizedBox(height: 48),
           ),
 
           // Premium banner for free users
-          if (!isPremium) _buildPremiumBanner(context),
+          if (!isPremium)
+            RepaintBoundary(
+              child: _buildPremiumBanner(context),
+            ),
 
           // Search bar
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-            child: TextField(
-              onChanged: (val) => setState(() => _searchTerm = val),
-              decoration: InputDecoration(
-                hintText: tr('culture_hub.search_hint'),
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
+          RepaintBoundary(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+              child: TextField(
+                onChanged: (val) => setState(() => _searchTerm = val),
+                decoration: InputDecoration(
+                  hintText: tr('culture_hub.search_hint'),
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
                 ),
               ),
             ),
@@ -91,15 +98,17 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                         .toList();
 
                 if (filtered.isEmpty) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.search_off, size: 48, color: AppColors.textSecondary),
-                        const SizedBox(height: 16),
-                        Text(tr('culture_hub.no_results'),
-                            style: TextStyle(color: AppColors.textSecondary)),
-                      ],
+                  return RepaintBoundary(
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.search_off, size: 48, color: AppColors.textSecondary),
+                          const SizedBox(height: 16),
+                          Text(tr('culture_hub.no_results'),
+                              style: TextStyle(color: AppColors.textSecondary)),
+                        ],
+                      ),
                     ),
                   );
                 }
@@ -107,13 +116,17 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                 return ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: filtered.length,
-                  itemBuilder: (context, index) =>
-                      _buildContentCard(filtered[index], context, isPremium),
+                  itemBuilder: (context, index) => RepaintBoundary(
+                    child: _buildContentCard(filtered[index], context, isPremium),
+                  ),
                 );
               },
-              loading: () =>
-                  const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-              error: (e, st) => Center(child: Text(tr('culture_hub.error_prefix', args: ['$e']))),
+              loading: () => RepaintBoundary(
+                child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+              ),
+              error: (e, st) => RepaintBoundary(
+                child: Center(child: Text(tr('culture_hub.error_prefix', args: ['$e']))),
+              ),
             ),
           ),
         ],
