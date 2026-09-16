@@ -33,6 +33,7 @@ final isPremiumProvider = Provider<bool>((ref) {
 
 /// One-shot check (e.g. on first load before the stream emits).
 final premiumCheckProvider = FutureProvider<bool>((ref) async {
+  ref.keepAlive();
   try {
     final info = await purchaseService.getCustomerInfo();
     return purchaseService.isPremium(info);
@@ -43,6 +44,7 @@ final premiumCheckProvider = FutureProvider<bool>((ref) async {
 
 /// Available RevenueCat packages (monthly / annual / …).
 final packagesProvider = FutureProvider<List<Package>>((ref) async {
+  ref.keepAlive();
   return purchaseService.getPackages();
 });
 

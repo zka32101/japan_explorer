@@ -7,6 +7,7 @@ final visionCacheServiceProvider = Provider<VisionCacheService>((ref) {
 });
 
 final visionCacheSizeProvider = FutureProvider<double>((ref) async {
+  ref.keepAlive();
   final service = ref.watch(visionCacheServiceProvider);
   return service.getCacheSizeMB();
 });
