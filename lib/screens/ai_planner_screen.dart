@@ -526,7 +526,7 @@ class _DayCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     isExpanded ? Icons.expand_less : Icons.expand_more,
                     color: AppColors.textSecondary,
                   ),
@@ -649,7 +649,7 @@ class _InfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, size: 14, color: AppColors.secondary),
+        const Icon(icon, size: 14, color: AppColors.secondary),
         const SizedBox(width: 6),
         Expanded(
           child: Text(text,
@@ -737,7 +737,7 @@ class _SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, size: 18, color: AppColors.primary),
+        const Icon(icon, size: 18, color: AppColors.primary),
         const SizedBox(width: 8),
         Text(title,
             style: const TextStyle(

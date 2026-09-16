@@ -60,7 +60,7 @@ class CultureDetailScreen extends ConsumerWidget {
                               errorBuilder: (_, __, ___) => Container(
                                 color: AppColors.surface,
                                 child: const Center(
-                                    child: Icon(Icons.image_not_supported)),
+                                    child: const Icon(Icons.image_not_supported)),
                               ),
                             )
                           : Container(color: AppColors.surface),
@@ -339,7 +339,7 @@ class CultureDetailScreen extends ConsumerWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              SizedBox(
+              const SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => showPremiumPaywall(context),
@@ -600,7 +600,7 @@ class _RelatedCard extends StatelessWidget {
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      Icon(Icons.schedule,
+                      const Icon(Icons.schedule,
                           size: 12, color: AppColors.textSecondary),
                       const SizedBox(width: 3),
                       Text(
@@ -614,7 +614,7 @@ class _RelatedCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            Icon(Icons.chevron_right,
+            const Icon(Icons.chevron_right,
                 size: 20, color: AppColors.textSecondary),
           ],
         ),
