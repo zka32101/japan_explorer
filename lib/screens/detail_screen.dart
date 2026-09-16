@@ -280,7 +280,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               onChanged: (v) => setState(() => _recommend = v),
             ),
             const SizedBox(height: 12),
-            SizedBox(
+            const SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _isSubmitting ? null : _submitRating,
@@ -364,7 +364,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 100,
                       child: Text(
                         e.key,
@@ -403,7 +403,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           // Audio guide full-width button
-          SizedBox(
+          const SizedBox(
             width: double.infinity,
             child: OutlinedButton.icon(
               onPressed: curation == null
@@ -563,7 +563,7 @@ class _StatChip extends StatelessWidget {
             style: const TextStyle(fontSize: 11, color: AppColors.textSecondary)),
         Row(
           children: [
-            Icon(Icons.star, size: 14, color: color),
+            const Icon(Icons.star, size: 14, color: color),
             const SizedBox(width: 2),
             Text(
               value.toStringAsFixed(1),
@@ -591,7 +591,7 @@ class _RatingRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 110,
           child: Text(label, style: const TextStyle(fontSize: 14)),
         ),
@@ -599,7 +599,7 @@ class _RatingRow extends StatelessWidget {
           final star = i + 1.0;
           return GestureDetector(
             onTap: () => onChanged(star),
-            child: Icon(
+            child: const Icon(
               star <= value ? Icons.star : Icons.star_outline,
               color: AppColors.accent,
               size: 28,

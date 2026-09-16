@@ -221,7 +221,7 @@ class _BottomNav extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
-      child: SizedBox(
+      child: const SizedBox(
         width: double.infinity,
         height: 52,
         child: ElevatedButton(
@@ -358,7 +358,7 @@ class _Step0Language extends ConsumerWidget {
                         ),
                         const Spacer(),
                         if (isSelected)
-                          Icon(Icons.check_circle,
+                          const Icon(Icons.check_circle,
                               color: AppColors.primary, size: 22),
                       ],
                     ),
@@ -737,7 +737,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
                   color: AppColors.primary.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
-                child: Icon(Icons.notifications_active_outlined,
+                child: const Icon(Icons.notifications_active_outlined,
                     size: 44, color: AppColors.primary),
               ),
             ),
@@ -771,7 +771,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
                       color: AppColors.primary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(f.$2, color: AppColors.primary, size: 20),
+                    child: const Icon(f.$2, color: AppColors.primary, size: 20),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
@@ -789,7 +789,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
           const Spacer(),
 
           // Allow button
-          SizedBox(
+          const SizedBox(
             width: double.infinity,
             height: 52,
             child: ElevatedButton(
@@ -808,7 +808,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
             ),
           ),
           const SizedBox(height: 12),
-          SizedBox(
+          const SizedBox(
             width: double.infinity,
             child: TextButton(
               onPressed: () => _goNext(context),
@@ -931,7 +931,7 @@ class _Step4CompleteState extends State<_Step4Complete>
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 48),
-                    SizedBox(
+                    const SizedBox(
                       width: double.infinity,
                       height: 56,
                       child: ElevatedButton(

@@ -249,7 +249,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     children: [
                       Text(Language.ja.displayName),
                       if (language == Language.ja)
-                        const SizedBox(width: 8, child: Icon(Icons.check, size: 18)),
+                        const SizedBox(width: 8, child: const Icon(Icons.check, size: 18)),
                     ],
                   ),
                 ),
@@ -259,7 +259,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     children: [
                       Text(Language.en.displayName),
                       if (language == Language.en)
-                        const SizedBox(width: 8, child: Icon(Icons.check, size: 18)),
+                        const SizedBox(width: 8, child: const Icon(Icons.check, size: 18)),
                     ],
                   ),
                 ),
@@ -291,7 +291,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget _buildCategoryFilter() {
     final categories = CurationCategory.all;
     return SliverToBoxAdapter(
-      child: SizedBox(
+      child: const SizedBox(
         height: 48,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,

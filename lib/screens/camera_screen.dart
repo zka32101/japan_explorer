@@ -385,7 +385,7 @@ ${explanation.howToExperience}
     return Column(
       children: [
         if (state.capturedImage != null)
-          SizedBox(
+          const SizedBox(
             height: 180,
             width: double.infinity,
             child: Image.file(state.capturedImage!, fit: BoxFit.cover),
@@ -450,7 +450,7 @@ ${explanation.howToExperience}
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(badgeIcon, size: 12, color: badgeColor),
+                  const Icon(badgeIcon, size: 12, color: badgeColor),
                   const SizedBox(width: 4),
                   Text(badgeLabel,
                       style: TextStyle(color: badgeColor, fontSize: 11)),
@@ -508,7 +508,7 @@ ${explanation.howToExperience}
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     _isSpeaking ? Icons.stop : Icons.play_arrow,
                     color: _isSpeaking ? AppColors.primary : Colors.white70,
                     size: 20,
@@ -540,7 +540,7 @@ ${explanation.howToExperience}
                 color: _showFollowUp ? AppColors.secondary : Colors.white24,
               ),
             ),
-            child: Icon(
+            child: const Icon(
               Icons.chat_bubble_outline,
               color: _showFollowUp ? AppColors.secondary : Colors.white70,
               size: 20,
@@ -911,7 +911,7 @@ class _ControlButton extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: Colors.white70, size: 28),
+          const Icon(icon, color: Colors.white70, size: 28),
           const SizedBox(height: 4),
           Text(label,
               style: const TextStyle(color: Colors.white70, fontSize: 12)),
