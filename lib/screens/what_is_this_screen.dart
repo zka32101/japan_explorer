@@ -151,7 +151,7 @@ class _WhatIsThisScreenState extends ConsumerState<WhatIsThisScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.camera_alt, size: 48, color: AppColors.textSecondary),
+          const Icon(Icons.camera_alt, size: 48, color: AppColors.textSecondary),
           const SizedBox(height: 12),
           Text(
             tr('what_is_this.select_image'),
@@ -254,7 +254,7 @@ class _WhatIsThisScreenState extends ConsumerState<WhatIsThisScreen> {
       alignment: Alignment.center,
       child: Column(
         children: [
-          Icon(Icons.info_outline, size: 48, color: AppColors.textSecondary),
+          const Icon(Icons.info_outline, size: 48, color: AppColors.textSecondary),
           const SizedBox(height: 12),
           Text(
             tr('what_is_this.instructions'),
