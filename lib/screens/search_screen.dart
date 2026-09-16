@@ -54,15 +54,20 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         ),
       ),
       body: _query.isEmpty
-          ? _buildEmptyState()
+          ? RepaintBoundary(child: _buildEmptyState())
           : resultsAsync.when(
-              loading: () =>
-                  const Center(child: CircularProgressIndicator()),
-              error: (e, _) => Center(child: Text('Error: $e')),
+              loading: () => RepaintBoundary(
+                child: const Center(child: CircularProgressIndicator()),
+              ),
+              error: (e, _) => RepaintBoundary(
+                child: Center(child: Text('Error: $e')),
+              ),
               data: (curations) {
                 if (curations.isEmpty) {
-                  return Center(
-                    child: Text('No results for "$_query"'),
+                  return RepaintBoundary(
+                    child: Center(
+                      child: Text('No results for "$_query"'),
+                    ),
                   );
                 }
                 return ListView.separated(
@@ -71,9 +76,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   separatorBuilder: (_, _) => const SizedBox(height: 12),
                   itemBuilder: (context, index) {
                     final curation = curations[index];
-                    return CurationCard(
-                      curation: curation,
-                      onTap: () => context.go('/home/detail/${curation.id}'),
+                    return RepaintBoundary(
+                      child: CurationCard(
+                        curation: curation,
+                        onTap: () => context.go('/home/detail/${curation.id}'),
+                      ),
                     );
                   },
                 );
