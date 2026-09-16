@@ -111,7 +111,7 @@ class StreakNotifier extends StateNotifier<AsyncValue<int>> {
     final level = (data['level'] ?? 1) as int;
 
     final toUnlock = <String>[];
-    var xpGain = 0;
+    final xpGain = 0;
 
     void tryUnlock(String id, bool condition, int bonusXp) {
       if (condition && !badges.contains(id)) {

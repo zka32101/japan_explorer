@@ -112,7 +112,7 @@ class CultureReadNotifier extends StateNotifier<Set<String>> {
       final data = doc.data()!;
       final badges = List<String>.from(data['badges'] ?? []);
       final toUnlock = <String>[];
-      var xpGain = 0;
+      final xpGain = 0;
 
       void tryUnlock(String id, bool cond, int bonus) {
         if (cond && !badges.contains(id)) {
