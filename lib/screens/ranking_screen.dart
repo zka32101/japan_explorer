@@ -20,8 +20,13 @@ class RankingScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          _RankingFilterTabs(current: filter),
-          if (filter == RankingFilter.category) _buildCategoryPicker(ref),
+          RepaintBoundary(
+            child: _RankingFilterTabs(current: filter),
+          ),
+          if (filter == RankingFilter.category)
+            RepaintBoundary(
+              child: _buildCategoryPicker(ref),
+            ),
           Expanded(
             child: rankingsAsync.when(
               loading: () => const Center(child: CircularProgressIndicator()),
@@ -72,10 +77,12 @@ class RankingScreen extends ConsumerWidget {
       itemCount: curations.length,
       itemBuilder: (context, index) {
         final curation = curations[index];
-        return _RankingTile(
-          rank: index + 1,
-          curation: curation,
-          onTap: () => context.go('/home/detail/${curation.id}'),
+        return RepaintBoundary(
+          child: _RankingTile(
+            rank: index + 1,
+            curation: curation,
+            onTap: () => context.go('/home/detail/${curation.id}'),
+          ),
         );
       },
     );

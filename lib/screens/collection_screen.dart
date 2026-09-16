@@ -43,50 +43,70 @@ class CollectionScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(16),
         children: [
           // ── Overall progress ──────────────────────────────────────────────
-          _ProgressHeader(
-            readCount: readCount,
-            total: total,
-            progress: progress,
+          RepaintBoundary(
+            child: _ProgressHeader(
+              readCount: readCount,
+              total: total,
+              progress: progress,
+            ),
           ),
           const SizedBox(height: 20),
 
           // ── Category breakdown ─────────────────────────────────────────────
-          Text(
-            'By Category',
-            style: Theme.of(context)
-                .textTheme
-                .titleMedium
-                ?.copyWith(fontWeight: FontWeight.bold),
+          RepaintBoundary(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'By Category',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                ..._categories.map((cat) {
+                  final catRead = notifier.countForCategory(cat.$1);
+                  final catTotal = notifier.totalForCategory(cat.$1);
+                  if (catTotal == 0) return const SizedBox.shrink();
+                  return RepaintBoundary(
+                    child: _CategoryRow(
+                      emoji: cat.$2,
+                      label: cat.$3,
+                      read: catRead,
+                      total: catTotal,
+                    ),
+                  );
+                }),
+              ],
+            ),
           ),
-          const SizedBox(height: 10),
-          ..._categories.map((cat) {
-            final catRead = notifier.countForCategory(cat.$1);
-            final catTotal = notifier.totalForCategory(cat.$1);
-            if (catTotal == 0) return const SizedBox.shrink();
-            return _CategoryRow(
-              emoji: cat.$2,
-              label: cat.$3,
-              read: catRead,
-              total: catTotal,
-            );
-          }),
           const SizedBox(height: 20),
 
           // ── Streak / motivation ────────────────────────────────────────────
-          _MotivationCard(readCount: readCount, total: total),
+          RepaintBoundary(
+            child: _MotivationCard(readCount: readCount, total: total),
+          ),
           const SizedBox(height: 20),
 
           // ── Recently read ──────────────────────────────────────────────────
           if (notifier.recentlyRead.isNotEmpty) ...[
-            Text(
-              'Recently Read',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(fontWeight: FontWeight.bold),
+            RepaintBoundary(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Recently Read',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  ...notifier.recentlyRead.map((c) => RepaintBoundary(child: _RecentReadItem(content: c))),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
-            ...notifier.recentlyRead.map((c) => _RecentReadItem(content: c)),
           ],
         ],
       ),
