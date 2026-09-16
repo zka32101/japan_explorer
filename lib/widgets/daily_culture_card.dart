@@ -35,7 +35,7 @@ class DailyCultureCard extends ConsumerWidget {
                 ),
           boxShadow: [
             BoxShadow(
-              color: (hasRead ? Colors.green : Colors.red).withOpacity(0.3),
+              color: (hasRead ? Colors.green : Colors.red).withValues(alpha: 0.3),
               blurRadius: 8,
               offset: const Offset(0, 3),
             ),
@@ -50,7 +50,7 @@ class DailyCultureCard extends ConsumerWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.15),
+                  color: Colors.white.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
