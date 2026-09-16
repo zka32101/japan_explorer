@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart' show kDebugMode;
+import 'package:flutter/foundation.dart' show kDebugMode, unawaited;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,14 +26,46 @@ Future<void> _backgroundMessageHandler(RemoteMessage message) async {
   // Firebase is already initialized when main() ran; nothing extra needed.
 }
 
+// ── Background initialization routines ─────────────────────────────────────────
+
+/// Init AdMob in background after app start.
+Future<void> _initAdsInBackground() async {
+  try {
+    await adsService.init();
+  } catch (e) {
+    debugPrint('[main] AdMob init failed: $e');
+  }
+}
+
+/// Seed Firestore culture content in background (non-blocking).
+/// Seeding requires Firestore write permission; permission-denied errors are logged
+/// but do not block app startup.
+Future<void> _seedCultureContentInBackground() async {
+  try {
+    final firestore = db;
+    if (kDebugMode) {
+      await CultureContentSeeder.forceReseed(firestore);
+    } else {
+      final alreadySeeded = await CultureContentSeeder.hasSeeded(firestore);
+      if (!alreadySeeded) {
+        await CultureContentSeeder.seedCultureContent(firestore);
+      }
+    }
+  } catch (e, stack) {
+    debugPrint('[main] CultureContentSeeder failed (continuing without it): $e\n$stack');
+  }
+}
+
 // ── Entry point ───────────────────────────────────────────────────────────────
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Firebase
-  await Firebase.initializeApp();
-  await EasyLocalization.ensureInitialized();
+  // Parallel init: Firebase + EasyLocalization (both independent)
+  await Future.wait([
+    Firebase.initializeApp(),
+    EasyLocalization.ensureInitialized(),
+  ]);
 
   // Crashlytics: route all Flutter framework errors
   FlutterError.onError =
@@ -59,10 +91,6 @@ void main() async {
   // RevenueCat: configure anonymously — user ID is set after sign-in
   await purchaseService.configure();
 
-  // AdMob: init once at startup; banner/interstitial creation happens
-  // lazily where they're shown, gated on premium status.
-  await adsService.init();
-
   // Hive: offline cache (must init before runApp)
   await offlineCacheService.init();
 
@@ -70,24 +98,11 @@ void main() async {
   final visionCacheService = VisionCacheService();
   await visionCacheService.initialize();
 
-  // Firestore: seed culture content (force reseed in debug to pick up isPremium changes)
-  // Wrapped in try-catch: seeding requires Firestore write permission (typically
-  // only granted to an authenticated/admin user). A permission-denied error here
-  // must not block runApp() below — the app should still start and show its UI,
-  // just without freshly-seeded content, and retry seeding on a later launch.
-  try {
-    final firestore = db;
-    if (kDebugMode) {
-      await CultureContentSeeder.forceReseed(firestore);
-    } else {
-      final alreadySeeded = await CultureContentSeeder.hasSeeded(firestore);
-      if (!alreadySeeded) {
-        await CultureContentSeeder.seedCultureContent(firestore);
-      }
-    }
-  } catch (e, stack) {
-    debugPrint('[main] CultureContentSeeder failed (continuing without it): $e\n$stack');
-  }
+  // Background: AdMob init (lazy banner/interstitial creation at first display)
+  unawaited(_initAdsInBackground());
+
+  // Background: Firestore culture content seeding (non-blocking)
+  unawaited(_seedCultureContentInBackground());
 
   // Set Analytics user properties (non-PII)
   if (!kDebugMode) {
