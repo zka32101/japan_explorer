@@ -72,52 +72,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   children: [
                     StreakWidget(streakDays: user.streakDays, compact: true),
                     const Spacer(),
-                    TextButton.icon(
-                      onPressed: () => context.push(AppRoutes.seasonEvents),
-                      icon: const Text('🌸', style: TextStyle(fontSize: 14)),
-                      label: Text(tr('home.nav_seasons')),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => context.go('/phrases'),
-                      icon: const Text('🇯🇵', style: TextStyle(fontSize: 14)),
-                      label: Text(tr('home.nav_phrases')),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => context.push('/hosts'),
-                      icon: const Text('🤝', style: TextStyle(fontSize: 14)),
-                      label: Text(tr('home.nav_locals')),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => context.go('/home/ranking'),
-                      icon: const Icon(Icons.leaderboard, size: 16),
-                      label: Text(tr('home.nav_rankings')),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => context.push(AppRoutes.whatIsThis),
-                      icon: const Text('❓', style: TextStyle(fontSize: 14)),
-                      label: Text(tr('home.nav_what')),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => context.push(AppRoutes.menuTranslator),
-                      icon: const Text('🍽️', style: TextStyle(fontSize: 14)),
-                      label: Text(tr('home.nav_menu')),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => context.push(AppRoutes.cultureHub),
-                      icon: const Text('📚', style: TextStyle(fontSize: 14)),
-                      label: Text(tr('home.nav_learn')),
-                    ),
-                    TextButton.icon(
-                      onPressed: () => context.push(AppRoutes.collection),
-                      icon: const Text('🗂️', style: TextStyle(fontSize: 14)),
-                      label: Text(tr('home.nav_collection')),
-                    ),
+                    const _NavigationButtons(),
                   ],
                 ),
               ),
             ),
           // ── Season banner ──────────────────────────────────────────
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SeasonBanner(),
           ),
           // ── Daily culture card ─────────────────────────────────────
@@ -126,45 +87,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           // ── Daily challenge CTA ────────────────────────────────────
           SliverToBoxAdapter(
-            child: GestureDetector(
-              onTap: () => context.push(AppRoutes.challenge),
-              child: Container(
-                margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF6C63FF), Color(0xFF3B82F6)],
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    const Text('🧠', style: TextStyle(fontSize: 22)),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            tr('challenge.title'),
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                          ),
-                          Text(
-                            tr('home.challenge_subtitle'),
-                            style: const TextStyle(color: Colors.white70, fontSize: 12),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
-                  ],
-                ),
-              ),
-            ),
+            child: _DailyChallengeCard(onTap: () => context.push(AppRoutes.challenge)),
           ),
           _buildCategoryFilter(),
           curationsState.when(
@@ -365,6 +288,133 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             );
           },
           childCount: curations.length + 1,
+        ),
+      ),
+    );
+  }
+}
+
+class _NavigationButtons extends StatelessWidget {
+  const _NavigationButtons();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _NavButton(
+          emoji: '🌸',
+          label: 'home.nav_seasons',
+          onPressed: () => context.push(AppRoutes.seasonEvents),
+        ),
+        _NavButton(
+          emoji: '🇯🇵',
+          label: 'home.nav_phrases',
+          onPressed: () => context.go('/phrases'),
+        ),
+        _NavButton(
+          emoji: '🤝',
+          label: 'home.nav_locals',
+          onPressed: () => context.push('/hosts'),
+        ),
+        _NavButton(
+          icon: Icons.leaderboard,
+          label: 'home.nav_rankings',
+          onPressed: () => context.go('/home/ranking'),
+        ),
+        _NavButton(
+          emoji: '❓',
+          label: 'home.nav_what',
+          onPressed: () => context.push(AppRoutes.whatIsThis),
+        ),
+        _NavButton(
+          emoji: '🍽️',
+          label: 'home.nav_menu',
+          onPressed: () => context.push(AppRoutes.menuTranslator),
+        ),
+        _NavButton(
+          emoji: '📚',
+          label: 'home.nav_learn',
+          onPressed: () => context.push(AppRoutes.cultureHub),
+        ),
+        _NavButton(
+          emoji: '🗂️',
+          label: 'home.nav_collection',
+          onPressed: () => context.push(AppRoutes.collection),
+        ),
+      ],
+    );
+  }
+}
+
+class _NavButton extends StatelessWidget {
+  final String? emoji;
+  final IconData? icon;
+  final String label;
+  final VoidCallback onPressed;
+
+  const _NavButton({
+    this.emoji,
+    this.icon,
+    required this.label,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton.icon(
+      onPressed: onPressed,
+      icon: emoji != null
+          ? Text(emoji!, style: const TextStyle(fontSize: 14))
+          : Icon(icon, size: 16),
+      label: Text(tr(label)),
+    );
+  }
+}
+
+class _DailyChallengeCard extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _DailyChallengeCard({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF6C63FF), Color(0xFF3B82F6)],
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            const Text('🧠', style: TextStyle(fontSize: 22)),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    tr('challenge.title'),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    tr('home.challenge_subtitle'),
+                    style: const TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
+          ],
         ),
       ),
     );
