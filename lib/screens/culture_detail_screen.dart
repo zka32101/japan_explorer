@@ -144,7 +144,7 @@ class CultureDetailScreen extends ConsumerWidget {
                       // Meta info
                       Row(
                         children: [
-                          Icon(Icons.schedule,
+                          const Icon(Icons.schedule,
                               size: 16, color: AppColors.textSecondary),
                           const SizedBox(width: 6),
                           Text(
@@ -154,7 +154,7 @@ class CultureDetailScreen extends ConsumerWidget {
                                   color: AppColors.textSecondary,
                                   fontSize: 13)),
                           const SizedBox(width: 16),
-                          Icon(Icons.calendar_today,
+                          const Icon(Icons.calendar_today,
                               size: 16, color: AppColors.textSecondary),
                           const SizedBox(width: 6),
                           Text(_formatDate(content.createdAt),
@@ -233,7 +233,7 @@ class CultureDetailScreen extends ConsumerWidget {
                           ),
                           child: Row(
                             children: [
-                              Icon(Icons.link,
+                              const Icon(Icons.link,
                                   size: 16, color: AppColors.textSecondary),
                               const SizedBox(width: 8),
                               Expanded(
@@ -420,7 +420,7 @@ class _QuickFactsSection extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.bolt, size: 18, color: AppColors.primary),
+              const Icon(Icons.bolt, size: 18, color: AppColors.primary),
               const SizedBox(width: 6),
               Text(
                 tr('culture_detail.quick_facts'),

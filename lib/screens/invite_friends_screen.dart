@@ -23,7 +23,7 @@ class InviteFriendsScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Icon(Icons.card_giftcard, size: 56, color: AppColors.primary),
+            const Icon(Icons.card_giftcard, size: 56, color: AppColors.primary),
             const SizedBox(height: 12),
             Text(
               tr('referral.subtitle'),

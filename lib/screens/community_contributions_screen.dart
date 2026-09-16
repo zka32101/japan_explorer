@@ -84,7 +84,7 @@ class _EmptyState extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.forum_outlined, size: 64, color: AppColors.textSecondary),
+            const Icon(Icons.forum_outlined, size: 64, color: AppColors.textSecondary),
             const SizedBox(height: 16),
             Text(
               tr('community_contributions.no_answers'),

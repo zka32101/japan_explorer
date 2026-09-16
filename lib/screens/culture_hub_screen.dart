@@ -95,7 +95,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.search_off, size: 48, color: AppColors.textSecondary),
+                        const Icon(Icons.search_off, size: 48, color: AppColors.textSecondary),
                         const SizedBox(height: 16),
                         Text(tr('culture_hub.no_results'),
                             style: TextStyle(color: AppColors.textSecondary)),
@@ -291,7 +291,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(Icons.schedule,
+                          const Icon(Icons.schedule,
                               size: 14, color: AppColors.textSecondary),
                           const SizedBox(width: 4),
                           Text(tr('culture_hub.min_read', args: ['${content.readTime}']),

@@ -149,7 +149,7 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.restaurant_menu, size: 48, color: AppColors.textSecondary),
+          const Icon(Icons.restaurant_menu, size: 48, color: AppColors.textSecondary),
           const SizedBox(height: 12),
           Text(
             tr('menu_translator.select_menu'),
@@ -252,7 +252,7 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
       alignment: Alignment.center,
       child: Column(
         children: [
-          Icon(Icons.info_outline, size: 48, color: AppColors.textSecondary),
+          const Icon(Icons.info_outline, size: 48, color: AppColors.textSecondary),
           const SizedBox(height: 12),
           Text(
             tr('menu_translator.instructions'),

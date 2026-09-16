@@ -46,7 +46,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.history, size: 48, color: AppColors.textSecondary),
+          const Icon(Icons.history, size: 48, color: AppColors.textSecondary),
           const SizedBox(height: 16),
           Text(
             tr('vision_cache.empty'),

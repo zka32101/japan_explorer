@@ -91,7 +91,7 @@ class CameraHistoryScreen extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.photo_camera_outlined, size: 64, color: Colors.white24),
+          const Icon(Icons.photo_camera_outlined, size: 64, color: Colors.white24),
           const SizedBox(height: 16),
           Text(
             tr('camera.no_scans_yet'),
