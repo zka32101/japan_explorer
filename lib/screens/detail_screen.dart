@@ -403,72 +403,23 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Audio guide full-width button
-          const SizedBox(
-            width: double.infinity,
-            child: OutlinedButton.icon(
-              onPressed: curation == null
-                  ? null
-                  : () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => AudioGuideScreen(
-                              curationId: curation.id),
-                        ),
-                      ),
-              icon: const Text('🎧', style: TextStyle(fontSize: 16)),
-              label: Text(tr('detail.audio_guide')),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: AppColors.secondary,
-                side: const BorderSide(color: AppColors.secondary),
-              ),
-            ),
+          _AudioGuideButton(
+            curation: curation,
           ),
           const SizedBox(height: 8),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: curation == null
-                      ? null
-                      : () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => WriteJournalScreen(
-                                curationId: curation.id,
-                                curationTitle: curation.title,
-                              ),
-                            ),
-                          ),
-                  icon: const Text('📖', style: TextStyle(fontSize: 14)),
-                  label: Text(tr('journal.write_btn')),
+          _BottomActionButtons(
+            curation: curation,
+            onJournalTap: curation == null ? null : () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => WriteJournalScreen(
+                  curationId: curation.id,
+                  curationTitle: curation.title,
                 ),
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: curation == null
-                      ? null
-                      : () => _showAddToPlan(curation.id, curation.title,
-                          curation.imageUrls.firstOrNull),
-                  icon: const Icon(Icons.add, size: 16),
-                  label: Text(tr('nav.my_plan')),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: ElevatedButton.icon(
-                  onPressed: curation == null
-                      ? null
-                      : () => _navigate(
-                          curation.location.latitude,
-                          curation.location.longitude,
-                          curation.title),
-                  icon: const Icon(Icons.navigation, size: 16),
-                  label: Text(tr('detail.go_button')),
-                ),
-              ),
-            ],
+            ),
+            onPlanTap: curation == null ? null : () => _showAddToPlan(curation.id, curation.title, curation.imageUrls.firstOrNull),
+            onNavigateTap: curation == null ? null : () => _navigate(curation.location.latitude, curation.location.longitude, curation.title),
           ),
         ],
       ),
@@ -541,6 +492,82 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
+  }
+}
+
+class _AudioGuideButton extends StatelessWidget {
+  final dynamic curation;
+
+  const _AudioGuideButton({required this.curation});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        onPressed: curation == null
+            ? null
+            : () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => AudioGuideScreen(
+                      curationId: curation.id,
+                    ),
+                  ),
+                ),
+        icon: const Text('🎧', style: TextStyle(fontSize: 16)),
+        label: Text(tr('detail.audio_guide')),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: AppColors.secondary,
+          side: const BorderSide(color: AppColors.secondary),
+        ),
+      ),
+    );
+  }
+}
+
+class _BottomActionButtons extends StatelessWidget {
+  final dynamic curation;
+  final VoidCallback? onJournalTap;
+  final VoidCallback? onPlanTap;
+  final VoidCallback? onNavigateTap;
+
+  const _BottomActionButtons({
+    required this.curation,
+    this.onJournalTap,
+    this.onPlanTap,
+    this.onNavigateTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: OutlinedButton.icon(
+            onPressed: onJournalTap,
+            icon: const Text('📖', style: TextStyle(fontSize: 14)),
+            label: Text(tr('journal.write_btn')),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: OutlinedButton.icon(
+            onPressed: onPlanTap,
+            icon: const Icon(Icons.add, size: 16),
+            label: Text(tr('nav.my_plan')),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: ElevatedButton.icon(
+            onPressed: onNavigateTap,
+            icon: const Icon(Icons.navigation, size: 16),
+            label: Text(tr('detail.go_button')),
+          ),
+        ),
+      ],
+    );
   }
 }
 
