@@ -21,7 +21,7 @@ class UploadService {
       compressed,
       SettableMetadata(contentType: 'image/jpeg'),
     );
-    return await snapshot.ref.getDownloadURL();
+    return snapshot.ref.getDownloadURL();
   }
 
   /// Upload avatar image, returns download URL.
@@ -32,7 +32,7 @@ class UploadService {
       compressed,
       SettableMetadata(contentType: 'image/jpeg'),
     );
-    return await snapshot.ref.getDownloadURL();
+    return snapshot.ref.getDownloadURL();
   }
 
   Future<Uint8List> _compressImage(File file, {int maxDimension = 1024}) async {

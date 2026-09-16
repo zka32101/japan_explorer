@@ -236,7 +236,7 @@ class FirebaseService {
   Future<XpUpdateResult> updateUserXP(String userId, int xpToAdd) async {
     try {
       final ref = _db.collection(FirestoreCollections.users).doc(userId);
-      return await _db.runTransaction<XpUpdateResult>((txn) async {
+      return _db.runTransaction<XpUpdateResult>((txn) async {
         final snap = await txn.get(ref);
         if (!snap.exists) {
           return XpUpdateResult(
@@ -305,7 +305,7 @@ class FirebaseService {
       String userId, String badgeId) async {
     try {
       final ref = _db.collection(FirestoreCollections.users).doc(userId);
-      return await _db.runTransaction<List<String>>((txn) async {
+      return _db.runTransaction<List<String>>((txn) async {
         final snap = await txn.get(ref);
         if (!snap.exists) return [];
         final existing =
