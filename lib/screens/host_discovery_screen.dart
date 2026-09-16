@@ -6,6 +6,7 @@ import '../config/theme.dart';
 import '../models/host_profile.dart';
 import '../providers/auth_provider.dart';
 import '../providers/host_provider.dart';
+import '../utils/app_navigator.dart';
 import 'host_profile_screen.dart';
 import 'host_register_screen.dart';
 
@@ -72,12 +73,11 @@ class HostDiscoveryScreen extends ConsumerWidget {
                   loading: () => const SizedBox.shrink(),
                   error: (_, _) => const SizedBox.shrink(),
                   data: (isHost) => TextButton.icon(
-                    onPressed: () => Navigator.push(
+                    onPressed: () => AppNavigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (_) => HostRegisterScreen(
-                                existingUid: isHost ? user.uid : null,
-                              )),
+                      HostRegisterScreen(
+                        existingUid: isHost ? user.uid : null,
+                      ),
                     ),
                     icon: Icon(
                         isHost ? Icons.manage_accounts : Icons.add_circle_outline,
@@ -256,10 +256,9 @@ class HostDiscoveryScreen extends ConsumerWidget {
       itemBuilder: (_, i) => RepaintBoundary(
         child: _HostCard(
           host: hosts[i],
-          onTap: () => Navigator.push(
+          onTap: () => AppNavigator.push(
             context,
-            MaterialPageRoute(
-                builder: (_) => HostProfileScreen(hostUid: hosts[i].uid)),
+            HostProfileScreen(hostUid: hosts[i].uid),
           ),
         ),
       ),

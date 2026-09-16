@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import '../config/theme.dart';
 import '../models/journal_entry.dart';
 import '../providers/journal_provider.dart';
+import '../utils/app_navigator.dart';
 import '../widgets/cached_image.dart';
 
 // ── Write / Edit screen ───────────────────────────────────────────────────────
@@ -333,14 +334,12 @@ class JournalEntryScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.edit_outlined),
             tooltip: tr('common.edit'),
-            onPressed: () => Navigator.push(
+            onPressed: () => AppNavigator.push(
               context,
-              MaterialPageRoute(
-                builder: (_) => WriteJournalScreen(
-                  curationId: entry.curationId,
-                  curationTitle: entry.curationTitle,
-                  existingEntryId: entry.id,
-                ),
+              WriteJournalScreen(
+                curationId: entry.curationId,
+                curationTitle: entry.curationTitle,
+                existingEntryId: entry.id,
               ),
             ),
           ),

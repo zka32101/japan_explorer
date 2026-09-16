@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/plan_provider.dart';
+import '../utils/app_navigator.dart';
 
 class MyPlanScreen extends ConsumerWidget {
   const MyPlanScreen({super.key});
@@ -91,11 +92,7 @@ class MyPlanScreen extends ConsumerWidget {
       separatorBuilder: (_, _) => const SizedBox(height: 12),
       itemBuilder: (_, i) => _PlanCard(
         plan: plans[i],
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (_) => PlanDetailScreen(plan: plans[i])),
-        ),
+        onTap: () => AppNavigator.push(context, PlanDetailScreen(plan: plans[i])),
         onDelete: () =>
             _deletePlan(context, ref, plans[i].id, plans[i].title),
       ),

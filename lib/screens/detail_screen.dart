@@ -21,6 +21,7 @@ import '../screens/journal_entry_screen.dart';
 import '../widgets/post_widget.dart';
 import '../providers/premium_provider.dart';
 import '../services/ads_service.dart';
+import '../utils/app_navigator.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
   final String curationId;
@@ -332,13 +333,11 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         posts: posts,
         curationId: widget.curationId,
         curationTitle: curation.title,
-        onAddPost: () => Navigator.push(
+        onAddPost: () => AppNavigator.push(
           context,
-          MaterialPageRoute(
-            builder: (_) => PostScreen(
-              curationId: widget.curationId,
-              curationTitle: curation.title,
-            ),
+          PostScreen(
+            curationId: widget.curationId,
+            curationTitle: curation.title,
           ),
         ),
       ),
@@ -411,13 +410,12 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           const SizedBox(height: 8),
           _BottomActionButtons(
             curation: curation,
-            onJournalTap: curation == null ? null : () => Navigator.push(
+            onJournalTap: curation == null ? null : () => AppNavigator.push(
               context,
-              MaterialPageRoute(
-                builder: (_) => WriteJournalScreen(
-                  curationId: curation.id,
-                  curationTitle: curation.title,
-                ),
+              WriteJournalScreen(
+                curationId: curation.id,
+                curationTitle: curation.title,
+              ),
               ),
             ),
             onPlanTap: curation == null ? null : () => _showAddToPlan(curation.id, curation.title, curation.imageUrls.firstOrNull),
@@ -509,12 +507,10 @@ class _AudioGuideButton extends StatelessWidget {
       child: OutlinedButton.icon(
         onPressed: curation == null
             ? null
-            : () => Navigator.push(
+            : () => AppNavigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (_) => AudioGuideScreen(
-                      curationId: curation.id,
-                    ),
+                  AudioGuideScreen(
+                    curationId: curation.id,
                   ),
                 ),
         icon: const Text('🎧', style: TextStyle(fontSize: 16)),
