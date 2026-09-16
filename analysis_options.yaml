@@ -39,8 +39,7 @@ linter:
     - avoid_slow_async_io
     - cancel_subscriptions
     - close_sinks
-    # TODO: Fix comment_references violations then re-enable
-    # - comment_references
+    - comment_references
     - control_flow_in_finally
     - empty_statements
     - hash_and_equals

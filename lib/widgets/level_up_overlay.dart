@@ -6,7 +6,7 @@ import '../config/theme.dart';
 
 /// Full-screen animated overlay shown when the user levels up.
 /// Wrap your screen body in a [Stack] and show this on top when
-/// [ChallengeState.leveledUp] (or [CameraState.leveledUp]) is true.
+/// the notifier's leveledUp flag is true.
 class LevelUpOverlay extends StatefulWidget {
   final int newLevel;
   final VoidCallback onDismiss;
