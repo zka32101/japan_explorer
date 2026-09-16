@@ -57,6 +57,7 @@ linter:
     - prefer_const_constructors
     - prefer_final_locals
     - unawaited_futures
+    - unnecessary_this
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
