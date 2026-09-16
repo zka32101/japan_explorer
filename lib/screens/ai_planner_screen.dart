@@ -192,13 +192,17 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
             const Text('1', style: TextStyle(color: AppColors.textSecondary)),
             Expanded(
               flex: 6,
-              child: Slider(
-                value: _days.toDouble(),
-                min: 1,
-                max: 10,
-                divisions: 9,
-                activeTrackColor: AppColors.primary,
-                onChanged: (v) => setState(() => _days = v.round()),
+              child: SliderTheme(
+                data: SliderThemeData(
+                  activeTrackColor: AppColors.primary,
+                ),
+                child: Slider(
+                  value: _days.toDouble(),
+                  min: 1,
+                  max: 10,
+                  divisions: 9,
+                  onChanged: (v) => setState(() => _days = v.round()),
+                ),
               ),
             ),
             const Text('10', style: TextStyle(color: AppColors.textSecondary)),

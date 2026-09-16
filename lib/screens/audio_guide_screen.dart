@@ -365,14 +365,18 @@ class _AudioGuideScreenState extends ConsumerState<AudioGuideScreen> {
               const Icon(Icons.slow_motion_video,
                   color: Colors.white54, size: 16),
               Expanded(
-                child: Slider(
-                  value: guideState.speechRate.clamp(0.4, 1.6),
-                  min: 0.4,
-                  max: 1.6,
-                  divisions: 6,
-                  activeTrackColor: Colors.white,
-                  inactiveTrackColor: Colors.white24,
-                  onChanged: (v) => notifier.setSpeechRate(v),
+                child: SliderTheme(
+                  data: SliderThemeData(
+                    activeTrackColor: Colors.white,
+                    inactiveTrackColor: Colors.white24,
+                  ),
+                  child: Slider(
+                    value: guideState.speechRate.clamp(0.4, 1.6),
+                    min: 0.4,
+                    max: 1.6,
+                    divisions: 6,
+                    onChanged: (v) => notifier.setSpeechRate(v),
+                  ),
                 ),
               ),
               const Icon(Icons.fast_forward,
