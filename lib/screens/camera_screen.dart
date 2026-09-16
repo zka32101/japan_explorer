@@ -756,7 +756,7 @@ class _AddToPlanSheet extends ConsumerWidget {
           plansAsync.when(
             loading: () => const Center(
                 child: CircularProgressIndicator(color: AppColors.accent)),
-            error: (_, __) => Text(tr('camera.failed_load_plans'),
+            error: (_, _) => Text(tr('camera.failed_load_plans'),
                 style: const TextStyle(color: Colors.white54)),
             data: (plans) => Column(
               children: [

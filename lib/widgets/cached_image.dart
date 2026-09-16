@@ -26,13 +26,13 @@ class CachedImage extends StatelessWidget {
       fit: fit,
       width: width,
       height: height,
-      placeholder: (_, __) => Container(
+      placeholder: (_, _) => Container(
         color: Theme.of(context).colorScheme.surfaceVariant,
         child: const Center(
           child: CircularProgressIndicator(strokeWidth: 2),
         ),
       ),
-      errorWidget: (_, __, ___) => Container(
+      errorWidget: (_, _, _) => Container(
         color: Theme.of(context).colorScheme.surfaceVariant,
         child: Icon(
           Icons.broken_image_outlined,

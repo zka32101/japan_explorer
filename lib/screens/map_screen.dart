@@ -77,7 +77,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
         itemCount: CurationCategory.all.length + 1,
-        separatorBuilder: (_, __) => const SizedBox(width: 6),
+        separatorBuilder: (_, _) => const SizedBox(width: 6),
         itemBuilder: (_, i) {
           final cat = i == 0 ? null : CurationCategory.all[i - 1];
           final label = cat == null

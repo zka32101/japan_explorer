@@ -324,7 +324,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         ref.watch(curationPostsProvider(widget.curationId));
     return postsAsync.when(
       loading: () => const SizedBox.shrink(),
-      error: (_, __) => const SizedBox.shrink(),
+      error: (_, _) => const SizedBox.shrink(),
       data: (posts) => PostsSection(
         posts: posts,
         curationId: widget.curationId,

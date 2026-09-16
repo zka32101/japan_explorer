@@ -160,7 +160,7 @@ class _PhraseList extends StatelessWidget {
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(12, 0, 12, 24),
       itemCount: phrases.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 8),
+      separatorBuilder: (_, _) => const SizedBox(height: 8),
       itemBuilder: (_, i) => _PhraseCard(
         phrase: phrases[i],
         isSpeaking: speakingId == phrases[i].id,

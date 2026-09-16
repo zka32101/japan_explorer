@@ -91,7 +91,7 @@ class CurationListSkeleton extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
-          (_, __) => const Padding(
+          (_, _) => const Padding(
             padding: EdgeInsets.only(bottom: 16),
             child: CurationCardSkeleton(),
           ),
@@ -184,7 +184,7 @@ class HostGridSkeleton extends StatelessWidget {
         mainAxisSpacing: 12,
       ),
       itemCount: count,
-      itemBuilder: (_, __) => const HostCardSkeleton(),
+      itemBuilder: (_, _) => const HostCardSkeleton(),
     );
   }
 }
@@ -203,8 +203,8 @@ class ListItemSkeleton extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: count,
-      separatorBuilder: (_, __) => const SizedBox(height: 12),
-      itemBuilder: (ctx, __) => Shimmer.fromColors(
+      separatorBuilder: (_, _) => const SizedBox(height: 12),
+      itemBuilder: (ctx, _) => Shimmer.fromColors(
         baseColor: _base(ctx),
         highlightColor: _highlight(ctx),
         child: Container(
