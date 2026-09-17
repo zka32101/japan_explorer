@@ -99,13 +99,6 @@ flutter:
     - assets/icons/
     - assets/translations/
 
-  fonts:
-    - family: NotoSansJP
-      fonts:
-        - asset: assets/fonts/NotoSansJP-Regular.ttf
-        - asset: assets/fonts/NotoSansJP-Bold.ttf
-          weight: 700
-
 # ── App icon generation (dart run flutter_launcher_icons) ─────────────────────
 # Place a 1024×1024 PNG at assets/icons/app_icon.png before running.
 flutter_launcher_icons:

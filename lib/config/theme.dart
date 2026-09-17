@@ -31,14 +31,12 @@ class AppTheme {
           onSurface: AppColors.onSurface,
         ),
         scaffoldBackgroundColor: AppColors.background,
-        fontFamily: 'NotoSansJP',
         appBarTheme: const AppBarTheme(
           backgroundColor: AppColors.surface,
           foregroundColor: AppColors.onSurface,
           elevation: 0,
           centerTitle: true,
-          titleTextStyle: TextStyle(
-            fontFamily: 'NotoSansJP',
+          titleTextStyle: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: AppColors.onSurface,
@@ -115,14 +113,12 @@ class AppTheme {
           onSurface: const Color(0xFFE8E8E8),
         ),
         scaffoldBackgroundColor: const Color(0xFF121212),
-        fontFamily: 'NotoSansJP',
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF1A1A1A),
           foregroundColor: Color(0xFFE8E8E8),
           elevation: 0,
           centerTitle: true,
-          titleTextStyle: TextStyle(
-            fontFamily: 'NotoSansJP',
+          titleTextStyle: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Color(0xFFE8E8E8),

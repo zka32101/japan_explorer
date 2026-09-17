@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/culture_content.dart';
@@ -123,15 +124,14 @@ final relatedCultureContentProvider = FutureProvider.family<
   ref.keepAlive();
   final List<CultureContent> results = [];
 
-  // Priority 1: explicit seeAlso IDs
+  // Priority 1: explicit seeAlso IDs (batch query, not N+1)
   if (params.seeAlso.isNotEmpty) {
-    final futures = params.seeAlso
-        .map((id) => db.collection('culture_content').doc(id).get());
-    final docs = await Future.wait(futures);
-    for (final doc in docs) {
-      if (doc.exists) {
-        results.add(CultureContent.fromMap({...doc.data()!, 'id': doc.id}));
-      }
+    final snapshot = await db
+        .collection('culture_content')
+        .where(FieldPath.documentId, whereIn: params.seeAlso)
+        .get();
+    for (final doc in snapshot.docs) {
+      results.add(CultureContent.fromMap({...doc.data(), 'id': doc.id}));
     }
     if (results.length >= 4) return results.take(4).toList();
   }

@@ -143,18 +143,20 @@ class PostFeedNotifier extends StateNotifier<PostFeedState> {
     final posts = docs.map(Post.fromFirestore).toList();
     if (uid == null || docs.isEmpty) return posts;
 
-    // Batch-check which posts the current user has liked
-    final likeIds = posts.map((p) => '${uid}_${p.id}').toList();
-    final futures = likeIds
-        .map((id) => db
-            .collection('post_likes')
-            .doc(id)
-            .get())
-        .toList();
-    final results = await Future.wait(futures);
+    // Fetch all likes by this user in one query (not N+1)
+    final likedPostsSnap = await db
+        .collection('post_likes')
+        .where('uid', isEqualTo: uid)
+        .get();
+
+    final likedPostIds = {
+      for (final doc in likedPostsSnap.docs)
+        doc['post_id'] as String,
+    };
+
     return [
-      for (int i = 0; i < posts.length; i++)
-        posts[i].copyWith(likedByMe: results[i].exists),
+      for (final post in posts)
+        post.copyWith(likedByMe: likedPostIds.contains(post.id)),
     ];
   }
 }
