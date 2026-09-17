@@ -42,7 +42,6 @@ class CameraState {
   final CameraExplanation? explanation;
   final bool isAnalyzing;
   final String? error;
-  final String? imageBase64;
   final String mediaType;
   final AiProvider? lastProvider;
   final bool usedFallback;
@@ -58,7 +57,6 @@ class CameraState {
     this.explanation,
     this.isAnalyzing = false,
     this.error,
-    this.imageBase64,
     this.mediaType = 'image/jpeg',
     this.lastProvider,
     this.usedFallback = false,
@@ -74,7 +72,6 @@ class CameraState {
     CameraExplanation? explanation,
     bool? isAnalyzing,
     String? error,
-    String? imageBase64,
     String? mediaType,
     AiProvider? lastProvider,
     bool? usedFallback,
@@ -89,7 +86,6 @@ class CameraState {
         explanation: explanation ?? this.explanation,
         isAnalyzing: isAnalyzing ?? this.isAnalyzing,
         error: error,
-        imageBase64: imageBase64 ?? this.imageBase64,
         mediaType: mediaType ?? this.mediaType,
         lastProvider: lastProvider ?? this.lastProvider,
         usedFallback: usedFallback ?? this.usedFallback,
@@ -135,9 +131,6 @@ class CameraNotifier extends StateNotifier<CameraState> {
     String? nearbyCurationId,
     String? nearbyCurationName,
   }) async {
-    // Pre-encode to base64 so follow-up questions can reuse the same image
-    final bytes = await image.readAsBytes();
-    final base64Image = base64Encode(bytes);
     final ext = image.path.split('.').last.toLowerCase();
     final mediaType = ext == 'png' ? 'image/png' : 'image/jpeg';
 
@@ -146,7 +139,6 @@ class CameraNotifier extends StateNotifier<CameraState> {
       isAnalyzing: true,
       error: null,
       explanation: null,
-      imageBase64: base64Image,
       mediaType: mediaType,
       xpAwarded: false,
     );
@@ -247,11 +239,14 @@ class CameraNotifier extends StateNotifier<CameraState> {
 
   Future<void> askFollowUp(String question) async {
     final current = state.explanation;
-    final imageBase64 = state.imageBase64;
-    if (current == null || imageBase64 == null) return;
+    final imageFile = state.capturedImage;
+    if (current == null || imageFile == null) return;
 
     state = state.copyWith(isAnalyzing: true, error: null);
     try {
+      final bytes = await imageFile.readAsBytes();
+      final imageBase64 = base64Encode(bytes);
+
       final result = await _service.askFollowUp(
         originalExplanation: current.rawText,
         question: question,
