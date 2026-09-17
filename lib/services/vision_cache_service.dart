@@ -79,29 +79,28 @@ class VisionCacheService {
     }
   }
 
-  /// Get cache size in MB
+  /// Get cache size in MB (async, doesn't block UI)
   Future<double> getCacheSizeMB() async {
     double totalSize = 0;
     final cacheDir = await _getCacheDir();
 
     if (!cacheDir.existsSync()) return 0;
 
-    final files = cacheDir.listSync();
-    for (final file in files) {
-      if (file is File) {
-        totalSize += file.lengthSync();
+    await for (final entity in cacheDir.list()) {
+      if (entity is File) {
+        totalSize += await entity.length();
       }
     }
 
     return totalSize / (1024 * 1024); // Convert to MB
   }
 
-  /// Clear all cache
+  /// Clear all cache (async, doesn't block UI)
   Future<void> clearAll() async {
     try {
       final cacheDir = await _getCacheDir();
       if (cacheDir.existsSync()) {
-        cacheDir.deleteSync(recursive: true);
+        await cacheDir.delete(recursive: true);
       }
       await _box.clear();
     } catch (e) {
@@ -113,7 +112,7 @@ class VisionCacheService {
     final docDir = await getApplicationDocumentsDirectory();
     final cacheDir = Directory('${docDir.path}/$_cacheDir');
     if (!cacheDir.existsSync()) {
-      cacheDir.createSync(recursive: true);
+      await cacheDir.create(recursive: true);
     }
     return cacheDir;
   }
