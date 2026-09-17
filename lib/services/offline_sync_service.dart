@@ -55,15 +55,23 @@ class OfflineSyncService {
       final allMaps = curations.map((c) => c.toMap()).toList();
       await offlineCacheService.cacheCurations('all', allMaps);
 
-      // 2. Download hero images
+      // 2. Download hero images (parallel, max 3 concurrent)
       final imageDir = await _imageDir();
       int done = 0;
-      for (final c in curations) {
+      for (int i = 0; i < curations.length; i += 3) {
+        final chunk = curations.sublist(
+          i,
+          (i + 3).clamp(0, curations.length),
+        );
         syncStatus.value = 'Downloading images (${done + 1}/${curations.length})…';
-        if (c.imageUrls.isNotEmpty) {
-          await _downloadImage(c.imageUrls.first, imageDir, c.id);
-        }
-        done++;
+        await Future.wait(
+          chunk.map((c) =>
+            c.imageUrls.isNotEmpty
+              ? _downloadImage(c.imageUrls.first, imageDir, c.id)
+              : Future.value(),
+          ),
+        );
+        done += chunk.length;
         syncProgress.value = done / curations.length;
       }
 
