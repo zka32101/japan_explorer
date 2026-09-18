@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../config/theme.dart';
@@ -13,6 +12,7 @@ import '../providers/geofence_provider.dart';
 import '../providers/plan_provider.dart';
 import '../services/ai_vision_service.dart';
 import '../services/claude_vision_service.dart';
+import '../services/tts_service.dart';
 import '../utils/app_navigator.dart';
 import 'camera_history_screen.dart';
 import '../widgets/badge_widget.dart';
@@ -27,7 +27,6 @@ class CameraScreen extends ConsumerStatefulWidget {
 
 class _CameraScreenState extends ConsumerState<CameraScreen> {
   final _picker = ImagePicker();
-  final _tts = FlutterTts();
   final _followUpController = TextEditingController();
   bool _isSpeaking = false;
   bool _showFollowUp = false;
@@ -35,15 +34,14 @@ class _CameraScreenState extends ConsumerState<CameraScreen> {
   @override
   void initState() {
     super.initState();
-    _tts.setStartHandler(() => setState(() => _isSpeaking = true));
-    _tts.setCompletionHandler(() => setState(() => _isSpeaking = false));
-    _tts.setLanguage('en-US');
-    _tts.setSpeechRate(0.9);
+    ttsService.setStartHandler(() => setState(() => _isSpeaking = true));
+    ttsService.setCompletionHandler(() => setState(() => _isSpeaking = false));
+    ttsService.setLanguage('en-US');
+    ttsService.setSpeechRate(0.9);
   }
 
   @override
   void dispose() {
-    _tts.stop();
     _followUpController.dispose();
     super.dispose();
   }
@@ -66,7 +64,7 @@ class _CameraScreenState extends ConsumerState<CameraScreen> {
 
   Future<void> _toggleSpeech(CameraExplanation explanation) async {
     if (_isSpeaking) {
-      await _tts.stop();
+      await ttsService.stop();
       setState(() => _isSpeaking = false);
       return;
     }
@@ -79,7 +77,7 @@ class _CameraScreenState extends ConsumerState<CameraScreen> {
       'fr' => 'fr-FR',
       _ => 'en-US',
     };
-    await _tts.setLanguage(ttsLang);
+    await ttsService.setLanguage(ttsLang);
 
     final text = '''
 ${explanation.name}.
@@ -87,7 +85,7 @@ ${explanation.description}
 ${explanation.historicalBackground}
 ${explanation.howToExperience}
 ''';
-    await _tts.speak(text);
+    await ttsService.speak(text);
   }
 
   @override

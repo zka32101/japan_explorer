@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 import '../config/theme.dart';
 import '../models/phrase_category.dart';
+import '../services/tts_service.dart';
 
 class PhrasesScreen extends StatefulWidget {
   const PhrasesScreen({super.key});
@@ -13,7 +13,6 @@ class PhrasesScreen extends StatefulWidget {
 
 class _PhrasesScreenState extends State<PhrasesScreen>
     with SingleTickerProviderStateMixin {
-  final _tts = FlutterTts();
   final _searchController = TextEditingController();
   late final TabController _tabController;
 
@@ -27,14 +26,13 @@ class _PhrasesScreenState extends State<PhrasesScreen>
       length: TravelPhrases.categories.length,
       vsync: this,
     );
-    _tts.setLanguage('ja-JP');
-    _tts.setSpeechRate(0.7);
-    _tts.setCompletionHandler(() => setState(() => _speakingId = null));
+    ttsService.setLanguage('ja-JP');
+    ttsService.setSpeechRate(0.7);
+    ttsService.setCompletionHandler(() => setState(() => _speakingId = null));
   }
 
   @override
   void dispose() {
-    _tts.stop();
     _tabController.dispose();
     _searchController.dispose();
     super.dispose();
@@ -42,12 +40,12 @@ class _PhrasesScreenState extends State<PhrasesScreen>
 
   Future<void> _speak(TravelPhrase phrase) async {
     if (_speakingId == phrase.id) {
-      await _tts.stop();
+      await ttsService.stop();
       setState(() => _speakingId = null);
       return;
     }
     setState(() => _speakingId = phrase.id);
-    await _tts.speak(phrase.japanese);
+    await ttsService.speak(phrase.japanese);
   }
 
   @override

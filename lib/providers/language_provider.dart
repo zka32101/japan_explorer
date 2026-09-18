@@ -34,9 +34,19 @@ class LanguageNotifier extends StateNotifier<Language> {
     try {
       final prefs = await SharedPreferences.getInstance();
       final code = prefs.getString('language') ?? 'ja';
-      state = _codeToLanguage(code);
+      // Guard: only update if notifier is still active
+      try {
+        state = _codeToLanguage(code);
+      } catch (_) {
+        // StateNotifier has been disposed
+      }
     } catch (_) {
-      state = Language.ja;
+      // Silently ignore if prefs unavailable - use default
+      try {
+        state = Language.ja;
+      } catch (_) {
+        // StateNotifier has been disposed
+      }
     }
   }
 

@@ -150,25 +150,34 @@ class CameraNotifier extends StateNotifier<CameraState> {
         nearbySpotHint: nearbyCurationName,
       );
 
-      state = state.copyWith(
-        isAnalyzing: false,
-        explanation: result.explanation,
-        lastProvider: result.provider,
-        usedFallback: result.usedFallback,
-      );
+      try {
+        state = state.copyWith(
+          isAnalyzing: false,
+          explanation: result.explanation,
+          lastProvider: result.provider,
+          usedFallback: result.usedFallback,
+        );
+      } catch (_) {
+        // StateNotifier has been disposed
+        return;
+      }
 
-      // Side-effects: XP + scan history (fire-and-forget)
-      _awardXp();
-      _saveScanRecord(
+      // Side-effects: XP + scan history (with disposal guards)
+      await _awardXp();
+      await _saveScanRecord(
         result,
         image.path,
         nearbyCurationId: nearbyCurationId,
       );
     } catch (e) {
-      state = state.copyWith(
-        isAnalyzing: false,
-        error: 'Failed to analyze image. Please try again.',
-      );
+      try {
+        state = state.copyWith(
+          isAnalyzing: false,
+          error: 'Failed to analyze image. Please try again.',
+        );
+      } catch (_) {
+        // StateNotifier has been disposed
+      }
     }
   }
 
@@ -181,15 +190,21 @@ class CameraNotifier extends StateNotifier<CameraState> {
       final result =
           await service.updateUserXP(user.uid, AppConstants.xpSpotVisit);
 
-      state = state.copyWith(
-        xpAwarded: true,
-        leveledUp: result.leveledUp,
-        newLevel: result.newLevel,
-        newBadgeIds: result.newBadgeIds,
-      );
+      // Guard: only update if state is still valid (notifier not disposed)
+      try {
+        state = state.copyWith(
+          xpAwarded: true,
+          leveledUp: result.leveledUp,
+          newLevel: result.newLevel,
+          newBadgeIds: result.newBadgeIds,
+        );
+      } catch (_) {
+        // StateNotifier has been disposed
+        return;
+      }
 
-      // Check ai_explorer badge: 20 scans
-      _checkAiExplorerBadge(user.uid, service);
+      // Check ai_explorer badge: 20 scans (properly awaited)
+      await _checkAiExplorerBadge(user.uid, service);
     } catch (_) {
       // Non-critical — don't break the camera flow
     }
@@ -202,9 +217,13 @@ class CameraNotifier extends StateNotifier<CameraState> {
       if (scans.length >= 20) {
         final awarded = await service.awardBadgeIfNew(userId, 'ai_explorer');
         if (awarded.isNotEmpty) {
-          // Append to existing badge list if present
-          final updated = [...state.newBadgeIds, ...awarded];
-          state = state.copyWith(newBadgeIds: updated);
+          // Guard: only update if state is still valid
+          try {
+            final updated = [...state.newBadgeIds, ...awarded];
+            state = state.copyWith(newBadgeIds: updated);
+          } catch (_) {
+            // StateNotifier has been disposed
+          }
         }
       }
     } catch (_) {}

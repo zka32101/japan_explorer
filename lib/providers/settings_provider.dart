@@ -45,16 +45,25 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
   }
 
   Future<void> _load() async {
-    final prefs = await SharedPreferences.getInstance();
-    final themeModeStr = prefs.getString(_keyThemeMode) ?? 'system';
-    final themeMode = _themeModeFromString(themeModeStr);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final themeModeStr = prefs.getString(_keyThemeMode) ?? 'system';
+      final themeMode = _themeModeFromString(themeModeStr);
 
-    state = AppSettings(
-      themeMode: themeMode,
-      notifStreak: prefs.getBool(_keyNotifStreak) ?? true,
-      notifChallenge: prefs.getBool(_keyNotifChallenge) ?? true,
-      notifMeetup: prefs.getBool(_keyNotifMeetup) ?? true,
-    );
+      // Guard: only update if notifier is still active
+      try {
+        state = AppSettings(
+          themeMode: themeMode,
+          notifStreak: prefs.getBool(_keyNotifStreak) ?? true,
+          notifChallenge: prefs.getBool(_keyNotifChallenge) ?? true,
+          notifMeetup: prefs.getBool(_keyNotifMeetup) ?? true,
+        );
+      } catch (_) {
+        // StateNotifier has been disposed
+      }
+    } catch (_) {
+      // Silently ignore if prefs unavailable
+    }
   }
 
   Future<void> setThemeMode(ThemeMode mode) async {

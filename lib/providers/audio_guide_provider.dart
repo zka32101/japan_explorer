@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 import '../models/audio_guide.dart';
 import '../services/audio_guide_service.dart';
+import '../services/tts_service.dart';
 
 const _geminiApiKey = String.fromEnvironment('GEMINI_API_KEY');
 const _claudeApiKey = String.fromEnvironment('CLAUDE_API_KEY');
@@ -72,7 +72,6 @@ class AudioGuideState {
 
 class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
   final AudioGuideService _service;
-  final FlutterTts _tts = FlutterTts();
   int _currentParagraph = 0;
 
   AudioGuideNotifier(this._service, String curationId)
@@ -81,11 +80,13 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
   }
 
   void _initTts() {
-    _tts.setCompletionHandler(() {
-      if (mounted) {
+    ttsService.setCompletionHandler(() {
+      try {
         state = state.copyWith(
             playback: AudioGuidePlayback.idle, highlightParagraph: 0);
         _currentParagraph = 0;
+      } catch (_) {
+        // StateNotifier has been disposed
       }
     });
   }
@@ -94,7 +95,7 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
 
   void setLanguage(String lang) {
     state = state.copyWith(language: lang);
-    _tts.setLanguage(_ttsLocale(lang));
+    ttsService.setLanguage(_ttsLocale(lang));
   }
 
   // ── Generate ──────────────────────────────────────────────────────────────
@@ -141,9 +142,9 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
     final guide = state.guide;
     if (guide == null) return;
 
-    await _tts.setLanguage(_ttsLocale(state.language));
-    await _tts.setSpeechRate(state.speechRate);
-    await _tts.setPitch(1.0);
+    await ttsService.setLanguage(_ttsLocale(state.language));
+    await ttsService.setSpeechRate(state.speechRate);
+    await ttsService.setPitch(1.0);
 
     if (state.isPaused) {
       // Resume — re-speak from current paragraph
@@ -151,7 +152,7 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
       if (_currentParagraph < paragraphs.length) {
         final remaining =
             paragraphs.sublist(_currentParagraph).join('\n\n');
-        await _tts.speak(remaining);
+        await ttsService.speak(remaining);
         state = state.copyWith(playback: AudioGuidePlayback.playing);
       }
     } else {
@@ -175,24 +176,27 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
     state =
         state.copyWith(highlightParagraph: _currentParagraph);
 
-    _tts.setCompletionHandler(() {
-      if (!mounted) return;
-      _currentParagraph++;
-      if (state.isPlaying) {
-        _speakNextParagraph(guide);
+    ttsService.setCompletionHandler(() {
+      try {
+        _currentParagraph++;
+        if (state.isPlaying) {
+          _speakNextParagraph(guide);
+        }
+      } catch (_) {
+        // StateNotifier has been disposed
       }
     });
 
-    _tts.speak(paragraphs[_currentParagraph]);
+    ttsService.speak(paragraphs[_currentParagraph]);
   }
 
   Future<void> pause() async {
-    await _tts.pause();
+    await ttsService.pause();
     state = state.copyWith(playback: AudioGuidePlayback.paused);
   }
 
   Future<void> stop() async {
-    await _tts.stop();
+    await ttsService.stop();
     _currentParagraph = 0;
     state = state.copyWith(
         playback: AudioGuidePlayback.idle, highlightParagraph: 0);
@@ -202,7 +206,7 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
     final clampedRate = rate.clamp(0.4, 1.6);
     state = state.copyWith(speechRate: clampedRate);
     if (state.isPlaying) {
-      await _tts.setSpeechRate(clampedRate);
+      await ttsService.setSpeechRate(clampedRate);
     }
   }
 
@@ -230,11 +234,6 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
     }
   }
 
-  @override
-  void dispose() {
-    _tts.stop();
-    super.dispose();
-  }
 }
 
 // ── Provider factory ──────────────────────────────────────────────────────────

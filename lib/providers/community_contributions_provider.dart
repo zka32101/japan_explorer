@@ -153,25 +153,28 @@ class CommunityContributionsNotifier
     final alreadyVoted = state.votedIds.contains(contributionId);
 
     // Optimistic update
-    final updated = List<UserContribution>.from(state.contributions);
-    final target = updated[idx];
-    updated[idx] = UserContribution(
-      id: target.id,
-      userId: target.userId,
-      userName: target.userName,
-      userAvatarUrl: target.userAvatarUrl,
-      imageHash: target.imageHash,
-      analysisType: target.analysisType,
-      title: target.title,
-      answerTitle: target.answerTitle,
-      description: target.description,
-      imageUrl: target.imageUrl,
-      voteCount: target.voteCount + (alreadyVoted ? -1 : 1),
-      isBeingEditedByUser: target.isBeingEditedByUser,
-      createdAt: target.createdAt,
-      creatorRevenueUsd: target.creatorRevenueUsd,
-    );
-    final updatedVotedIds = Set<String>.from(state.votedIds);
+    final target = state.contributions[idx];
+    final updated = [
+      ...state.contributions.sublist(0, idx),
+      UserContribution(
+        id: target.id,
+        userId: target.userId,
+        userName: target.userName,
+        userAvatarUrl: target.userAvatarUrl,
+        imageHash: target.imageHash,
+        analysisType: target.analysisType,
+        title: target.title,
+        answerTitle: target.answerTitle,
+        description: target.description,
+        imageUrl: target.imageUrl,
+        voteCount: target.voteCount + (alreadyVoted ? -1 : 1),
+        isBeingEditedByUser: target.isBeingEditedByUser,
+        createdAt: target.createdAt,
+        creatorRevenueUsd: target.creatorRevenueUsd,
+      ),
+      ...state.contributions.sublist(idx + 1),
+    ];
+    final updatedVotedIds = {...state.votedIds};
     if (alreadyVoted) {
       updatedVotedIds.remove(contributionId);
     } else {
