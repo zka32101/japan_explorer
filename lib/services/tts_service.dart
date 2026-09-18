@@ -19,12 +19,11 @@ class TtsService {
   Future<dynamic> speak(String text) => _tts.speak(text);
   Future<dynamic> stop() => _tts.stop();
   Future<dynamic> pause() => _tts.pause();
-  Future<dynamic> resume() => _tts.resume();
 
-  void setStartHandler(VoidCallback handler) => _tts.setStartHandler(handler);
-  void setCompletionHandler(VoidCallback handler) => _tts.setCompletionHandler(handler);
-  void setErrorHandler(dynamic Function(dynamic) handler) => _tts.setErrorHandler(handler);
-  void setProgressHandler(dynamic Function(String, int, int) handler) => _tts.setProgressHandler(handler);
+  void setStartHandler(Function() handler) => _tts.setStartHandler(handler);
+  void setCompletionHandler(Function() handler) => _tts.setCompletionHandler(handler);
+  void setErrorHandler(Function(dynamic) handler) => _tts.setErrorHandler(handler);
+  void setProgressHandler(Function(String, int, int) handler) => _tts.setProgressHandler(handler);
 
   Future<void> dispose() async {
     await _tts.stop();

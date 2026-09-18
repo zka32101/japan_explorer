@@ -197,7 +197,7 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
                 min: 1,
                 max: 10,
                 divisions: 9,
-                activeTrackColor: AppColors.primary,
+                activeColor: AppColors.primary,
                 onChanged: (v) => setState(() => _days = v.round()),
               ),
             ),

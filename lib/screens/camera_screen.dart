@@ -121,7 +121,7 @@ ${explanation.howToExperience}
                   _showFollowUp = false;
                   _isSpeaking = false;
                 });
-                _tts.stop();
+                ttsService.stop();
               },
             ),
         ],
@@ -665,7 +665,7 @@ ${explanation.howToExperience}
               onPressed: () {
                 ref.read(cameraNotifierProvider.notifier).reset();
                 setState(() => _showFollowUp = false);
-                _tts.stop();
+                ttsService.stop();
               },
               icon: const Icon(Icons.camera_alt, color: Colors.white70),
               label: Text(tr('camera.new_photo'),
