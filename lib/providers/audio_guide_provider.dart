@@ -82,10 +82,12 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
 
   void _initTts() {
     _tts.setCompletionHandler(() {
-      if (mounted) {
+      try {
         state = state.copyWith(
             playback: AudioGuidePlayback.idle, highlightParagraph: 0);
         _currentParagraph = 0;
+      } catch (_) {
+        // StateNotifier has been disposed
       }
     });
   }
@@ -176,10 +178,13 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
         state.copyWith(highlightParagraph: _currentParagraph);
 
     _tts.setCompletionHandler(() {
-      if (!mounted) return;
-      _currentParagraph++;
-      if (state.isPlaying) {
-        _speakNextParagraph(guide);
+      try {
+        _currentParagraph++;
+        if (state.isPlaying) {
+          _speakNextParagraph(guide);
+        }
+      } catch (_) {
+        // StateNotifier has been disposed
       }
     });
 

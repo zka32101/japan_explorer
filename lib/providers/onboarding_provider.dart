@@ -87,7 +87,11 @@ class OnboardingNotifier extends StateNotifier<OnboardingState> {
       await prefs.setBool(_kOnboardingCompleted, true);
       _ref.read(onboardingStatusProvider.notifier).state = true;
     } finally {
-      if (mounted) state = state.copyWith(isSaving: false);
+      try {
+        state = state.copyWith(isSaving: false);
+      } catch (_) {
+        // StateNotifier has been disposed
+      }
     }
   }
 
