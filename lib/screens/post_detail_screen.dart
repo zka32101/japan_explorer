@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,7 @@ class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
                               radius: 16,
                               backgroundImage:
                                   post.authorAvatarUrl.isNotEmpty
-                                      ? NetworkImage(post.authorAvatarUrl)
+                                      ? CachedNetworkImageProvider(post.authorAvatarUrl)
                                       : null,
                               child: post.authorAvatarUrl.isEmpty
                                   ? Text(
@@ -225,7 +226,7 @@ class _CommentTile extends StatelessWidget {
           CircleAvatar(
             radius: 14,
             backgroundImage: comment.authorAvatarUrl.isNotEmpty
-                ? NetworkImage(comment.authorAvatarUrl)
+                ? CachedNetworkImageProvider(comment.authorAvatarUrl)
                 : null,
             child: comment.authorAvatarUrl.isEmpty
                 ? Text(comment.authorName.isNotEmpty

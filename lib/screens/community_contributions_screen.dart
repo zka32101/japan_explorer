@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -131,7 +132,7 @@ class _ContributionCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 16,
                   backgroundImage: contribution.userAvatarUrl.isNotEmpty
-                      ? NetworkImage(contribution.userAvatarUrl)
+                      ? CachedNetworkImageProvider(contribution.userAvatarUrl)
                       : null,
                   child: contribution.userAvatarUrl.isEmpty
                       ? Text(contribution.userName.isNotEmpty
