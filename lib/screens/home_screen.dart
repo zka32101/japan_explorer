@@ -223,7 +223,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget _buildCategoryFilter() {
     final categories = CurationCategory.all;
     return SliverToBoxAdapter(
-      child: const SizedBox(
+      child: SizedBox(
         height: 48,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
