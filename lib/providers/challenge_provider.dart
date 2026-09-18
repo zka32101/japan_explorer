@@ -114,8 +114,8 @@ class ChallengeNotifier extends StateNotifier<ChallengeState> {
       xp: xp,
     );
 
-    // Award XP and check for level-up / badge unlocks
-    _awardXpAndNotify(xp);
+    // Award XP and check for level-up / badge unlocks (with disposal guard)
+    await _awardXpAndNotify(xp);
   }
 
   Future<void> _awardXpAndNotify(int xp) async {
@@ -126,17 +126,22 @@ class ChallengeNotifier extends StateNotifier<ChallengeState> {
           .read(firebaseServiceProvider)
           .updateUserXP(user.uid, xp);
 
-      if (result.leveledUp || result.hasBadges) {
-        state = ChallengeState(
-          challenge: state.challenge,
-          selectedIndex: state.selectedIndex,
-          isCorrect: state.isCorrect,
-          alreadyAnsweredToday: state.alreadyAnsweredToday,
-          xpEarned: state.xpEarned,
-          leveledUp: result.leveledUp,
-          newLevel: result.newLevel,
-          newBadgeIds: result.newBadgeIds,
-        );
+      // Guard: only update if state is still valid (notifier not disposed)
+      try {
+        if (result.leveledUp || result.hasBadges) {
+          state = ChallengeState(
+            challenge: state.challenge,
+            selectedIndex: state.selectedIndex,
+            isCorrect: state.isCorrect,
+            alreadyAnsweredToday: state.alreadyAnsweredToday,
+            xpEarned: state.xpEarned,
+            leveledUp: result.leveledUp,
+            newLevel: result.newLevel,
+            newBadgeIds: result.newBadgeIds,
+          );
+        }
+      } catch (_) {
+        // StateNotifier has been disposed
       }
     } catch (_) {}
   }
