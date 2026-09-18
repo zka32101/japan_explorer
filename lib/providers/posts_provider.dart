@@ -104,11 +104,14 @@ class PostFeedNotifier extends StateNotifier<PostFeedState> {
     final nowLiked = !post.likedByMe;
 
     // Optimistic
-    final updated = List<Post>.from(state.posts);
-    updated[idx] = post.copyWith(
-      likedByMe: nowLiked,
-      likeCount: post.likeCount + (nowLiked ? 1 : -1),
-    );
+    final updated = [
+      ...state.posts.sublist(0, idx),
+      post.copyWith(
+        likedByMe: nowLiked,
+        likeCount: post.likeCount + (nowLiked ? 1 : -1),
+      ),
+      ...state.posts.sublist(idx + 1),
+    ];
     state = state.copyWith(posts: updated);
 
     try {
@@ -128,9 +131,11 @@ class PostFeedNotifier extends StateNotifier<PostFeedState> {
       });
     } catch (_) {
       // Rollback on error
-      final rollback = List<Post>.from(state.posts);
-      rollback[idx] = post;
-      state = state.copyWith(posts: rollback);
+      state = state.copyWith(posts: [
+        ...state.posts.sublist(0, idx),
+        post,
+        ...state.posts.sublist(idx + 1),
+      ]);
     }
   }
 
