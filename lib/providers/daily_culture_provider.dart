@@ -55,10 +55,15 @@ class CultureReadNotifier extends StateNotifier<Set<String>> {
   Future<void> markRead(String id) async {
     if (state.contains(id)) return;
     final updated = {...state, id};
-    state = updated;
+    try {
+      state = updated;
+    } catch (_) {
+      // StateNotifier has been disposed
+      return;
+    }
     await _box?.put(_kReadIdsKey, json.encode(updated.toList()));
 
-    // Track XP in Firestore
+    // Track XP in Firestore (guard state access)
     final user = _ref.read(appUserProvider).valueOrNull;
     if (user != null) {
       try {
@@ -76,8 +81,12 @@ class CultureReadNotifier extends StateNotifier<Set<String>> {
     await markRead(id);
     final today = _todayStr();
     await _box?.put(_kLastDailyKey, today);
-    // Notify state change to re-render card
-    state = {...state};
+    // Notify state change to re-render card (guard disposal)
+    try {
+      state = {...state};
+    } catch (_) {
+      // StateNotifier has been disposed
+    }
   }
 
   int get readCount => state.length;
