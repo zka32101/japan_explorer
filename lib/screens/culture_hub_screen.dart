@@ -122,7 +122,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                 );
               },
               loading: () => RepaintBoundary(
-                child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+                child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
               ),
               error: (e, st) => RepaintBoundary(
                 child: Center(child: Text(tr('culture_hub.error_prefix', args: ['$e']))),
@@ -228,7 +228,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                         errorBuilder: (_, _, _) => Container(
                           height: 160,
                           color: AppColors.surface,
-                          child: const Center(child: Icon(Icons.image_not_supported)),
+                          child: Center(child: Icon(Icons.image_not_supported)),
                         ),
                       ),
                       if (isLocked)

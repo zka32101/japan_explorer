@@ -57,7 +57,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ? RepaintBoundary(child: _buildEmptyState())
           : resultsAsync.when(
               loading: () => RepaintBoundary(
-                child: const Center(child: CircularProgressIndicator()),
+                child: Center(child: CircularProgressIndicator()),
               ),
               error: (e, _) => RepaintBoundary(
                 child: Center(child: Text('Error: $e')),

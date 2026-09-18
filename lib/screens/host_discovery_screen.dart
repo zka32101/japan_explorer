@@ -96,7 +96,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
           Expanded(
             child: hostsAsync.when(
               loading: () => RepaintBoundary(
-                child: const Center(child: CircularProgressIndicator()),
+                child: Center(child: CircularProgressIndicator()),
               ),
               error: (e, _) => RepaintBoundary(
                 child: Center(
