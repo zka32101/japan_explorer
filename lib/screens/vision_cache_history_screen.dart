@@ -32,9 +32,9 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _buildStorageCard(cacheSize),
+                  _buildStorageCard(context, cacheSize),
                   const SizedBox(height: 16),
-                  _buildHistoryList(history),
+                  _buildHistoryList(context, history),
                 ],
               ),
             ),
@@ -57,7 +57,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildStorageCard(AsyncValue<double> cacheSizeAsync) {
+  Widget _buildStorageCard(BuildContext context, AsyncValue<double> cacheSizeAsync) {
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
@@ -80,7 +80,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
             const SizedBox(height: 8),
             Text(
               '${size.toStringAsFixed(2)} MB',
-              style: Theme.of(null!).textTheme.headlineSmall?.copyWith(
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: AppColors.primary,
               ),
             ),
@@ -92,7 +92,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHistoryList(List<CachedAnalysis> history) {
+  Widget _buildHistoryList(BuildContext context, List<CachedAnalysis> history) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -106,13 +106,13 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          ...history.map((item) => _buildHistoryItem(item)).toList(),
+          ...history.map((item) => _buildHistoryItem(context, item)).toList(),
         ],
       ),
     );
   }
 
-  Widget _buildHistoryItem(CachedAnalysis item) {
+  Widget _buildHistoryItem(BuildContext context, CachedAnalysis item) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: Padding(
@@ -132,7 +132,7 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
                         item.analysisType == 'what_is_this'
                             ? tr('what_is_this.title')
                             : tr('menu_translator.title'),
-                        style: Theme.of(null!).textTheme.titleSmall,
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                       Text(
                         _formatDate(item.cachedAt),
@@ -151,7 +151,11 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
                       image: DecorationImage(
-                        image: FileImage(File(item.imagePath)),
+                        image: ResizeImage(
+                          FileImage(File(item.imagePath)),
+                          width: 96,
+                          height: 96,
+                        ),
                         fit: BoxFit.cover,
                       ),
                     ),

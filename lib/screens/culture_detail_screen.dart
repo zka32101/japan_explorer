@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -54,13 +55,16 @@ class CultureDetailScreen extends ConsumerWidget {
                     fit: StackFit.expand,
                     children: [
                       content.imageUrl.isNotEmpty
-                          ? Image.network(
-                              content.imageUrl,
+                          ? CachedNetworkImage(
+                              imageUrl: content.imageUrl,
                               fit: BoxFit.cover,
-                              errorBuilder: (_, _, _) => Container(
+                              memCacheWidth: 800,
+                              placeholder: (_, _) =>
+                                  Container(color: AppColors.surface),
+                              errorWidget: (_, _, _) => Container(
                                 color: AppColors.surface,
                                 child: const Center(
-                                    child: const Icon(Icons.image_not_supported)),
+                                    child: Icon(Icons.image_not_supported)),
                               ),
                             )
                           : Container(color: AppColors.surface),
@@ -559,12 +563,19 @@ class _RelatedCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: item.imageUrl.isNotEmpty
-                  ? Image.network(
-                      item.imageUrl,
+                  ? CachedNetworkImage(
+                      imageUrl: item.imageUrl,
                       width: 64,
                       height: 64,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, _, _) => Container(
+                      memCacheWidth: 128,
+                      memCacheHeight: 128,
+                      placeholder: (_, _) => Container(
+                        width: 64,
+                        height: 64,
+                        color: AppColors.primary.withValues(alpha: 0.15),
+                      ),
+                      errorWidget: (_, _, _) => Container(
                         width: 64,
                         height: 64,
                         color: AppColors.primary.withValues(alpha: 0.15),

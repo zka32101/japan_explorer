@@ -20,6 +20,28 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   Position? _position;
   String? _selectedCategory;
 
+  // Memoize the filtered list so an unrelated rebuild (e.g. tapping the
+  // "my location" button) doesn't hand SpotMapWidget a new List reference
+  // and trigger a full marker rebuild.
+  List<Curation>? _filteredCache;
+  List<Curation>? _lastCurations;
+  String? _lastCategory;
+
+  List<Curation> _filterCurations(List<Curation> curations) {
+    if (identical(curations, _lastCurations) &&
+        _selectedCategory == _lastCategory &&
+        _filteredCache != null) {
+      return _filteredCache!;
+    }
+    final filtered = _selectedCategory == null
+        ? curations
+        : curations.where((c) => c.category == _selectedCategory).toList();
+    _lastCurations = curations;
+    _lastCategory = _selectedCategory;
+    _filteredCache = filtered;
+    return filtered;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -53,9 +75,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (e, _) => Center(child: Text('Error: $e')),
               data: (curations) {
-                final filtered = _selectedCategory == null
-                    ? curations
-                    : curations.where((c) => c.category == _selectedCategory).toList();
+                final filtered = _filterCurations(curations);
                 return SpotMapWidget(
                   curations: filtered,
                   height: double.infinity,

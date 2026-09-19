@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -289,7 +290,12 @@ class _HostCard extends StatelessWidget {
               color: AppColors.primary.withValues(alpha: 0.1),
               width: double.infinity,
               child: host.photoUrl != null
-                  ? Image.network(host.photoUrl!, fit: BoxFit.cover)
+                  ? CachedNetworkImage(
+                      imageUrl: host.photoUrl!,
+                      fit: BoxFit.cover,
+                      memCacheWidth: 200,
+                      memCacheHeight: 200,
+                    )
                   : Center(
                       child: Text(
                         host.displayName.isNotEmpty

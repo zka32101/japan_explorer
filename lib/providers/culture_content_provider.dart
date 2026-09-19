@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/culture_content.dart';
+import '../utils/constants.dart';
 import '../utils/firestore_instance.dart';
 
 class RelatedContentParams {
@@ -37,6 +38,7 @@ final cultureContentProvider = FutureProvider.family<
       .collection('culture_content')
       .where('categoryId', isEqualTo: categoryId)
       .orderBy('createdAt', descending: true)
+      .limit(AppConstants.pageSize)
       .get();
 
   return snapshot.docs

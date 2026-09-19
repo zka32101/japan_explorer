@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,9 +19,11 @@ class SearchScreen extends ConsumerStatefulWidget {
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   final _controller = TextEditingController();
   String _query = '';
+  Timer? _debounce;
 
   @override
   void dispose() {
+    _debounce?.cancel();
     _controller.dispose();
     super.dispose();
   }
@@ -40,6 +44,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 ? IconButton(
                     icon: const Icon(Icons.clear),
                     onPressed: () {
+                      _debounce?.cancel();
                       _controller.clear();
                       setState(() => _query = '');
                     },
@@ -47,9 +52,15 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 : null,
           ),
           onChanged: (v) {
-            if (v.length >= 2 || v.isEmpty) {
-              setState(() => _query = v.trim());
+            _debounce?.cancel();
+            if (v.isEmpty) {
+              setState(() => _query = '');
+              return;
             }
+            if (v.length < 2) return;
+            _debounce = Timer(const Duration(milliseconds: 350), () {
+              if (mounted) setState(() => _query = v.trim());
+            });
           },
         ),
       ),
