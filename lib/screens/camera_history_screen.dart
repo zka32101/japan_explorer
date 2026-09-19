@@ -159,7 +159,12 @@ class _ScanCard extends StatelessWidget {
                 width: 80,
                 height: 80,
                 child: hasImage
-                    ? Image.file(File(record.imagePath!), fit: BoxFit.cover)
+                    ? Image.file(
+                        File(record.imagePath!),
+                        fit: BoxFit.cover,
+                        cacheWidth: 160,
+                        cacheHeight: 160,
+                      )
                     : Container(
                         color: Colors.white10,
                         child: const Icon(Icons.image_outlined,

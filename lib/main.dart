@@ -7,7 +7,6 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 import 'config/router.dart';
@@ -105,18 +104,16 @@ void main() async {
   // FCM background handler registration (must be before runApp)
   FirebaseMessaging.onBackgroundMessage(_backgroundMessageHandler);
 
-  // FCM foreground setup (permissions, local notifications, token listener)
-  await fcmService.init();
-
-  // RevenueCat: configure anonymously — user ID is set after sign-in
-  await purchaseService.configure();
-
-  // Hive: offline cache (must init before runApp)
+  // Hive: offline cache (must init before runApp; initializes Hive itself)
   await offlineCacheService.init();
 
-  // Hive: vision analysis cache
+  // Independent initializations: run in parallel instead of sequentially
   final visionCacheService = VisionCacheService();
-  await visionCacheService.initialize();
+  await Future.wait([
+    fcmService.init(),
+    purchaseService.configure(),
+    visionCacheService.initialize(),
+  ]);
 
   // Background: AdMob init (lazy banner/interstitial creation at first display)
   unawaited(_initAdsInBackground());
@@ -127,9 +124,9 @@ void main() async {
   // Background: Image cache initialization (non-blocking)
   unawaited(_initImageCacheInBackground());
 
-  // Set Analytics user properties (non-PII)
+  // Non-critical telemetry: don't block startup on it
   if (!kDebugMode) {
-    await analyticsService.logScreenView('app_start');
+    unawaited(analyticsService.logScreenView('app_start'));
   }
 
   // Read onboarding status synchronously before runApp so the router

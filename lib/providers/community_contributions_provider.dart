@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -71,6 +72,7 @@ class CommunityContributionsNotifier
           .where('analysisType', isEqualTo: _params.analysisType)
           .where('title', isEqualTo: _params.title)
           .orderBy('voteCount', descending: true)
+          .limit(50)
           .get();
 
       final contributions = snap.docs
@@ -80,14 +82,20 @@ class CommunityContributionsNotifier
       final uid = FirebaseAuth.instance.currentUser?.uid;
       final votedIds = <String>{};
       if (uid != null && contributions.isNotEmpty) {
-        final futures = contributions
-            .map((c) => db
-                .collection('contribution_votes')
-                .doc('${uid}_${c.id}')
-                .get());
-        final results = await Future.wait(futures);
-        for (var i = 0; i < contributions.length; i++) {
-          if (results[i].exists) votedIds.add(contributions[i].id);
+        // Batch the vote-doc lookups with whereIn (max 30 IDs per query)
+        // instead of one round trip per contribution.
+        final voteDocIds = contributions.map((c) => '${uid}_${c.id}').toList();
+        final voteCol = db.collection('contribution_votes');
+        for (var i = 0; i < voteDocIds.length; i += 30) {
+          final chunk = voteDocIds.sublist(
+              i, i + 30 > voteDocIds.length ? voteDocIds.length : i + 30);
+          final results = await voteCol
+              .where(FieldPath.documentId, whereIn: chunk)
+              .get();
+          for (final doc in results.docs) {
+            final contributionId = doc.id.substring(uid.length + 1);
+            votedIds.add(contributionId);
+          }
         }
       }
 

@@ -6,6 +6,12 @@ import 'package:path_provider/path_provider.dart';
 
 /// Cache for "What is This" and "Menu Translator" analyses
 class VisionCacheService {
+  static final VisionCacheService _instance = VisionCacheService._internal();
+
+  factory VisionCacheService() => _instance;
+
+  VisionCacheService._internal();
+
   static const _visionCacheBox = 'vision_cache';
   static const _cacheDir = 'vision_cache_images';
   static final _logger = Logger();

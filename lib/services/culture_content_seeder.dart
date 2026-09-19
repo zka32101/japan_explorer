@@ -33275,7 +33275,7 @@ Mirin has a history beyond the kitchen. O-toso, the spiced rice wine drunk at Ne
   ];
 
   /// Public read-only access to all seeded content (used for Daily Culture, collection stats).
-  static List<CultureContent> get allContent => List.unmodifiable(_seedData);
+  static final List<CultureContent> allContent = List.unmodifiable(_seedData);
 
   static Future<void> seedCultureContent(FirebaseFirestore firestore) async {
     try {
