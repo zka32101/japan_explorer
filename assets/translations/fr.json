@@ -37,8 +37,11 @@
       "hint": "Veuillez en sélectionner au moins un"
     },
     "step2": {
-      "title": "Quel est votre style de voyage ?",
-      "subtitle": "Nous vous recommanderons les meilleures expériences",
+      "title": "Qu'est-ce qui vous amène ici ?",
+      "subtitle": "Nous adapterons l'expérience à votre objectif",
+      "goal_travel": "Je prépare un voyage",
+      "goal_learn": "Je veux découvrir la culture japonaise",
+      "goal_learn_note": "Les fonctionnalités de localisation et de carte restent disponibles dès que vous en aurez besoin. Pour l'instant, profitez simplement de la découverte de la culture japonaise !",
       "style_label": "Style de voyage",
       "duration_label": "Durée du voyage",
       "solo": "Solo",
@@ -63,7 +66,8 @@
     "step4": {
       "title": "Tout est prêt !",
       "subtitle": "Votre voyage au Japon commence maintenant",
-      "cta": "Commencer à explorer"
+      "cta": "Commencer à explorer",
+      "subtitle_learn": "Votre découverte de la culture japonaise commence maintenant"
     }
   },
   "category": {
@@ -102,6 +106,9 @@
     "error_load_title": "Impossible de charger les lieux",
     "error_load_subtitle": "Vérifiez votre connexion et réessayez",
     "ai_lens_label": "Objectif IA",
+    "learn_card_title": "Découvrir la culture japonaise",
+    "learn_card_subtitle": "Des fiches sur la culture, l'histoire et les usages",
+    "spots_section_title": "🗾 Envie de voir des lieux aussi ? (facultatif)",
     "greeting": "Bonjour, {}",
     "category_all": "Tout",
     "no_spots_found": "Aucun lieu trouvé",

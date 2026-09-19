@@ -520,6 +520,7 @@ class _Step2TravelStyle extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(onboardingProvider);
+    final isLearner = state.usageGoal == 'learn';
 
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -540,122 +541,219 @@ class _Step2TravelStyle extends ConsumerWidget {
                   color: AppColors.textSecondary,
                 ),
           ),
-          const SizedBox(height: 28),
+          const SizedBox(height: 24),
 
-          // Travel style
-          Text(
-            tr('onboarding.step2.style_label'),
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textSecondary,
-                  letterSpacing: 0.8,
-                ),
-          ),
-          const SizedBox(height: 12),
+          // Usage goal: planning a trip, or just here to learn
           Row(
-            children: _styles.map((s) {
-              final (key, emoji, _) = s;
-              final isSelected = state.travelStyle == key;
-              return Expanded(
-                child: GestureDetector(
+            children: [
+              Expanded(
+                child: _GoalCard(
+                  emoji: '🧳',
+                  label: tr('onboarding.step2.goal_travel'),
+                  isSelected: state.usageGoal == 'travel',
                   onTap: () => ref
                       .read(onboardingProvider.notifier)
-                      .setTravelStyle(key),
+                      .setUsageGoal('travel'),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _GoalCard(
+                  emoji: '📖',
+                  label: tr('onboarding.step2.goal_learn'),
+                  isSelected: isLearner,
+                  onTap: () => ref
+                      .read(onboardingProvider.notifier)
+                      .setUsageGoal('learn'),
+                ),
+              ),
+            ],
+          ),
+
+          if (isLearner) ...[
+            const SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Text(
+                tr('onboarding.step2.goal_learn_note'),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+              ),
+            ),
+            const SizedBox(height: 8),
+          ] else ...[
+            const SizedBox(height: 28),
+
+            // Travel style
+            Text(
+              tr('onboarding.step2.style_label'),
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textSecondary,
+                    letterSpacing: 0.8,
+                  ),
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: _styles.map((s) {
+                final (key, emoji, _) = s;
+                final isSelected = state.travelStyle == key;
+                return Expanded(
+                  child: GestureDetector(
+                    onTap: () => ref
+                        .read(onboardingProvider.notifier)
+                        .setTravelStyle(key),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      margin: const EdgeInsets.only(right: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      decoration: BoxDecoration(
+                        color: isSelected
+                            ? AppColors.primary
+                            : Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: isSelected
+                              ? AppColors.primary
+                              : AppColors.divider,
+                          width: isSelected ? 0 : 1,
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(emoji,
+                              style: const TextStyle(fontSize: 26)),
+                          const SizedBox(height: 4),
+                          Text(
+                            tr('onboarding.step2.$key'),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: isSelected
+                                  ? Colors.white
+                                  : Theme.of(context)
+                                      .colorScheme
+                                      .onSurface,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+
+            const SizedBox(height: 28),
+
+            // Trip duration
+            Text(
+              tr('onboarding.step2.duration_label'),
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textSecondary,
+                    letterSpacing: 0.8,
+                  ),
+            ),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: _durations.map((d) {
+                final (key, _) = d;
+                final isSelected = state.tripDuration == key;
+                return GestureDetector(
+                  onTap: () => ref
+                      .read(onboardingProvider.notifier)
+                      .setTripDuration(key),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
-                    margin: const EdgeInsets.only(right: 8),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? AppColors.primary
+                          ? AppColors.primary.withValues(alpha: 0.15)
                           : Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.circular(14),
+                      borderRadius: BorderRadius.circular(24),
                       border: Border.all(
                         color: isSelected
                             ? AppColors.primary
                             : AppColors.divider,
-                        width: isSelected ? 0 : 1,
+                        width: isSelected ? 2 : 1,
                       ),
                     ),
-                    child: Column(
-                      children: [
-                        Text(emoji,
-                            style: const TextStyle(fontSize: 26)),
-                        const SizedBox(height: 4),
-                        Text(
-                          tr('onboarding.step2.$key'),
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            color: isSelected
-                                ? Colors.white
-                                : Theme.of(context)
-                                    .colorScheme
-                                    .onSurface,
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      tr('onboarding.step2.$key'),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: isSelected
+                            ? AppColors.primary
+                            : Theme.of(context).colorScheme.onSurface,
+                      ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
-          ),
-
-          const SizedBox(height: 28),
-
-          // Trip duration
-          Text(
-            tr('onboarding.step2.duration_label'),
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textSecondary,
-                  letterSpacing: 0.8,
-                ),
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: _durations.map((d) {
-              final (key, _) = d;
-              final isSelected = state.tripDuration == key;
-              return GestureDetector(
-                onTap: () => ref
-                    .read(onboardingProvider.notifier)
-                    .setTripDuration(key),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 12),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? AppColors.primary.withValues(alpha: 0.15)
-                        : Theme.of(context).cardColor,
-                    borderRadius: BorderRadius.circular(24),
-                    border: Border.all(
-                      color: isSelected
-                          ? AppColors.primary
-                          : AppColors.divider,
-                      width: isSelected ? 2 : 1,
-                    ),
-                  ),
-                  child: Text(
-                    tr('onboarding.step2.$key'),
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: isSelected
-                          ? AppColors.primary
-                          : Theme.of(context).colorScheme.onSurface,
-                    ),
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
+                );
+              }).toList(),
+            ),
+          ],
           const SizedBox(height: 24),
         ],
+      ),
+    );
+  }
+}
+
+class _GoalCard extends StatelessWidget {
+  final String emoji;
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _GoalCard({
+    required this.emoji,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.primary : Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: isSelected ? AppColors.primary : AppColors.divider,
+            width: isSelected ? 0 : 1,
+          ),
+        ),
+        child: Column(
+          children: [
+            Text(emoji, style: const TextStyle(fontSize: 28)),
+            const SizedBox(height: 6),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: isSelected
+                    ? Colors.white
+                    : Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -871,7 +969,9 @@ class _Step4CompleteState extends State<_Step4Complete>
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, _) {
-        final isSaving = ref.watch(onboardingProvider).isSaving;
+        final onboardingState = ref.watch(onboardingProvider);
+        final isSaving = onboardingState.isSaving;
+        final isLearner = onboardingState.usageGoal == 'learn';
         final screen =
             context.findAncestorStateOfType<_OnboardingScreenState>();
 
@@ -923,7 +1023,9 @@ class _Step4CompleteState extends State<_Step4Complete>
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      tr('onboarding.step4.subtitle'),
+                      tr(isLearner
+                          ? 'onboarding.step4.subtitle_learn'
+                          : 'onboarding.step4.subtitle'),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: AppColors.textSecondary,
                           ),

@@ -9,6 +9,7 @@ import '../models/curation.dart';
 import '../providers/auth_provider.dart';
 import '../providers/curations_provider.dart';
 import '../providers/language_provider.dart';
+import '../providers/onboarding_provider.dart';
 import '../widgets/curation_card.dart';
 import '../widgets/season_banner.dart';
 import '../widgets/streak_widget.dart';
@@ -57,6 +58,49 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final user = ref.watch(appUserProvider).valueOrNull;
     final curationsState = ref.watch(curationsNotifierProvider);
+    final isLearner = ref.watch(usageGoalProvider) == 'learn';
+
+    // ── Daily culture card ─────────────────────────────────────────────────
+    const dailyCultureSliver = SliverToBoxAdapter(
+      child: RepaintBoundary(
+        child: DailyCultureCard(),
+      ),
+    );
+
+    // ── Season banner ────────────────────────────────────────────────────
+    const seasonBannerSliver = SliverToBoxAdapter(
+      child: RepaintBoundary(
+        child: SeasonBanner(),
+      ),
+    );
+
+    // ── Daily challenge CTA ──────────────────────────────────────────────
+    final dailyChallengeSliver = SliverToBoxAdapter(
+      child: RepaintBoundary(
+        child: _DailyChallengeCard(onTap: () => context.push(AppRoutes.challenge)),
+      ),
+    );
+
+    // Learners get culture content first, with a prominent Culture Hub CTA;
+    // travelers keep the original spot-focused order.
+    final middleSlivers = isLearner
+        ? [
+            dailyCultureSliver,
+            SliverToBoxAdapter(
+              child: RepaintBoundary(
+                child: _LearnCultureCard(
+                  onTap: () => context.push(AppRoutes.cultureHub),
+                ),
+              ),
+            ),
+            dailyChallengeSliver,
+            seasonBannerSliver,
+          ]
+        : [
+            seasonBannerSliver,
+            dailyCultureSliver,
+            dailyChallengeSliver,
+          ];
 
     return Scaffold(
       body: OfflineAwarePage(
@@ -79,24 +123,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
-          // ── Season banner ──────────────────────────────────────────
-          const SliverToBoxAdapter(
-            child: RepaintBoundary(
-              child: SeasonBanner(),
+          ...middleSlivers,
+          if (isLearner)
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+                child: Text(
+                  tr('home.spots_section_title'),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
             ),
-          ),
-          // ── Daily culture card ─────────────────────────────────────
-          const SliverToBoxAdapter(
-            child: RepaintBoundary(
-              child: DailyCultureCard(),
-            ),
-          ),
-          // ── Daily challenge CTA ────────────────────────────────────
-          SliverToBoxAdapter(
-            child: RepaintBoundary(
-              child: _DailyChallengeCard(onTap: () => context.push(AppRoutes.challenge)),
-            ),
-          ),
           _buildCategoryFilter(),
           // ── Curations list (repaint boundary) ──────────────────────
           curationsState.when(
@@ -379,6 +419,55 @@ class _NavButton extends StatelessWidget {
           ? Text(emoji!, style: const TextStyle(fontSize: 14))
           : Icon(icon, size: 16),
       label: Text(tr(label)),
+    );
+  }
+}
+
+class _LearnCultureCard extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _LearnCultureCard({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [AppColors.primary, AppColors.secondary],
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            const Text('📖', style: TextStyle(fontSize: 22)),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    tr('home.learn_card_title'),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  Text(
+                    tr('home.learn_card_subtitle'),
+                    style: const TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
+          ],
+        ),
+      ),
     );
   }
 }
