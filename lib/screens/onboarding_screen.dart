@@ -220,7 +220,7 @@ class _BottomNav extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
-      child: const SizedBox(
+      child: SizedBox(
         width: double.infinity,
         height: 52,
         child: ElevatedButton(
@@ -770,7 +770,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
                       color: AppColors.primary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Icon(f.$2, color: AppColors.primary, size: 20),
+                    child: Icon(f.$2, color: AppColors.primary, size: 20),
                   ),
                   const SizedBox(width: 16),
                   Expanded(

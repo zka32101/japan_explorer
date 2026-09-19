@@ -284,7 +284,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
               onChanged: (v) => setState(() => _recommend = v),
             ),
             const SizedBox(height: 12),
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _isSubmitting ? null : _submitRating,
@@ -366,7 +366,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: 100,
                       child: Text(
                         e.key,
@@ -588,7 +588,7 @@ class _StatChip extends StatelessWidget {
             style: const TextStyle(fontSize: 11, color: AppColors.textSecondary)),
         Row(
           children: [
-            const Icon(Icons.star, size: 14, color: color),
+            Icon(Icons.star, size: 14, color: color),
             const SizedBox(width: 2),
             Text(
               value.toStringAsFixed(1),
@@ -616,7 +616,7 @@ class _RatingRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(
+        SizedBox(
           width: 110,
           child: Text(label, style: const TextStyle(fontSize: 14)),
         ),
@@ -624,7 +624,7 @@ class _RatingRow extends StatelessWidget {
           final star = i + 1.0;
           return GestureDetector(
             onTap: () => onChanged(star),
-            child: const Icon(
+            child: Icon(
               star <= value ? Icons.star : Icons.star_outline,
               color: AppColors.accent,
               size: 28,

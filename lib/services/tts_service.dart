@@ -23,7 +23,8 @@ class TtsService {
   void setStartHandler(Function() handler) => _tts.setStartHandler(handler);
   void setCompletionHandler(Function() handler) => _tts.setCompletionHandler(handler);
   void setErrorHandler(Function(dynamic) handler) => _tts.setErrorHandler(handler);
-  void setProgressHandler(Function(String, int, int) handler) => _tts.setProgressHandler(handler);
+  void setProgressHandler(Function(String, int, int, String) handler) =>
+      _tts.setProgressHandler(handler);
 
   Future<void> dispose() async {
     await _tts.stop();

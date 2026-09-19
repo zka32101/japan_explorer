@@ -339,7 +339,7 @@ class CultureDetailScreen extends ConsumerWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              const SizedBox(
+              SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => showPremiumPaywall(context),
