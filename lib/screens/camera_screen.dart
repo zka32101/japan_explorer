@@ -121,7 +121,7 @@ ${explanation.howToExperience}
                   _showFollowUp = false;
                   _isSpeaking = false;
                 });
-                _tts.stop();
+                ttsService.stop();
               },
             ),
         ],
@@ -380,7 +380,7 @@ ${explanation.howToExperience}
     return Column(
       children: [
         if (state.capturedImage != null)
-          const SizedBox(
+          SizedBox(
             height: 180,
             width: double.infinity,
             child: Image.file(state.capturedImage!, fit: BoxFit.cover),
@@ -445,7 +445,7 @@ ${explanation.howToExperience}
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(badgeIcon, size: 12, color: badgeColor),
+                  Icon(badgeIcon, size: 12, color: badgeColor),
                   const SizedBox(width: 4),
                   Text(badgeLabel,
                       style: TextStyle(color: badgeColor, fontSize: 11)),
@@ -503,7 +503,7 @@ ${explanation.howToExperience}
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     _isSpeaking ? Icons.stop : Icons.play_arrow,
                     color: _isSpeaking ? AppColors.primary : Colors.white70,
                     size: 20,
@@ -535,7 +535,7 @@ ${explanation.howToExperience}
                 color: _showFollowUp ? AppColors.secondary : Colors.white24,
               ),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.chat_bubble_outline,
               color: _showFollowUp ? AppColors.secondary : Colors.white70,
               size: 20,
@@ -665,7 +665,7 @@ ${explanation.howToExperience}
               onPressed: () {
                 ref.read(cameraNotifierProvider.notifier).reset();
                 setState(() => _showFollowUp = false);
-                _tts.stop();
+                ttsService.stop();
               },
               icon: const Icon(Icons.camera_alt, color: Colors.white70),
               label: Text(tr('camera.new_photo'),
@@ -906,7 +906,7 @@ class _ControlButton extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(icon, color: Colors.white70, size: 28),
+          Icon(icon, color: Colors.white70, size: 28),
           const SizedBox(height: 4),
           Text(label,
               style: const TextStyle(color: Colors.white70, fontSize: 12)),

@@ -57,9 +57,6 @@ class FadeTransitionPageRoute<T> extends PageRoute<T> {
   String? get barrierLabel => null;
 
   @override
-  bool get maintainState => this.maintainState;
-
-  @override
   Duration get transitionDuration => const Duration(milliseconds: 150);
 
   @override
@@ -101,9 +98,6 @@ class SlideUpPageRoute<T> extends PageRoute<T> {
 
   @override
   String? get barrierLabel => 'Dismiss';
-
-  @override
-  bool get maintainState => this.maintainState;
 
   @override
   bool get barrierDismissible => true;
