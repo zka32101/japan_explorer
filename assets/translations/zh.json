@@ -37,8 +37,11 @@
       "hint": "请至少选择一个"
     },
     "step2": {
-      "title": "您的旅行风格是什么？",
-      "subtitle": "我们将为您推荐最佳体验",
+      "title": "您来这里的目的是？",
+      "subtitle": "我们将根据您的目标为您定制最佳体验",
+      "goal_travel": "计划旅行",
+      "goal_learn": "了解日本文化",
+      "goal_learn_note": "定位和地图功能会在您需要时随时可用。现在，让我们轻松地开始了解日本文化吧！",
       "style_label": "旅行风格",
       "duration_label": "旅行时长",
       "solo": "独自旅行",
@@ -63,7 +66,8 @@
     "step4": {
       "title": "准备就绪！",
       "subtitle": "您的日本之旅现在开始",
-      "cta": "开始探索"
+      "cta": "开始探索",
+      "subtitle_learn": "您了解日本文化的旅程现在开始"
     }
   },
   "category": {
@@ -102,6 +106,9 @@
     "error_load_title": "无法加载景点",
     "error_load_subtitle": "请检查网络连接后重试",
     "ai_lens_label": "AI 镜头",
+    "learn_card_title": "了解日本文化",
+    "learn_card_subtitle": "通过卡片学习日本的文化、历史与礼仪",
+    "spots_section_title": "🗾 也可以看看推荐地点（可选）",
     "greeting": "你好，{}",
     "category_all": "全部",
     "no_spots_found": "未找到景点",

@@ -132,6 +132,7 @@ void main() async {
   // Read onboarding status synchronously before runApp so the router
   // can use it without an async gap.
   final onboardingDone = await OnboardingNotifier.loadStatus();
+  final usageGoal = await OnboardingNotifier.loadUsageGoal();
 
   runApp(
     EasyLocalization(
@@ -147,6 +148,7 @@ void main() async {
       child: ProviderScope(
         overrides: [
           onboardingStatusProvider.overrideWith((ref) => onboardingDone),
+          usageGoalProvider.overrideWith((ref) => usageGoal),
         ],
         child: const JapanExplorerApp(),
       ),
