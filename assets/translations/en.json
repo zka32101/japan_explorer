@@ -37,8 +37,11 @@
       "hint": "Please select one or more"
     },
     "step2": {
-      "title": "What is your travel style?",
-      "subtitle": "We will recommend the best experience",
+      "title": "What brings you here?",
+      "subtitle": "We'll tailor the experience to your goal",
+      "goal_travel": "Planning a trip",
+      "goal_learn": "Learning about Japan",
+      "goal_learn_note": "Location and map features are there whenever you need them. For now, let's just enjoy learning about Japan!",
       "style_label": "Travel Style",
       "duration_label": "Trip Duration",
       "solo": "Solo",
@@ -63,7 +66,8 @@
     "step4": {
       "title": "Ready!",
       "subtitle": "Your journey in Japan begins now",
-      "cta": "Start Exploring"
+      "cta": "Start Exploring",
+      "subtitle_learn": "Your journey into Japanese culture begins now"
     }
   },
   "category": {
@@ -102,6 +106,9 @@
     "error_load_title": "Could not load spots",
     "error_load_subtitle": "Check your connection and try again",
     "ai_lens_label": "AI Lens",
+    "learn_card_title": "Learn Japanese Culture",
+    "learn_card_subtitle": "Bite-sized cards on culture, history & etiquette",
+    "spots_section_title": "🗾 Curious about spots too? (optional)",
     "greeting": "Hello, {}",
     "category_all": "All",
     "no_spots_found": "No spots found",
