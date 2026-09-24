@@ -33272,6 +33272,326 @@ Mirin has a history beyond the kitchen. O-toso, the spiced rice wine drunk at Ne
     seeAlso: ['culture_new_year_traditions', 'culture_gift_giving', 'event_hanami_culture'],
   ),
 
+    CultureContent(
+      id: 'saitama_01',
+      categoryId: 'region',
+      title: 'Saitama: Tokyo\'s Northern Gateway',
+      subtitle: 'Japan\'s most populous landlocked prefecture pairs a Little Edo townscape with the world\'s largest underground flood-control system.',
+      description: '''Saitama Prefecture (埼玉県) borders Tokyo to the north and is often treated as an extension of the capital's commuter belt, but it holds its own distinct history and attractions. With no coastline, it is nonetheless one of Japan's most populous prefectures, anchored by the city of Saitama (formed in 2001 from the merger of Urawa, Omiya, and Yono).
+
+Kawagoe (川越), nicknamed "Koedo" (小江戸, "Little Edo"), preserves a row of black-plastered kurazukuri (蔵造り) warehouse buildings from the Edo period along its old merchant street, along with the Toki no Kane (時の鐘, "Bell of Time") bell tower that has marked the hours since the 1600s. Its proximity to Tokyo (about 30 minutes by train) makes it one of the most accessible places to experience an Edo-era streetscape.
+
+The Omiya Bonsai Village (大宮盆栽村), established in the 1920s when bonsai growers relocated from Tokyo after the 1923 earthquake, remains one of Japan's most important bonsai-cultivation centers and hosts the Omiya Bonsai Art Museum, the country's first public museum dedicated to the art form.
+
+Chichibu (秩父), in the prefecture's mountainous west, is known for the Chichibu Night Festival (秩父夜祭), one of Japan's three great float festivals, and for limestone quarrying that has shaped the region's landscape and economy for over a century.
+
+Saitama is also home to the Metropolitan Area Outer Underground Discharge Channel in Kasukabe — an enormous underground flood-control system, sometimes called the "underground temple" for its cathedral-like rows of concrete pillars, that protects the greater Tokyo area from typhoon flooding.''',
+      imageUrl: '',
+      tags: ['saitama', 'kanto', 'kawagoe', 'bonsai', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 6),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Kawagoe ("Little Edo") preserves Edo-period kurazukuri warehouse buildings just 30 minutes from Tokyo',
+        'Omiya Bonsai Village has cultivated bonsai since growers relocated there after the 1923 earthquake',
+        'The Chichibu Night Festival is ranked among Japan\'s three great float festivals',
+        'Saitama has no coastline despite being one of Japan\'s most populous prefectures',
+        'The Kasukabe underground flood channel protects greater Tokyo from typhoon flooding',
+      ],
+      didYouKnow: 'The Metropolitan Area Outer Underground Discharge Channel beneath Kasukabe is popularly nicknamed the "underground temple" because its central pressure-adjustment tank — 177 meters long and 18 meters high, supported by 59 massive concrete pillars — resembles a cavernous cathedral. Dry-season tours of the facility have turned a piece of flood infrastructure into an unlikely tourist attraction.',
+      seeAlso: ['tokyo_neighborhoods_01', 'washi_01'],
+    ),
+
+    CultureContent(
+      id: 'chiba_01',
+      categoryId: 'region',
+      title: 'Chiba: Gateway Airport and Coastal Peninsula',
+      subtitle: 'Home to Narita Airport and Tokyo Disney Resort, Chiba\'s Boso Peninsula also hides some of Japan\'s best surf beaches and oldest temples.',
+      description: '''Chiba Prefecture (千葉県) occupies the Boso Peninsula (房総半島) east of Tokyo Bay and is, for many international visitors, the very first part of Japan they set foot in — Narita International Airport, the country's primary international gateway for decades, sits within its borders.
+
+Tokyo Disney Resort, despite its name, is actually located in Urayasu, Chiba, on reclaimed land at the edge of Tokyo Bay. It opened in 1983 as the first Disney park built outside the United States and remains one of the most-visited theme park resorts in the world.
+
+Naritasan Shinshoji Temple (成田山新勝寺), founded in 940, is one of Japan's most popular temples for hatsumode (the first shrine or temple visit of the New Year), drawing millions of visitors in the first days of January and hosting celebrity-studded setsubun bean-throwing events each February.
+
+Along the peninsula's Pacific coast, Kujukuri Beach (九十九里浜) stretches for roughly 60 kilometers and is one of Japan's premier surfing destinations, while the southern tip around Tateyama enjoys a mild climate that supports flower cultivation even in winter.
+
+Chiba is also Japan's leading producer of peanuts, particularly around the town of Yachimata, and the prefecture's flat, fertile land makes it one of the country's top agricultural producers despite sitting in the shadow of neighboring Tokyo.''',
+      imageUrl: '',
+      tags: ['chiba', 'kanto', 'narita', 'coast', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 8),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Narita International Airport, Japan\'s main international gateway for decades, is in Chiba, not Tokyo',
+        'Tokyo Disney Resort is actually located in Urayasu, Chiba, on reclaimed land',
+        'Naritasan Shinshoji Temple draws millions of hatsumode visitors each New Year',
+        'Kujukuri Beach stretches roughly 60km and is a major surfing destination',
+        'Chiba is Japan\'s top peanut-producing prefecture',
+      ],
+      didYouKnow: 'Because Tokyo Disney Resort sits in Chiba rather than Tokyo, and Narita Airport is over an hour from central Tokyo by train, many first-time visitors are surprised that two of the experiences most associated with "Tokyo" in their minds actually happen in a neighboring prefecture entirely.',
+      seeAlso: ['tokyo_neighborhoods_01'],
+    ),
+
+    CultureContent(
+      id: 'aomori_01',
+      categoryId: 'region',
+      title: 'Aomori: Apple Orchards and Fire Festivals',
+      subtitle: 'Honshu\'s northernmost prefecture produces most of Japan\'s apples and hosts the spectacular Nebuta lantern festival.',
+      description: '''Aomori Prefecture (青森県) occupies the northern tip of Honshu, facing Hokkaido across the Tsugaru Strait. Its cold winters and volcanic soil make it Japan's largest apple-producing region by a wide margin, with orchards around the city of Hirosaki supplying roughly half of the country's apple harvest.
+
+The Aomori Nebuta Matsuri (青森ねぶた祭), held every August, is one of Japan's three great summer festivals. Enormous illuminated lantern floats depicting warriors, gods, and mythical figures — some over five meters tall and built from wire frames covered in hand-painted washi paper — are paraded through the city at night while dancers called haneto leap and chant around them.
+
+Hirosaki Castle (弘前城), one of the few Japanese castles with an original (non-reconstructed) keep, is surrounded by thousands of cherry trees and is considered one of the country's finest hanami spots each spring.
+
+The Sannai-Maruyama archaeological site, one of Japan's largest and best-preserved Jomon-period settlements (dating back roughly 5,900 to 4,200 years), has reshaped scholarly understanding of prehistoric Japanese society, revealing a settled community that thrived through hunting, gathering, and early cultivation rather than pure nomadism.
+
+Aomori is also home to Tsugaru-jamisen (津軽三味線), a fast, percussive style of shamisen playing that developed among traveling blind musicians in the region and has since become one of Japan's most technically demanding and internationally recognized folk music traditions.''',
+      imageUrl: '',
+      tags: ['aomori', 'tohoku', 'nebuta', 'apples', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 10),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Aomori produces roughly half of Japan\'s apples, centered around Hirosaki',
+        'The Nebuta Matsuri is one of Japan\'s three great summer festivals',
+        'Hirosaki Castle keeps its original Edo-period keep, rare among Japanese castles',
+        'Sannai-Maruyama is one of Japan\'s largest Jomon-period archaeological sites',
+        'Tsugaru-jamisen is a fast, percussive shamisen style that originated in the region',
+      ],
+      didYouKnow: 'The wire-and-washi Nebuta floats are so massive and detailed that many neighborhood associations and companies begin planning next year\'s design the moment the current festival ends, with master float-builders (ねぶた師, nebuta-shi) treated as celebrated artists whose work is compared and judged each year.',
+      seeAlso: ['tohoku_01', 'tohoku_region_01'],
+    ),
+
+    CultureContent(
+      id: 'miyagi_01',
+      categoryId: 'region',
+      title: 'Miyagi: Sendai and the Bay of a Thousand Pines',
+      subtitle: 'Tohoku\'s largest city anchors a prefecture famous for one of Japan\'s three most celebrated scenic views and grilled beef tongue.',
+      description: '''Miyagi Prefecture (宮城県), on Japan's northeastern Pacific coast, is centered on Sendai (仙台), the largest city in the Tohoku region and known as the "City of Trees" for the zelkova-lined boulevards planted after World War II reconstruction.
+
+Sendai owes much of its historical character to Date Masamune (伊達政宗), the influential daimyo who founded the city in 1600 and whose one-eyed image (he lost sight in one eye to smallpox as a child) made him one of the most recognizable figures of the Sengoku period. His mausoleum, Zuihoden, and the reconstructed Sendai Castle ruins remain major sites tied to his legacy.
+
+Matsushima Bay (松島), dotted with roughly 260 small pine-covered islands, is traditionally ranked as one of Japan's three most scenic views (日本三景, Nihon Sankei), alongside Miyajima and Amanohashidate. The poet Matsuo Basho is said to have been so moved by the sight that he could not compose a haiku about it.
+
+Sendai's Tanabata Matsuri, held each August, is the largest Tanabata festival in Japan, transforming the city's shopping arcades with enormous, elaborately decorated paper streamers hung from bamboo poles.
+
+The 2011 Tohoku earthquake and tsunami devastated Miyagi's coastline, and the prefecture has since become a center for disaster-preparedness education and coastal reconstruction, with memorial parks and museums in cities like Ishinomaki and Natori documenting both the tragedy and the recovery.''',
+      imageUrl: '',
+      tags: ['miyagi', 'tohoku', 'sendai', 'matsushima', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 12),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Sendai is Tohoku\'s largest city, founded by daimyo Date Masamune in 1600',
+        'Matsushima Bay is one of Japan\'s "three most scenic views" (Nihon Sankei)',
+        'Sendai\'s Tanabata Matsuri is the largest Tanabata festival in Japan',
+        'Gyutan (grilled beef tongue) is Sendai\'s best-known culinary specialty',
+        'Miyagi\'s coastline was devastated by the 2011 Tohoku earthquake and tsunami',
+      ],
+      didYouKnow: 'Gyutan (grilled beef tongue) became Sendai\'s signature dish almost by accident: after World War II, a local restaurateur began using beef tongue and offal that American occupation forces had left unused, slicing and grilling it Sendai-style with barley rice and oxtail soup — a wartime improvisation that grew into the city\'s most famous food.',
+      seeAlso: ['tohoku_01', 'tohoku_matsushima_01', 'tohoku_coast_01'],
+    ),
+
+    CultureContent(
+      id: 'fukushima_01',
+      categoryId: 'region',
+      title: 'Fukushima: Samurai History and Hot Springs',
+      subtitle: 'The Aizu region\'s samurai heritage and centuries-old onsen towns sit alongside a prefecture still defined by recovery from 2011.',
+      description: '''Fukushima Prefecture (福島県) is Japan's third-largest prefecture by area, divided into three distinct regions: the coastal Hamadori, the mountainous Nakadori (including the capital, Fukushima City), and the historic Aizu basin in the west.
+
+Aizu-Wakamatsu (会津若松) was the seat of the Aizu domain, whose samurai loyalty to the shogunate led to fierce resistance during the 1868 Boshin War. Tsuruga Castle, rebuilt after the original was demolished, and the tragic story of the Byakkotai (白虎隊, "White Tiger Force") — teenage samurai cadets who took their own lives believing their castle had fallen — remain central to the region's identity and are commemorated at Iimoriyama hill.
+
+Ouchi-juku (大内宿), a former post town on the old Aizu-Nishi Kaido road, preserves a row of thatched-roof farmhouses that now operate as shops and restaurants, offering one of Japan's best-preserved glimpses of Edo-period rural life.
+
+Fukushima is one of Japan's leading producers of peaches and other fruit, and the Bandai-Azuma region's volcanic landscape has created numerous hot spring towns, including Higashiyama Onsen near Aizu-Wakamatsu, said to have been discovered over 1,300 years ago.
+
+The 2011 earthquake, tsunami, and subsequent accident at the Fukushima Daiichi Nuclear Power Plant devastated the coastal Hamadori region. In the years since, the prefecture has invested heavily in decontamination, renewable energy projects, and initiatives to rebuild agriculture and tourism, with many areas now welcoming visitors again.''',
+      imageUrl: '',
+      tags: ['fukushima', 'tohoku', 'aizu', 'onsen', 'region'],
+      level: 2,
+      createdAt: DateTime(2028, 1, 14),
+      readTime: 5,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Aizu-Wakamatsu was the historic seat of the Aizu samurai domain',
+        'The Byakkotai were teenage samurai cadets memorialized at Iimoriyama',
+        'Ouchi-juku preserves a row of thatched-roof Edo-period post-town buildings',
+        'Fukushima is a major peach-producing prefecture',
+        'The prefecture has rebuilt extensively since the 2011 nuclear accident',
+      ],
+      didYouKnow: 'The Byakkotai story is one of the most retold tragedies of the Boshin War: from a hillside, a group of teenage cadets saw smoke rising over Aizu-Wakamatsu and believed their castle had fallen, so most of the group took their own lives in despair — but the castle had not actually fallen, and Tsuruga Castle would hold out for several more weeks before finally surrendering.',
+      seeAlso: ['tohoku_01', 'tohoku_region_01'],
+    ),
+
+    CultureContent(
+      id: 'gunma_01',
+      categoryId: 'region',
+      title: 'Gunma: Hot Springs and Historic Silk Mills',
+      subtitle: 'Landlocked Gunma pairs some of Japan\'s most beloved onsen towns with a UNESCO World Heritage silk-reeling mill.',
+      description: '''Gunma Prefecture (群馬県), northwest of Tokyo, is entirely landlocked and defined by its mountainous terrain, volcanic activity, and long relationship with the silk industry.
+
+Kusatsu Onsen (草津温泉) is consistently ranked among Japan's most popular hot spring towns, centered on the Yubatake ("hot water field"), a wooden channel structure in the town center where mineral-rich, highly acidic spring water is cooled before being piped to the surrounding ryokan. Visitors can watch the traditional yumomi (湯もみ) performance, in which long wooden paddles are used to stir and cool the scalding water while performers sing folk songs.
+
+The Tomioka Silk Mill (富岡製糸場), established in 1872 as Japan's first modern silk-reeling factory using French machinery and expertise, was inscribed as a UNESCO World Heritage Site in 2014 for its role in industrializing Japan's silk production and helping the country become a major global exporter of raw silk in the late 19th century.
+
+Mount Haruna and Mount Akagi, both part of Gunma's volcanic mountain scenery, offer crater lakes, shrines, and popular hiking and skiing areas, while the Takasaki area is famous for producing daruma dolls — round, weighted papier-mâché figures modeled on the Zen monk Bodhidharma, traditionally bought with blank eyes that are painted in one at a time as a goal is set and then achieved.
+
+Gunma's Joshin'etsu-kogen region, shared with neighboring Nagano and Niigata, contains some of Japan's most dramatic alpine scenery, including the volcanic peaks around Kusatsu-Shirane.''',
+      imageUrl: '',
+      tags: ['gunma', 'kanto', 'onsen', 'silk', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 16),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Kusatsu Onsen is one of Japan\'s most popular hot spring towns',
+        'The Tomioka Silk Mill was Japan\'s first modern silk-reeling factory and a UNESCO site since 2014',
+        'Takasaki is Japan\'s center for producing daruma dolls',
+        'Gunma is entirely landlocked, bordered by six other prefectures',
+        'Yumomi performances at Kusatsu cool the extremely hot spring water using wooden paddles',
+      ],
+      didYouKnow: 'Daruma dolls from Takasaki are sold with both eyes blank; when someone sets a goal, they paint in the left eye, and only paint in the right eye once the goal is achieved — a visible, ongoing reminder of unfinished business that is especially popular with election candidates, business owners, and students during exam season.',
+      seeAlso: ['japanese_alps_01'],
+    ),
+
+    CultureContent(
+      id: 'tochigi_01',
+      categoryId: 'region',
+      title: 'Tochigi: Beyond Nikko\'s Shrines',
+      subtitle: 'Home to the famous Nikko shrine complex, Tochigi also produces some of Japan\'s finest pottery, strawberries, and gyoza.',
+      description: '''Tochigi Prefecture (栃木県) is best known internationally for Nikko (日光), the mountain town whose elaborately decorated shrine and temple complex — including Nikko Toshogu, the mausoleum of shogun Tokugawa Ieyasu — draws visitors from across the world. But Tochigi's identity extends well beyond Nikko.
+
+Mashiko (益子), in the prefecture's southeast, has been a center of pottery production since the 1850s. Mashiko-yaki (益子焼) ware is known for its thick, rustic glazes and earthy tones, and the town gained international recognition through the work of Hamada Shoji, a leading figure in the mingei (folk craft) movement who settled there in the 1920s and was later designated a Living National Treasure.
+
+Utsunomiya (宇都宮), the prefecture's capital, has branded itself the "gyoza capital of Japan," with a dense concentration of gyoza restaurants and a city-sponsored gyoza statue and annual festival celebrating the pan-fried dumplings that soldiers returning from Manchuria after World War II are said to have popularized locally.
+
+Tochigi is also one of Japan's leading strawberry producers, particularly the Tochiotome variety, and the prefecture's Nasu highlands are a popular retreat known for cooler summer temperatures, dairy farms, and hot springs — the Imperial family has maintained a villa there since the Meiji era.
+
+The Ashikaga Flower Park, famous for its enormous wisteria trees that bloom in a cascading purple canopy each spring, has become one of Tochigi's most photographed attractions in recent years.''',
+      imageUrl: '',
+      tags: ['tochigi', 'kanto', 'nikko', 'pottery', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 18),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Nikko Toshogu is the mausoleum shrine of shogun Tokugawa Ieyasu',
+        'Mashiko has been a pottery center since the 1850s and shaped the mingei folk-craft movement',
+        'Utsunomiya calls itself the "gyoza capital of Japan"',
+        'Tochigi is a leading producer of the Tochiotome strawberry variety',
+        'The Nasu highlands have hosted an Imperial family villa since the Meiji era',
+      ],
+      didYouKnow: 'Utsunomiya\'s gyoza obsession is often traced to soldiers who served in Manchuria during World War II and brought a taste for the dumplings home with them after the war, though rival city Hamamatsu makes a similar claim — the two cities have held a friendly, decades-long "gyoza rivalry" over which sells more per household.',
+      seeAlso: ['nikko_01', 'nikko_shrines_01', 'nikko_01_v2'],
+    ),
+
+    CultureContent(
+      id: 'yamanashi_01',
+      categoryId: 'region',
+      title: 'Yamanashi: Fuji\'s Quiet Northern Side',
+      subtitle: 'The Fuji Five Lakes and Japan\'s oldest wine region sit in Mount Fuji\'s shadow on the mountain\'s less-crowded northern face.',
+      description: '''Yamanashi Prefecture (山梨県), landlocked and mountainous, contains Mount Fuji's northern slopes and shares the sacred mountain with neighboring Shizuoka. While Shizuoka offers the classic southern-facing postcard views, Yamanashi's Fuji Five Lakes (富士五湖) region — Kawaguchiko, Yamanakako, Saiko, Shojiko, and Motosuko — provides some of the most photographed reflections of the mountain in still water.
+
+The Fuji Subaru Line, a toll road climbing partway up Fuji's northern flank, and the Yoshida Trail, the most popular of the mountain's climbing routes, both begin from the Yamanashi side, making the prefecture the main gateway for the roughly quarter-million people who attempt the summit each climbing season.
+
+Yamanashi is also Japan's oldest and most significant wine-producing region. The Katsunuma area, in the Kofu Basin, has grown Koshu grapes — a pink-skinned variety believed to have arrived along the Silk Road centuries ago — since at least the Kamakura period, and it remains the heart of Japan's modern wine industry, with dozens of wineries open for tastings.
+
+The Kofu Basin's dramatic granite gorge, Shosenkyo (昇仙峡), is considered one of Japan's most beautiful ravines, its rock formations shaped over millennia by the Arakawa River.
+
+Yamanashi has also become a center for precision manufacturing of jewelry and crystal-cutting, a tradition dating back to the discovery of rock crystal deposits in the region during the Edo period, which trained generations of skilled stone polishers whose expertise later transferred into watchmaking and precision optics.''',
+      imageUrl: '',
+      tags: ['yamanashi', 'chubu', 'fuji', 'wine', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 20),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'The Fuji Five Lakes region offers Yamanashi\'s classic reflected views of Mount Fuji',
+        'The Yoshida Trail, Fuji\'s most popular climbing route, starts from Yamanashi',
+        'Katsunuma is the historic heart of Japan\'s wine industry, growing Koshu grapes',
+        'Shosenkyo Gorge is one of Japan\'s most celebrated ravines',
+        'Yamanashi developed a precision jewelry and crystal-cutting industry from Edo-era stone polishing',
+      ],
+      didYouKnow: 'The Koshu grape used in Yamanashi\'s signature white wine is genetically linked, through DNA analysis, to grape varieties from the Caucasus region, supporting the long-held legend that it traveled to Japan along the Silk Road over a thousand years ago before eventually taking root in the Kofu Basin.',
+      seeAlso: ['japanese_alps_01', 'shizuoka_fuji_01'],
+    ),
+
+    CultureContent(
+      id: 'shiga_01',
+      categoryId: 'region',
+      title: 'Shiga: Life Around Japan\'s Largest Lake',
+      subtitle: 'Lake Biwa dominates Shiga\'s geography, history, and culture, from ancient trade routes to a historic merchant tradition.',
+      description: '''Shiga Prefecture (滋賀県) sits just east of Kyoto and is defined almost entirely by Lake Biwa (琵琶湖), Japan's largest freshwater lake, which occupies roughly one-sixth of the prefecture's total area and has shaped its climate, ecology, and economy for centuries.
+
+Lake Biwa is estimated to be around four million years old, making it one of the world's oldest lakes, and its long geological history has allowed unique endemic species of fish and shellfish to evolve, including several found nowhere else. The lake also supplies drinking water to millions of people in the greater Kyoto-Osaka region downstream.
+
+Hikone Castle (彦根城), overlooking the lake's eastern shore, is one of only twelve Japanese castles to retain its original Edo-period keep and is a National Treasure, along with several other original castle keeps such as Himeji and Matsumoto.
+
+Shiga was historically the home base of the Omi merchants (近江商人), traders from the Omi region (Shiga's old name) who traveled across Japan in the Edo period building extensive commercial networks. Their business philosophy of "sanpo yoshi" (三方よし, "good for three sides" — the seller, the buyer, and society) is still cited today as an early Japanese articulation of corporate social responsibility.
+
+Otsu, the prefecture's capital on the lake's southwestern shore, was briefly the capital of Japan in the 7th century and remains an important transit point on the old Tokaido road connecting Kyoto to eastern Japan.''',
+      imageUrl: '',
+      tags: ['shiga', 'kansai', 'lake_biwa', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 22),
+      readTime: 4,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Lake Biwa is Japan\'s largest freshwater lake and one of the oldest in the world',
+        'Hikone Castle is one of only twelve Japanese castles with an original Edo-period keep',
+        'The Omi merchants of Shiga pioneered the "sanpo yoshi" business ethic',
+        'Lake Biwa supplies drinking water to millions of people downstream in Kansai',
+        'Otsu briefly served as Japan\'s capital in the 7th century',
+      ],
+      didYouKnow: 'The "sanpo yoshi" (three-way satisfaction) philosophy developed by Omi merchants — that a good deal must benefit the seller, the buyer, and wider society — is regularly cited by modern Japanese business schools and corporations as a centuries-old precedent for what Western management theory now calls corporate social responsibility.',
+      seeAlso: ['kyoto_temples_01'],
+    ),
+
+    CultureContent(
+      id: 'tokushima_01',
+      categoryId: 'region',
+      title: 'Tokushima: Whirlpools, Indigo, and the Dancing Fools',
+      subtitle: 'Shikoku\'s Tokushima Prefecture is famous for Japan\'s largest dance festival, tidal whirlpools, and centuries of indigo dyeing.',
+      description: '''Tokushima Prefecture (徳島県) occupies the eastern side of Shikoku, facing the Kii Channel, and is best known for the Awa Odori (阿波踊り), Japan's largest traditional dance festival, held each August. Hundreds of choreographed dance groups (連, ren) parade through the streets of Tokushima City to the rhythm of shamisen, taiko drums, and flutes, chanting the festival's famous refrain that dancers and watchers alike are "fools" — so one might as well dance.
+
+The Naruto Strait, at the prefecture's northern tip, produces some of the world's largest tidal whirlpools, created as tidal currents rush between the Pacific Ocean and the Seto Inland Sea through a narrow channel. Sightseeing boats and an observation walkway beneath the Onaruto Bridge let visitors watch whirlpools that can reach over 20 meters in diameter at peak tidal flow.
+
+Tokushima was historically Japan's leading center for indigo cultivation and dyeing, producing "Awa-ai" (阿波藍) indigo that was shipped nationwide during the Edo period and used to dye the cotton workwear of farmers and laborers across the country. Although synthetic indigo largely replaced the natural product in the 20th century, a small number of dedicated growers and dye houses in the Tokushima region continue to cultivate and process natural indigo using traditional methods.
+
+The Iya Valley (祖谷渓), deep in Tokushima's mountainous interior, is one of Japan's most remote and dramatic gorges, historically so isolated that it is said to have sheltered defeated Taira clan warriors after the 12th-century Genpei War. Its vine bridges (かずら橋, kazurabashi), rebuilt periodically using mountain vines in the traditional style, remain a rare and striking way to cross the gorge.
+
+Tokushima is also the starting point of the 88-temple Shikoku pilgrimage, whose first temple, Ryozenji, sits within the prefecture.''',
+      imageUrl: '',
+      tags: ['tokushima', 'shikoku', 'awa_odori', 'indigo', 'region'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 24),
+      readTime: 5,
+      sourceUrl: 'https://www.jnto.go.jp/',
+      isPremium: false,
+      keyFacts: [
+        'Awa Odori is Japan\'s largest traditional dance festival, held in Tokushima each August',
+        'The Naruto Strait produces some of the world\'s largest tidal whirlpools',
+        'Tokushima was historically Japan\'s leading natural indigo (Awa-ai) production region',
+        'The Iya Valley\'s vine bridges are periodically rebuilt using traditional mountain-vine techniques',
+        'Tokushima\'s Ryozenji temple is the first stop on the 88-temple Shikoku pilgrimage',
+      ],
+      didYouKnow: 'The Awa Odori\'s most famous chant translates roughly to "the dancing fool and the watching fool are both fools alike, so you might as well dance" — a lighthearted invitation that turns the festival into one of the few major Japanese celebrations where tourists are actively encouraged to join in in specially organized "one-night dancer" groups rather than simply observe.',
+      seeAlso: ['shikoku_pilgrimage_01', 'shikoku_pilgrimage_01_v2'],
+    ),
+
   ];
 
   /// Public read-only access to all seeded content (used for Daily Culture, collection stats).
