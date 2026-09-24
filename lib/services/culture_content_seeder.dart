@@ -33592,6 +33592,326 @@ Tokushima is also the starting point of the 88-temple Shikoku pilgrimage, whose 
       seeAlso: ['shikoku_pilgrimage_01', 'shikoku_pilgrimage_01_v2'],
     ),
 
+    CultureContent(
+      id: 'yakiniku_01',
+      categoryId: 'food',
+      title: 'Yakiniku: Grill-It-Yourself Korean-Japanese Barbecue',
+      subtitle: 'Thin-sliced meat cooked tableside over charcoal or gas has become one of Japan\'s most social ways to eat dinner.',
+      description: '''Yakiniku (焼肉, literally "grilled meat") is Japan's tableside barbecue style, in which thinly sliced beef, pork, or offal is cooked by diners themselves on a small grill built into the table, then dipped in tare (a soy-based sauce) or eaten with salt and a squeeze of lemon.
+
+The style developed in Japan largely through Korean-Japanese communities (Zainichi Korean) in the postwar decades, adapting Korean grilled-meat traditions to Japanese ingredients, portion sizes, and dining customs. Many of Japan's oldest and most respected yakiniku restaurants were founded by Korean-Japanese families, and the cuisine still carries visible traces of that heritage in dishes like naengmyeon (cold noodles) often served as a palate-cleansing finish.
+
+A yakiniku meal is built around a menu of individual cuts, ordered a plate or two at a time rather than as a single large dish: karubi (short rib), rosu (loin), harami (skirt steak, technically a type of diaphragm muscle), and tan (tongue) are staples, alongside offal cuts like horumon — a term some say derives from the Osaka dialect word for "discarded goods," reflecting the dish's origins in using cuts that were once considered waste.
+
+Because each piece is grilled fresh at the table, yakiniku is inherently social and unhurried — groups linger over a meal, ordering course after course, often with beer or highballs, making it as much an occasion as a way of eating.
+
+High-end yakiniku restaurants source Japanese wagyu and charge accordingly, while casual chains make the format accessible for weeknight family dinners, giving yakiniku one of the widest price ranges of any Japanese restaurant category.''',
+      imageUrl: '',
+      tags: ['yakiniku', 'bbq', 'meat', 'food', 'korean_japanese'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 26),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Yakiniku means "grilled meat" and is cooked by diners on a tabletop grill',
+        'The style was popularized in Japan largely by Korean-Japanese (Zainichi) communities',
+        'Popular cuts include karubi (short rib), harami, and horumon (offal)',
+        'Horumon is sometimes said to derive from an Osaka-dialect word related to "discarded goods"',
+        'Yakiniku spans casual family chains to high-end wagyu specialists',
+      ],
+      didYouKnow: 'Horumon dishes — grilled beef or pork intestines, stomach, and other offal — grew popular after the war partly because these cuts were inexpensive and widely available when other meat was scarce; today, far from being seen as low-status, horumon specialists are prized destinations for diners seeking rich, distinctive flavors that muscle cuts alone can\'t offer.',
+      seeAlso: ['wagyu_beef_01', 'izakaya_01'],
+    ),
+
+    CultureContent(
+      id: 'katsudon_01',
+      categoryId: 'food',
+      title: 'Katsudon: The Comfort-Food Cutlet Bowl',
+      subtitle: 'A breaded pork cutlet simmered in egg and sweet-savory broth over rice, katsudon is one of Japan\'s most beloved comfort meals.',
+      description: '''Katsudon (かつ丼) takes tonkatsu — a breaded, deep-fried pork cutlet — and transforms it into a rice bowl dish by simmering the sliced cutlet briefly with onions in a sweet-savory dashi-based sauce, then binding everything together with beaten egg poured over the top just until it sets softly, before sliding the whole mixture onto a bowl of steamed rice.
+
+The dish is thought to have been invented in the early 20th century, with several Tokyo restaurants claiming its origin, as cooks looked for ways to serve the newly popular Western-influenced tonkatsu in a heartier, rice-bowl format more suited to everyday lunches than a formal plated dish.
+
+Katsudon carries a well-known good-luck association in Japan: because "katsu" (勝つ) is a homophone for the word meaning "to win," students eat katsudon before entrance exams and athletes eat it before competitions, treating the meal as a small ritual of encouragement rather than just a lunch choice.
+
+Regional and restaurant variations exist — some versions skip the egg entirely and serve the cutlet with a thick, tangy demi-glace-style sauce (a style associated with Fukui Prefecture), while others lean sweeter or use a thinner dashi broth — but the fundamental combination of crispy cutlet, soft egg, and rice remains constant across the country.
+
+As a fast, filling, and inexpensive meal widely available at casual restaurants, teishoku (set-meal) shops, and even convenience stores, katsudon occupies a similar cultural space to a hearty sandwich or comfort-food plate in other countries.''',
+      imageUrl: '',
+      tags: ['katsudon', 'donburi', 'tonkatsu', 'food', 'comfort_food'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 28),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Katsudon layers a fried pork cutlet, egg, and onion over rice',
+        'It developed from tonkatsu, adapted into a rice-bowl (donburi) format',
+        '"Katsu" is a homophone for "to win," making it a pre-exam and pre-competition good-luck meal',
+        'Fukui-style katsudon skips the egg for a tangy sauce instead',
+        'It is a staple of teishoku shops, casual diners, and convenience store lunches',
+      ],
+      didYouKnow: 'The lucky-word association runs deep enough that many Japanese cram schools and sports teams organize a katsudon meal the night before a major exam or match as a semi-formal tradition, and konbini chains reliably see a measurable sales bump in katsudon bento around university entrance exam season each January and February.',
+      seeAlso: ['tonkatsu_01', 'teishoku_01'],
+    ),
+
+    CultureContent(
+      id: 'oyakodon_01',
+      categoryId: 'food',
+      title: 'Oyakodon: "Parent and Child" Rice Bowl',
+      subtitle: 'Chicken and egg simmered together over rice give this humble donburi its bittersweet nickname.',
+      description: '''Oyakodon (親子丼) combines chicken and egg simmered in a sweet-savory dashi, soy sauce, and mirin broth, then poured over a bowl of steamed rice — a simple, fast, and widely loved home-style and restaurant dish.
+
+Its name literally means "parent-and-child bowl" (親, oya, "parent"; 子, ko, "child"; 丼, don, "bowl"), a wry reference to using both the chicken and the egg it lays in the same dish. The name has become a template applied playfully to other combinations — a bowl using salmon and salmon roe together, for example, is sometimes called "oyako-don" of the sea, or more specifically ikura-oyakodon.
+
+The dish is generally credited to Tamahide, a long-running chicken restaurant (established in 1760) in Tokyo's Nihonbashi district, where a version combining the restaurant's signature chicken sukiyaki with rice and egg was reportedly created by the owner's wife in the late 19th century and quickly spread beyond the restaurant itself.
+
+Oyakodon's appeal lies in its balance of textures and simplicity: tender chicken thigh, soft-set egg (often finished with the egg only partially cooked so it stays glossy and slightly runny), sweet onion, and a broth that soaks into the rice below — a combination that requires only a handful of ingredients but rewards careful timing and technique.
+
+As with katsudon, oyakodon is a staple of teishoku restaurants, soba and udon shops (which often serve it as a side dish alongside noodles), and home cooking, prized for coming together quickly from ingredients most households keep on hand.''',
+      imageUrl: '',
+      tags: ['oyakodon', 'donburi', 'chicken', 'egg', 'food'],
+      level: 1,
+      createdAt: DateTime(2028, 1, 30),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Oyakodon means "parent and child bowl," referring to chicken and egg served together',
+        'It is generally traced to the Tokyo restaurant Tamahide, founded in 1760',
+        'The dish combines simmered chicken, onion, and softly set egg over rice',
+        'The "oyako" naming pattern is playfully applied to other paired ingredients, like salmon and roe',
+        'It is common both as a quick home meal and a teishoku or noodle-shop side dish',
+      ],
+      didYouKnow: 'Tamahide, the Tokyo restaurant credited with inventing oyakodon, is still in business today, over 260 years after its founding, and its original chicken sukiyaki-style dish (which predates the rice-bowl version) remains on the menu alongside the now-famous oyakodon it inspired.',
+      seeAlso: ['katsudon_01', 'teishoku_01'],
+    ),
+
+    CultureContent(
+      id: 'chirashizushi_01',
+      categoryId: 'food',
+      title: 'Chirashi-zushi: Scattered Sushi for Celebrations',
+      subtitle: 'A colorful bed of vinegared rice topped with an arrangement of sashimi and garnishes, eaten especially at spring celebrations.',
+      description: '''Chirashi-zushi (ちらし寿司, "scattered sushi") is a style of sushi in which vinegared rice is served in a bowl or on a plate and topped — rather than rolled or hand-formed — with an arrangement of sliced raw fish, cooked seafood, vegetables, and garnishes such as thin egg strips (kinshi tamago), pickled lotus root, and shiso leaves.
+
+Unlike nigiri, which requires a trained sushi chef to hand-form each piece, chirashi-zushi is relatively approachable to prepare at home, making it one of the most common sushi styles for family celebrations and one many households make themselves rather than buying from a restaurant.
+
+The dish is closely associated with Hinamatsuri (雛祭り), the Doll Festival celebrated on March 3rd to wish for the health and happiness of young girls, when chirashi-zushi's bright colors — pink, yellow, green, and white — are considered especially fitting for the festive, spring occasion and are often arranged to look deliberately cheerful and celebratory.
+
+Regional variations exist under related names: Edomae-style chirashi-zushi in Tokyo tends to feature high-quality raw seafood arranged elegantly over the rice, closer in spirit to a deconstructed sashimi platter, while Kansai-style versions (sometimes called "gomoku-zushi" or "barazushi") mix the ingredients into the rice itself rather than laying them on top, and lean toward cooked and simmered ingredients like shiitake mushroom and lotus root rather than raw fish.
+
+Because it requires no specialized rolling or shaping skills, chirashi-zushi is frequently the sushi style parents teach children to help prepare, making it as much a family tradition of cooking together as it is a specific recipe.''',
+      imageUrl: '',
+      tags: ['chirashizushi', 'sushi', 'hinamatsuri', 'food', 'celebration'],
+      level: 1,
+      createdAt: DateTime(2028, 2, 1),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Chirashi-zushi means "scattered sushi" — toppings are arranged over rice, not rolled or hand-formed',
+        'It is closely associated with Hinamatsuri (Doll Festival) on March 3rd',
+        'Edomae-style favors raw seafood arranged on top; Kansai-style mixes cooked ingredients into the rice',
+        'It requires no specialized sushi-forming technique, making it popular for home cooking',
+        'Common garnishes include kinshi tamago (thin egg strips), pickled lotus root, and shiso',
+      ],
+      didYouKnow: 'Because chirashi-zushi doesn\'t require the years of training needed to become a nigiri sushi chef, many Japanese families treat preparing it together — especially before Hinamatsuri — as an annual kitchen tradition passed down between generations, with children old enough to help typically assigned the task of arranging the colorful toppings on top.',
+      seeAlso: ['osechi_ryori_01', 'the_art_of_sushi_01'],
+    ),
+
+    CultureContent(
+      id: 'chawanmushi_01',
+      categoryId: 'food',
+      title: 'Chawanmushi: Savory Egg Custard in a Teacup',
+      subtitle: 'A silky steamed egg custard studded with seafood and mushroom, chawanmushi bridges the line between soup and dessert.',
+      description: '''Chawanmushi (茶碗蒸し, literally "steamed in a tea bowl") is a savory Japanese egg custard made by whisking beaten egg with dashi, then gently steaming the mixture in a small lidded cup, often with pieces of shrimp, chicken, fish cake (kamaboko), shiitake mushroom, and ginkgo nut suspended inside.
+
+Unlike Western custards, which are typically sweet, chawanmushi is seasoned with soy sauce, mirin, and salt to create a delicate, savory flavor closer to a very light, silky soup than a dessert — a distinction that can surprise first-time diners expecting sweetness from something with an egg-custard texture.
+
+Achieving the dish's signature smooth, unbroken texture (free of the small holes or bubbles that appear if the custard is steamed too hot or too long) is considered a genuine test of a cook's control over heat and timing, and it remains a benchmark dish used in traditional Japanese culinary training.
+
+Chawanmushi is a common component of kaiseki (multi-course haute cuisine) meals, where it typically appears as one of the smaller, quieter courses between more dramatic dishes, offering a moment of gentle, warm comfort in an otherwise elaborate meal. It also appears on more everyday menus at izakaya and family restaurants as a modestly priced side dish.
+
+The dish is generally believed to have Chinese origins, adapted into Japanese cuisine sometime in the Edo period, and it remains one of the clearer examples of a foreign culinary technique — steaming egg with stock — reworked into something distinctly Japanese in flavor and presentation.''',
+      imageUrl: '',
+      tags: ['chawanmushi', 'egg', 'kaiseki', 'food', 'steamed'],
+      level: 1,
+      createdAt: DateTime(2028, 2, 3),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Chawanmushi is a savory (not sweet) steamed egg custard made with dashi',
+        'It is traditionally steamed and served in a small lidded cup, hence "steamed in a tea bowl"',
+        'Common fillings include shrimp, chicken, kamaboko, shiitake, and ginkgo nut',
+        'A perfectly smooth, hole-free texture is considered a mark of careful technique',
+        'It commonly appears as a course within a kaiseki multi-course meal',
+      ],
+      didYouKnow: 'Professional chefs judge chawanmushi partly by what it lacks: any small air pockets or a slightly rubbery texture reveal that the custard was steamed at too high a heat, so achieving a perfectly smooth, jiggling surface with no visible bubbles is treated as a genuine technical benchmark in Japanese culinary training, not unlike a soufflé in French cuisine.',
+      seeAlso: ['kaiseki_01', 'dashi_the_soul_of_japanese_cooking_01'],
+    ),
+
+    CultureContent(
+      id: 'somen_01',
+      categoryId: 'food',
+      title: 'Somen: Japan\'s Thinnest Noodle for Summer',
+      subtitle: 'Hand-stretched noodles thinner than a millimeter are chilled in ice water and slurped as one of Japan\'s defining summer foods.',
+      description: '''Somen (素麺) are extremely thin wheat noodles, typically less than 1.3 millimeters in diameter, made by repeatedly stretching and drying dough coated in a thin layer of vegetable oil — a labor-intensive traditional process that can take a full day or more for skilled artisans in production regions like Miwa (Nara) and Ibo (Hyogo), both centuries-old somen-making centers.
+
+Somen is almost exclusively eaten cold in the summer months, boiled briefly and then immediately shocked in ice water to firm the noodles and remove excess starch, then served in a bowl of ice, sometimes with a garnish of shredded egg, cucumber, or shiso, and dipped in a chilled, concentrated mentsuyu (soy-based dipping sauce) before eating.
+
+The most theatrical way to eat somen is nagashi-somen (流しそうめん, "flowing somen"), in which noodles are sent sliding down a length of split bamboo channeled with flowing water, and diners catch and eat them with chopsticks as they pass — a summer activity, especially popular with children, found at festivals, restaurants with dedicated bamboo flumes, and family gatherings.
+
+Somen's association with midsummer runs deep enough that in the Kansai region, July 7th (Tanabata, the Star Festival) is traditionally a day for eating somen, with the long white noodles said to resemble either the threads used in the Tanabata legend's weaving princess story or the Milky Way itself, depending on the local tradition cited.
+
+Because dried somen keeps for years if stored properly, it is also a traditional gift item in Japan, commonly given during the mid-year ochugen gift-giving season in elegant boxed sets.''',
+      imageUrl: '',
+      tags: ['somen', 'noodles', 'summer', 'food', 'nagashi_somen'],
+      level: 1,
+      createdAt: DateTime(2028, 2, 5),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Somen are Japan\'s thinnest traditional wheat noodle, often under 1.3mm in diameter',
+        'Miwa (Nara) and Ibo (Hyogo) are historic somen production centers',
+        'It is eaten cold in summer, chilled in ice water and dipped in mentsuyu',
+        'Nagashi-somen sends the noodles down a flowing bamboo flume for diners to catch',
+        'Somen is a traditional gift, especially during the mid-year ochugen gift season',
+      ],
+      didYouKnow: 'Traditional somen makers in regions like Miwa still produce "temomi" (hand-kneaded and hand-stretched) somen using techniques passed down over centuries, and noodles aged for a full year or more in storage — called "hiyamugi" or, when aged even longer, "koyamen" — are prized by connoisseurs for a firmer texture and deeper wheat flavor than freshly made somen.',
+      seeAlso: ['soba_01', 'kakigori_01'],
+    ),
+
+    CultureContent(
+      id: 'motsunabe_01',
+      categoryId: 'food',
+      title: 'Motsunabe: Fukuoka\'s Beloved Offal Hot Pot',
+      subtitle: 'Beef or pork intestines simmered with cabbage, garlic chives, and chili in a soy or miso broth make this Kyushu hot pot a comfort-food institution.',
+      description: '''Motsunabe (もつ鍋) is a hot pot dish built around beef or pork offal — most often small intestine — simmered at the table with generous amounts of cabbage, garlic chives (nira), garlic, and dried red chili in a soy sauce or miso-based broth, finished at the end of the meal with noodles or rice added to the remaining liquid.
+
+The dish is closely identified with Fukuoka, in northern Kyushu, where it is believed to have emerged after World War II as an inexpensive, protein-rich way to make use of offal cuts that were affordable and widely available during a period of food scarcity — a resourceful, working-class origin story it shares with several other beloved Japanese comfort foods.
+
+Careful preparation of the offal — thorough cleaning and light pre-boiling to remove excess fat and any strong odor — is essential to the dish's quality; well-prepared motsunabe should taste rich and savory rather than gamey, and the difference between a mediocre and an excellent motsunabe restaurant often comes down entirely to this unglamorous preparation step.
+
+The broth comes in two main styles: shoyu (soy sauce-based, generally considered the more traditional style) and miso-based, which is richer and slightly sweeter; some restaurants also offer a spicier variation with more chili for those who want extra heat.
+
+Motsunabe experienced a nationwide popularity boom starting in the 1990s as Fukuoka-style restaurants opened branches across Japan, turning what had been a regional specialty into a dish now recognized and craved throughout the country, particularly as a hearty winter meal shared among groups.''',
+      imageUrl: '',
+      tags: ['motsunabe', 'nabe', 'fukuoka', 'kyushu', 'food'],
+      level: 2,
+      createdAt: DateTime(2028, 2, 7),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Motsunabe is a beef or pork offal hot pot most closely associated with Fukuoka',
+        'It emerged after World War II as an affordable way to use offal cuts',
+        'Cabbage, garlic chives, garlic, and chili are essential ingredients alongside the offal',
+        'Broths come mainly in shoyu (soy sauce) and richer miso styles',
+        'It is traditionally finished with noodles or rice cooked in the remaining broth',
+      ],
+      didYouKnow: 'A proper motsunabe meal follows an unwritten sequence: diners eat the meat, cabbage, and chives first while the broth reduces and intensifies in flavor, then finish the meal by adding either champon-style noodles or rice to the remaining liquid to soak up every bit of the now-concentrated broth — skipping this final step is considered, by regulars, to be missing the best part of the meal.',
+      seeAlso: ['fukuoka_01', 'fukuoka_overview_01', 'shabu_shabu_sukiyaki_01'],
+    ),
+
+    CultureContent(
+      id: 'champon_01',
+      categoryId: 'food',
+      title: 'Champon: Nagasaki\'s Chinese-Japanese Noodle Bowl',
+      subtitle: 'A hearty noodle soup born from Nagasaki\'s Chinese immigrant community blends seafood, pork, and vegetables in a rich milky broth.',
+      description: '''Champon (ちゃんぽん) is a noodle soup dish originating in Nagasaki, made with thick wheat noodles served in a rich, milky-white broth made from pork and chicken bones, topped with a generous stir-fried mix of pork, seafood (often squid, shrimp, and fish cake), and vegetables like cabbage and bean sprouts, all cooked together in the same pot rather than assembled separately.
+
+The dish is credited to Chen Heijun (陳平順), a Chinese immigrant from Fujian province who opened the restaurant Shikairo in Nagasaki around 1899 and is said to have created champon as a filling, nutritious, and affordable meal for Chinese students studying in Japan with limited budgets — reflecting Nagasaki's long history as one of Japan's few historically open ports for trade and immigration with China.
+
+The name "champon" is thought to derive from a word meaning "to mix," reflecting the dish's defining technique: unlike ramen, where noodles and toppings are typically prepared somewhat separately before being combined in a bowl, champon's noodles are added directly to the pot of broth and toppings and cook together, absorbing more of the combined flavor.
+
+Champon spawned a related Nagasaki specialty, sara udon (皿うどん, "plate udon"), which uses the same stir-fried topping mixture served over crispy fried noodles instead of a soup, giving diners two very different textures from essentially the same set of ingredients.
+
+Though most strongly identified with Nagasaki, champon has spread nationally through regional chain restaurants, and its comforting, vegetable-heavy, all-in-one-pot format has made it a popular home-style meal well beyond Kyushu.''',
+      imageUrl: '',
+      tags: ['champon', 'nagasaki', 'noodles', 'kyushu', 'food'],
+      level: 2,
+      createdAt: DateTime(2028, 2, 9),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Champon is a Nagasaki noodle soup with a milky pork-and-chicken bone broth',
+        'It is credited to Chinese immigrant Chen Heijun at the Nagasaki restaurant Shikairo, circa 1899',
+        'Noodles are cooked directly in the pot with the broth and toppings, unlike ramen',
+        'Sara udon is a related dry, crispy-noodle version of the same toppings',
+        'It reflects Nagasaki\'s long history as a hub of Chinese-Japanese exchange',
+      ],
+      didYouKnow: 'Shikairo, the Nagasaki restaurant where champon is said to have been invented over a century ago, is still operating today, and the dish\'s origin story — created specifically to give budget-conscious Chinese students in Nagasaki an affordable, filling meal — is commemorated at a small champon museum on the restaurant\'s premises.',
+      seeAlso: ['nagasaki_01', 'nagasaki_01_v2', 'yakisoba_01'],
+    ),
+
+    CultureContent(
+      id: 'yudofu_01',
+      categoryId: 'food',
+      title: 'Yudofu: Kyoto\'s Meditative Tofu Hot Pot',
+      subtitle: 'Simmering blocks of silken tofu in kombu broth, yudofu turns Japan\'s humblest ingredient into a refined, temple-inspired meal.',
+      description: '''Yudofu (湯豆腐, "hot water tofu") is a simple hot pot dish in which large, soft cubes of tofu are gently simmered in a pot of kombu (kelp) broth at the table, then lifted out with a slotted spoon and eaten with a dipping sauce of soy sauce, grated ginger, chopped scallion, and sometimes bonito flakes or yuzu citrus.
+
+The dish is most closely associated with Kyoto's temple district of Nanzenji, where tofu restaurants have served yudofu to pilgrims and visitors for centuries, drawing on the area's historically excellent quality of tofu, itself dependent on Kyoto's soft, mineral-light groundwater, which is considered ideal for tofu-making.
+
+Yudofu's simplicity connects it closely to shojin ryori, the vegetarian cuisine developed in Buddhist temples, where meat and strong flavors are avoided in favor of dishes that highlight the natural qualities of a few carefully chosen ingredients — in this case, tofu's delicate texture and subtle soy flavor, allowed to shine with almost no interference from the cooking process itself.
+
+Because the dish involves so few components, the quality of the tofu itself becomes the entire point of the meal; restaurants specializing in yudofu often make their own tofu in-house daily, and diners familiar with the dish can tell within a bite whether the tofu was freshly made that morning.
+
+Yudofu is traditionally eaten in the cooler months, when a pot of gently steaming broth at the table provides both nourishment and warmth, and it remains one of the clearest examples in Japanese cuisine of restraint being treated as a form of culinary sophistication rather than a limitation.''',
+      imageUrl: '',
+      tags: ['yudofu', 'tofu', 'kyoto', 'shojin_ryori', 'food'],
+      level: 1,
+      createdAt: DateTime(2028, 2, 11),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Yudofu simmers soft tofu cubes in kombu broth, served with a soy-based dipping sauce',
+        'It is closely associated with Kyoto\'s Nanzenji temple district',
+        'Kyoto\'s soft groundwater is considered especially well-suited to tofu-making',
+        'Yudofu draws on the philosophy of shojin ryori, Buddhist temple vegetarian cuisine',
+        'Many yudofu restaurants make fresh tofu in-house daily',
+      ],
+      didYouKnow: 'Some of Nanzenji\'s yudofu restaurants trace their history back several hundred years, having originally served simple tofu meals to Zen monks and temple visitors observing meat-free dietary practices — a lineage that makes ordering yudofu in Kyoto today, in some restaurants, a meal connected almost unbroken to temple cooking traditions centuries old.',
+      seeAlso: ['shojin_ryori_01', 'kyoto_temples_01'],
+    ),
+
+    CultureContent(
+      id: 'botamochi_01',
+      categoryId: 'food',
+      title: 'Botamochi and Ohagi: One Sweet, Two Seasons',
+      subtitle: 'The same rice-and-red-bean treat changes its name with the seasons, tied to the spring and autumn equinox holidays.',
+      description: '''Botamochi (牡丹餅) and ohagi (お萩) are, in most kitchens, the exact same dessert: a ball of lightly mashed glutinous rice coated in sweetened red bean paste (anko), sometimes finished instead with a coating of kinako (roasted soybean flour) or black sesame.
+
+What changes is the name, and it changes with the season: the dish is called botamochi in spring, named after the botan (peony) flower that blooms around that time of year, and ohagi in autumn, named after hagi (bush clover), a flowering plant associated with fall. Some traditions also hold that the red bean paste itself should be coarser and chunkier in autumn (when freshly harvested azuki beans have softer skins, easier to leave partly whole) and smoother in spring (using beans stored since the previous harvest, whose tougher skins are traditionally strained out).
+
+Both versions are eaten specifically around ohigan (お彼岸), the Buddhist observance held during the spring and autumn equinoxes, when many Japanese families visit and clean ancestral graves and make offerings, including botamochi or ohagi, as part of honoring deceased relatives.
+
+The custom is thought to connect to red beans' traditional association in Japan with warding off evil and bringing good fortune — reflected also in dishes like sekihan (red bean rice) served at celebratory occasions — making the choice of a red-bean-coated sweet for a memorial observance a deliberate one rather than incidental.
+
+Today, botamochi and ohagi are sold seasonally at Japanese confectionery shops and supermarkets in the weeks surrounding each equinox, remaining one of the clearest examples of how a single food's name in Japan can be tied directly to the calendar rather than the recipe.''',
+      imageUrl: '',
+      tags: ['botamochi', 'ohagi', 'wagashi', 'ohigan', 'food'],
+      level: 2,
+      createdAt: DateTime(2028, 2, 13),
+      readTime: 4,
+      sourceUrl: 'https://www.maff.go.jp/e/',
+      isPremium: false,
+      keyFacts: [
+        'Botamochi and ohagi are the same rice-and-red-bean sweet, named differently by season',
+        'Botamochi (spring) is named after the peony; ohagi (autumn) after bush clover',
+        'Both are traditionally eaten during ohigan, the equinox grave-visiting observance',
+        'Red beans are traditionally associated with warding off evil and bringing good fortune',
+        'Some traditions use coarser bean paste in autumn and smoother paste in spring',
+      ],
+      didYouKnow: 'The idea that a dessert\'s name should shift with the seasons even though the recipe barely changes is not unique to botamochi and ohagi — some regions extend the naming pattern further, calling the same sweet "yukimochi" (snow mochi) in winter and giving it yet another name in summer, treating the changing name almost like a small seasonal poem attached to an otherwise unchanging food.',
+      seeAlso: ['osechi_ryori_01', 'wagashi_01'],
+    ),
+
   ];
 
   /// Public read-only access to all seeded content (used for Daily Culture, collection stats).
