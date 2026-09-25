@@ -102,8 +102,10 @@ jobs:
       - run: flutter pub get
 
       - name: Write google-services.json from secret
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON }}
         run: |
-          echo "${{ secrets.ANDROID_GOOGLE_SERVICES_JSON }}" > android/app/google-services.json
+          printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
 
       - name: Decode Keystore
         run: |
