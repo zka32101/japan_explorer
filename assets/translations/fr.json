@@ -243,7 +243,16 @@
     "delete_account_body": "Votre compte, tous vos plans, avis et votre progression culturelle seront définitivement supprimés. Cette action est irréversible.",
     "delete_forever": "Supprimer définitivement",
     "delete_account_processing": "La suppression de votre compte va être traitée sous peu",
-    "choose_theme": "Choisir un thème"
+    "choose_theme": "Choisir un thème",
+    "app_language": "Langue de l'application",
+    "clear_scan_history": "Effacer l'historique des scans",
+    "clear_scan_history_desc": "Supprimer les scans IA enregistrés sur cet appareil",
+    "copyright": "© 2026 Japan Explorer",
+    "delete_account_desc": "Supprimer définitivement votre compte et vos données",
+    "notif_challenge_desc": "Nouveaux défis quotidiens et résultats",
+    "notif_meetup_desc": "Actualités sur les rencontres avec les hôtes",
+    "notif_streak_desc": "Un rappel pour garder votre série quotidienne",
+    "version_label": "Version"
   },
   "premium": {
     "title": "S'abonner au Premium",

@@ -243,7 +243,16 @@
     "delete_account_body": "Your account, all plans, reviews, and cultural progress will be permanently deleted. This cannot be undone.",
     "delete_forever": "Delete Forever",
     "delete_account_processing": "Account deletion will be processed shortly",
-    "choose_theme": "Choose Theme"
+    "choose_theme": "Choose Theme",
+    "app_language": "App language",
+    "clear_scan_history": "Clear scan history",
+    "clear_scan_history_desc": "Delete AI scan records saved on this device",
+    "copyright": "© 2026 Japan Explorer",
+    "delete_account_desc": "Permanently delete your account and data",
+    "notif_challenge_desc": "New daily challenges and results",
+    "notif_meetup_desc": "Updates about host meetups",
+    "notif_streak_desc": "A reminder to keep your daily streak",
+    "version_label": "Version"
   },
   "premium": {
     "title": "Subscribe to Premium",

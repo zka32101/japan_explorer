@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/audio_guide.dart';
 import '../services/audio_guide_service.dart';
+import 'language_provider.dart';
 import '../services/tts_service.dart';
 
 const _geminiApiKey = String.fromEnvironment('GEMINI_API_KEY');
@@ -224,16 +225,8 @@ class AudioGuideNotifier extends StateNotifier<AudioGuideState> {
 
   // ── Helpers ───────────────────────────────────────────────────────────────
 
-  String _ttsLocale(String lang) {
-    switch (lang) {
-      case 'ja': return 'ja-JP';
-      case 'zh': return 'zh-CN';
-      case 'ko': return 'ko-KR';
-      case 'fr': return 'fr-FR';
-      default:   return 'en-US';
-    }
-  }
-
+  String _ttsLocale(String lang) =>
+      Language.tryFromCode(lang)?.ttsLocale ?? 'en-US';
 }
 
 // ── Provider factory ──────────────────────────────────────────────────────────

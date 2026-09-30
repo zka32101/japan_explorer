@@ -11,6 +11,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 import 'config/router.dart';
 import 'config/theme.dart';
+import 'providers/language_provider.dart';
 import 'providers/onboarding_provider.dart';
 import 'providers/settings_provider.dart';
 import 'services/analytics_service.dart';
@@ -136,13 +137,7 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ja'),
-        Locale('zh'),
-        Locale('ko'),
-        Locale('fr'),
-      ],
+      supportedLocales: [for (final l in Language.values) l.locale],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       child: ProviderScope(
@@ -165,6 +160,18 @@ class JapanExplorerApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final settings = ref.watch(settingsProvider);
+
+    // languageProvider is the single source of truth for the UI language;
+    // keep easy_localization's locale in step with it (home toggle, settings
+    // dialog and the initial load all go through languageProvider).
+    final language = ref.watch(languageProvider);
+    if (context.locale != language.locale) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (context.mounted && context.locale != language.locale) {
+          context.setLocale(language.locale);
+        }
+      });
+    }
 
     return MaterialApp.router(
       title: 'Japan Explorer',
