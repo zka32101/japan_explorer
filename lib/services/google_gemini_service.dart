@@ -7,6 +7,7 @@ import 'package:image/image.dart' as img;
 import 'package:logger/logger.dart';
 
 import 'claude_vision_service.dart';
+import '../providers/language_provider.dart';
 
 class GeminiVisionService {
   static const _model = 'gemini-3.1-flash-lite';
@@ -66,7 +67,7 @@ Analyze the image and respond ONLY in this exact JSON format (no markdown, no ex
             },
             {
               'text':
-                  'Explain this image for a Japan visitor. Language: $language$hintText',
+                  'Explain this image for a Japan visitor. Language: ${Language.tryFromCode(language)?.aiName ?? language}$hintText',
             },
           ],
         }

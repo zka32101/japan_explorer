@@ -210,7 +210,16 @@
     "delete_account_body": "アカウント、すべてのプラン、レビュー、文化探訪の記録が完全に削除されます。この操作は取り消せません。",
     "delete_forever": "完全に削除",
     "delete_account_processing": "アカウント削除の手続きを開始します",
-    "choose_theme": "テーマを選択"
+    "choose_theme": "テーマを選択",
+    "app_language": "アプリの言語",
+    "clear_scan_history": "スキャン履歴を削除",
+    "clear_scan_history_desc": "この端末に保存したAIスキャンの記録を削除します",
+    "copyright": "© 2026 Japan Explorer",
+    "delete_account_desc": "アカウントとデータを完全に削除します",
+    "notif_challenge_desc": "新しいデイリーチャレンジと結果のお知らせ",
+    "notif_meetup_desc": "ホストとのミートアップに関するお知らせ",
+    "notif_streak_desc": "連続記録を続けるためのリマインダー",
+    "version_label": "バージョン"
   },
   "premium": {
     "title": "プレミアムに登録",

@@ -213,32 +213,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ref.read(languageProvider.notifier).setLanguage(lang);
               },
               itemBuilder: (BuildContext context) => [
-                PopupMenuItem<Language>(
-                  value: Language.ja,
-                  child: Row(
-                    children: [
-                      Text(Language.ja.displayName),
-                      if (language == Language.ja)
-                        const SizedBox(width: 8, child: Icon(Icons.check, size: 18)),
-                    ],
+                for (final lang in Language.values)
+                  PopupMenuItem<Language>(
+                    value: lang,
+                    child: Row(
+                      children: [
+                        Text('${lang.flag} ${lang.displayName}'),
+                        if (language == lang)
+                          const Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: Icon(Icons.check, size: 18),
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-                PopupMenuItem<Language>(
-                  value: Language.en,
-                  child: Row(
-                    children: [
-                      Text(Language.en.displayName),
-                      if (language == Language.en)
-                        const SizedBox(width: 8, child: Icon(Icons.check, size: 18)),
-                    ],
-                  ),
-                ),
               ],
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Center(
                   child: Text(
-                    language == Language.ja ? '日本語' : 'EN',
+                    language.displayName,
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,

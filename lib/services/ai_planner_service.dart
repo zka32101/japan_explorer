@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
 import '../models/ai_itinerary.dart';
+import '../providers/language_provider.dart';
 
 class AiPlannerService {
   static const _geminiModel = 'gemini-3.1-flash-lite';
@@ -51,7 +52,7 @@ class AiPlannerService {
 
 Traveler interests: $interestStr
 Budget level: ${prefs.budget.aiDescription}
-Response language: ${prefs.language}
+Response language: ${Language.tryFromCode(prefs.language)?.aiName ?? prefs.language}
 
 Return ONLY valid JSON with this exact structure (no markdown, no extra text):
 {

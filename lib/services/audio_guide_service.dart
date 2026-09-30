@@ -5,6 +5,7 @@ import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/audio_guide.dart';
+import '../providers/language_provider.dart';
 
 class AudioGuideService {
   static const _geminiModel = 'gemini-3.1-flash-lite';
@@ -114,15 +115,8 @@ class AudioGuideService {
     required String category,
     required String language,
   }) {
-    final langInstruction = language == 'ja'
-        ? 'Write in Japanese.'
-        : language == 'zh'
-            ? 'Write in Simplified Chinese.'
-            : language == 'ko'
-                ? 'Write in Korean.'
-                : language == 'fr'
-                    ? 'Write in French.'
-                    : 'Write in English.';
+    final aiLanguage = Language.tryFromCode(language)?.aiName ?? 'English';
+    final langInstruction = 'Write in $aiLanguage.';
 
     return '''You are a warm, knowledgeable Japan cultural guide narrator.
 Create an engaging 2-minute audio guide script for: $title ($category) in $city, Japan.

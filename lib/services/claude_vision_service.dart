@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as img;
 import 'package:logger/logger.dart';
+import '../providers/language_provider.dart';
 
 class CameraExplanation {
   final String name;
@@ -115,7 +116,7 @@ Be concise — the explanation should be readable in 2-3 minutes.''';
             {
               'type': 'text',
               'text':
-                  'Please explain what you see in this image. Language: $language$hintText',
+                  'Please explain what you see in this image. Language: ${Language.tryFromCode(language)?.aiName ?? language}$hintText',
             },
           ],
         }

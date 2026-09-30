@@ -243,7 +243,16 @@
     "delete_account_body": "您的账户、所有计划、评价及文化探索进度将被永久删除，此操作无法撤销。",
     "delete_forever": "永久删除",
     "delete_account_processing": "账户删除请求已提交，正在处理中",
-    "choose_theme": "选择主题"
+    "choose_theme": "选择主题",
+    "app_language": "应用语言",
+    "clear_scan_history": "清除扫描记录",
+    "clear_scan_history_desc": "删除保存在此设备上的AI扫描记录",
+    "copyright": "© 2026 Japan Explorer",
+    "delete_account_desc": "永久删除您的账号和数据",
+    "notif_challenge_desc": "每日挑战和结果的通知",
+    "notif_meetup_desc": "主人见面会的相关通知",
+    "notif_streak_desc": "提醒您保持连续打卡",
+    "version_label": "版本"
   },
   "premium": {
     "title": "订阅高级版",

@@ -204,56 +204,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            _LangTile(
-              flag: '🇬🇧',
-              name: 'English',
-              selected: currentLang == Language.en,
-              onTap: () {
-                ref.read(languageProvider.notifier).setLanguage(Language.en);
-                context.setLocale(const Locale('en'));
-                Navigator.pop(ctx);
-              },
-            ),
-            _LangTile(
-              flag: '🇯🇵',
-              name: '日本語',
-              selected: currentLang == Language.ja,
-              onTap: () {
-                ref.read(languageProvider.notifier).setLanguage(Language.ja);
-                context.setLocale(const Locale('ja'));
-                Navigator.pop(ctx);
-              },
-            ),
-            _LangTile(
-              flag: '🇨🇳',
-              name: '中文',
-              selected: currentLang == Language.zh,
-              onTap: () {
-                ref.read(languageProvider.notifier).setLanguage(Language.zh);
-                context.setLocale(const Locale('zh'));
-                Navigator.pop(ctx);
-              },
-            ),
-            _LangTile(
-              flag: '🇰🇷',
-              name: '한국어',
-              selected: currentLang == Language.ko,
-              onTap: () {
-                ref.read(languageProvider.notifier).setLanguage(Language.ko);
-                context.setLocale(const Locale('ko'));
-                Navigator.pop(ctx);
-              },
-            ),
-            _LangTile(
-              flag: '🇫🇷',
-              name: 'Français',
-              selected: currentLang == Language.fr,
-              onTap: () {
-                ref.read(languageProvider.notifier).setLanguage(Language.fr);
-                context.setLocale(const Locale('fr'));
-                Navigator.pop(ctx);
-              },
-            ),
+            for (final lang in Language.values)
+              _LangTile(
+                flag: lang.flag,
+                name: lang.displayName,
+                selected: currentLang == lang,
+                onTap: () {
+                  // MaterialApp follows languageProvider (see main.dart).
+                  ref.read(languageProvider.notifier).setLanguage(lang);
+                  Navigator.pop(ctx);
+                },
+              ),
           ],
         ),
         actions: [

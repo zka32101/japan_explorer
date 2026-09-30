@@ -10,6 +10,7 @@ import '../services/ai_vision_service.dart';
 import '../services/claude_vision_service.dart';
 import '../services/firebase_service.dart';
 import '../services/google_gemini_service.dart';
+import 'language_provider.dart';
 import '../utils/constants.dart';
 import 'auth_provider.dart';
 
@@ -27,12 +28,9 @@ final aiVisionServiceProvider = Provider<AiVisionService>((ref) {
 });
 
 // ── Supported response languages ─────────────────────────────────────────────
-const cameraLanguages = <String, String>{
-  'en': '🇬🇧 EN',
-  'ja': '🇯🇵 JA',
-  'zh': '🇨🇳 ZH',
-  'ko': '🇰🇷 KO',
-  'fr': '🇫🇷 FR',
+final cameraLanguages = <String, String>{
+  for (final l in Language.values)
+    l.code: '${l.flag} ${l.code.toUpperCase()}',
 };
 
 // ── CameraState ───────────────────────────────────────────────────────────────

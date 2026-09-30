@@ -1,62 +1,93 @@
+import 'dart:ui';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum Language { ja, en, zh, ko, fr }
+/// Languages the app UI supports. Add a language here, add its
+/// `assets/translations/<file>.json`, and register [Language.locale] in
+/// `main.dart` (`supportedLocales`).
+enum Language {
+  ja('ja', '日本語', '🇯🇵', Locale('ja'), 'ja-JP', 'Japanese'),
+  en('en', 'English', '🇬🇧', Locale('en'), 'en-US', 'English'),
+  zh('zh', '中文', '🇨🇳', Locale('zh'), 'zh-CN', 'Simplified Chinese'),
+  zhHant('zh-TW', '繁體中文', '🇹🇼', Locale('zh', 'TW'), 'zh-TW', 'Traditional Chinese'),
+  ko('ko', '한국어', '🇰🇷', Locale('ko'), 'ko-KR', 'Korean'),
+  fr('fr', 'Français', '🇫🇷', Locale('fr'), 'fr-FR', 'French'),
+  th('th', 'ไทย', '🇹🇭', Locale('th'), 'th-TH', 'Thai'),
+  es('es', 'Español', '🇪🇸', Locale('es'), 'es-ES', 'Spanish'),
+  id('id', 'Bahasa Indonesia', '🇮🇩', Locale('id'), 'id-ID', 'Indonesian'),
+  vi('vi', 'Tiếng Việt', '🇻🇳', Locale('vi'), 'vi-VN', 'Vietnamese'),
+  pt('pt', 'Português', '🇧🇷', Locale('pt'), 'pt-BR', 'Portuguese'),
+  hi('hi', 'हिन्दी', '🇮🇳', Locale('hi'), 'hi-IN', 'Hindi'),
+  ar('ar', 'العربية', '🇸🇦', Locale('ar'), 'ar-SA', 'Arabic');
 
-extension LanguageCode on Language {
-  String get code {
-    switch (this) {
-      case Language.ja: return 'ja';
-      case Language.en: return 'en';
-      case Language.zh: return 'zh';
-      case Language.ko: return 'ko';
-      case Language.fr: return 'fr';
+  const Language(
+    this.code,
+    this.displayName,
+    this.flag,
+    this.locale,
+    this.ttsLocale,
+    this.aiName,
+  );
+
+  /// Stored in preferences and used as the key in per-language maps.
+  final String code;
+
+  /// Name written in the language itself (shown in language pickers).
+  final String displayName;
+  final String flag;
+
+  /// Locale handed to easy_localization / MaterialApp.
+  final Locale locale;
+
+  /// BCP-47 tag for text-to-speech.
+  final String ttsLocale;
+
+  /// Language name used when instructing an AI model ("Write in Thai.").
+  final String aiName;
+
+  static Language? tryFromCode(String? code) {
+    for (final l in values) {
+      if (l.code == code) return l;
     }
+    return null;
   }
 
-  String get displayName {
-    switch (this) {
-      case Language.ja: return '日本語';
-      case Language.en: return 'English';
-      case Language.zh: return '中文';
-      case Language.ko: return '한국어';
-      case Language.fr: return 'Français';
+  /// The supported language matching the device locale, or English.
+  static Language fromDevice() {
+    final device = PlatformDispatcher.instance.locale;
+    if (device.languageCode == 'zh') {
+      // Traditional Chinese: Taiwan, Hong Kong, Macau or an explicit Hant script.
+      final traditional = device.scriptCode == 'Hant' ||
+          const {'TW', 'HK', 'MO'}.contains(device.countryCode);
+      return traditional ? Language.zhHant : Language.zh;
     }
+    return tryFromCode(device.languageCode) ?? Language.en;
   }
 }
 
 class LanguageNotifier extends StateNotifier<Language> {
-  LanguageNotifier() : super(Language.ja) {
+  LanguageNotifier() : super(Language.fromDevice()) {
     _loadLanguage();
   }
 
   Future<void> _loadLanguage() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      final code = prefs.getString('language') ?? 'ja';
+      final code = prefs.getString('language');
       // Guard: only update if notifier is still active
       try {
-        state = _codeToLanguage(code);
+        state = Language.tryFromCode(code) ?? Language.fromDevice();
       } catch (_) {
         // StateNotifier has been disposed
       }
     } catch (_) {
       // Silently ignore if prefs unavailable - use default
       try {
-        state = Language.ja;
+        state = Language.fromDevice();
       } catch (_) {
         // StateNotifier has been disposed
       }
-    }
-  }
-
-  Language _codeToLanguage(String code) {
-    switch (code) {
-      case 'en': return Language.en;
-      case 'zh': return Language.zh;
-      case 'ko': return Language.ko;
-      case 'fr': return Language.fr;
-      default: return Language.ja;
     }
   }
 
