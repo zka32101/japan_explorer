@@ -5,7 +5,8 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 
 // ── RevenueCat API keys ───────────────────────────────────────────────────────
 // Replace these with your actual keys from app.revenuecat.com
-const _kAndroidApiKey = 'YOUR_REVENUECAT_PUBLIC_KEY_ANDROID';
+// Public SDK key (safe to ship in the app) for com.yourwish.japanexplorer.
+const _kAndroidApiKey = 'goog_EFoABqszOtjfmgIjIvfIyCCfBPH';
 const _kAppleApiKey   = 'YOUR_REVENUECAT_PUBLIC_KEY_APPLE';
 
 /// The entitlement identifier configured in the RevenueCat dashboard
