@@ -32,9 +32,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
       duration: const Duration(milliseconds: 1200),
     );
     _fadeAnim = CurvedAnimation(parent: _animCtrl, curve: Curves.easeIn);
-    _scaleAnim = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _animCtrl, curve: Curves.elasticOut),
-    );
+    _scaleAnim = Tween<double>(
+      begin: 0.8,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _animCtrl, curve: Curves.elasticOut));
     _animCtrl.forward();
     _startMinDelay();
   }
@@ -65,13 +66,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     if (isLoggedIn) {
       final onboardingDone = ref.read(onboardingStatusProvider);
       // ignore: unawaited_futures
-      ref
-          .read(streakNotifierProvider.notifier)
-          .checkAndUpdateStreak()
-          .then((_) {
+      ref.read(streakNotifierProvider.notifier).checkAndUpdateStreak().then((
+        _,
+      ) {
         if (!mounted) return;
-        context.go(
-            onboardingDone ? AppRoutes.home : AppRoutes.onboarding);
+        context.go(onboardingDone ? AppRoutes.home : AppRoutes.onboarding);
       });
     } else {
       context.go(AppRoutes.login);
@@ -94,65 +93,88 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     return Scaffold(
       backgroundColor: AppColors.primary,
-      body: SafeArea(
-        child: Center(
-          child: FadeTransition(
-            opacity: _fadeAnim,
-            child: ScaleTransition(
-              scale: _scaleAnim,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 108,
-                    height: 108,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(28),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.25),
-                          blurRadius: 24,
-                          offset: const Offset(0, 8),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/images/splash_bg.jpg',
+            fit: BoxFit.cover,
+            errorBuilder: (_, _, _) => const SizedBox.shrink(),
+          ),
+          Container(color: AppColors.primary.withValues(alpha: 0.55)),
+          SafeArea(
+            child: Center(
+              child: FadeTransition(
+                opacity: _fadeAnim,
+                child: ScaleTransition(
+                  scale: _scaleAnim,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 108,
+                        height: 108,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(28),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.25),
+                              blurRadius: 24,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: const Center(
-                      child: Text('🗾', style: TextStyle(fontSize: 56)),
-                    ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(28),
+                          child: Image.asset(
+                            'assets/icons/app_icon.png',
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, _, _) => Container(
+                              color: Colors.white,
+                              child: const Center(
+                                child: Text(
+                                  '🗾',
+                                  style: TextStyle(fontSize: 56),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 28),
+                      const Text(
+                        'Japan Explorer',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 34,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Discover the real Japan',
+                        style: TextStyle(
+                          color: Colors.white.withValues(alpha: 0.85),
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 56),
+                      SizedBox(
+                        width: 28,
+                        height: 28,
+                        child: CircularProgressIndicator(
+                          color: Colors.white.withValues(alpha: 0.7),
+                          strokeWidth: 2.5,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 28),
-                  const Text(
-                    'Japan Explorer',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 34,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Discover the real Japan',
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.85),
-                      fontSize: 16,
-                    ),
-                  ),
-                  const SizedBox(height: 56),
-                  SizedBox(
-                    width: 28,
-                    height: 28,
-                    child: CircularProgressIndicator(
-                      color: Colors.white.withValues(alpha: 0.7),
-                      strokeWidth: 2.5,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

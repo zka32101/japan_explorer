@@ -70,14 +70,33 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               loading: () => RepaintBoundary(
                 child: Center(child: CircularProgressIndicator()),
               ),
-              error: (e, _) => RepaintBoundary(
-                child: Center(child: Text('Error: $e')),
-              ),
+              error: (e, _) =>
+                  RepaintBoundary(child: Center(child: Text('Error: $e'))),
               data: (curations) {
                 if (curations.isEmpty) {
                   return RepaintBoundary(
                     child: Center(
-                      child: Text('No results for "$_query"'),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.asset(
+                              'assets/images/empty_search.jpg',
+                              width: 160,
+                              height: 160,
+                              fit: BoxFit.cover,
+                              errorBuilder: (_, _, _) => const Icon(
+                                Icons.search_off,
+                                size: 64,
+                                color: AppColors.textSecondary,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Text('No results for "$_query"'),
+                        ],
+                      ),
                     ),
                   );
                 }

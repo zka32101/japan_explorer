@@ -27,7 +27,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen>
   void initState() {
     super.initState();
     _fadeCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 350));
+      vsync: this,
+      duration: const Duration(milliseconds: 350),
+    );
     _fadeAnim = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeIn);
     _fadeCtrl.forward();
   }
@@ -63,15 +65,17 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen>
 
   Future<void> _complete() async {
     final user = ref.read(appUserProvider).valueOrNull;
-    await ref.read(onboardingProvider.notifier).complete(
-      savePreferences: (interests) async {
-        if (user != null) {
-          await ref
-              .read(firebaseServiceProvider)
-              .updateUserPreferences(user.uid, interests);
-        }
-      },
-    );
+    await ref
+        .read(onboardingProvider.notifier)
+        .complete(
+          savePreferences: (interests) async {
+            if (user != null) {
+              await ref
+                  .read(firebaseServiceProvider)
+                  .updateUserPreferences(user.uid, interests);
+            }
+          },
+        );
     // onboardingStatusProvider is now true → GoRouter redirects to /home
   }
 
@@ -88,8 +92,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen>
             children: [
               // ── Header: back button + step indicator ──
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 child: Row(
                   children: [
                     if (state.step > 0)
@@ -100,8 +106,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen>
                     else
                       const SizedBox(width: 48),
                     Expanded(
-                      child: _StepIndicator(
-                          current: state.step, total: 5),
+                      child: _StepIndicator(current: state.step, total: 5),
                     ),
                     // Skip (steps 0-3 only)
                     if (state.step < 4)
@@ -228,22 +233,29 @@ class _BottomNav extends ConsumerWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
           ),
           child: isSaving
               ? const SizedBox(
                   height: 22,
                   width: 22,
                   child: CircularProgressIndicator(
-                      strokeWidth: 2.5, color: Colors.white),
+                    strokeWidth: 2.5,
+                    color: Colors.white,
+                  ),
                 )
               : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(tr('common.next'),
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600)),
+                    Text(
+                      tr('common.next'),
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     const SizedBox(width: 8),
                     const Icon(Icons.arrow_forward_ios, size: 14),
                   ],
@@ -277,23 +289,21 @@ class _Step0Language extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 16),
-          const Center(
-            child: Text('🗾', style: TextStyle(fontSize: 72)),
-          ),
+          const Center(child: Text('🗾', style: TextStyle(fontSize: 72))),
           const SizedBox(height: 20),
           Text(
             tr('onboarding.step0.title'),
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  height: 1.2,
-                ),
+              fontWeight: FontWeight.bold,
+              height: 1.2,
+            ),
           ),
           const SizedBox(height: 8),
           Text(
             tr('onboarding.step0.subtitle'),
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 28),
           Expanded(
@@ -305,15 +315,15 @@ class _Step0Language extends ConsumerWidget {
                 final isSelected = selected == code;
                 return GestureDetector(
                   onTap: () {
-                    ref
-                        .read(onboardingProvider.notifier)
-                        .setLanguage(code);
+                    ref.read(onboardingProvider.notifier).setLanguage(code);
                     context.setLocale(Locale(code));
                   },
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
+                      horizontal: 20,
+                      vertical: 16,
+                    ),
                     decoration: BoxDecoration(
                       color: isSelected
                           ? AppColors.primary.withValues(alpha: 0.1)
@@ -328,8 +338,7 @@ class _Step0Language extends ConsumerWidget {
                     ),
                     child: Row(
                       children: [
-                        Text(flag,
-                            style: const TextStyle(fontSize: 28)),
+                        Text(flag, style: const TextStyle(fontSize: 28)),
                         const SizedBox(width: 16),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -341,9 +350,7 @@ class _Step0Language extends ConsumerWidget {
                                 fontWeight: FontWeight.w600,
                                 color: isSelected
                                     ? AppColors.primary
-                                    : Theme.of(context)
-                                        .colorScheme
-                                        .onSurface,
+                                    : Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                             Text(
@@ -357,8 +364,11 @@ class _Step0Language extends ConsumerWidget {
                         ),
                         const Spacer(),
                         if (isSelected)
-                          const Icon(Icons.check_circle,
-                              color: AppColors.primary, size: 22),
+                          const Icon(
+                            Icons.check_circle,
+                            color: AppColors.primary,
+                            size: 22,
+                          ),
                       ],
                     ),
                   ),
@@ -387,18 +397,29 @@ class _Step1Interests extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(18),
+            child: Image.asset(
+              'assets/images/onboarding_02_culture.jpg',
+              height: 140,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              errorBuilder: (_, _, _) => const SizedBox.shrink(),
+            ),
+          ),
+          const SizedBox(height: 16),
           Text(
             tr('onboarding.step1.title'),
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
             tr('onboarding.step1.subtitle'),
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 20),
           Expanded(
@@ -416,9 +437,8 @@ class _Step1Interests extends ConsumerWidget {
                 return _InterestTile(
                   category: cat,
                   isSelected: isSelected,
-                  onTap: () => ref
-                      .read(onboardingProvider.notifier)
-                      .toggleInterest(cat),
+                  onTap: () =>
+                      ref.read(onboardingProvider.notifier).toggleInterest(cat),
                 );
               },
             ),
@@ -430,7 +450,9 @@ class _Step1Interests extends ConsumerWidget {
                 child: Text(
                   tr('onboarding.step1.hint'),
                   style: TextStyle(
-                      fontSize: 12, color: AppColors.textSecondary),
+                    fontSize: 12,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
               ),
             ),
@@ -445,10 +467,11 @@ class _InterestTile extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  const _InterestTile(
-      {required this.category,
-      required this.isSelected,
-      required this.onTap});
+  const _InterestTile({
+    required this.category,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -457,9 +480,7 @@ class _InterestTile extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.primary
-              : Theme.of(context).cardColor,
+          color: isSelected ? AppColors.primary : Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.divider,
@@ -478,8 +499,10 @@ class _InterestTile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(CurationCategory.emoji(category),
-                style: const TextStyle(fontSize: 30)),
+            Text(
+              CurationCategory.emoji(category),
+              style: const TextStyle(fontSize: 30),
+            ),
             const SizedBox(height: 6),
             Text(
               tr('category.$category'),
@@ -528,18 +551,29 @@ class _Step2TravelStyle extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(18),
+            child: Image.asset(
+              'assets/images/onboarding_03_explore.jpg',
+              height: 130,
+              width: double.infinity,
+              fit: BoxFit.cover,
+              errorBuilder: (_, _, _) => const SizedBox.shrink(),
+            ),
+          ),
+          const SizedBox(height: 16),
           Text(
             tr('onboarding.step2.title'),
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
             tr('onboarding.step2.subtitle'),
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 24),
 
@@ -581,8 +615,8 @@ class _Step2TravelStyle extends ConsumerWidget {
               child: Text(
                 tr('onboarding.step2.goal_learn_note'),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.textSecondary,
-                    ),
+                  color: AppColors.textSecondary,
+                ),
               ),
             ),
             const SizedBox(height: 8),
@@ -593,10 +627,10 @@ class _Step2TravelStyle extends ConsumerWidget {
             Text(
               tr('onboarding.step2.style_label'),
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textSecondary,
-                    letterSpacing: 0.8,
-                  ),
+                fontWeight: FontWeight.w600,
+                color: AppColors.textSecondary,
+                letterSpacing: 0.8,
+              ),
             ),
             const SizedBox(height: 12),
             Row(
@@ -626,8 +660,7 @@ class _Step2TravelStyle extends ConsumerWidget {
                       ),
                       child: Column(
                         children: [
-                          Text(emoji,
-                              style: const TextStyle(fontSize: 26)),
+                          Text(emoji, style: const TextStyle(fontSize: 26)),
                           const SizedBox(height: 4),
                           Text(
                             tr('onboarding.step2.$key'),
@@ -636,9 +669,7 @@ class _Step2TravelStyle extends ConsumerWidget {
                               fontWeight: FontWeight.w600,
                               color: isSelected
                                   ? Colors.white
-                                  : Theme.of(context)
-                                      .colorScheme
-                                      .onSurface,
+                                  : Theme.of(context).colorScheme.onSurface,
                             ),
                           ),
                         ],
@@ -655,10 +686,10 @@ class _Step2TravelStyle extends ConsumerWidget {
             Text(
               tr('onboarding.step2.duration_label'),
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textSecondary,
-                    letterSpacing: 0.8,
-                  ),
+                fontWeight: FontWeight.w600,
+                color: AppColors.textSecondary,
+                letterSpacing: 0.8,
+              ),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -674,7 +705,9 @@ class _Step2TravelStyle extends ConsumerWidget {
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: isSelected
                           ? AppColors.primary.withValues(alpha: 0.15)
@@ -784,13 +817,17 @@ class _Step3NotificationsState extends State<_Step3Notifications>
   void initState() {
     super.initState();
     _bellCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 600));
-    _bellAnim = Tween<double>(begin: -0.1, end: 0.1).animate(
-      CurvedAnimation(parent: _bellCtrl, curve: Curves.elasticIn),
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
     );
+    _bellAnim = Tween<double>(
+      begin: -0.1,
+      end: 0.1,
+    ).animate(CurvedAnimation(parent: _bellCtrl, curve: Curves.elasticIn));
     // ignore: unawaited_futures
     Future.delayed(const Duration(milliseconds: 400), () {
-      if (mounted) _bellCtrl.repeat(reverse: true, period: const Duration(seconds: 1));
+      if (mounted)
+        _bellCtrl.repeat(reverse: true, period: const Duration(seconds: 1));
     });
   }
 
@@ -811,8 +848,7 @@ class _Step3NotificationsState extends State<_Step3Notifications>
 
   void _goNext(BuildContext context) {
     // Propagate to parent — find the OnboardingScreen state
-    final state =
-        context.findAncestorStateOfType<_OnboardingScreenState>();
+    final state = context.findAncestorStateOfType<_OnboardingScreenState>();
     state?._next();
   }
 
@@ -834,24 +870,27 @@ class _Step3NotificationsState extends State<_Step3Notifications>
                   color: AppColors.primary.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.notifications_active_outlined,
-                    size: 44, color: AppColors.primary),
+                child: const Icon(
+                  Icons.notifications_active_outlined,
+                  size: 44,
+                  color: AppColors.primary,
+                ),
               ),
             ),
           ),
           const SizedBox(height: 24),
           Text(
             tr('onboarding.step3.title'),
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Text(
             tr('onboarding.step3.subtitle'),
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 28),
 
@@ -875,7 +914,9 @@ class _Step3NotificationsState extends State<_Step3Notifications>
                     child: Text(
                       tr('onboarding.step3.${f.$1}'),
                       style: const TextStyle(
-                          fontSize: 15, fontWeight: FontWeight.w500),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ],
@@ -895,12 +936,15 @@ class _Step3NotificationsState extends State<_Step3Notifications>
                 backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(14),
+                ),
               ),
               child: Text(
                 tr('onboarding.step3.allow'),
                 style: const TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.w600),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
@@ -942,9 +986,13 @@ class _Step4CompleteState extends State<_Step4Complete>
   void initState() {
     super.initState();
     _scaleCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 600));
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
     _fadeCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 400));
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
     _scaleAnim = CurvedAnimation(parent: _scaleCtrl, curve: Curves.elasticOut);
     _fadeAnim = CurvedAnimation(parent: _fadeCtrl, curve: Curves.easeIn);
 
@@ -972,8 +1020,8 @@ class _Step4CompleteState extends State<_Step4Complete>
         final onboardingState = ref.watch(onboardingProvider);
         final isSaving = onboardingState.isSaving;
         final isLearner = onboardingState.usageGoal == 'learn';
-        final screen =
-            context.findAncestorStateOfType<_OnboardingScreenState>();
+        final screen = context
+            .findAncestorStateOfType<_OnboardingScreenState>();
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -1015,20 +1063,20 @@ class _Step4CompleteState extends State<_Step4Complete>
                   children: [
                     Text(
                       tr('onboarding.step4.title'),
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium
+                      style: Theme.of(context).textTheme.headlineMedium
                           ?.copyWith(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      tr(isLearner
-                          ? 'onboarding.step4.subtitle_learn'
-                          : 'onboarding.step4.subtitle'),
+                      tr(
+                        isLearner
+                            ? 'onboarding.step4.subtitle_learn'
+                            : 'onboarding.step4.subtitle',
+                      ),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppColors.textSecondary,
-                          ),
+                        color: AppColors.textSecondary,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 48),
@@ -1041,15 +1089,17 @@ class _Step4CompleteState extends State<_Step4Complete>
                           backgroundColor: AppColors.primary,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16)),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
                         ),
                         child: isSaving
                             ? const SizedBox(
                                 height: 24,
                                 width: 24,
                                 child: CircularProgressIndicator(
-                                    strokeWidth: 2.5,
-                                    color: Colors.white),
+                                  strokeWidth: 2.5,
+                                  color: Colors.white,
+                                ),
                               )
                             : Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1057,12 +1107,15 @@ class _Step4CompleteState extends State<_Step4Complete>
                                   Text(
                                     tr('onboarding.step4.cta'),
                                     style: const TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                   const SizedBox(width: 8),
-                                  const Text('🗾',
-                                      style: TextStyle(fontSize: 20)),
+                                  const Text(
+                                    '🗾',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
                                 ],
                               ),
                       ),
