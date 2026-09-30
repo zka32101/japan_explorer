@@ -212,7 +212,7 @@ class PremiumScreen extends ConsumerWidget {
         Expanded(
           child: _StaticPlanCard(
             label: tr('premium.plan_monthly'),
-            price: '\$4.99',
+            price: '\$3.00',
             sub: tr('premium.per_month'),
             id: 'monthly',
             isSelected: state.selectedId == 'monthly' ||
@@ -225,7 +225,7 @@ class PremiumScreen extends ConsumerWidget {
         Expanded(
           child: _StaticPlanCard(
             label: tr('premium.plan_annual'),
-            price: '\$39.99',
+            price: '\$24.00',
             sub: tr('premium.annual_price_note'),
             id: 'annual',
             isBestValue: true,
