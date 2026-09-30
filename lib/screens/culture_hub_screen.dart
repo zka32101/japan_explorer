@@ -9,6 +9,7 @@ import '../models/culture_content.dart';
 import '../providers/culture_content_provider.dart';
 import '../providers/premium_provider.dart';
 import '../widgets/premium_gate.dart';
+import '../providers/language_provider.dart';
 
 class CultureHubScreen extends ConsumerStatefulWidget {
   const CultureHubScreen({super.key});
@@ -26,6 +27,9 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
     final categoriesAsync = ref.watch(allCultureCategoriesProvider);
     final contentAsync = ref.watch(cultureContentProvider(_selectedCategory));
     final isPremium = ref.watch(isPremiumProvider);
+    // Rebuild when the language changes or its translations finish loading.
+    ref.watch(cultureTranslationsProvider);
+    final langCode = ref.watch(languageProvider).code;
 
     return Scaffold(
       appBar: AppBar(
@@ -203,6 +207,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
 
   Widget _buildContentCard(
       CultureContent content, BuildContext context, bool isPremium) {
+    final langCode = ref.read(languageProvider).code;
     final isLocked = content.isPremium && !isPremium;
 
     return Card(
@@ -264,14 +269,14 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  content.localizedTitle(context.locale.languageCode),
+                                  content.localizedTitle(langCode),
                                   style: Theme.of(context).textTheme.titleMedium,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  content.localizedSubtitle(context.locale.languageCode),
+                                  content.localizedSubtitle(langCode),
                                   style: TextStyle(
                                       color: AppColors.textSecondary, fontSize: 12),
                                   maxLines: 1,

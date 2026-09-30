@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../services/culture_translation_store.dart';
+
 /// Languages the app UI supports. Add a language here, add its
 /// `assets/translations/<file>.json`, and register [Language.locale] in
 /// `main.dart` (`supportedLocales`).
@@ -108,3 +110,12 @@ final languageProvider = StateNotifierProvider<LanguageNotifier, Language>(
 extension Localized on String? {
   String orEmpty() => this ?? '';
 }
+
+/// Loads the bundled culture-article translations of the current language and
+/// yields its code once they are ready. Screens that show culture articles
+/// watch this so they rebuild after the (lazy) load finishes.
+final cultureTranslationsProvider = FutureProvider<String>((ref) async {
+  final code = ref.watch(languageProvider).code;
+  await CultureTranslationStore.instance.ensureLoaded(code);
+  return code;
+});
