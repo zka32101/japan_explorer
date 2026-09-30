@@ -1,3 +1,5 @@
+import '../services/culture_translation_store.dart';
+
 class CultureCategory {
   final String id;
   final String name;
@@ -224,46 +226,68 @@ class CultureContent {
     'seeAlso': seeAlso,
   };
 
-  // ── Localization helpers — fall back to English (canonical) fields ────────
-  String localizedTitle(String langCode) => switch (langCode) {
-        'ja' => titleJa ?? title,
-        'zh' => titleZh ?? title,
-        'ko' => titleKo ?? title,
-        'fr' => titleFr ?? title,
-        _ => title,
-      };
+  // ── Localization helpers ──────────────────────────────────────────────────
+  // Order: bundled translation (assets/culture_content/<lang>.json) → legacy
+  // per-language Firestore field (ja/zh/ko/fr) → English original.
+  // [langCode] is `Language.code` (e.g. `zh-TW`, not just `zh`).
 
-  String localizedSubtitle(String langCode) => switch (langCode) {
-        'ja' => subtitleJa ?? subtitle,
-        'zh' => subtitleZh ?? subtitle,
-        'ko' => subtitleKo ?? subtitle,
-        'fr' => subtitleFr ?? subtitle,
-        _ => subtitle,
-      };
+  CultureTranslation? _bundled(String langCode) =>
+      CultureTranslationStore.instance.lookup(id, langCode);
 
-  String localizedDescription(String langCode) => switch (langCode) {
-        'ja' => descriptionJa ?? description,
-        'zh' => descriptionZh ?? description,
-        'ko' => descriptionKo ?? description,
-        'fr' => descriptionFr ?? description,
-        _ => description,
-      };
+  String localizedTitle(String langCode) =>
+      _bundled(langCode)?.title ??
+      switch (langCode) {
+        'ja' => titleJa,
+        'zh' => titleZh,
+        'ko' => titleKo,
+        'fr' => titleFr,
+        _ => null,
+      } ??
+      title;
 
-  List<String> localizedKeyFacts(String langCode) => switch (langCode) {
-        'ja' => keyFactsJa ?? keyFacts,
-        'zh' => keyFactsZh ?? keyFacts,
-        'ko' => keyFactsKo ?? keyFacts,
-        'fr' => keyFactsFr ?? keyFacts,
-        _ => keyFacts,
-      };
+  String localizedSubtitle(String langCode) =>
+      _bundled(langCode)?.subtitle ??
+      switch (langCode) {
+        'ja' => subtitleJa,
+        'zh' => subtitleZh,
+        'ko' => subtitleKo,
+        'fr' => subtitleFr,
+        _ => null,
+      } ??
+      subtitle;
 
-  String? localizedDidYouKnow(String langCode) => switch (langCode) {
-        'ja' => didYouKnowJa ?? didYouKnow,
-        'zh' => didYouKnowZh ?? didYouKnow,
-        'ko' => didYouKnowKo ?? didYouKnow,
-        'fr' => didYouKnowFr ?? didYouKnow,
-        _ => didYouKnow,
-      };
+  String localizedDescription(String langCode) =>
+      _bundled(langCode)?.description ??
+      switch (langCode) {
+        'ja' => descriptionJa,
+        'zh' => descriptionZh,
+        'ko' => descriptionKo,
+        'fr' => descriptionFr,
+        _ => null,
+      } ??
+      description;
+
+  List<String> localizedKeyFacts(String langCode) =>
+      _bundled(langCode)?.keyFacts ??
+      switch (langCode) {
+        'ja' => keyFactsJa,
+        'zh' => keyFactsZh,
+        'ko' => keyFactsKo,
+        'fr' => keyFactsFr,
+        _ => null,
+      } ??
+      keyFacts;
+
+  String? localizedDidYouKnow(String langCode) =>
+      _bundled(langCode)?.didYouKnow ??
+      switch (langCode) {
+        'ja' => didYouKnowJa,
+        'zh' => didYouKnowZh,
+        'ko' => didYouKnowKo,
+        'fr' => didYouKnowFr,
+        _ => null,
+      } ??
+      didYouKnow;
 
   String getLevelLabel() {
     switch (level) {

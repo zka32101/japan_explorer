@@ -14,6 +14,8 @@ class DailyCultureCard extends ConsumerWidget {
     final content = ref.watch(dailyCultureProvider);
     final hasRead = ref.watch(dailyCultureReadTodayProvider);
     final language = ref.watch(languageProvider);
+    // Rebuild once the bundled translations of this language have loaded.
+    ref.watch(cultureTranslationsProvider);
 
     return GestureDetector(
       onTap: () => _onTap(context, ref, content, hasRead),

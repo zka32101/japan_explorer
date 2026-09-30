@@ -11,6 +11,7 @@ import '../providers/culture_content_provider.dart';
 import '../providers/premium_provider.dart';
 import '../widgets/premium_gate.dart';
 import '../utils/firestore_instance.dart';
+import '../providers/language_provider.dart';
 
 class CultureDetailScreen extends ConsumerWidget {
   final String contentId;
@@ -23,6 +24,9 @@ class CultureDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isPremium = ref.watch(isPremiumProvider);
+    // Rebuild when the language changes or its translations finish loading.
+    ref.watch(cultureTranslationsProvider);
+    final langCode = ref.watch(languageProvider).code;
 
     return FutureBuilder<CultureContent?>(
       future: _fetchContent(contentId),
@@ -102,13 +106,13 @@ class CultureDetailScreen extends ConsumerWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  content.localizedTitle(context.locale.languageCode),
+                                  content.localizedTitle(langCode),
                                   style:
                                       Theme.of(context).textTheme.headlineSmall,
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  content.localizedSubtitle(context.locale.languageCode),
+                                  content.localizedSubtitle(langCode),
                                   style: TextStyle(
                                       color: AppColors.textSecondary,
                                       fontSize: 14),
@@ -191,9 +195,9 @@ class CultureDetailScreen extends ConsumerWidget {
                       const SizedBox(height: 24),
 
                       // Quick Facts
-                      if (content.localizedKeyFacts(context.locale.languageCode).isNotEmpty) ...[
+                      if (content.localizedKeyFacts(langCode).isNotEmpty) ...[
                         _QuickFactsSection(
-                            facts: content.localizedKeyFacts(context.locale.languageCode)),
+                            facts: content.localizedKeyFacts(langCode)),
                         const SizedBox(height: 24),
                       ],
 
@@ -203,10 +207,10 @@ class CultureDetailScreen extends ConsumerWidget {
                       const SizedBox(height: 12),
 
                       if (isLocked)
-                        _buildPremiumPaywallBlock(context, content)
+                        _buildPremiumPaywallBlock(context, content, langCode)
                       else
                         Text(
-                          content.localizedDescription(context.locale.languageCode),
+                          content.localizedDescription(langCode),
                           style:
                               const TextStyle(height: 1.6, fontSize: 15),
                         ),
@@ -215,9 +219,9 @@ class CultureDetailScreen extends ConsumerWidget {
 
                       // Did You Know
                       if (!isLocked &&
-                          content.localizedDidYouKnow(context.locale.languageCode) != null) ...[
+                          content.localizedDidYouKnow(langCode) != null) ...[
                         _DidYouKnowCard(
-                            text: content.localizedDidYouKnow(context.locale.languageCode)!),
+                            text: content.localizedDidYouKnow(langCode)!),
                         const SizedBox(height: 24),
                       ],
 
@@ -287,9 +291,9 @@ class CultureDetailScreen extends ConsumerWidget {
   }
 
   Widget _buildPremiumPaywallBlock(
-      BuildContext context, CultureContent content) {
+      BuildContext context, CultureContent content, String langCode) {
     // Show first ~200 chars as teaser, then paywall
-    final localizedDesc = content.localizedDescription(context.locale.languageCode);
+    final localizedDesc = content.localizedDescription(langCode);
     final teaser = localizedDesc.length > 200
         ? '${localizedDesc.substring(0, 200)}...'
         : localizedDesc;
@@ -535,7 +539,7 @@ class _RelatedContentSection extends ConsumerWidget {
             Text(tr('culture_detail.related_content'),
                 style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 12),
-            ...items.map((item) => _RelatedCard(item: item)),
+            ...items.map((item) => _RelatedCard(item: item, langCode: ref.watch(languageProvider).code)),
           ],
         );
       },
@@ -545,7 +549,8 @@ class _RelatedContentSection extends ConsumerWidget {
 
 class _RelatedCard extends StatelessWidget {
   final CultureContent item;
-  const _RelatedCard({required this.item});
+  final String langCode;
+  const _RelatedCard({required this.item, required this.langCode});
 
   @override
   Widget build(BuildContext context) {
@@ -594,7 +599,7 @@ class _RelatedCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    item.localizedTitle(context.locale.languageCode),
+                    item.localizedTitle(langCode),
                     style: const TextStyle(
                         fontWeight: FontWeight.w600, fontSize: 14),
                     maxLines: 2,
@@ -602,7 +607,7 @@ class _RelatedCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    item.localizedSubtitle(context.locale.languageCode),
+                    item.localizedSubtitle(langCode),
                     style: TextStyle(
                         color: AppColors.textSecondary, fontSize: 12),
                     maxLines: 1,
