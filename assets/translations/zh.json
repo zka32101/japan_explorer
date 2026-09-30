@@ -118,7 +118,9 @@
     "hint": "搜索地点、美食、文化...",
     "recent": "最近搜索",
     "no_results": "未找到结果",
-    "try_different": "请尝试其他关键词"
+    "try_different": "请尝试其他关键词",
+    "empty_title": "开始搜索",
+    "empty_hint": "请输入地点、美食或文化关键词"
   },
   "detail": {
     "audio_guide": "语音导览",

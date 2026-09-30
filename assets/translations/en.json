@@ -118,7 +118,9 @@
     "hint": "Search places, food, culture...",
     "recent": "Recent Searches",
     "no_results": "No results found",
-    "try_different": "Try another keyword"
+    "try_different": "Try another keyword",
+    "empty_title": "Start searching",
+    "empty_hint": "Enter a keyword for places, food or culture"
   },
   "detail": {
     "audio_guide": "Audio Guide",
