@@ -12,6 +12,9 @@ const _kAppleApiKey   = 'YOUR_REVENUECAT_PUBLIC_KEY_APPLE';
 /// The entitlement identifier configured in the RevenueCat dashboard
 const kPremiumEntitlement = 'premium';
 
+/// The offering identifier configured in the RevenueCat dashboard
+const kOfferingId = 'japan_explorer';
+
 // ── Service ───────────────────────────────────────────────────────────────────
 
 class PurchaseService {
@@ -63,12 +66,14 @@ class PurchaseService {
 
   // ── Offerings / packages ────────────────────────────────────────────────────
 
-  /// Returns the packages in the current RevenueCat offering.
+  /// Returns the packages of this app's own RevenueCat offering.
+  /// The RevenueCat project is shared with other apps, so the project-wide
+  /// "current" offering must not be relied on.
   /// Empty list if no network or not configured.
   Future<List<Package>> getPackages() async {
     try {
       final offerings = await Purchases.getOfferings();
-      return offerings.current?.availablePackages ?? [];
+      return offerings.getOffering(kOfferingId)?.availablePackages ?? [];
     } catch (_) {
       return [];
     }
