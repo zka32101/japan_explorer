@@ -5,11 +5,15 @@ import 'package:purchases_flutter/purchases_flutter.dart';
 
 // ── RevenueCat API keys ───────────────────────────────────────────────────────
 // Replace these with your actual keys from app.revenuecat.com
-const _kAndroidApiKey = 'YOUR_REVENUECAT_PUBLIC_KEY_ANDROID';
+// Public SDK key (safe to ship in the app) for com.yourwish.japanexplorer.
+const _kAndroidApiKey = 'goog_EFoABqszOtjfmgIjIvfIyCCfBPH';
 const _kAppleApiKey   = 'YOUR_REVENUECAT_PUBLIC_KEY_APPLE';
 
 /// The entitlement identifier configured in the RevenueCat dashboard
 const kPremiumEntitlement = 'premium';
+
+/// The offering identifier configured in the RevenueCat dashboard
+const kOfferingId = 'japan_explorer';
 
 // ── Service ───────────────────────────────────────────────────────────────────
 
@@ -62,12 +66,14 @@ class PurchaseService {
 
   // ── Offerings / packages ────────────────────────────────────────────────────
 
-  /// Returns the packages in the current RevenueCat offering.
+  /// Returns the packages of this app's own RevenueCat offering.
+  /// The RevenueCat project is shared with other apps, so the project-wide
+  /// "current" offering must not be relied on.
   /// Empty list if no network or not configured.
   Future<List<Package>> getPackages() async {
     try {
       final offerings = await Purchases.getOfferings();
-      return offerings.current?.availablePackages ?? [];
+      return offerings.getOffering(kOfferingId)?.availablePackages ?? [];
     } catch (_) {
       return [];
     }
