@@ -111,7 +111,9 @@
     "hint": "場所・食事・文化を検索...",
     "recent": "最近の検索",
     "no_results": "結果が見つかりません",
-    "try_different": "別のキーワードを試してください"
+    "try_different": "別のキーワードを試してください",
+    "empty_title": "検索してみよう",
+    "empty_hint": "場所・食事・文化のキーワードを入力してください"
   },
   "audio_guide": {
     "generating": "音声ガイドを生成中...",

@@ -140,9 +140,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           _buildCategoryFilter(),
           // ── Curations list (repaint boundary) ──────────────────────
           curationsState.when(
-            loading: () => const RepaintBoundary(child: CurationListSkeleton(count: 3)),
-            error: (e, _) => RepaintBoundary(
-              child: SliverFillRemaining(
+            loading: () => const CurationListSkeleton(count: 3),
+            error: (e, _) => SliverFillRemaining(
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -170,7 +169,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
               ),
-            ),
             data: (curations) => _buildCurationsList(curations),
           ),
         ],

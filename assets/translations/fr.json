@@ -118,7 +118,9 @@
     "hint": "Rechercher des lieux, de la cuisine, de la culture...",
     "recent": "Recherches récentes",
     "no_results": "Aucun résultat trouvé",
-    "try_different": "Essayez un autre mot-clé"
+    "try_different": "Essayez un autre mot-clé",
+    "empty_title": "Commencez la recherche",
+    "empty_hint": "Saisissez un mot-clé : lieu, cuisine ou culture"
   },
   "detail": {
     "audio_guide": "Audioguide",
