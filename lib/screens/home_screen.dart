@@ -37,7 +37,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     _scrollController.addListener(_onScroll);
     // Update streak on every home screen open (debounced inside provider)
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      unawaited(ref.read(streakNotifierProvider.notifier).checkAndUpdateStreak());
+      unawaited(
+        ref.read(streakNotifierProvider.notifier).checkAndUpdateStreak(),
+      );
     });
   }
 
@@ -62,22 +64,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     // ── Daily culture card ─────────────────────────────────────────────────
     const dailyCultureSliver = SliverToBoxAdapter(
-      child: RepaintBoundary(
-        child: DailyCultureCard(),
-      ),
+      child: RepaintBoundary(child: DailyCultureCard()),
     );
 
     // ── Season banner ────────────────────────────────────────────────────
     const seasonBannerSliver = SliverToBoxAdapter(
-      child: RepaintBoundary(
-        child: SeasonBanner(),
-      ),
+      child: RepaintBoundary(child: SeasonBanner()),
     );
 
     // ── Daily challenge CTA ──────────────────────────────────────────────
     final dailyChallengeSliver = SliverToBoxAdapter(
       child: RepaintBoundary(
-        child: _DailyChallengeCard(onTap: () => context.push(AppRoutes.challenge)),
+        child: _DailyChallengeCard(
+          onTap: () => context.push(AppRoutes.challenge),
+        ),
       ),
     );
 
@@ -96,66 +96,84 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             dailyChallengeSliver,
             seasonBannerSliver,
           ]
-        : [
-            seasonBannerSliver,
-            dailyCultureSliver,
-            dailyChallengeSliver,
-          ];
+        : [seasonBannerSliver, dailyCultureSliver, dailyChallengeSliver];
 
     return Scaffold(
       body: OfflineAwarePage(
         child: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          _buildAppBar(user?.displayName),
-          if (user != null)
-            SliverToBoxAdapter(
-              child: RepaintBoundary(
+          controller: _scrollController,
+          slivers: [
+            _buildAppBar(user?.displayName),
+            if (user != null)
+              SliverToBoxAdapter(
+                child: RepaintBoundary(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                    child: Row(
+                      children: [
+                        StreakWidget(
+                          streakDays: user.streakDays,
+                          compact: true,
+                        ),
+                        const Spacer(),
+                        const _NavigationButtons(),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ...middleSlivers,
+            if (isLearner)
+              SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                  child: Row(
-                    children: [
-                      StreakWidget(streakDays: user.streakDays, compact: true),
-                      const Spacer(),
-                      const _NavigationButtons(),
-                    ],
+                  padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+                  child: Text(
+                    tr('home.spots_section_title'),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ...middleSlivers,
-          if (isLearner)
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
-                child: Text(
-                  tr('home.spots_section_title'),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-              ),
-            ),
-          _buildCategoryFilter(),
-          // ── Curations list (repaint boundary) ──────────────────────
-          curationsState.when(
-            loading: () => const CurationListSkeleton(count: 3),
-            error: (e, _) => SliverFillRemaining(
+            _buildCategoryFilter(),
+            // ── Curations list (repaint boundary) ──────────────────────
+            curationsState.when(
+              loading: () => const CurationListSkeleton(count: 3),
+              error: (e, _) => SliverFillRemaining(
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.wifi_off, size: 48, color: AppColors.textSecondary),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          'assets/images/empty_offline.jpg',
+                          width: 140,
+                          height: 140,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, _, _) => const Icon(
+                            Icons.wifi_off,
+                            size: 48,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                      ),
                       const SizedBox(height: 16),
                       Text(
                         tr('home.error_load_title'),
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         tr('home.error_load_subtitle'),
-                        style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                        style: const TextStyle(
+                          color: AppColors.textSecondary,
+                          fontSize: 13,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       FilledButton.icon(
@@ -169,16 +187,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
               ),
-            data: (curations) => _buildCurationsList(curations),
-          ),
-        ],
-      ),
+              data: (curations) => _buildCurationsList(curations),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.go('/camera'),
         backgroundColor: AppColors.primary,
         icon: const Icon(Icons.camera_alt, color: Colors.white),
-        label: Text(tr('home.ai_lens_label'), style: const TextStyle(color: Colors.white)),
+        label: Text(
+          tr('home.ai_lens_label'),
+          style: const TextStyle(color: Colors.white),
+        ),
       ),
     );
   }
@@ -195,7 +216,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           children: [
             Text(
               name == null ? tr('app_name') : tr('home.greeting', args: [name]),
-              style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+              style: const TextStyle(
+                fontSize: 12,
+                color: AppColors.textSecondary,
+              ),
             ),
             Text(
               tr('home.title'),
@@ -301,37 +325,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return SliverPadding(
       padding: const EdgeInsets.all(16),
       sliver: SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            if (index == curations.length) {
-              return notifier.hasMore
-                  ? const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: Center(
-                          child:
-                              CircularProgressIndicator(strokeWidth: 2)),
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Center(
-                        child: Text(
-                          tr('home.all_spots_seen'),
-                          style: const TextStyle(color: Colors.grey),
-                        ),
+        delegate: SliverChildBuilderDelegate((context, index) {
+          if (index == curations.length) {
+            return notifier.hasMore
+                ? const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Center(
+                      child: Text(
+                        tr('home.all_spots_seen'),
+                        style: const TextStyle(color: Colors.grey),
                       ),
-                    );
-            }
-            final curation = curations[index];
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: CurationCard(
-                curation: curation,
-                onTap: () => context.go('/home/detail/${curation.id}'),
-              ),
-            );
-          },
-          childCount: curations.length + 1,
-        ),
+                    ),
+                  );
+          }
+          final curation = curations[index];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: CurationCard(
+              curation: curation,
+              onTap: () => context.go('/home/detail/${curation.id}'),
+            ),
+          );
+        }, childCount: curations.length + 1),
       ),
     );
   }
@@ -456,7 +477,11 @@ class _LearnCultureCard extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white70,
+              size: 16,
+            ),
           ],
         ),
       ),
@@ -505,7 +530,11 @@ class _DailyChallengeCard extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white70,
+              size: 16,
+            ),
           ],
         ),
       ),

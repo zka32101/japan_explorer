@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +8,7 @@ import '../config/theme.dart';
 import '../models/culture_content.dart';
 import '../providers/culture_content_provider.dart';
 import '../providers/premium_provider.dart';
+import '../widgets/cached_image.dart';
 import '../widgets/premium_gate.dart';
 import '../utils/firestore_instance.dart';
 import '../providers/language_provider.dart';
@@ -16,10 +16,7 @@ import '../providers/language_provider.dart';
 class CultureDetailScreen extends ConsumerWidget {
   final String contentId;
 
-  const CultureDetailScreen({
-    super.key,
-    required this.contentId,
-  });
+  const CultureDetailScreen({super.key, required this.contentId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +31,9 @@ class CultureDetailScreen extends ConsumerWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
             appBar: AppBar(),
-            body: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+            body: const Center(
+              child: CircularProgressIndicator(strokeWidth: 2),
+            ),
           );
         }
 
@@ -59,17 +58,9 @@ class CultureDetailScreen extends ConsumerWidget {
                     fit: StackFit.expand,
                     children: [
                       content.imageUrl.isNotEmpty
-                          ? CachedNetworkImage(
-                              imageUrl: content.imageUrl,
+                          ? CachedImage(
+                              url: content.imageUrl,
                               fit: BoxFit.cover,
-                              memCacheWidth: 800,
-                              placeholder: (_, _) =>
-                                  Container(color: AppColors.surface),
-                              errorWidget: (_, _, _) => Container(
-                                color: AppColors.surface,
-                                child: const Center(
-                                    child: Icon(Icons.image_not_supported)),
-                              ),
                             )
                           : Container(color: AppColors.surface),
                       // Premium shimmer overlay on image
@@ -79,10 +70,7 @@ class CultureDetailScreen extends ConsumerWidget {
                             gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.transparent,
-                                Colors.black54,
-                              ],
+                              colors: [Colors.transparent, Colors.black54],
                             ),
                           ),
                         ),
@@ -107,15 +95,17 @@ class CultureDetailScreen extends ConsumerWidget {
                               children: [
                                 Text(
                                   content.localizedTitle(langCode),
-                                  style:
-                                      Theme.of(context).textTheme.headlineSmall,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.headlineSmall,
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   content.localizedSubtitle(langCode),
                                   style: TextStyle(
-                                      color: AppColors.textSecondary,
-                                      fontSize: 14),
+                                    color: AppColors.textSecondary,
+                                    fontSize: 14,
+                                  ),
                                 ),
                               ],
                             ),
@@ -126,7 +116,9 @@ class CultureDetailScreen extends ConsumerWidget {
                             children: [
                               Container(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 6),
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
                                 decoration: BoxDecoration(
                                   color: _getLevelColor(content.level),
                                   borderRadius: BorderRadius.circular(6),
@@ -134,9 +126,10 @@ class CultureDetailScreen extends ConsumerWidget {
                                 child: Text(
                                   content.getLevelLabel(),
                                   style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 12),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ),
                               if (content.isPremium) ...[
@@ -152,23 +145,36 @@ class CultureDetailScreen extends ConsumerWidget {
                       // Meta info
                       Row(
                         children: [
-                          const Icon(Icons.schedule,
-                              size: 16, color: AppColors.textSecondary),
+                          const Icon(
+                            Icons.schedule,
+                            size: 16,
+                            color: AppColors.textSecondary,
+                          ),
                           const SizedBox(width: 6),
                           Text(
-                              tr('culture_hub.min_read',
-                                  args: [content.readTime.toString()]),
-                              style: TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 13)),
+                            tr(
+                              'culture_hub.min_read',
+                              args: [content.readTime.toString()],
+                            ),
+                            style: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 13,
+                            ),
+                          ),
                           const SizedBox(width: 16),
-                          const Icon(Icons.calendar_today,
-                              size: 16, color: AppColors.textSecondary),
+                          const Icon(
+                            Icons.calendar_today,
+                            size: 16,
+                            color: AppColors.textSecondary,
+                          ),
                           const SizedBox(width: 6),
-                          Text(_formatDate(content.createdAt),
-                              style: TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 13)),
+                          Text(
+                            _formatDate(content.createdAt),
+                            style: TextStyle(
+                              color: AppColors.textSecondary,
+                              fontSize: 13,
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 16),
@@ -181,14 +187,20 @@ class CultureDetailScreen extends ConsumerWidget {
                           children: content.tags.map((tag) {
                             return Container(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 4),
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
                               decoration: BoxDecoration(
                                 color: AppColors.primary.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(4),
                               ),
-                              child: Text(tag,
-                                  style: TextStyle(
-                                      fontSize: 12, color: AppColors.primary)),
+                              child: Text(
+                                tag,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: AppColors.primary,
+                                ),
+                              ),
                             );
                           }).toList(),
                         ),
@@ -197,13 +209,16 @@ class CultureDetailScreen extends ConsumerWidget {
                       // Quick Facts
                       if (content.localizedKeyFacts(langCode).isNotEmpty) ...[
                         _QuickFactsSection(
-                            facts: content.localizedKeyFacts(langCode)),
+                          facts: content.localizedKeyFacts(langCode),
+                        ),
                         const SizedBox(height: 24),
                       ],
 
                       // Overview section — gated for premium content
-                      Text(tr('culture_hub.overview'),
-                          style: Theme.of(context).textTheme.titleMedium),
+                      Text(
+                        tr('culture_hub.overview'),
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
                       const SizedBox(height: 12),
 
                       if (isLocked)
@@ -211,8 +226,7 @@ class CultureDetailScreen extends ConsumerWidget {
                       else
                         Text(
                           content.localizedDescription(langCode),
-                          style:
-                              const TextStyle(height: 1.6, fontSize: 15),
+                          style: const TextStyle(height: 1.6, fontSize: 15),
                         ),
 
                       const SizedBox(height: 24),
@@ -221,7 +235,8 @@ class CultureDetailScreen extends ConsumerWidget {
                       if (!isLocked &&
                           content.localizedDidYouKnow(langCode) != null) ...[
                         _DidYouKnowCard(
-                            text: content.localizedDidYouKnow(langCode)!),
+                          text: content.localizedDidYouKnow(langCode)!,
+                        ),
                         const SizedBox(height: 24),
                       ],
 
@@ -241,23 +256,30 @@ class CultureDetailScreen extends ConsumerWidget {
                           ),
                           child: Row(
                             children: [
-                              const Icon(Icons.link,
-                                  size: 16, color: AppColors.textSecondary),
+                              const Icon(
+                                Icons.link,
+                                size: 16,
+                                color: AppColors.textSecondary,
+                              ),
                               const SizedBox(width: 8),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(tr('culture_hub.source'),
-                                        style: TextStyle(
-                                            color: AppColors.textSecondary,
-                                            fontSize: 12)),
+                                    Text(
+                                      tr('culture_hub.source'),
+                                      style: TextStyle(
+                                        color: AppColors.textSecondary,
+                                        fontSize: 12,
+                                      ),
+                                    ),
                                     const SizedBox(height: 4),
                                     Text(
                                       content.sourceUrl,
                                       style: TextStyle(
-                                          color: AppColors.primary,
-                                          fontSize: 12),
+                                        color: AppColors.primary,
+                                        fontSize: 12,
+                                      ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -283,7 +305,10 @@ class CultureDetailScreen extends ConsumerWidget {
             onPressed: () => context.pop(),
             backgroundColor: AppColors.primary,
             icon: const Icon(Icons.arrow_back, color: Colors.white),
-            label: Text(tr('common.back'), style: const TextStyle(color: Colors.white)),
+            label: Text(
+              tr('common.back'),
+              style: const TextStyle(color: Colors.white),
+            ),
           ),
         );
       },
@@ -291,7 +316,10 @@ class CultureDetailScreen extends ConsumerWidget {
   }
 
   Widget _buildPremiumPaywallBlock(
-      BuildContext context, CultureContent content, String langCode) {
+    BuildContext context,
+    CultureContent content,
+    String langCode,
+  ) {
     // Show first ~200 chars as teaser, then paywall
     final localizedDesc = content.localizedDescription(langCode);
     final teaser = localizedDesc.length > 200
@@ -335,9 +363,10 @@ class CultureDetailScreen extends ConsumerWidget {
               Text(
                 tr('culture_detail.premium_article_title'),
                 style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
@@ -356,12 +385,15 @@ class CultureDetailScreen extends ConsumerWidget {
                     foregroundColor: const Color(0xFFE63946),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                   child: Text(
                     tr('culture_detail.unlock_premium_cta'),
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 15),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
                   ),
                 ),
               ),
@@ -382,10 +414,7 @@ class CultureDetailScreen extends ConsumerWidget {
 
   Future<CultureContent?> _fetchContent(String contentId) async {
     try {
-      final doc = await db
-          .collection('culture_content')
-          .doc(contentId)
-          .get();
+      final doc = await db.collection('culture_content').doc(contentId).get();
 
       if (doc.exists) {
         return CultureContent.fromMap({...doc.data()!, 'id': doc.id});
@@ -396,15 +425,18 @@ class CultureDetailScreen extends ConsumerWidget {
     }
   }
 
-  String _formatDate(DateTime date) =>
-      '${date.month}/${date.day}/${date.year}';
+  String _formatDate(DateTime date) => '${date.month}/${date.day}/${date.year}';
 
   Color _getLevelColor(int level) {
     switch (level) {
-      case 1: return Colors.green;
-      case 2: return Colors.orange;
-      case 3: return Colors.red;
-      default: return Colors.grey;
+      case 1:
+        return Colors.green;
+      case 2:
+        return Colors.orange;
+      case 3:
+        return Colors.red;
+      default:
+        return Colors.grey;
     }
   }
 }
@@ -441,18 +473,29 @@ class _QuickFactsSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          ...facts.map((fact) => Padding(
-            padding: const EdgeInsets.only(bottom: 6),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('• ', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
-                Expanded(
-                  child: Text(fact, style: const TextStyle(fontSize: 13, height: 1.4)),
-                ),
-              ],
+          ...facts.map(
+            (fact) => Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '• ',
+                    style: TextStyle(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      fact,
+                      style: const TextStyle(fontSize: 13, height: 1.4),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          )),
+          ),
         ],
       ),
     );
@@ -536,10 +579,17 @@ class _RelatedContentSection extends ConsumerWidget {
           children: [
             const Divider(height: 1),
             const SizedBox(height: 20),
-            Text(tr('culture_detail.related_content'),
-                style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              tr('culture_detail.related_content'),
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 12),
-            ...items.map((item) => _RelatedCard(item: item, langCode: ref.watch(languageProvider).code)),
+            ...items.map(
+              (item) => _RelatedCard(
+                item: item,
+                langCode: ref.watch(languageProvider).code,
+              ),
+            ),
           ],
         );
       },
@@ -568,24 +618,11 @@ class _RelatedCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: item.imageUrl.isNotEmpty
-                  ? CachedNetworkImage(
-                      imageUrl: item.imageUrl,
+                  ? CachedImage(
+                      url: item.imageUrl,
                       width: 64,
                       height: 64,
                       fit: BoxFit.cover,
-                      memCacheWidth: 128,
-                      memCacheHeight: 128,
-                      placeholder: (_, _) => Container(
-                        width: 64,
-                        height: 64,
-                        color: AppColors.primary.withValues(alpha: 0.15),
-                      ),
-                      errorWidget: (_, _, _) => Container(
-                        width: 64,
-                        height: 64,
-                        color: AppColors.primary.withValues(alpha: 0.15),
-                        child: const Icon(Icons.image_not_supported, size: 20),
-                      ),
                     )
                   : Container(
                       width: 64,
@@ -601,7 +638,9 @@ class _RelatedCard extends StatelessWidget {
                   Text(
                     item.localizedTitle(langCode),
                     style: const TextStyle(
-                        fontWeight: FontWeight.w600, fontSize: 14),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -609,29 +648,42 @@ class _RelatedCard extends StatelessWidget {
                   Text(
                     item.localizedSubtitle(langCode),
                     style: TextStyle(
-                        color: AppColors.textSecondary, fontSize: 12),
+                      color: AppColors.textSecondary,
+                      fontSize: 12,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      const Icon(Icons.schedule,
-                          size: 12, color: AppColors.textSecondary),
+                      const Icon(
+                        Icons.schedule,
+                        size: 12,
+                        color: AppColors.textSecondary,
+                      ),
                       const SizedBox(width: 3),
                       Text(
-                          tr('culture_detail.min_short',
-                              args: [item.readTime.toString()]),
-                          style: TextStyle(
-                              fontSize: 11, color: AppColors.textSecondary)),
+                        tr(
+                          'culture_detail.min_short',
+                          args: [item.readTime.toString()],
+                        ),
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
             const SizedBox(width: 8),
-            const Icon(Icons.chevron_right,
-                size: 20, color: AppColors.textSecondary),
+            const Icon(
+              Icons.chevron_right,
+              size: 20,
+              color: AppColors.textSecondary,
+            ),
           ],
         ),
       ),
@@ -680,7 +732,10 @@ class _VideoSectionState extends State<_VideoSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(tr('culture_hub.video'), style: Theme.of(context).textTheme.titleMedium),
+        Text(
+          tr('culture_hub.video'),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         const SizedBox(height: 12),
         ClipRRect(
           borderRadius: BorderRadius.circular(8),

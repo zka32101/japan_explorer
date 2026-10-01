@@ -3,4 +3,5 @@
     <!-- Splash screen background colors -->
     <color name="splashBackground">#E63946</color>
     <color name="splashBackgroundDark">#0A0A1A</color>
+	<color name="ic_launcher_background">#E63946</color>
 </resources>

@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,6 +7,7 @@ import '../config/theme.dart';
 import '../models/culture_content.dart';
 import '../providers/culture_content_provider.dart';
 import '../providers/premium_provider.dart';
+import '../widgets/cached_image.dart';
 import '../widgets/premium_gate.dart';
 import '../providers/language_provider.dart';
 
@@ -21,6 +21,41 @@ class CultureHubScreen extends ConsumerStatefulWidget {
 class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
   String _selectedCategory = 'culture';
   String _searchTerm = '';
+
+  // Themed browse banners — a finer-grained cut across categories/tags than
+  // the 5 CultureCategory tabs above. Tapping one applies it as a tag search.
+  static const _themeBanners = [
+    ('assets/images/categories/category_01_history.jpg', 'History', 'history'),
+    ('assets/images/categories/category_02_food.jpg', 'Food', 'food'),
+    (
+      'assets/images/categories/category_03_arts.jpg',
+      'Traditional Arts',
+      'art',
+    ),
+    ('assets/images/categories/category_04_nature.jpg', 'Nature', 'nature'),
+    ('assets/images/categories/category_05_regions.jpg', 'Regions', 'region'),
+    (
+      'assets/images/categories/category_06_modern.jpg',
+      'Modern Culture',
+      'modern',
+    ),
+    (
+      'assets/images/categories/category_07_religion.jpg',
+      'Religion',
+      'religion',
+    ),
+    (
+      'assets/images/categories/category_08_martial.jpg',
+      'Martial Arts',
+      'martial',
+    ),
+    (
+      'assets/images/categories/category_09_festivals.jpg',
+      'Festivals',
+      'festival',
+    ),
+    ('assets/images/categories/category_10_crafts.jpg', 'Crafts', 'craft'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +96,11 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
             ),
           ),
 
+          // Browse by theme
+          RepaintBoundary(child: _buildThemeBanners()),
+
           // Premium banner for free users
-          if (!isPremium)
-            RepaintBoundary(
-              child: _buildPremiumBanner(context),
-            ),
+          if (!isPremium) RepaintBoundary(child: _buildPremiumBanner(context)),
 
           // Search bar
           RepaintBoundary(
@@ -96,11 +131,18 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                 final filtered = _searchTerm.isEmpty
                     ? contents
                     : contents
-                        .where((c) =>
-                            c.title.toLowerCase().contains(_searchTerm.toLowerCase()) ||
-                            c.tags.any((tag) =>
-                                tag.toLowerCase().contains(_searchTerm.toLowerCase())))
-                        .toList();
+                          .where(
+                            (c) =>
+                                c.title.toLowerCase().contains(
+                                  _searchTerm.toLowerCase(),
+                                ) ||
+                                c.tags.any(
+                                  (tag) => tag.toLowerCase().contains(
+                                    _searchTerm.toLowerCase(),
+                                  ),
+                                ),
+                          )
+                          .toList();
 
                 if (filtered.isEmpty) {
                   return RepaintBoundary(
@@ -108,10 +150,16 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.search_off, size: 48, color: AppColors.textSecondary),
+                          const Icon(
+                            Icons.search_off,
+                            size: 48,
+                            color: AppColors.textSecondary,
+                          ),
                           const SizedBox(height: 16),
-                          Text(tr('culture_hub.no_results'),
-                              style: TextStyle(color: AppColors.textSecondary)),
+                          Text(
+                            tr('culture_hub.no_results'),
+                            style: TextStyle(color: AppColors.textSecondary),
+                          ),
                         ],
                       ),
                     ),
@@ -122,7 +170,11 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: filtered.length,
                   itemBuilder: (context, index) => RepaintBoundary(
-                    child: _buildContentCard(filtered[index], context, isPremium),
+                    child: _buildContentCard(
+                      filtered[index],
+                      context,
+                      isPremium,
+                    ),
                   ),
                 );
               },
@@ -130,7 +182,9 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                 child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
               ),
               error: (e, st) => RepaintBoundary(
-                child: Center(child: Text(tr('culture_hub.error_prefix', args: ['$e']))),
+                child: Center(
+                  child: Text(tr('culture_hub.error_prefix', args: ['$e'])),
+                ),
               ),
             ),
           ),
@@ -181,6 +235,76 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
     );
   }
 
+  Widget _buildThemeBanners() {
+    return SizedBox(
+      height: 92,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        itemCount: _themeBanners.length,
+        separatorBuilder: (_, _) => const SizedBox(width: 10),
+        itemBuilder: (context, index) {
+          final (image, label, keyword) = _themeBanners[index];
+          final isActive = _searchTerm.toLowerCase() == keyword;
+          return GestureDetector(
+            onTap: () => setState(() {
+              _searchTerm = isActive ? '' : keyword;
+              _selectedCategory = 'culture';
+            }),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(14),
+              child: SizedBox(
+                width: 130,
+                height: 84,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(
+                      image,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, _, _) =>
+                          Container(color: AppColors.surface),
+                    ),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withValues(alpha: 0.65),
+                          ],
+                        ),
+                        border: isActive
+                            ? Border.all(color: AppColors.primary, width: 3)
+                            : null,
+                      ),
+                    ),
+                    Positioned(
+                      left: 8,
+                      right: 8,
+                      bottom: 8,
+                      child: Text(
+                        label,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   Widget _buildCategoryTabs(List<CultureCategory> categories) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -206,7 +330,10 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
   }
 
   Widget _buildContentCard(
-      CultureContent content, BuildContext context, bool isPremium) {
+    CultureContent content,
+    BuildContext context,
+    bool isPremium,
+  ) {
     final langCode = ref.read(languageProvider).code;
     final isLocked = content.isPremium && !isPremium;
 
@@ -226,29 +353,22 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                 if (content.imageUrl.isNotEmpty)
                   Stack(
                     children: [
-                      CachedNetworkImage(
-                        imageUrl: content.imageUrl,
+                      CachedImage(
+                        url: content.imageUrl,
                         height: 160,
                         width: double.infinity,
                         fit: BoxFit.cover,
-                        memCacheWidth: 800,
-                        placeholder: (_, _) => Container(
-                          height: 160,
-                          color: AppColors.surface,
-                        ),
-                        errorWidget: (_, _, _) => Container(
-                          height: 160,
-                          color: AppColors.surface,
-                          child: Center(child: Icon(Icons.image_not_supported)),
-                        ),
                       ),
                       if (isLocked)
                         Positioned.fill(
                           child: Container(
                             color: Colors.black.withValues(alpha: 0.45),
                             child: const Center(
-                              child: Icon(Icons.lock_outline,
-                                  color: Colors.white, size: 36),
+                              child: Icon(
+                                Icons.lock_outline,
+                                color: Colors.white,
+                                size: 36,
+                              ),
                             ),
                           ),
                         ),
@@ -270,7 +390,9 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                               children: [
                                 Text(
                                   content.localizedTitle(langCode),
-                                  style: Theme.of(context).textTheme.titleMedium,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.titleMedium,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -278,7 +400,9 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                                 Text(
                                   content.localizedSubtitle(langCode),
                                   style: TextStyle(
-                                      color: AppColors.textSecondary, fontSize: 12),
+                                    color: AppColors.textSecondary,
+                                    fontSize: 12,
+                                  ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -291,7 +415,9 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                             children: [
                               Container(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 4),
+                                  horizontal: 8,
+                                  vertical: 4,
+                                ),
                                 decoration: BoxDecoration(
                                   color: _getLevelColor(content.level),
                                   borderRadius: BorderRadius.circular(4),
@@ -299,9 +425,10 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                                 child: Text(
                                   content.getLevelLabel(),
                                   style: const TextStyle(
-                                      fontSize: 10,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                               if (content.isPremium) ...[
@@ -315,27 +442,49 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          const Icon(Icons.schedule,
-                              size: 14, color: AppColors.textSecondary),
+                          const Icon(
+                            Icons.schedule,
+                            size: 14,
+                            color: AppColors.textSecondary,
+                          ),
                           const SizedBox(width: 4),
-                          Text(tr('culture_hub.min_read', args: ['${content.readTime}']),
-                              style: TextStyle(
-                                  fontSize: 12, color: AppColors.textSecondary)),
+                          Text(
+                            tr(
+                              'culture_hub.min_read',
+                              args: ['${content.readTime}'],
+                            ),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
                           const Spacer(),
-                          ...content.tags.take(2).map((tag) => Padding(
-                                padding: const EdgeInsets.only(left: 4),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 6, vertical: 2),
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primary.withValues(alpha: 0.2),
-                                    borderRadius: BorderRadius.circular(3),
-                                  ),
-                                  child: Text(tag,
+                          ...content.tags
+                              .take(2)
+                              .map(
+                                (tag) => Padding(
+                                  padding: const EdgeInsets.only(left: 4),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 6,
+                                      vertical: 2,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: AppColors.primary.withValues(
+                                        alpha: 0.2,
+                                      ),
+                                      borderRadius: BorderRadius.circular(3),
+                                    ),
+                                    child: Text(
+                                      tag,
                                       style: TextStyle(
-                                          fontSize: 10, color: AppColors.primary)),
+                                        fontSize: 10,
+                                        color: AppColors.primary,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              )),
+                              ),
                         ],
                       ),
 
@@ -344,7 +493,9 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                         const SizedBox(height: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 6),
+                            horizontal: 10,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                               colors: [Color(0xFFE63946), Color(0xFFFF6B6B)],
@@ -354,15 +505,15 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Text('✨',
-                                  style: TextStyle(fontSize: 11)),
+                              const Text('✨', style: TextStyle(fontSize: 11)),
                               const SizedBox(width: 4),
                               Text(
                                 tr('culture_hub.unlock_premium'),
                                 style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -381,10 +532,14 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
 
   Color _getLevelColor(int level) {
     switch (level) {
-      case 1: return Colors.green;
-      case 2: return Colors.orange;
-      case 3: return Colors.red;
-      default: return Colors.grey;
+      case 1:
+        return Colors.green;
+      case 2:
+        return Colors.orange;
+      case 3:
+        return Colors.red;
+      default:
+        return Colors.grey;
     }
   }
 }

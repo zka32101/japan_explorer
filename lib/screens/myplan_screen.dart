@@ -58,15 +58,22 @@ class MyPlanScreen extends ConsumerWidget {
               color: AppColors.primary.withValues(alpha: 0.08),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.map_outlined,
-                size: 56, color: AppColors.primary),
+            child: const Icon(
+              Icons.map_outlined,
+              size: 56,
+              color: AppColors.primary,
+            ),
           ),
           const SizedBox(height: 20),
-          Text(tr('myplan.no_plans_title'),
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          Text(
+            tr('myplan.no_plans_title'),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 8),
-          Text(tr('myplan.no_plans_subtitle'),
-              style: const TextStyle(color: AppColors.textSecondary)),
+          Text(
+            tr('myplan.no_plans_subtitle'),
+            style: const TextStyle(color: AppColors.textSecondary),
+          ),
           const SizedBox(height: 24),
           ElevatedButton.icon(
             onPressed: () => _showCreateDialog(context, null),
@@ -84,17 +91,16 @@ class MyPlanScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildPlanList(
-      BuildContext context, WidgetRef ref, List<Plan> plans) {
+  Widget _buildPlanList(BuildContext context, WidgetRef ref, List<Plan> plans) {
     return ListView.separated(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
       itemCount: plans.length,
       separatorBuilder: (_, _) => const SizedBox(height: 12),
       itemBuilder: (_, i) => _PlanCard(
         plan: plans[i],
-        onTap: () => AppNavigator.push(context, PlanDetailScreen(plan: plans[i])),
-        onDelete: () =>
-            _deletePlan(context, ref, plans[i].id, plans[i].title),
+        onTap: () =>
+            AppNavigator.push(context, PlanDetailScreen(plan: plans[i])),
+        onDelete: () => _deletePlan(context, ref, plans[i].id, plans[i].title),
       ),
     );
   }
@@ -119,9 +125,13 @@ class MyPlanScreen extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(tr('myplan.create_new_plan'),
-                  style: const
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(
+                tr('myplan.create_new_plan'),
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(height: 16),
               TextField(
                 controller: ctrl,
@@ -149,8 +159,12 @@ class MyPlanScreen extends ConsumerWidget {
     );
   }
 
-  Future<void> _deletePlan(BuildContext context, WidgetRef ref,
-      String planId, String title) async {
+  Future<void> _deletePlan(
+    BuildContext context,
+    WidgetRef ref,
+    String planId,
+    String title,
+  ) async {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
@@ -158,12 +172,16 @@ class MyPlanScreen extends ConsumerWidget {
         content: Text(tr('myplan.delete_plan_confirm', args: [title])),
         actions: [
           TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: Text(tr('common.cancel'))),
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(tr('common.cancel')),
+          ),
           TextButton(
-              onPressed: () => Navigator.pop(context, true),
-              child: Text(tr('common.delete'),
-                  style: const TextStyle(color: Colors.red))),
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(
+              tr('common.delete'),
+              style: const TextStyle(color: Colors.red),
+            ),
+          ),
         ],
       ),
     );
@@ -179,8 +197,11 @@ class _PlanCard extends StatelessWidget {
   final VoidCallback onTap;
   final VoidCallback onDelete;
 
-  const _PlanCard(
-      {required this.plan, required this.onTap, required this.onDelete});
+  const _PlanCard({
+    required this.plan,
+    required this.onTap,
+    required this.onDelete,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -201,22 +222,34 @@ class _PlanCard extends StatelessWidget {
                       color: AppColors.primary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Icon(Icons.map,
-                        color: AppColors.primary, size: 22),
+                    child: const Icon(
+                      Icons.map,
+                      color: AppColors.primary,
+                      size: 22,
+                    ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(plan.title,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16)),
                         Text(
-                            tr('myplan.spots_count',
-                                args: ['${plan.spots.length}']),
-                            style: const TextStyle(
-                                color: AppColors.textSecondary, fontSize: 13)),
+                          plan.title,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          tr(
+                            'myplan.spots_count',
+                            args: ['${plan.spots.length}'],
+                          ),
+                          style: const TextStyle(
+                            color: AppColors.textSecondary,
+                            fontSize: 13,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -227,13 +260,20 @@ class _PlanCard extends StatelessWidget {
                     itemBuilder: (_) => [
                       PopupMenuItem(
                         value: 'delete',
-                        child: Row(children: [
-                          const Icon(Icons.delete_outline,
-                              color: Colors.red, size: 18),
-                          const SizedBox(width: 8),
-                          Text(tr('common.delete'),
-                              style: const TextStyle(color: Colors.red)),
-                        ]),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                              size: 18,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              tr('common.delete'),
+                              style: const TextStyle(color: Colors.red),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -243,44 +283,52 @@ class _PlanCard extends StatelessWidget {
                 const SizedBox(height: 12),
                 const Divider(height: 1),
                 const SizedBox(height: 12),
-                ...plan.spots.take(3).map((s) => Padding(
-                      padding: const EdgeInsets.only(bottom: 4),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            decoration: const BoxDecoration(
-                              color: AppColors.primary,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text(
-                                '${s.order + 1}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.bold,
+                ...plan.spots
+                    .take(3)
+                    .map(
+                      (s) => Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 20,
+                              height: 20,
+                              decoration: const BoxDecoration(
+                                color: AppColors.primary,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '${s.order + 1}',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(s.curationTitle,
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                s.curationTitle,
                                 style: const TextStyle(fontSize: 13),
                                 maxLines: 1,
-                                overflow: TextOverflow.ellipsis),
-                          ),
-                        ],
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    )),
+                    ),
                 if (plan.spots.length > 3)
                   Text(
-                      tr('myplan.more_spots',
-                          args: ['${plan.spots.length - 3}']),
-                      style: const TextStyle(
-                          color: AppColors.textSecondary, fontSize: 12)),
+                    tr('myplan.more_spots', args: ['${plan.spots.length - 3}']),
+                    style: const TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 12,
+                    ),
+                  ),
               ],
             ],
           ),
@@ -315,8 +363,7 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
       appBar: AppBar(
         title: Text(widget.plan.title),
         actions: [
-          IconButton(
-              icon: const Icon(Icons.share_outlined), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.share_outlined), onPressed: () {}),
         ],
       ),
       body: _spots.isEmpty
@@ -330,8 +377,7 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
                 spot: _spots[i],
                 index: i,
                 onDelete: () => _removeSpot(i),
-                onTap: () =>
-                    context.go('/home/detail/${_spots[i].curationId}'),
+                onTap: () => context.go('/home/detail/${_spots[i].curationId}'),
               ),
             ),
       bottomNavigationBar: _buildBottomBar(context),
@@ -343,14 +389,30 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.add_location_alt_outlined,
-              size: 56, color: AppColors.textSecondary),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(
+              'assets/images/empty_favorites.jpg',
+              width: 140,
+              height: 140,
+              fit: BoxFit.cover,
+              errorBuilder: (_, _, _) => const Icon(
+                Icons.add_location_alt_outlined,
+                size: 56,
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ),
           const SizedBox(height: 16),
-          Text(tr('myplan.no_spots_title'),
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(
+            tr('myplan.no_spots_title'),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 8),
-          Text(tr('myplan.no_spots_subtitle'),
-              style: const TextStyle(color: AppColors.textSecondary)),
+          Text(
+            tr('myplan.no_spots_subtitle'),
+            style: const TextStyle(color: AppColors.textSecondary),
+          ),
           const SizedBox(height: 20),
           ElevatedButton.icon(
             onPressed: () {
@@ -387,9 +449,7 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
           const SizedBox(width: 12),
           Expanded(
             child: ElevatedButton.icon(
-              onPressed: _spots.isEmpty
-                  ? null
-                  : () => context.go('/map'),
+              onPressed: _spots.isEmpty ? null : () => context.go('/map'),
               icon: const Icon(Icons.map),
               label: Text(tr('myplan.view_on_map')),
             ),
@@ -440,8 +500,7 @@ class _SpotTile extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       child: ListTile(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -451,23 +510,28 @@ class _SpotTile extends StatelessWidget {
               width: 28,
               height: 28,
               decoration: const BoxDecoration(
-                  color: AppColors.primary, shape: BoxShape.circle),
+                color: AppColors.primary,
+                shape: BoxShape.circle,
+              ),
               child: Center(
                 child: Text(
                   '${index + 1}',
                   style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                  ),
                 ),
               ),
             ),
           ],
         ),
-        title: Text(spot.curationTitle,
-            style: const TextStyle(fontWeight: FontWeight.w600),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis),
+        title: Text(
+          spot.curationTitle,
+          style: const TextStyle(fontWeight: FontWeight.w600),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
         subtitle: spot.note != null
             ? Text(spot.note!, style: const TextStyle(fontSize: 12))
             : null,
@@ -475,11 +539,15 @@ class _SpotTile extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-                icon: const Icon(Icons.open_in_new, size: 18),
-                onPressed: onTap),
+              icon: const Icon(Icons.open_in_new, size: 18),
+              onPressed: onTap,
+            ),
             IconButton(
-              icon: const Icon(Icons.remove_circle_outline,
-                  color: Colors.red, size: 18),
+              icon: const Icon(
+                Icons.remove_circle_outline,
+                color: Colors.red,
+                size: 18,
+              ),
               onPressed: onDelete,
             ),
           ],
