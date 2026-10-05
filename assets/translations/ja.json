@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "次へ",
-    "back": "戻る",
-    "skip": "スキップ",
-    "done": "完了",
-    "save": "保存",
-    "cancel": "キャンセル",
-    "ok": "OK",
-    "close": "閉じる",
-    "error": "エラーが発生しました",
-    "loading": "読み込み中...",
-    "retry": "再試行",
-    "confirm": "確認",
-    "delete": "削除",
-    "edit": "編集",
-    "share": "シェア",
-    "search": "検索",
-    "see_all": "すべて見る",
-    "just_now": "たった今",
-    "minutes_ago": "{}分前",
-    "hours_ago": "{}時間前",
-    "days_ago": "{}日前",
-    "camera": "カメラ",
-    "gallery": "フォトライブラリ",
-    "saved": "保存しました！"
-  },
   "onboarding": {
     "step0": {
       "title": "Japanaut Trip\nへようこそ",
@@ -183,50 +157,21 @@
     "badges_count": "バッジ（{unlocked}/{total}）"
   },
   "settings": {
-    "title": "設定",
-    "appearance": "外観",
-    "theme": "テーマ",
-    "theme_system": "システム",
-    "theme_light": "ライト",
-    "theme_dark": "ダーク",
-    "notifications": "通知",
     "notif_streak": "ストリークリマインダー",
     "notif_challenge": "チャレンジ更新",
     "notif_meetup": "ホストミートアップ",
-    "language": "言語",
-    "data_privacy": "データとプライバシー",
-    "clear_history": "検索履歴をクリア",
-    "privacy_policy": "プライバシーポリシー",
-    "delete_account": "アカウントを削除",
-    "about": "について",
-    "version": "バージョン{version}",
-    "terms": "利用規約",
-    "licenses": "オープンソースライセンス",
     "clear_scan_history_title": "スキャン履歴を削除しますか？",
     "clear_scan_history_body": "ローカルに保存されているカメラAIスキャンの記録がすべて削除されます。この操作は取り消せません。",
     "scan_history_cleared": "スキャン履歴を削除しました",
-    "clear": "削除する",
-    "delete_account_title": "アカウントを削除しますか？",
-    "delete_account_body": "アカウント、すべてのプラン、レビュー、文化探訪の記録が完全に削除されます。この操作は取り消せません。",
-    "delete_forever": "完全に削除",
-    "delete_account_processing": "アカウント削除の手続きを開始します",
-    "choose_theme": "テーマを選択",
-    "app_language": "アプリの言語",
     "clear_scan_history": "スキャン履歴を削除",
     "clear_scan_history_desc": "この端末に保存したAIスキャンの記録を削除します",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "アカウントとデータを完全に削除します",
     "notif_challenge_desc": "新しいデイリーチャレンジと結果のお知らせ",
     "notif_meetup_desc": "ホストとのミートアップに関するお知らせ",
-    "notif_streak_desc": "連続記録を続けるためのリマインダー",
-    "version_label": "バージョン"
+    "notif_streak_desc": "連続記録を続けるためのリマインダー"
   },
   "premium": {
-    "title": "プレミアムに登録",
     "subtitle": "完全な日本体験をお楽しみください",
-    "cta": "無料トライアルを始める",
-    "restore": "購入を復元",
-    "best_value": "お得",
     "features": {
       "audio": "音声ガイド無制限",
       "planner": "AIプランナー無制限",
@@ -242,22 +187,11 @@
       "no_limits": "利用制限なし・永久に"
     },
     "hero_title": "Japanaut Trip プレミアム",
-    "continue_cta": "プレミアムに進む",
-    "no_previous_purchases": "過去の購入履歴が見つかりません",
-    "footer_terms": "利用規約",
-    "footer_privacy": "プライバシー",
-    "plan_monthly": "月額",
-    "plan_annual": "年額",
-    "per_month": "月あたり",
     "per_year_save": "年あたり・約33%お得",
     "annual_price_note": "月あたり$3.33・33%お得"
   },
   "auth": {
-    "welcome": "ようこそ",
-    "tagline": "本当の日本を発見しよう",
-    "sign_in_google": "Googleで続ける",
-    "terms_note": "続けることで利用規約に同意したことになります",
-    "sign_out": "サインアウト"
+    "tagline": "本当の日本を発見しよう"
   },
   "share": {
     "spot": "このスポットをシェア",
@@ -316,14 +250,6 @@
     "play": "聴く",
     "copied": "コピーしました！",
     "search": "フレーズを検索..."
-  },
-  "errors": {
-    "network": "インターネット接続がありません",
-    "server": "サーバーエラーが発生しました。再試行してください。",
-    "auth": "認証に失敗しました",
-    "permission": "権限がありません",
-    "unknown": "予期しないエラーが発生しました",
-    "generic": "エラーが発生しました。再試行してください。"
   },
   "nav": {
     "home": "ホーム",

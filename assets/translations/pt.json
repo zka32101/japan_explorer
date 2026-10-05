@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "Avançar",
-    "back": "Voltar",
-    "skip": "Pular",
-    "done": "Concluído",
-    "save": "Salvar",
-    "ok": "OK",
-    "close": "Fechar",
-    "error": "Ocorreu um erro",
-    "loading": "Carregando...",
-    "retry": "Tentar novamente",
-    "confirm": "Confirmar",
-    "edit": "Editar",
-    "search": "Buscar",
-    "see_all": "Ver tudo",
-    "saved": "Salvo!",
-    "just_now": "Agora mesmo",
-    "minutes_ago": "Há {} minutos",
-    "hours_ago": "Há {} horas",
-    "days_ago": "Há {} dias",
-    "camera": "Câmera",
-    "gallery": "Biblioteca de fotos",
-    "share": "Compartilhar",
-    "cancel": "Cancelar",
-    "delete": "Excluir"
-  },
   "onboarding": {
     "step0": {
       "title": "Bem-vindo ao\nJapanaut Trip",
@@ -216,50 +190,21 @@
     "badges_count": "Emblemas ({unlocked}/{total})"
   },
   "settings": {
-    "title": "Configurações",
-    "appearance": "Aparência",
-    "theme": "Tema",
-    "theme_system": "Sistema",
-    "theme_light": "Claro",
-    "theme_dark": "Escuro",
-    "notifications": "Notificações",
     "notif_streak": "Lembrete de Ofensiva",
     "notif_challenge": "Atualização de Desafio",
     "notif_meetup": "Encontro com Anfitrião",
-    "language": "Idioma",
-    "data_privacy": "Dados e Privacidade",
-    "clear_history": "Limpar Histórico de Pesquisa",
-    "privacy_policy": "Política de Privacidade",
-    "delete_account": "Excluir Conta",
-    "about": "Sobre",
-    "version": "Versão {version}",
-    "terms": "Termos de Serviço",
-    "licenses": "Licenças de Código Aberto",
     "clear_scan_history_title": "Limpar Histórico de Escaneamento?",
     "clear_scan_history_body": "Todos os seus registros locais de escaneamento por IA da câmera serão excluídos. Esta ação não pode ser desfeita.",
     "scan_history_cleared": "Histórico de escaneamento limpo",
-    "clear": "Limpar",
-    "delete_account_title": "Excluir Conta?",
-    "delete_account_body": "Sua conta, todos os planos, avaliações e progresso cultural serão permanentemente excluídos. Isso não pode ser desfeito.",
-    "delete_forever": "Excluir Permanentemente",
-    "delete_account_processing": "A exclusão da conta será processada em breve",
-    "choose_theme": "Escolher Tema",
-    "app_language": "Idioma do aplicativo",
     "clear_scan_history": "Limpar histórico de escaneamento",
     "clear_scan_history_desc": "Excluir registros de escaneamento por IA salvos neste dispositivo",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "Excluir permanentemente sua conta e seus dados",
     "notif_challenge_desc": "Novos desafios diários e resultados",
     "notif_meetup_desc": "Atualizações sobre encontros com anfitriões",
-    "notif_streak_desc": "Um lembrete para manter sua sequência diária",
-    "version_label": "Versão"
+    "notif_streak_desc": "Um lembrete para manter sua sequência diária"
   },
   "premium": {
-    "title": "Assinar o Premium",
     "subtitle": "Aproveite a experiência completa no Japão",
-    "cta": "Iniciar Teste Gratuito",
-    "restore": "Restaurar Compra",
-    "best_value": "Melhor Custo-Benefício",
     "features": {
       "audio": "Guia de Áudio Ilimitado",
       "planner": "Planejador de IA Ilimitado",
@@ -275,22 +220,11 @@
       "no_limits": "Sem limites de uso — nunca"
     },
     "hero_title": "Japanaut Trip Premium",
-    "continue_cta": "Continuar com Premium",
-    "no_previous_purchases": "Nenhuma compra anterior encontrada",
-    "footer_terms": "Termos",
-    "footer_privacy": "Privacidade",
-    "plan_monthly": "Mensal",
-    "plan_annual": "Anual",
-    "per_month": "por mês",
     "per_year_save": "por ano · economize ~33%",
     "annual_price_note": "$3,33/mês · Economize 33%"
   },
   "auth": {
-    "welcome": "Bem-vindo",
-    "tagline": "Descubra o verdadeiro Japão",
-    "sign_in_google": "Continuar com o Google",
-    "terms_note": "Ao continuar, você concorda com os Termos de Serviço",
-    "sign_out": "Sair"
+    "tagline": "Descubra o verdadeiro Japão"
   },
   "share": {
     "spot": "Compartilhar este local",
@@ -323,14 +257,6 @@
     "play": "Ouvir",
     "copied": "Copiado!",
     "search": "Pesquisar frases..."
-  },
-  "errors": {
-    "network": "Sem conexão com a internet",
-    "server": "Ocorreu um erro no servidor. Tente novamente.",
-    "auth": "Falha na autenticação",
-    "permission": "Sem permissão",
-    "unknown": "Ocorreu um erro inesperado",
-    "generic": "Ocorreu um erro. Tente novamente."
   },
   "community": {
     "title": "Comunidade",

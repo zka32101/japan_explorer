@@ -1253,6 +1253,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  japanaut_kit:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "v0.2.0"
+      resolved-ref: d8cc27e22e14eb01c2086ba80ba780179500c996
+      url: "https://github.com/zka32101/japanaut_kit.git"
+    source: git
+    version: "0.2.0"
   jni:
     dependency: transitive
     description:

@@ -5,6 +5,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 
+import '../config/app_brand.dart';
 import '../utils/firestore_instance.dart';
 
 class NotificationService {
@@ -83,10 +84,10 @@ class NotificationService {
       notification.hashCode,
       notification.title,
       notification.body,
-      const NotificationDetails(
+      NotificationDetails(
         android: AndroidNotificationDetails(
           'japan_explorer',
-          'Japanaut Trip',
+          tripBrand.displayName,
           importance: Importance.high,
           priority: Priority.high,
         ),

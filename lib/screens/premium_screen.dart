@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import '../config/app_brand.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -334,13 +335,13 @@ class PremiumScreen extends ConsumerWidget {
       children: [
         _FooterLink(
             label: tr('premium.footer_terms'),
-            url: 'https://japan-explorer.app/terms'),
+            url: 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/'),
         Text(' · ',
             style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.3), fontSize: 12)),
         _FooterLink(
             label: tr('premium.footer_privacy'),
-            url: 'https://japan-explorer.app/privacy'),
+            url: privacyPolicyUrl),
       ],
     );
   }

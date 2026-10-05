@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:go_router/go_router.dart';
 
+import '../config/app_brand.dart';
 import '../utils/app_navigator.dart';
 import '../utils/firestore_instance.dart';
 
@@ -16,7 +17,7 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const _kChannelId = 'japan_explorer_default';
-const _kChannelName = 'Japanaut Trip';
+final _kChannelName = tripBrand.displayName;
 const _kChannelDesc = 'Streak reminders, challenges & meetup updates';
 
 // ── Service ───────────────────────────────────────────────────────────────────
@@ -82,7 +83,7 @@ class FcmService {
     );
 
     // Create the Android channel at high importance
-    const channel = AndroidNotificationChannel(
+    final channel = AndroidNotificationChannel(
       _kChannelId,
       _kChannelName,
       description: _kChannelDesc,
@@ -102,7 +103,7 @@ class FcmService {
       n.hashCode,
       n.title,
       n.body,
-      const NotificationDetails(
+      NotificationDetails(
         android: AndroidNotificationDetails(
           _kChannelId,
           _kChannelName,
@@ -241,7 +242,7 @@ class FcmService {
       await _localNotifications.periodicallyShow(
         _kStreakReminderId,
         '🔥 Keep your streak alive!',
-        'Open Japanaut Trip to maintain your streak today.',
+        'Open ${tripBrand.displayName} to maintain your streak today.',
         RepeatInterval.daily,
         details,
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,

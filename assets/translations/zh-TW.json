@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "下一步",
-    "back": "返回",
-    "skip": "略過",
-    "done": "完成",
-    "save": "儲存",
-    "ok": "確定",
-    "close": "關閉",
-    "error": "發生錯誤",
-    "loading": "載入中...",
-    "retry": "重試",
-    "confirm": "確認",
-    "edit": "編輯",
-    "search": "搜尋",
-    "see_all": "查看全部",
-    "saved": "已儲存！",
-    "just_now": "剛剛",
-    "minutes_ago": "{} 分鐘前",
-    "hours_ago": "{} 小時前",
-    "days_ago": "{} 天前",
-    "camera": "相機",
-    "gallery": "照片圖庫",
-    "share": "分享",
-    "cancel": "取消",
-    "delete": "刪除"
-  },
   "onboarding": {
     "step0": {
       "title": "歡迎使用\nJapanaut Trip",
@@ -216,50 +190,21 @@
     "badges_count": "徽章 ({unlocked}/{total})"
   },
   "settings": {
-    "title": "設定",
-    "appearance": "外觀",
-    "theme": "主題",
-    "theme_system": "跟隨系統",
-    "theme_light": "淺色",
-    "theme_dark": "深色",
-    "notifications": "通知",
     "notif_streak": "連續登入提醒",
     "notif_challenge": "挑戰更新",
     "notif_meetup": "嚮導會面",
-    "language": "語言",
-    "data_privacy": "資料與隱私",
-    "clear_history": "清除搜尋歷史",
-    "privacy_policy": "隱私權政策",
-    "delete_account": "刪除帳號",
-    "about": "關於",
-    "version": "版本 {version}",
-    "terms": "服務條款",
-    "licenses": "開源授權",
     "clear_scan_history_title": "清除掃描紀錄？",
     "clear_scan_history_body": "你所有的本機相機 AI 掃描紀錄將被刪除。此動作無法復原。",
     "scan_history_cleared": "掃描紀錄已清除",
-    "clear": "清除",
-    "delete_account_title": "刪除帳號？",
-    "delete_account_body": "你的帳號、所有行程、評論以及文化進度將被永久刪除。此動作無法復原。",
-    "delete_forever": "永久刪除",
-    "delete_account_processing": "帳號將於不久後進行刪除處理",
-    "choose_theme": "選擇主題",
-    "app_language": "應用程式語言",
     "clear_scan_history": "清除掃描記錄",
     "clear_scan_history_desc": "刪除儲存在此裝置上的AI掃描記錄",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "永久刪除您的帳號與資料",
     "notif_challenge_desc": "每日挑戰與結果的通知",
     "notif_meetup_desc": "主人見面會的相關通知",
-    "notif_streak_desc": "提醒您保持連續打卡",
-    "version_label": "版本"
+    "notif_streak_desc": "提醒您保持連續打卡"
   },
   "premium": {
-    "title": "訂閱升級版",
     "subtitle": "盡享完整的日本體驗",
-    "cta": "開始免費試用",
-    "restore": "恢復購買",
-    "best_value": "最超值",
     "features": {
       "audio": "無限語音導覽",
       "planner": "無限 AI 規劃工具",
@@ -275,22 +220,11 @@
       "no_limits": "永無使用限制"
     },
     "hero_title": "Japanaut Trip 升級版",
-    "continue_cta": "繼續使用升級版",
-    "no_previous_purchases": "找不到先前的購買紀錄",
-    "footer_terms": "條款",
-    "footer_privacy": "隱私權",
-    "plan_monthly": "每月",
-    "plan_annual": "每年",
-    "per_month": "每月",
     "per_year_save": "每年 · 節省約 33%",
     "annual_price_note": "每月 $3.33 · 省下 33%"
   },
   "auth": {
-    "welcome": "歡迎",
-    "tagline": "探索真正的日本",
-    "sign_in_google": "透過 Google 繼續",
-    "terms_note": "繼續即代表你同意服務條款",
-    "sign_out": "登出"
+    "tagline": "探索真正的日本"
   },
   "share": {
     "spot": "分享這個景點",
@@ -323,14 +257,6 @@
     "play": "聆聽",
     "copied": "已複製！",
     "search": "搜尋短語..."
-  },
-  "errors": {
-    "network": "沒有網際網路連線",
-    "server": "發生伺服器錯誤，請再試一次。",
-    "auth": "驗證失敗",
-    "permission": "沒有權限",
-    "unknown": "發生未預期的錯誤",
-    "generic": "發生錯誤，請再試一次。"
   },
   "community": {
     "title": "社群",

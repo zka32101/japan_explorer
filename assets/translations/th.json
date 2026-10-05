@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "ถัดไป",
-    "back": "ย้อนกลับ",
-    "skip": "ข้าม",
-    "done": "เสร็จสิ้น",
-    "save": "บันทึก",
-    "ok": "ตกลง",
-    "close": "ปิด",
-    "error": "เกิดข้อผิดพลาด",
-    "loading": "กำลังโหลด...",
-    "retry": "ลองใหม่อีกครั้ง",
-    "confirm": "ยืนยัน",
-    "edit": "แก้ไข",
-    "search": "ค้นหา",
-    "see_all": "ดูทั้งหมด",
-    "saved": "บันทึกแล้ว!",
-    "just_now": "เมื่อสักครู่",
-    "minutes_ago": "{} นาทีที่แล้ว",
-    "hours_ago": "{} ชั่วโมงที่แล้ว",
-    "days_ago": "{}วันที่แล้ว",
-    "camera": "กล้อง",
-    "gallery": "คลังรูปภาพ",
-    "share": "แชร์",
-    "cancel": "ยกเลิก",
-    "delete": "ลบ"
-  },
   "onboarding": {
     "step0": {
       "title": "ยินดีต้อนรับสู่\nJapanaut Trip",
@@ -216,50 +190,21 @@
     "badges_count": "ตราสัญลักษณ์ ({unlocked}/{total})"
   },
   "settings": {
-    "title": "การตั้งค่า",
-    "appearance": "การแสดงผล",
-    "theme": "ธีม",
-    "theme_system": "ตามระบบ",
-    "theme_light": "สว่าง",
-    "theme_dark": "มืด",
-    "notifications": "การแจ้งเตือน",
     "notif_streak": "เตือนความต่อเนื่อง",
     "notif_challenge": "อัปเดตความท้าทาย",
     "notif_meetup": "นัดพบเจ้าบ้าน",
-    "language": "ภาษา",
-    "data_privacy": "ข้อมูลและความเป็นส่วนตัว",
-    "clear_history": "ล้างประวัติการค้นหา",
-    "privacy_policy": "นโยบายความเป็นส่วนตัว",
-    "delete_account": "ลบบัญชี",
-    "about": "เกี่ยวกับ",
-    "version": "เวอร์ชัน {version}",
-    "terms": "เงื่อนไขการให้บริการ",
-    "licenses": "ลิขสิทธิ์โอเพนซอร์ส",
     "clear_scan_history_title": "ล้างประวัติการสแกนหรือไม่",
     "clear_scan_history_body": "บันทึกการสแกน AI ด้วยกล้องในเครื่องทั้งหมดของคุณจะถูกลบ การดำเนินการนี้จะไม่สามารถย้อนกลับได้",
     "scan_history_cleared": "ล้างประวัติการสแกนแล้ว",
-    "clear": "ล้าง",
-    "delete_account_title": "ลบบัญชีหรือไม่",
-    "delete_account_body": "บัญชีของคุณ แผนการเดินทาง รีวิว และความคืบหน้าทางวัฒนธรรมทั้งหมดจะถูกลบอย่างถาวร การดำเนินการนี้ไม่สามารถย้อนกลับได้",
-    "delete_forever": "ลบถาวร",
-    "delete_account_processing": "การลบบัญชีจะดำเนินการในอีกสักครู่",
-    "choose_theme": "เลือกธีม",
-    "app_language": "ภาษาของแอป",
     "clear_scan_history": "ล้างประวัติการสแกน",
     "clear_scan_history_desc": "ลบบันทึกการสแกน AI ที่บันทึกไว้ในอุปกรณ์นี้",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "ลบบัญชีและข้อมูลของคุณอย่างถาวร",
     "notif_challenge_desc": "ความท้าทายประจำวันและผลลัพธ์ใหม่ๆ",
     "notif_meetup_desc": "อัปเดตเกี่ยวกับการพบปะกับโฮสต์",
-    "notif_streak_desc": "การแจ้งเตือนเพื่อรักษาสตรีทประจำวันของคุณ",
-    "version_label": "เวอร์ชัน"
+    "notif_streak_desc": "การแจ้งเตือนเพื่อรักษาสตรีทประจำวันของคุณ"
   },
   "premium": {
-    "title": "สมัครสมาชิก Premium",
     "subtitle": "เพลิดเพลินกับประสบการณ์ใน Japan ได้อย่างเต็มที่",
-    "cta": "เริ่มทดลองใช้ฟรี",
-    "restore": "กู้คืนการซื้อ",
-    "best_value": "คุ้มค่าที่สุด",
     "features": {
       "audio": "1อุดio Guide ไม่จำกัด",
       "planner": "AI Planner ไม่จำกัด",
@@ -275,22 +220,11 @@
       "no_limits": "ไม่มีขีดจำกัดการใช้งาน — ตลอดไป"
     },
     "hero_title": "Japanaut Trip Premium",
-    "continue_cta": "ดำเนินการต่อด้วย Premium",
-    "no_previous_purchases": "ไม่พบประวัติการซื้อ",
-    "footer_terms": "ข้อกำหนด",
-    "footer_privacy": "ความเป็นส่วนตัว",
-    "plan_monthly": "รายเดือน",
-    "plan_annual": "รายปี",
-    "per_month": "ต่อเดือน",
     "per_year_save": "ต่อปี · ประหยัด ~33%",
     "annual_price_note": "$3.33/เดือน · ประหยัด 33%"
   },
   "auth": {
-    "welcome": "ยินดีต้อนรับ",
-    "tagline": "ค้นพบญี่ปุ่นในมุมมองที่แท้จริง",
-    "sign_in_google": "ดำเนินการต่อด้วย Google",
-    "terms_note": "การดำเนินการต่อแสดงว่าคุณยอมรับข้อกำหนดในการให้บริการ",
-    "sign_out": "ออกจากระบบ"
+    "tagline": "ค้นพบญี่ปุ่นในมุมมองที่แท้จริง"
   },
   "share": {
     "spot": "แชร์สถานที่นี้",
@@ -323,14 +257,6 @@
     "play": "ฟัง",
     "copied": "คัดลอกแล้ว!",
     "search": "ค้นหาวลี..."
-  },
-  "errors": {
-    "network": "ไม่มีการเชื่อมต่ออินเทอร์เน็ต",
-    "server": "เกิดข้อผิดพลาดของเซิร์ฟเวอร์ กรุณาลองใหม่อีกครั้ง",
-    "auth": "การยืนยันตัวตนล้มเหลว",
-    "permission": "ไม่มีสิทธิ์เข้าถึง",
-    "unknown": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
-    "generic": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง"
   },
   "community": {
     "title": "ชุมชน",

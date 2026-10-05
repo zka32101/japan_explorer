@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "Siguiente",
-    "back": "Atrás",
-    "skip": "Omitir",
-    "done": "Listo",
-    "save": "Guardar",
-    "ok": "Aceptar",
-    "close": "Cerrar",
-    "error": "Se ha producido un error",
-    "loading": "Cargando...",
-    "retry": "Reintentar",
-    "confirm": "Confirmar",
-    "edit": "Editar",
-    "search": "Buscar",
-    "see_all": "Ver todo",
-    "saved": "¡Guardado!",
-    "just_now": "Hace un momento",
-    "minutes_ago": "Hace {} minutos",
-    "hours_ago": "Hace {} horas",
-    "days_ago": "Hace {} días",
-    "camera": "Cámara",
-    "gallery": "Galería de fotos",
-    "share": "Compartir",
-    "cancel": "Cancelar",
-    "delete": "Eliminar"
-  },
   "onboarding": {
     "step0": {
       "title": "Te damos la bienvenida a\nJapanaut Trip",
@@ -216,50 +190,21 @@
     "badges_count": "Insignias ({unlocked}/{total})"
   },
   "settings": {
-    "title": "Ajustes",
-    "appearance": "Apariencia",
-    "theme": "Tema",
-    "theme_system": "Sistema",
-    "theme_light": "Claro",
-    "theme_dark": "Oscuro",
-    "notifications": "Notificaciones",
     "notif_streak": "Recordatorio de racha",
     "notif_challenge": "Actualización de desafíos",
     "notif_meetup": "Encuentro con anfitrión",
-    "language": "Idioma",
-    "data_privacy": "Datos y privacidad",
-    "clear_history": "Borrar historial de búsqueda",
-    "privacy_policy": "Política de privacidad",
-    "delete_account": "Eliminar cuenta",
-    "about": "Acerca de",
-    "version": "Versión {version}",
-    "terms": "Términos de servicio",
-    "licenses": "Licencias de código abierto",
     "clear_scan_history_title": "¿Borrar historial de escaneo?",
     "clear_scan_history_body": "Se eliminarán todos tus registros locales de escaneo con IA de la cámara. Esta acción no se puede deshacer.",
     "scan_history_cleared": "Historial de escaneo borrado",
-    "clear": "Borrar",
-    "delete_account_title": "¿Eliminar cuenta?",
-    "delete_account_body": "Tu cuenta, todos tus planes, reseñas y progreso cultural se eliminarán de forma permanente. Esto no se puede deshacer.",
-    "delete_forever": "Eliminar para siempre",
-    "delete_account_processing": "La eliminación de la cuenta se procesará en breve",
-    "choose_theme": "Elegir tema",
-    "app_language": "Idioma de la aplicación",
     "clear_scan_history": "Borrar historial de escaneo",
     "clear_scan_history_desc": "Eliminar los registros de escaneo de IA guardados en este dispositivo",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "Elimina tu cuenta y tus datos de forma permanente",
     "notif_challenge_desc": "Nuevos desafíos diarios y resultados",
     "notif_meetup_desc": "Actualizaciones sobre encuentros con anfitriones",
-    "notif_streak_desc": "Un recordatorio para mantener tu racha diaria",
-    "version_label": "Versión"
+    "notif_streak_desc": "Un recordatorio para mantener tu racha diaria"
   },
   "premium": {
-    "title": "Suscribirse a Premium",
     "subtitle": "Disfruta de la experiencia completa en Japón",
-    "cta": "Iniciar prueba gratuita",
-    "restore": "Restaurar compra",
-    "best_value": "Mejor valor",
     "features": {
       "audio": "Guías de audio ilimitadas",
       "planner": "Planificador de IA ilimitado",
@@ -275,22 +220,11 @@
       "no_limits": "Sin límites de uso, nunca"
     },
     "hero_title": "Japanaut Trip Premium",
-    "continue_cta": "Continuar con Premium",
-    "no_previous_purchases": "No se encontraron compras anteriores",
-    "footer_terms": "Términos",
-    "footer_privacy": "Privacidad",
-    "plan_monthly": "Mensual",
-    "plan_annual": "Anual",
-    "per_month": "al mes",
     "per_year_save": "al año · ahorra ~33%",
     "annual_price_note": "$3.33/mes · Ahorra 33%"
   },
   "auth": {
-    "welcome": "Bienvenido",
-    "tagline": "Descubre el Japón real",
-    "sign_in_google": "Continuar con Google",
-    "terms_note": "Al continuar, aceptas las Condiciones del Servicio",
-    "sign_out": "Cerrar sesión"
+    "tagline": "Descubre el Japón real"
   },
   "share": {
     "spot": "Compartir este lugar",
@@ -323,14 +257,6 @@
     "play": "Escuchar",
     "copied": "¡Copiado!",
     "search": "Buscar frases..."
-  },
-  "errors": {
-    "network": "Sin conexión a internet",
-    "server": "Se ha producido un error en el servidor. Inténtalo de nuevo.",
-    "auth": "Error de autenticación",
-    "permission": "Sin permisos",
-    "unknown": "Se ha producido un error inesperado",
-    "generic": "Se ha producido un error. Inténtalo de nuevo."
   },
   "community": {
     "title": "Comunidad",
