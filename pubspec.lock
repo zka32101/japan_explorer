@@ -1257,11 +1257,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v0.1.0"
-      resolved-ref: "3ef50f2adc3806cc1de5fa082b019b2caadcb5e5"
+      ref: "v0.2.0"
+      resolved-ref: d8cc27e22e14eb01c2086ba80ba780179500c996
       url: "https://github.com/zka32101/japanaut_kit.git"
     source: git
-    version: "0.1.0"
+    version: "0.2.0"
   jni:
     dependency: transitive
     description:

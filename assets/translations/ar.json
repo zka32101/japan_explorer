@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "التالي",
-    "back": "السابق",
-    "skip": "تخطي",
-    "done": "تم",
-    "save": "حفظ",
-    "ok": "موافق",
-    "close": "إغلاق",
-    "error": "حدث خطأ ما",
-    "loading": "جاري التحميل...",
-    "retry": "إعادة المحاولة",
-    "confirm": "تأكيد",
-    "edit": "تعديل",
-    "search": "بحث",
-    "see_all": "عرض الكل",
-    "saved": "تم الحفظ!",
-    "just_now": "الآن",
-    "minutes_ago": "منذ {} دقائق",
-    "hours_ago": "منذ {} ساعات",
-    "days_ago": "منذ {} أيام",
-    "camera": "الكاميرا",
-    "gallery": "مكتبة الصور",
-    "share": "مشاركة",
-    "cancel": "إلغاء",
-    "delete": "حذف"
-  },
   "onboarding": {
     "step0": {
       "title": "مرحباً بك في\nJapanaut Trip",
@@ -216,50 +190,21 @@
     "badges_count": "الشارات ({unlocked}/{total})"
   },
   "settings": {
-    "title": "الإعدادات",
-    "appearance": "المظهر",
-    "theme": "السمة",
-    "theme_system": "النظام",
-    "theme_light": "فاتح",
-    "theme_dark": "داكن",
-    "notifications": "الإشعارات",
     "notif_streak": "تذكير بالسلسلة",
     "notif_challenge": "تحديث التحدي",
     "notif_meetup": "لقاء المضيف",
-    "language": "اللغة",
-    "data_privacy": "البيانات والخصوصية",
-    "clear_history": "مسح سجل البحث",
-    "privacy_policy": "سياسة الخصوصية",
-    "delete_account": "حذف الحساب",
-    "about": "حول التطبيق",
-    "version": "الإصدار {version}",
-    "terms": "شروط الخدمة",
-    "licenses": "تراخيص المصدر المفتوح",
     "clear_scan_history_title": "مسح سجل المسح الضوئي؟",
     "clear_scan_history_body": "سيتم حذف جميع سجلات مسح الكاميرا بالذكاء الاصطناعي المحفوظة محلياً. لا يمكن التراجع عن هذا الإجراء.",
     "scan_history_cleared": "تم مسح سجل المسح الضوئي",
-    "clear": "مسح",
-    "delete_account_title": "حذف الحساب؟",
-    "delete_account_body": "سيتم حذف حسابك وجميع الخطط والتقييمات والتقدم الثقافي بشكل دائم. لا يمكن التراجع عن هذا.",
-    "delete_forever": "حذف نهائياً",
-    "delete_account_processing": "سيتم معالجة حذف الحساب قريباً",
-    "choose_theme": "اختر المظهر",
-    "app_language": "لغة التطبيق",
     "clear_scan_history": "مسح سجل المسح الضوئي",
     "clear_scan_history_desc": "حذف سجلات المسح بالذكاء الاصطناعي المحفوظة على هذا الجهاز",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "حذف حسابك وبياناتك نهائياً",
     "notif_challenge_desc": "التحديات والنتائج اليومية الجديدة",
     "notif_meetup_desc": "تحديثات حول لقاءات المضيفين",
-    "notif_streak_desc": "تذكير للحفاظ على سلسلة أيامك المتتالية",
-    "version_label": "الإصدار"
+    "notif_streak_desc": "تذكير للحفاظ على سلسلة أيامك المتتالية"
   },
   "premium": {
-    "title": "الاشتراك في الإصدار المميز",
     "subtitle": "استمتع بتجربة اليابان الكاملة",
-    "cta": "ابدأ التجربة المجانية",
-    "restore": "استعادة الشراء",
-    "best_value": "القيمة الأفضل",
     "features": {
       "audio": "أدلة صوتية غير محدودة",
       "planner": "مخطط ذكي غير محدود",
@@ -275,22 +220,11 @@
       "no_limits": "بلا حدود للاستخدام — أبداً"
     },
     "hero_title": "Japanaut Trip Premium",
-    "continue_cta": "المتابعة مع الإصدار المميز",
-    "no_previous_purchases": "لم يتم العثور على مشتريات سابقة",
-    "footer_terms": "الشروط",
-    "footer_privacy": "الخصوصية",
-    "plan_monthly": "شهري",
-    "plan_annual": "سنوي",
-    "per_month": "لكل شهر",
     "per_year_save": "لكل سنة · وفّر حوالي 33%",
     "annual_price_note": "$3.33 شهرياً · وفّر 33%"
   },
   "auth": {
-    "welcome": "أهلاً بك",
-    "tagline": "اكتشف اليابان الحقيقية",
-    "sign_in_google": "المتابعة باستخدام Google",
-    "terms_note": "بالمتابعة، أنت توافق على شروط الخدمة",
-    "sign_out": "تسجيل الخروج"
+    "tagline": "اكتشف اليابان الحقيقية"
   },
   "share": {
     "spot": "مشاركة هذا المكان",
@@ -323,14 +257,6 @@
     "play": "استماع",
     "copied": "تم النسخ!",
     "search": "البحث عن عبارات..."
-  },
-  "errors": {
-    "network": "لا يوجد اتصال بالإنترنت",
-    "server": "حدث خطأ في الخادم. يرجى المحاولة مرة أخرى.",
-    "auth": "فشل المصادقة",
-    "permission": "لا توجد صلاحية",
-    "unknown": "حدث خطأ غير متوقع",
-    "generic": "حدث خطأ. يرجى المحاولة مرة أخرى."
   },
   "community": {
     "title": "المجتمع",

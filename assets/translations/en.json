@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "Next",
-    "back": "Back",
-    "skip": "Skip",
-    "done": "Done",
-    "save": "Save",
-    "ok": "OK",
-    "close": "Close",
-    "error": "An error occurred",
-    "loading": "Loading...",
-    "retry": "Retry",
-    "confirm": "Confirm",
-    "edit": "Edit",
-    "search": "Search",
-    "see_all": "See All",
-    "saved": "Saved!",
-    "just_now": "Just now",
-    "minutes_ago": "{} minutes ago",
-    "hours_ago": "{} hours ago",
-    "days_ago": "{} days ago",
-    "camera": "Camera",
-    "gallery": "Photo Library",
-    "share": "Share",
-    "cancel": "Cancel",
-    "delete": "Delete"
-  },
   "onboarding": {
     "step0": {
       "title": "Welcome to\nJapanaut Trip",
@@ -216,50 +190,21 @@
     "badges_count": "Badges ({unlocked}/{total})"
   },
   "settings": {
-    "title": "Settings",
-    "appearance": "Appearance",
-    "theme": "Theme",
-    "theme_system": "System",
-    "theme_light": "Light",
-    "theme_dark": "Dark",
-    "notifications": "Notifications",
     "notif_streak": "Streak Reminder",
     "notif_challenge": "Challenge Update",
     "notif_meetup": "Host Meetup",
-    "language": "Language",
-    "data_privacy": "Data & Privacy",
-    "clear_history": "Clear Search History",
-    "privacy_policy": "Privacy Policy",
-    "delete_account": "Delete Account",
-    "about": "About",
-    "version": "Version {version}",
-    "terms": "Terms of Service",
-    "licenses": "Open Source Licenses",
     "clear_scan_history_title": "Clear Scan History?",
     "clear_scan_history_body": "All your local camera AI scan records will be deleted. This action cannot be undone.",
     "scan_history_cleared": "Scan history cleared",
-    "clear": "Clear",
-    "delete_account_title": "Delete Account?",
-    "delete_account_body": "Your account, all plans, reviews, and cultural progress will be permanently deleted. This cannot be undone.",
-    "delete_forever": "Delete Forever",
-    "delete_account_processing": "Account deletion will be processed shortly",
-    "choose_theme": "Choose Theme",
-    "app_language": "App language",
     "clear_scan_history": "Clear scan history",
     "clear_scan_history_desc": "Delete AI scan records saved on this device",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "Permanently delete your account and data",
     "notif_challenge_desc": "New daily challenges and results",
     "notif_meetup_desc": "Updates about host meetups",
-    "notif_streak_desc": "A reminder to keep your daily streak",
-    "version_label": "Version"
+    "notif_streak_desc": "A reminder to keep your daily streak"
   },
   "premium": {
-    "title": "Subscribe to Premium",
     "subtitle": "Enjoy the full Japan experience",
-    "cta": "Start Free Trial",
-    "restore": "Restore Purchase",
-    "best_value": "Best Value",
     "features": {
       "audio": "Unlimited Audio Guides",
       "planner": "Unlimited AI Planner",
@@ -275,22 +220,11 @@
       "no_limits": "No usage limits — ever"
     },
     "hero_title": "Japanaut Trip Premium",
-    "continue_cta": "Continue with Premium",
-    "no_previous_purchases": "No previous purchases found",
-    "footer_terms": "Terms",
-    "footer_privacy": "Privacy",
-    "plan_monthly": "Monthly",
-    "plan_annual": "Annual",
-    "per_month": "per month",
     "per_year_save": "per year · save ~33%",
     "annual_price_note": "$3.33/mo · Save 33%"
   },
   "auth": {
-    "welcome": "Welcome",
-    "tagline": "Discover the real Japan",
-    "sign_in_google": "Continue with Google",
-    "terms_note": "By continuing, you agree to the Terms of Service",
-    "sign_out": "Sign Out"
+    "tagline": "Discover the real Japan"
   },
   "share": {
     "spot": "Share this spot",
@@ -323,14 +257,6 @@
     "play": "Listen",
     "copied": "Copied!",
     "search": "Search phrases..."
-  },
-  "errors": {
-    "network": "No internet connection",
-    "server": "A server error occurred. Please try again.",
-    "auth": "Authentication failed",
-    "permission": "No permission",
-    "unknown": "An unexpected error occurred",
-    "generic": "An error occurred. Please try again."
   },
   "community": {
     "title": "Community",

@@ -1,31 +1,5 @@
 {
   "app_name": "Japanaut Trip",
-  "common": {
-    "next": "Lanjut",
-    "back": "Kembali",
-    "skip": "Lewati",
-    "done": "Selesai",
-    "save": "Simpan",
-    "ok": "OKE",
-    "close": "Tutup",
-    "error": "Terjadi kesalahan",
-    "loading": "Memuat...",
-    "retry": "Coba lagi",
-    "confirm": "Konfirmasi",
-    "edit": "Ubah",
-    "search": "Cari",
-    "see_all": "Lihat Semua",
-    "saved": "Tersimpan!",
-    "just_now": "Baru saja",
-    "minutes_ago": "{} menit yang lalu",
-    "hours_ago": "{} jam yang lalu",
-    "days_ago": "{} hari yang lalu",
-    "camera": "Kamera",
-    "gallery": "Galeri Foto",
-    "share": "Bagikan",
-    "cancel": "Batal",
-    "delete": "Hapus"
-  },
   "onboarding": {
     "step0": {
       "title": "Selamat datang di\nJapanaut Trip",
@@ -216,50 +190,21 @@
     "badges_count": "Lencana ({unlocked}/{total})"
   },
   "settings": {
-    "title": "Pengaturan",
-    "appearance": "Tampilan",
-    "theme": "Tema",
-    "theme_system": "Sistem",
-    "theme_light": "Terang",
-    "theme_dark": "Gelap",
-    "notifications": "Notifikasi",
     "notif_streak": "Pengingat Streak",
     "notif_challenge": "Pembaruan Tantangan",
     "notif_meetup": "Pertemuan Tuan Rumah",
-    "language": "Bahasa",
-    "data_privacy": "Data & Privasi",
-    "clear_history": "Hapus Riwayat Pencarian",
-    "privacy_policy": "Kebijakan Privasi",
-    "delete_account": "Hapus Akun",
-    "about": "Tentang",
-    "version": "Versi {version}",
-    "terms": "Ketentuan Layanan",
-    "licenses": "Lisensi Sumber Terbuka",
     "clear_scan_history_title": "Hapus Riwayat Pemindaian?",
     "clear_scan_history_body": "Semua catatan pemindaian AI kamera lokal Anda akan dihapus. Tindakan ini tidak dapat dibatalkan.",
     "scan_history_cleared": "Riwayat pemindaian dibersihkan",
-    "clear": "Bersihkan",
-    "delete_account_title": "Hapus Akun?",
-    "delete_account_body": "Akun Anda, semua rencana, ulasan, dan kemajuan budaya akan dihapus secara permanen. Ini tidak dapat dibatalkan.",
-    "delete_forever": "Hapus Selamanya",
-    "delete_account_processing": "Penghapusan akun akan segera diproses",
-    "choose_theme": "Pilih Tema",
-    "app_language": "Bahasa aplikasi",
     "clear_scan_history": "Hapus riwayat pemindaian",
     "clear_scan_history_desc": "Hapus catatan pemindaian AI yang disimpan di perangkat ini",
     "copyright": "© 2026 Japanaut Trip",
-    "delete_account_desc": "Hapus akun dan data Anda secara permanen",
     "notif_challenge_desc": "Tantangan harian dan hasil baru",
     "notif_meetup_desc": "Pembaruan tentang temu tuan rumah",
-    "notif_streak_desc": "Pengingat untuk menjaga rangkaian harian Anda",
-    "version_label": "Versi"
+    "notif_streak_desc": "Pengingat untuk menjaga rangkaian harian Anda"
   },
   "premium": {
-    "title": "Berlangganan Premium",
     "subtitle": "Nikmati pengalaman Jepang sepenuhnya",
-    "cta": "Mulai Uji Coba Gratis",
-    "restore": "Pulihkan Pembelian",
-    "best_value": "Nilai Terbaik",
     "features": {
       "audio": "Panduan Audio Tanpa Batas",
       "planner": "Perencana AI Tanpa Batas",
@@ -275,22 +220,11 @@
       "no_limits": "Tanpa batasan penggunaan — selamanya"
     },
     "hero_title": "Japanaut Trip Premium",
-    "continue_cta": "Lanjutkan dengan Premium",
-    "no_previous_purchases": "Tidak ada pembelian sebelumnya",
-    "footer_terms": "Ketentuan",
-    "footer_privacy": "Privasi",
-    "plan_monthly": "Bulanan",
-    "plan_annual": "Tahunan",
-    "per_month": "per bulan",
     "per_year_save": "per tahun · hemat ~33%",
     "annual_price_note": "$3.33/bln · Hemat 33%"
   },
   "auth": {
-    "welcome": "Selamat Datang",
-    "tagline": "Temukan Jepang yang sebenarnya",
-    "sign_in_google": "Lanjutkan dengan Google",
-    "terms_note": "Dengan melanjutkan, Anda menyetujui Ketentuan Layanan",
-    "sign_out": "Keluar"
+    "tagline": "Temukan Jepang yang sebenarnya"
   },
   "share": {
     "spot": "Bagikan tempat ini",
@@ -323,14 +257,6 @@
     "play": "Dengarkan",
     "copied": "Disalin!",
     "search": "Cari ungkapan..."
-  },
-  "errors": {
-    "network": "Tidak ada koneksi internet",
-    "server": "Terjadi kesalahan server. Silakan coba lagi.",
-    "auth": "Autentikasi gagal",
-    "permission": "Tidak ada izin",
-    "unknown": "Terjadi kesalahan yang tidak tak terduga",
-    "generic": "Terjadi kesalahan. Silakan coba lagi."
   },
   "community": {
     "title": "Komunitas",
