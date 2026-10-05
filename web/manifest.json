@@ -1,11 +1,11 @@
 {
-    "name": "japan_explorer",
-    "short_name": "japan_explorer",
+    "name": "Japanaut Trip",
+    "short_name": "Japanaut Trip",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Japan Explorer - AI-Powered Japan Travel App",
+    "description": "Japanaut Trip - AI-Powered Japan Travel App",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

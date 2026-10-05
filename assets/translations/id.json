@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "Lanjut",
     "back": "Kembali",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "Selamat datang di\nJapan Explorer",
+      "title": "Selamat datang di\nJapanaut Trip",
       "subtitle": "Silakan pilih bahasa"
     },
     "step1": {
@@ -247,7 +247,7 @@
     "app_language": "Bahasa aplikasi",
     "clear_scan_history": "Hapus riwayat pemindaian",
     "clear_scan_history_desc": "Hapus catatan pemindaian AI yang disimpan di perangkat ini",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "Hapus akun dan data Anda secara permanen",
     "notif_challenge_desc": "Tantangan harian dan hasil baru",
     "notif_meetup_desc": "Pembaruan tentang temu tuan rumah",
@@ -274,7 +274,7 @@
       "offline_cache": "Cache kurasi offline untuk perjalanan tanpa internet",
       "no_limits": "Tanpa batasan penggunaan — selamanya"
     },
-    "hero_title": "Japan Explorer Premium",
+    "hero_title": "Japanaut Trip Premium",
     "continue_cta": "Lanjutkan dengan Premium",
     "no_previous_purchases": "Tidak ada pembelian sebelumnya",
     "footer_terms": "Ketentuan",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "Bagikan tempat ini",
-    "app": "Bagikan Japan Explorer"
+    "app": "Bagikan Japanaut Trip"
   },
   "review": {
     "rate_us": "Beri Nilai"
@@ -337,7 +337,7 @@
     "create_post": "Buat Postingan",
     "post": "Posting",
     "empty_title": "Belum ada postingan",
-    "empty_body": "Jadilah yang pertama membagikan pengalaman Japan Explorer Anda!",
+    "empty_body": "Jadilah yang pertama membagikan pengalaman Japanaut Trip Anda!",
     "no_comments": "Belum ada komentar. Jadilah yang pertama berkomentar!",
     "no_image": "Silakan pilih foto.",
     "no_caption": "Silakan masukkan takarir.",
@@ -396,7 +396,7 @@
     "storage_used": "Penyimpanan digunakan",
     "synced": "Disinkronkan",
     "download_title": "Unduh untuk offline",
-    "download_subtitle": "Simpan tempat dan konten ke perangkat Anda. Anda dapat menggunakan Japan Explorer tanpa koneksi internet.",
+    "download_subtitle": "Simpan tempat dan konten ke perangkat Anda. Anda dapat menggunakan Japanaut Trip tanpa koneksi internet.",
     "start_sync": "Unduh sekarang",
     "resync": "Perbarui unduhan",
     "clear_title": "Hapus unduhan",
@@ -685,6 +685,6 @@
     "japan_master_name": "Ahli Jepang",
     "japan_master_desc": "Mencapai Level 10",
     "ambassador_name": "Duta",
-    "ambassador_desc": "Mengundang teman ke Japan Explorer"
+    "ambassador_desc": "Mengundang teman ke Japanaut Trip"
   }
 }

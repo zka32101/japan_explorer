@@ -3,7 +3,7 @@ APPLE APP STORE — 简体中文 (zh) LISTING
 ========================================================
 
 APP NAME (max 30 chars):
-Japan Explorer：AI日本导游
+Japanaut Trip：AI日本导游
 
 SUBTITLE (max 30 chars):
 语音导览 · 行程规划 · 日本自由行
@@ -12,7 +12,7 @@ PROMOTIONAL TEXT (max 170 chars — not indexed, update anytime):
 全新推出：AR 地标识别与离线语音导览——用你的 AI 旅行助手探索日本小众秘境。
 
 DESCRIPTION (max 4000 chars):
-Japan Explorer 是专为探索日本打造的 AI 智能旅行助手。无论是首次到访，还是重游你所热爱的国度，Japan Explorer 都能带你深入其中。
+Japanaut Trip 是专为探索日本打造的 AI 智能旅行助手。无论是首次到访，还是重游你所热爱的国度，Japanaut Trip 都能带你深入其中。
 
 精选景点
 寺庙、神社、隐秘小巷、当地市场、季节祭典——由日本专家精选，并以 AI 补充文化背景。
@@ -21,7 +21,7 @@ AI 语音导览
 把手机对准地标，立即获得母语讲解的沉浸式语音导览。AI 会依据你的兴趣与旅行风格个性化内容，而非照读百科摘要。
 
 智能行程规划
-输入旅行日期与偏好，Japan Explorer 数秒内生成专属的每日行程，旅途中可随时调整。
+输入旅行日期与偏好，Japanaut Trip 数秒内生成专属的每日行程，旅途中可随时调整。
 
 支持 5 种语言
 完整支持简体中文、日语（日本語）、English、한국어 与 Français，覆盖全部使用体验。

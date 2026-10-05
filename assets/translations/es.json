@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "Siguiente",
     "back": "Atrás",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "Te damos la bienvenida a\nJapan Explorer",
+      "title": "Te damos la bienvenida a\nJapanaut Trip",
       "subtitle": "Por favor, selecciona un idioma"
     },
     "step1": {
@@ -247,7 +247,7 @@
     "app_language": "Idioma de la aplicación",
     "clear_scan_history": "Borrar historial de escaneo",
     "clear_scan_history_desc": "Eliminar los registros de escaneo de IA guardados en este dispositivo",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "Elimina tu cuenta y tus datos de forma permanente",
     "notif_challenge_desc": "Nuevos desafíos diarios y resultados",
     "notif_meetup_desc": "Actualizaciones sobre encuentros con anfitriones",
@@ -274,7 +274,7 @@
       "offline_cache": "Caché de contenido sin conexión para viajar sin internet",
       "no_limits": "Sin límites de uso, nunca"
     },
-    "hero_title": "Japan Explorer Premium",
+    "hero_title": "Japanaut Trip Premium",
     "continue_cta": "Continuar con Premium",
     "no_previous_purchases": "No se encontraron compras anteriores",
     "footer_terms": "Términos",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "Compartir este lugar",
-    "app": "Compartir Japan Explorer"
+    "app": "Compartir Japanaut Trip"
   },
   "review": {
     "rate_us": "Calificar"
@@ -396,7 +396,7 @@
     "storage_used": "Almacenamiento usado",
     "synced": "Sincronizado",
     "download_title": "Descargar para usar sin conexión",
-    "download_subtitle": "Guarda lugares y contenido en tu dispositivo. Puedes usar Japan Explorer sin conexión a internet.",
+    "download_subtitle": "Guarda lugares y contenido en tu dispositivo. Puedes usar Japanaut Trip sin conexión a internet.",
     "start_sync": "Descargar ahora",
     "resync": "Actualizar descarga",
     "clear_title": "Eliminar descarga",
@@ -685,6 +685,6 @@
     "japan_master_name": "Maestro de Japón",
     "japan_master_desc": "Alcanzó el Nivel 10",
     "ambassador_name": "Embajador",
-    "ambassador_desc": "Invitó a un amigo a Japan Explorer"
+    "ambassador_desc": "Invitó a un amigo a Japanaut Trip"
   }
 }

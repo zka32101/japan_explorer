@@ -1,10 +1,10 @@
-# Google Play Store Listing — Japan Explorer
+# Google Play Store Listing — Japanaut Trip
 
 ## App Details
 
 | Field | Value |
 |---|---|
-| App name | Japan Explorer |
+| App name | Japanaut Trip |
 | Package name | com.funvestment.japan_explorer |
 | Category | Travel & Local |
 | Content rating | Everyone |
@@ -21,7 +21,7 @@ AI-powered Japan travel guide — spots, culture & real-time tips 🗾
 ## Full Description (4000 chars max)
 
 ```
-Discover Japan like never before with Japan Explorer — your AI-powered cultural companion for every step of your Japanese adventure.
+Discover Japan like never before with Japanaut Trip — your AI-powered cultural companion for every step of your Japanese adventure.
 
 🌸 EXPLORE WITH AI
 Point your camera at any shrine, temple, garden, or street scene and let our AI instantly identify it, tell its story, and suggest what to experience nearby. Powered by Google Gemini.
@@ -49,7 +49,7 @@ Open the interactive map to see curated spots around you. Tap any pin for detail
 • Save spots to your personal trip plan
 • Free to use
 
-Japan Explorer is designed for international visitors who want to go beyond the tourist trail and connect with Japanese culture on a deeper level.
+Japanaut Trip is designed for international visitors who want to go beyond the tourist trail and connect with Japanese culture on a deeper level.
 
 Download free and start exploring Japan today! 🎋
 ```
@@ -78,7 +78,7 @@ Download free and start exploring Japan today! 🎋
 ## Release Notes (What's New) — v1.0.0
 
 ```
-🎉 Welcome to Japan Explorer!
+🎉 Welcome to Japanaut Trip!
 
 • AI landmark identification with your camera
 • 500+ curated cultural spots with detailed stories

@@ -1,6 +1,6 @@
 # japan_explorer
 
-Japan Explorer - AI-Powered Japan Travel App
+Japanaut Trip - AI-Powered Japan Travel App
 
 ## Getting Started
 

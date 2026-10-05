@@ -122,7 +122,7 @@ exports.dailyStreakReminder = functions.pubsub
         token: data.fcm_token,
         notification: {
           title: `🔥 Keep your ${streak}-day streak alive!`,
-          body: "Open Japan Explorer today to continue your streak.",
+          body: "Open Japanaut Trip today to continue your streak.",
         },
         data: {
           type: 'streak_reminder',
@@ -172,7 +172,7 @@ function getBadgeDescription(id) {
   const desc = {
     first_visit: 'You explored your first Japan spot!',
     photo_lover: 'You\'ve shared 5 photos of Japan!',
-    streak_7: 'You\'ve used Japan Explorer 7 days in a row!',
+    streak_7: 'You\'ve used Japanaut Trip 7 days in a row!',
     streak_30: 'Incredible! 30-day streak achieved!',
     rater_10: 'You\'ve rated 10 spots — great contributions!',
     planner: 'You created your first travel plan!',

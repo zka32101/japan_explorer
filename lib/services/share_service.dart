@@ -26,18 +26,18 @@ class ShareService {
 
   /// Share the app itself (e.g. from Profile screen).
   Future<void> shareApp() async {
-    const text = '🗾 Discover Japan like a local with Japan Explorer!\n\n'
+    const text = '🗾 Discover Japan like a local with Japanaut Trip!\n\n'
         'AI audio guides, trip planning, cultural challenges & more.\n\n'
         'https://japanexplorer.app';
-    await Share.share(text, subject: 'Japan Explorer App');
+    await Share.share(text, subject: 'Japanaut Trip App');
   }
 
   /// Share a referral code so a friend can redeem it after signing up.
   Future<void> shareReferralCode(String code) async {
-    final text = '🗾 Join me on Japan Explorer!\n\n'
+    final text = '🗾 Join me on Japanaut Trip!\n\n'
         'Use my invite code $code when you sign up and we both get a bonus.\n\n'
         'https://japanexplorer.app';
-    await Share.share(text, subject: 'Japan Explorer invite');
+    await Share.share(text, subject: 'Japanaut Trip invite');
   }
 }
 

@@ -16,7 +16,7 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const _kChannelId = 'japan_explorer_default';
-const _kChannelName = 'Japan Explorer';
+const _kChannelName = 'Japanaut Trip';
 const _kChannelDesc = 'Streak reminders, challenges & meetup updates';
 
 // ── Service ───────────────────────────────────────────────────────────────────
@@ -241,7 +241,7 @@ class FcmService {
       await _localNotifications.periodicallyShow(
         _kStreakReminderId,
         '🔥 Keep your streak alive!',
-        'Open Japan Explorer to maintain your streak today.',
+        'Open Japanaut Trip to maintain your streak today.',
         RepeatInterval.daily,
         details,
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,

@@ -1,10 +1,10 @@
-# App Store Listing — Japan Explorer
+# App Store Listing — Japanaut Trip
 
 ## App Details
 
 | Field | Value |
 |---|---|
-| App name | Japan Explorer |
+| App name | Japanaut Trip |
 | Bundle ID | com.funvestment.japan_explorer |
 | SKU | JAPANEXPLORER001 |
 | Category | Primary: Travel / Secondary: Reference |
@@ -25,7 +25,7 @@ AI Japan Travel & Culture Guide
 ```
 Explore Japan with the power of AI at your side.
 
-Japan Explorer is your intelligent cultural companion for discovering shrines, temples, gardens, food districts, and hidden gems across Japan — with AI-powered insights at every step.
+Japanaut Trip is your intelligent cultural companion for discovering shrines, temples, gardens, food districts, and hidden gems across Japan — with AI-powered insights at every step.
 
 ──────────────────────────────────────
 🎌 AI LANDMARK RECOGNITION
@@ -65,7 +65,7 @@ Your exploration earns XP and unlocks badges. Build a daily learning streak, ris
 → Multilingual AI guide (English)
 → 100% free to use
 
-Perfect for first-time visitors and seasoned Japan travelers alike. Whether you have 3 days in Tokyo or a month touring the countryside, Japan Explorer helps you discover the stories behind the sights.
+Perfect for first-time visitors and seasoned Japan travelers alike. Whether you have 3 days in Tokyo or a month touring the countryside, Japanaut Trip helps you discover the stories behind the sights.
 
 Download free and explore Japan your way. 🌸
 ```
@@ -81,7 +81,7 @@ japan,travel,culture,AI,shrine,temple,tokyo,kyoto,guide,landmark,map,explore,tri
 ## What's New — v1.0.0
 
 ```
-Welcome to Japan Explorer!
+Welcome to Japanaut Trip!
 
 • AI landmark identification with your camera
 • 500+ curated cultural spots

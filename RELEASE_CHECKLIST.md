@@ -1,4 +1,4 @@
-# Japan Explorer — Release Checklist
+# Japanaut Trip — Release Checklist
 
 > Track every item before submitting to Google Play and Apple App Store.
 > Version: **1.0.0**
@@ -47,7 +47,7 @@
 - [ ] `android/local.properties` has `MAPS_API_KEY=<real key>`
 - [ ] `android/app/google-services.json` present
 - [ ] `versionCode` and `versionName` set in `pubspec.yaml` (propagates via flutter vars)
-- [ ] `android:label="Japan Explorer"` in AndroidManifest ✅
+- [ ] `android:label="Japanaut Trip"` in AndroidManifest ✅
 - [ ] `android:allowBackup="false"` in AndroidManifest ✅
 - [ ] ProGuard rules cover all used libraries ✅
 
@@ -76,7 +76,7 @@
   ```
 - [ ] All `NSUsageDescription` strings in `Info.plist` ✅
 - [ ] Portrait-only iPhone orientation set ✅
-- [ ] `CFBundleDisplayName` = "Japan Explorer" ✅
+- [ ] `CFBundleDisplayName` = "Japanaut Trip" ✅
 
 ### Build
 - [ ] `flutter build ipa --release` succeeds

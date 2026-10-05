@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "ถัดไป",
     "back": "ย้อนกลับ",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "ยินดีต้อนรับสู่\nJapan Explorer",
+      "title": "ยินดีต้อนรับสู่\nJapanaut Trip",
       "subtitle": "โปรดเลือกภาษา"
     },
     "step1": {
@@ -247,7 +247,7 @@
     "app_language": "ภาษาของแอป",
     "clear_scan_history": "ล้างประวัติการสแกน",
     "clear_scan_history_desc": "ลบบันทึกการสแกน AI ที่บันทึกไว้ในอุปกรณ์นี้",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "ลบบัญชีและข้อมูลของคุณอย่างถาวร",
     "notif_challenge_desc": "ความท้าทายประจำวันและผลลัพธ์ใหม่ๆ",
     "notif_meetup_desc": "อัปเดตเกี่ยวกับการพบปะกับโฮสต์",
@@ -274,7 +274,7 @@
       "offline_cache": "แคชข้อมูลสำหรับการเดินทางโดยไม่ต้องใช้อินเทอร์เน็ต",
       "no_limits": "ไม่มีขีดจำกัดการใช้งาน — ตลอดไป"
     },
-    "hero_title": "Japan Explorer Premium",
+    "hero_title": "Japanaut Trip Premium",
     "continue_cta": "ดำเนินการต่อด้วย Premium",
     "no_previous_purchases": "ไม่พบประวัติการซื้อ",
     "footer_terms": "ข้อกำหนด",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "แชร์สถานที่นี้",
-    "app": "แชร์ Japan Explorer"
+    "app": "แชร์ Japanaut Trip"
   },
   "review": {
     "rate_us": "ให้คะแนน"
@@ -396,7 +396,7 @@
     "storage_used": "พื้นที่เก็บข้อมูลที่ใช้",
     "synced": "ซิงค์แล้ว",
     "download_title": "ดาวน์โหลดเพื่อใช้งานแบบออฟไลน์",
-    "download_subtitle": "บันทึกสถานที่และเนื้อหาไว้ในอุปกรณ์ของคุณ คุณสามารถใช้งาน Japan Explorer ได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต",
+    "download_subtitle": "บันทึกสถานที่และเนื้อหาไว้ในอุปกรณ์ของคุณ คุณสามารถใช้งาน Japanaut Trip ได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต",
     "start_sync": "ดาวน์โหลดเลย",
     "resync": "อัปเดตการดาวน์โหลด",
     "clear_title": "ลบการดาวน์โหลด",
@@ -685,6 +685,6 @@
     "japan_master_name": "ปรมาจารย์ญี่ปุ่น",
     "japan_master_desc": "ถึงระดับ 10 แล้ว",
     "ambassador_name": "ทูตสันถวไมตรี",
-    "ambassador_desc": "เชิญเพื่อนมาใช้ Japan Explorer"
+    "ambassador_desc": "เชิญเพื่อนมาใช้ Japanaut Trip"
   }
 }
