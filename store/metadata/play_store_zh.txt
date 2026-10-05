@@ -3,13 +3,13 @@ GOOGLE PLAY STORE — 简体中文 (zh) LISTING
 ========================================================
 
 APP NAME (max 50 chars):
-Japan Explorer：AI日本旅游导游与行程规划
+Japanaut Trip：AI日本旅游导游与行程规划
 
 SHORT DESCRIPTION (max 80 chars):
 AI日本自由行助手：语音导览、京都东京攻略、个性化行程一键生成。
 
 FULL DESCRIPTION (max 4000 chars):
-用 Japan Explorer 开启不一样的日本之旅——专为境外游客打造的 AI 智能旅行助手。
+用 Japanaut Trip 开启不一样的日本之旅——专为境外游客打造的 AI 智能旅行助手。
 
 🗾 发现小众景点
 不再只逛热门打卡地。我们的精选景点由当地专家亲自挑选、AI 核实，涵盖寺庙、神社、庭园、街头美食与各地文化体验，带你深入真正的日本。
@@ -18,7 +18,7 @@ FULL DESCRIPTION (max 4000 chars):
 把手机对准地标，立即获得沉浸式语音讲解，用你的母语播报。AI 会根据你的兴趣与旅行风格调整内容，而不只是照读百科。
 
 🗓️ 智能行程规划
-告诉我们你的日期、风格与兴趣，Japan Explorer 数秒内生成专属的每日行程，随时可按需调整。
+告诉我们你的日期、风格与兴趣，Japanaut Trip 数秒内生成专属的每日行程，随时可按需调整。
 
 🌏 支持 5 种语言
 完整支持简体中文、日语、English、한국어、Français——界面、语音导览与 AI 回复全部使用你的语言。
@@ -43,7 +43,7 @@ FULL DESCRIPTION (max 4000 chars):
 • 已保存内容离线可用
 • 5 种语言支持
 
-— 高级版（Japan Explorer Pro）—
+— 高级版（Japanaut Trip Pro）—
 • 无限 AI 语音导览
 • 无限行程生成
 • 独家小众景点精选

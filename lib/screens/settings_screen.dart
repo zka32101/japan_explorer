@@ -315,7 +315,7 @@ Privacy Policy
 Last updated: June 2026
 
 1. Information We Collect
-Japan Explorer collects information you provide directly, such as your email address, display name, and profile photo when you create an account. We also collect usage data including spots you view, plans you create, and features you use.
+Japanaut Trip collects information you provide directly, such as your email address, display name, and profile photo when you create an account. We also collect usage data including spots you view, plans you create, and features you use.
 
 2. How We Use Your Information
 We use your information to provide and improve our services, personalize your experience, send you notifications you have requested, and ensure the security of your account.
@@ -339,10 +339,10 @@ Terms of Service
 Last updated: June 2026
 
 1. Acceptance of Terms
-By using Japan Explorer, you agree to these Terms of Service. If you do not agree, please do not use the app.
+By using Japanaut Trip, you agree to these Terms of Service. If you do not agree, please do not use the app.
 
 2. Use of the Service
-Japan Explorer provides cultural information, travel planning tools, and AI-powered features for visitors to Japan. You may use the app for personal, non-commercial purposes only.
+Japanaut Trip provides cultural information, travel planning tools, and AI-powered features for visitors to Japan. You may use the app for personal, non-commercial purposes only.
 
 3. User Accounts
 You are responsible for maintaining the confidentiality of your account credentials. You agree to provide accurate information when creating your account.
@@ -354,7 +354,7 @@ AI-generated content (translations, cultural explanations, itineraries) is provi
 Premium features are available via subscription. Subscriptions auto-renew unless cancelled at least 24 hours before the renewal date. Refunds are handled per the Google Play Store or Apple App Store policies.
 
 6. Limitation of Liability
-Japan Explorer is provided "as is." We are not liable for any damages arising from your use of the app or reliance on its content.
+Japanaut Trip is provided "as is." We are not liable for any damages arising from your use of the app or reliance on its content.
 
 7. Changes to Terms
 We may update these Terms at any time. Continued use of the app after changes constitutes acceptance of the new Terms.

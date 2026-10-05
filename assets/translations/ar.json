@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "التالي",
     "back": "السابق",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "مرحباً بك في\nJapan Explorer",
+      "title": "مرحباً بك في\nJapanaut Trip",
       "subtitle": "الرجاء اختيار اللغة"
     },
     "step1": {
@@ -166,7 +166,7 @@
     "budget": "الميزانية",
     "uses_remaining": "متبقي {count} هذا الأسبوع",
     "reset": "إعادة تعيين",
-    "hero_title": "خطط لرحلتك المثالية إلى Japan Explorer",
+    "hero_title": "خطط لرحلتك المثالية إلى Japanaut Trip",
     "hero_subtitle": "أخبرنا بتفضيلاتك وسيقوم الذكاء الاصطناعي بإنشاء جدول يومي مخصص",
     "destination": "الوجهة",
     "duration": "المدة",
@@ -247,7 +247,7 @@
     "app_language": "لغة التطبيق",
     "clear_scan_history": "مسح سجل المسح الضوئي",
     "clear_scan_history_desc": "حذف سجلات المسح بالذكاء الاصطناعي المحفوظة على هذا الجهاز",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "حذف حسابك وبياناتك نهائياً",
     "notif_challenge_desc": "التحديات والنتائج اليومية الجديدة",
     "notif_meetup_desc": "تحديثات حول لقاءات المضيفين",
@@ -274,7 +274,7 @@
       "offline_cache": "ذاكرة التخزين المؤقت للسفر بدون إنترنت",
       "no_limits": "بلا حدود للاستخدام — أبداً"
     },
-    "hero_title": "Japan Explorer Premium",
+    "hero_title": "Japanaut Trip Premium",
     "continue_cta": "المتابعة مع الإصدار المميز",
     "no_previous_purchases": "لم يتم العثور على مشتريات سابقة",
     "footer_terms": "الشروط",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "مشاركة هذا المكان",
-    "app": "مشاركة تطبيق Japan Explorer"
+    "app": "مشاركة تطبيق Japanaut Trip"
   },
   "review": {
     "rate_us": "تقييم"
@@ -337,7 +337,7 @@
     "create_post": "إنشاء منشور",
     "post": "نشر",
     "empty_title": "لا توجد منشورات بعد",
-    "empty_body": "كن أول من يشارك تجربتك في Japan Explorer!",
+    "empty_body": "كن أول من يشارك تجربتك في Japanaut Trip!",
     "no_comments": "لا توجد تعليقات بعد. كن أول من يعلق!",
     "no_image": "يرجى اختيار صورة.",
     "no_caption": "يرجى إدخال تعليق.",
@@ -396,7 +396,7 @@
     "storage_used": "المساحة المستخدمة",
     "synced": "تمت المزامنة",
     "download_title": "التنزيل للاستخدام دون إنترنت",
-    "download_subtitle": "احفظ الأماكن والمحتوى على جهازك. يمكنك استخدام Japan Explorer بدون اتصال بالإنترنت.",
+    "download_subtitle": "احفظ الأماكن والمحتوى على جهازك. يمكنك استخدام Japanaut Trip بدون اتصال بالإنترنت.",
     "start_sync": "تنزيل الآن",
     "resync": "تحديث التنزيل",
     "clear_title": "حذف التنزيل",
@@ -685,6 +685,6 @@
     "japan_master_name": "خبير اليابان",
     "japan_master_desc": "تم الوصول إلى المستوى 10",
     "ambassador_name": "سفير",
-    "ambassador_desc": "دعوة صديق إلى Japan Explorer"
+    "ambassador_desc": "دعوة صديق إلى Japanaut Trip"
   }
 }

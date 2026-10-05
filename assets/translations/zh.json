@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "下一步",
     "back": "返回",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "欢迎来到\nJapan Explorer",
+      "title": "欢迎来到\nJapanaut Trip",
       "subtitle": "请选择语言"
     },
     "step1": {
@@ -247,7 +247,7 @@
     "app_language": "应用语言",
     "clear_scan_history": "清除扫描记录",
     "clear_scan_history_desc": "删除保存在此设备上的AI扫描记录",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "永久删除您的账号和数据",
     "notif_challenge_desc": "每日挑战和结果的通知",
     "notif_meetup_desc": "主人见面会的相关通知",
@@ -274,7 +274,7 @@
       "offline_cache": "离线精选缓存，无需网络也能使用",
       "no_limits": "永远没有使用限制"
     },
-    "hero_title": "Japan Explorer 高级版",
+    "hero_title": "Japanaut Trip 高级版",
     "continue_cta": "继续订阅高级版",
     "no_previous_purchases": "未找到以往的购买记录",
     "footer_terms": "条款",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "分享此地点",
-    "app": "分享 Japan Explorer"
+    "app": "分享 Japanaut Trip"
   },
   "review": {
     "rate_us": "评分"
@@ -396,7 +396,7 @@
     "storage_used": "存储空间占用",
     "synced": "已同步",
     "download_title": "下载以供离线使用",
-    "download_subtitle": "将景点和内容保存到设备。无需互联网连接即可使用 Japan Explorer。",
+    "download_subtitle": "将景点和内容保存到设备。无需互联网连接即可使用 Japanaut Trip。",
     "start_sync": "立即下载",
     "resync": "更新下载",
     "clear_title": "删除下载",
@@ -685,6 +685,6 @@
     "japan_master_name": "日本达人",
     "japan_master_desc": "已达到等级10",
     "ambassador_name": "推广大使",
-    "ambassador_desc": "已邀请好友加入Japan Explorer"
+    "ambassador_desc": "已邀请好友加入Japanaut Trip"
   }
 }

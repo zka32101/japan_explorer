@@ -8,7 +8,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Japan Explorer</string>
+	<string>Japanaut Trip</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,28 +28,28 @@
 
 	<!-- ── Privacy Usage Descriptions (App Store required) ───── -->
 	<key>NSCameraUsageDescription</key>
-	<string>Japan Explorer uses your camera to identify Japanese landmarks, shrines, and cultural sites with AI.</string>
+	<string>Japanaut Trip uses your camera to identify Japanese landmarks, shrines, and cultural sites with AI.</string>
 
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Japan Explorer reads photos from your library so you can share travel experiences with the community.</string>
+	<string>Japanaut Trip reads photos from your library so you can share travel experiences with the community.</string>
 
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Japan Explorer saves AI-analyzed spot images to your photo library.</string>
+	<string>Japanaut Trip saves AI-analyzed spot images to your photo library.</string>
 
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Japan Explorer uses your location to show nearby spots on the map and identify landmarks as you explore Japan.</string>
+	<string>Japanaut Trip uses your location to show nearby spots on the map and identify landmarks as you explore Japan.</string>
 
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Japan Explorer uses your location to show nearby spots and automatically recognize landmarks while you explore.</string>
+	<string>Japanaut Trip uses your location to show nearby spots and automatically recognize landmarks while you explore.</string>
 
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Japan Explorer uses the microphone for voice interactions with the AI travel guide.</string>
+	<string>Japanaut Trip uses the microphone for voice interactions with the AI travel guide.</string>
 
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Japan Explorer uses speech recognition so you can ask the AI guide questions by voice.</string>
+	<string>Japanaut Trip uses speech recognition so you can ask the AI guide questions by voice.</string>
 
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Japan Explorer uses anonymous analytics to improve app features, personalize recommendations, and show more relevant ads.</string>
+	<string>Japanaut Trip uses anonymous analytics to improve app features, personalize recommendations, and show more relevant ads.</string>
 
 	<!-- AdMob App ID — TEST ID (Google's official sample app ID).
 	     MUST be replaced with the real AdMob app ID from

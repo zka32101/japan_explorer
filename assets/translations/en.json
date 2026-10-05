@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "Next",
     "back": "Back",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "Welcome to\nJapan Explorer",
+      "title": "Welcome to\nJapanaut Trip",
       "subtitle": "Please select a language"
     },
     "step1": {
@@ -247,7 +247,7 @@
     "app_language": "App language",
     "clear_scan_history": "Clear scan history",
     "clear_scan_history_desc": "Delete AI scan records saved on this device",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "Permanently delete your account and data",
     "notif_challenge_desc": "New daily challenges and results",
     "notif_meetup_desc": "Updates about host meetups",
@@ -274,7 +274,7 @@
       "offline_cache": "Offline curation cache for travel without internet",
       "no_limits": "No usage limits — ever"
     },
-    "hero_title": "Japan Explorer Premium",
+    "hero_title": "Japanaut Trip Premium",
     "continue_cta": "Continue with Premium",
     "no_previous_purchases": "No previous purchases found",
     "footer_terms": "Terms",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "Share this spot",
-    "app": "Share Japan Explorer"
+    "app": "Share Japanaut Trip"
   },
   "review": {
     "rate_us": "Rate"
@@ -396,7 +396,7 @@
     "storage_used": "Storage used",
     "synced": "Synced",
     "download_title": "Download for offline",
-    "download_subtitle": "Save spots and content to your device. You can use Japan Explorer without an internet connection.",
+    "download_subtitle": "Save spots and content to your device. You can use Japanaut Trip without an internet connection.",
     "start_sync": "Download now",
     "resync": "Update download",
     "clear_title": "Delete download",
@@ -685,6 +685,6 @@
     "japan_master_name": "Japan Master",
     "japan_master_desc": "Reached Level 10",
     "ambassador_name": "Ambassador",
-    "ambassador_desc": "Invited a friend to Japan Explorer"
+    "ambassador_desc": "Invited a friend to Japanaut Trip"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "Avançar",
     "back": "Voltar",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "Bem-vindo ao\nJapan Explorer",
+      "title": "Bem-vindo ao\nJapanaut Trip",
       "subtitle": "Por favor, selecione um idioma"
     },
     "step1": {
@@ -65,7 +65,7 @@
     },
     "step4": {
       "title": "Tudo pronto!",
-      "subtitle": "Sua jornada no Japan Explorer começa agora",
+      "subtitle": "Sua jornada no Japanaut Trip começa agora",
       "cta": "Começar a Explorar",
       "subtitle_learn": "Sua jornada na cultura japonesa começa agora"
     }
@@ -89,7 +89,7 @@
     "profile": "Perfil"
   },
   "home": {
-    "title": "Descubra o Japan Explorer",
+    "title": "Descubra o Japanaut Trip",
     "trending": "Em Alta",
     "featured": "Recomendados",
     "near_you": "Lugares Próximos",
@@ -247,7 +247,7 @@
     "app_language": "Idioma do aplicativo",
     "clear_scan_history": "Limpar histórico de escaneamento",
     "clear_scan_history_desc": "Excluir registros de escaneamento por IA salvos neste dispositivo",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "Excluir permanentemente sua conta e seus dados",
     "notif_challenge_desc": "Novos desafios diários e resultados",
     "notif_meetup_desc": "Atualizações sobre encontros com anfitriões",
@@ -274,7 +274,7 @@
       "offline_cache": "Cache de curadoria offline para viagens sem internet",
       "no_limits": "Sem limites de uso — nunca"
     },
-    "hero_title": "Japan Explorer Premium",
+    "hero_title": "Japanaut Trip Premium",
     "continue_cta": "Continuar com Premium",
     "no_previous_purchases": "Nenhuma compra anterior encontrada",
     "footer_terms": "Termos",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "Compartilhar este local",
-    "app": "Compartilhar Japan Explorer"
+    "app": "Compartilhar Japanaut Trip"
   },
   "review": {
     "rate_us": "Avaliar"
@@ -396,7 +396,7 @@
     "storage_used": "Armazenamento usado",
     "synced": "Sincronizado",
     "download_title": "Baixar para uso offline",
-    "download_subtitle": "Salve locais e conteúdo no seu dispositivo. Você pode usar o Japan Explorer sem conexão com a internet.",
+    "download_subtitle": "Salve locais e conteúdo no seu dispositivo. Você pode usar o Japanaut Trip sem conexão com a internet.",
     "start_sync": "Baixar agora",
     "resync": "Atualizar download",
     "clear_title": "Excluir download",
@@ -685,6 +685,6 @@
     "japan_master_name": "Mestre do Japão",
     "japan_master_desc": "Alcançou o Nível 10",
     "ambassador_name": "Embaixador",
-    "ambassador_desc": "Convidou um amigo para o Japan Explorer"
+    "ambassador_desc": "Convidou um amigo para o Japanaut Trip"
   }
 }

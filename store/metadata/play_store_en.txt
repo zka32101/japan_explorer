@@ -3,13 +3,13 @@ GOOGLE PLAY STORE — ENGLISH LISTING
 ========================================================
 
 APP NAME (max 50 chars):
-Japan Explorer: AI Travel Guide
+Japanaut Trip: AI Travel Guide
 
 SHORT DESCRIPTION (max 80 chars):
 Discover Japan with AI: audio guides, cultural tips & personalized plans.
 
 FULL DESCRIPTION (max 4000 chars):
-Explore Japan like never before with Japan Explorer — your AI-powered travel companion designed for international visitors.
+Explore Japan like never before with Japanaut Trip — your AI-powered travel companion designed for international visitors.
 
 🗾 DISCOVER HIDDEN GEMS
 Go beyond tourist traps. Our curated spots are hand-picked by local experts and verified by AI, covering temples, shrines, gardens, street food, and cultural experiences across all of Japan.
@@ -18,7 +18,7 @@ Go beyond tourist traps. Our curated spots are hand-picked by local experts and 
 Point your phone at a landmark and get an instant, immersive audio guide narrated in your language. Powered by AI, guides adapt to your interests and travel style.
 
 🗓️ SMART TRAVEL PLANNER
-Tell us your dates, style, and interests — Japan Explorer builds a personalized day-by-day itinerary in seconds. Adjust on the fly as your plans evolve.
+Tell us your dates, style, and interests — Japanaut Trip builds a personalized day-by-day itinerary in seconds. Adjust on the fly as your plans evolve.
 
 🌏 5 LANGUAGES
 Full support for English, Japanese, 中文, 한국어, and Français — UI, audio guides, and AI responses all in your language.
@@ -43,7 +43,7 @@ We never sell your data. Analytics are anonymized, and you control everything fr
 • Offline mode for saved content
 • 5 language support
 
-— PREMIUM (Japan Explorer Pro) —
+— PREMIUM (Japanaut Trip Pro) —
 • Unlimited AI audio guides
 • Unlimited travel plan generation
 • Exclusive hidden gems curation

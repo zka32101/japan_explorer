@@ -174,7 +174,7 @@ class JapanExplorerApp extends ConsumerWidget {
     }
 
     return MaterialApp.router(
-      title: 'Japan Explorer',
+      title: 'Japanaut Trip',
       // Light & dark themes — the OS or user choice selects between them
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,

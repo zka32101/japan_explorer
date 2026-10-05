@@ -1,6 +1,6 @@
 {
   "name": "japan-explorer-functions",
-  "description": "Japan Explorer Cloud Functions",
+  "description": "Japanaut Trip Cloud Functions",
   "scripts": {
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",

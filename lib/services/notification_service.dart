@@ -86,7 +86,7 @@ class NotificationService {
       const NotificationDetails(
         android: AndroidNotificationDetails(
           'japan_explorer',
-          'Japan Explorer',
+          'Japanaut Trip',
           importance: Importance.high,
           priority: Priority.high,
         ),

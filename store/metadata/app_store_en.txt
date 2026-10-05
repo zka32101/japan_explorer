@@ -3,7 +3,7 @@ APPLE APP STORE — ENGLISH LISTING
 ========================================================
 
 APP NAME (max 30 chars):
-Japan Explorer: AI Guide
+Japanaut Trip: AI Guide
 
 SUBTITLE (max 30 chars):
 Travel smarter across Japan
@@ -12,7 +12,7 @@ PROMOTIONAL TEXT (max 170 chars — not indexed, update anytime):
 New: AR landmark recognition and offline audio guides — explore Japan's hidden gems with your AI-powered travel companion.
 
 DESCRIPTION (max 4000 chars):
-Japan Explorer is your AI-powered travel companion for exploring Japan. Whether you're visiting for the first time or rediscovering a country you love, Japan Explorer helps you go deeper.
+Japanaut Trip is your AI-powered travel companion for exploring Japan. Whether you're visiting for the first time or rediscovering a country you love, Japanaut Trip helps you go deeper.
 
 DISCOVER CURATED SPOTS
 Temples, shrines, hidden alleys, local markets, seasonal festivals — hand-picked by Japan specialists and enriched with AI-powered cultural context.
@@ -21,7 +21,7 @@ AI AUDIO GUIDES
 Point at a landmark and get an instant immersive audio guide in your language. AI personalizes the content based on your interests and travel style — not just a Wikipedia summary.
 
 SMART TRAVEL PLANNER
-Enter your travel dates and preferences. Japan Explorer generates a personalized, day-by-day itinerary in seconds. Adjust plans on the go as your adventure unfolds.
+Enter your travel dates and preferences. Japanaut Trip generates a personalized, day-by-day itinerary in seconds. Adjust plans on the go as your adventure unfolds.
 
 5 LANGUAGES
 Full support for English, Japanese (日本語), Simplified Chinese (中文), Korean (한국어), and French (Français) — across the entire app experience.

@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "次へ",
     "back": "戻る",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "Japan Explorer\nへようこそ",
+      "title": "Japanaut Trip\nへようこそ",
       "subtitle": "言語を選択してください"
     },
     "step1": {
@@ -214,7 +214,7 @@
     "app_language": "アプリの言語",
     "clear_scan_history": "スキャン履歴を削除",
     "clear_scan_history_desc": "この端末に保存したAIスキャンの記録を削除します",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "アカウントとデータを完全に削除します",
     "notif_challenge_desc": "新しいデイリーチャレンジと結果のお知らせ",
     "notif_meetup_desc": "ホストとのミートアップに関するお知らせ",
@@ -241,7 +241,7 @@
       "offline_cache": "オフラインでも使えるキュレーションキャッシュ",
       "no_limits": "利用制限なし・永久に"
     },
-    "hero_title": "Japan Explorer プレミアム",
+    "hero_title": "Japanaut Trip プレミアム",
     "continue_cta": "プレミアムに進む",
     "no_previous_purchases": "過去の購入履歴が見つかりません",
     "footer_terms": "利用規約",
@@ -261,7 +261,7 @@
   },
   "share": {
     "spot": "このスポットをシェア",
-    "app": "Japan Explorerをシェア"
+    "app": "Japanaut Tripをシェア"
   },
   "review": {
     "rate_us": "評価する"
@@ -377,7 +377,7 @@
     "storage_used": "使用ストレージ",
     "synced": "同期済み",
     "download_title": "オフライン用にダウンロード",
-    "download_subtitle": "スポットとコンテンツをデバイスに保存。インターネット接続なしでJapan Explorerを使用できます。",
+    "download_subtitle": "スポットとコンテンツをデバイスに保存。インターネット接続なしでJapanaut Tripを使用できます。",
     "start_sync": "今すぐダウンロード",
     "resync": "ダウンロードを更新",
     "clear_title": "ダウンロードを削除",
@@ -685,6 +685,6 @@
     "japan_master_name": "ジャパンマスター",
     "japan_master_desc": "レベル10に到達しました",
     "ambassador_name": "アンバサダー",
-    "ambassador_desc": "友達をJapan Explorerに招待しました"
+    "ambassador_desc": "友達をJapanaut Tripに招待しました"
   }
 }

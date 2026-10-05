@@ -1,4 +1,4 @@
-# Japan Explorer — Development Guide
+# Japanaut Trip — Development Guide
 
 ## 環境構築
 

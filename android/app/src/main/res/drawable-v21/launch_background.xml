@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Japan Explorer splash screen — API 21+ (supports night mode via colors.xml) -->
+<!-- Japanaut Trip splash screen — API 21+ (supports night mode via colors.xml) -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Uses @color/splashBackground (overridden to dark in values-night/colors.xml) -->
     <item android:drawable="@color/splashBackground" />

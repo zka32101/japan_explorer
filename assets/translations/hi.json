@@ -1,5 +1,5 @@
 {
-  "app_name": "Japan Explorer",
+  "app_name": "Japanaut Trip",
   "common": {
     "next": "आगे",
     "back": "पीछे",
@@ -28,7 +28,7 @@
   },
   "onboarding": {
     "step0": {
-      "title": "स्वागत है\nJapan Explorer में",
+      "title": "स्वागत है\nJapanaut Trip में",
       "subtitle": "कृपया एक भाषा चुनें"
     },
     "step1": {
@@ -247,7 +247,7 @@
     "app_language": "ऐप की भाषा",
     "clear_scan_history": "स्कैन इतिहास साफ़ करें",
     "clear_scan_history_desc": "इस डिवाइस पर सहेजे गए AI स्कैन रिकॉर्ड हटाएं",
-    "copyright": "© 2026 Japan Explorer",
+    "copyright": "© 2026 Japanaut Trip",
     "delete_account_desc": "अपना खाता और डेटा हमेशा के लिए हटाएं",
     "notif_challenge_desc": "नई दैनिक चुनौतियाँ और परिणाम",
     "notif_meetup_desc": "होस्ट मीटअप के बारे में अपडेट",
@@ -274,7 +274,7 @@
       "offline_cache": "बिना इंटरनेट यात्रा के लिए ऑफ़लाइन क्यूरेशन कैश",
       "no_limits": "कोई उपयोग सीमा नहीं — कभी नहीं"
     },
-    "hero_title": "Japan Explorer Premium",
+    "hero_title": "Japanaut Trip Premium",
     "continue_cta": "Premium के साथ जारी रखें",
     "no_previous_purchases": "कोई पिछली खरीदारी नहीं मिली",
     "footer_terms": "नियम और शर्तें",
@@ -294,7 +294,7 @@
   },
   "share": {
     "spot": "इस जगह को शेयर करें",
-    "app": "Japan Explorer शेयर करें"
+    "app": "Japanaut Trip शेयर करें"
   },
   "review": {
     "rate_us": "रेट करें"
@@ -396,7 +396,7 @@
     "storage_used": "इस्तेमाल किया गया स्टोरेज",
     "synced": "सिंक किया गया",
     "download_title": "ऑफ़लाइन के लिए डाउनलोड करें",
-    "download_subtitle": "अपनी डिवाइस पर स्थान और सामग्री सहेजें। आप बिना इंटरनेट कनेक्शन के Japan Explorer का उपयोग कर सकते हैं।",
+    "download_subtitle": "अपनी डिवाइस पर स्थान और सामग्री सहेजें। आप बिना इंटरनेट कनेक्शन के Japanaut Trip का उपयोग कर सकते हैं।",
     "start_sync": "अभी डाउनलोड करें",
     "resync": "डाउनलोड अपडेट करें",
     "clear_title": "डाउनलोड हटाएं",
@@ -685,6 +685,6 @@
     "japan_master_name": "जापान मास्टर",
     "japan_master_desc": "लेवल 10 पर पहुँच गए",
     "ambassador_name": "एम्बेसडर",
-    "ambassador_desc": "Japan Explorer पर एक दोस्त को आमंत्रित किया"
+    "ambassador_desc": "Japanaut Trip पर एक दोस्त को आमंत्रित किया"
   }
 }
