@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:japanaut_kit/japanaut_kit.dart' show LegalText;
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../config/app_brand.dart';
 import '../config/theme.dart';
 import '../providers/language_provider.dart';
 import '../providers/offline_provider.dart';
@@ -145,7 +147,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             title: Text(tr('settings.privacy_policy')),
             trailing: const Icon(Icons.chevron_right),
             onTap: () =>
-                _showTextPage(context, tr('settings.privacy_policy'), _kPrivacyPolicy),
+                _showTextPage(context, tr('settings.privacy_policy'), LegalText.privacy(tripBrand,
+                    collectedUsage: 'spots you view, plans you create, and features you use')),
           ),
           const Divider(height: 1, indent: 72),
           ListTile(
@@ -175,7 +178,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             title: Text(tr('settings.terms')),
             trailing: const Icon(Icons.chevron_right),
             onTap: () =>
-                _showTextPage(context, tr('settings.terms'), _kTermsOfService),
+                _showTextPage(context, tr('settings.terms'), LegalText.terms(tripBrand,
+                    serviceSummary:
+                        'cultural information, travel planning tools, and AI-powered features for visitors to Japan')),
           ),
           const SizedBox(height: 36),
           Center(
@@ -306,62 +311,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     );
   }
 }
-
-// ── Legal text constants ──────────────────────────────────────────────────────
-
-const _kPrivacyPolicy = '''
-Privacy Policy
-
-Last updated: June 2026
-
-1. Information We Collect
-Japanaut Trip collects information you provide directly, such as your email address, display name, and profile photo when you create an account. We also collect usage data including spots you view, plans you create, and features you use.
-
-2. How We Use Your Information
-We use your information to provide and improve our services, personalize your experience, send you notifications you have requested, and ensure the security of your account.
-
-3. Information Sharing
-We do not sell your personal information. We may share your information with Firebase/Google (our backend provider) and RevenueCat (subscription management). These partners process data solely to provide services on our behalf.
-
-4. Data Storage
-Your data is stored securely using Google Firebase. We retain your data as long as your account is active or as needed to provide services.
-
-5. Your Rights
-You may access, correct, or delete your personal information at any time via the Profile or Settings screen. To permanently delete your account and all associated data, use the "Delete Account" option in Settings.
-
-6. Contact
-For privacy-related questions, contact us at support@japan-explorer.app
-''';
-
-const _kTermsOfService = '''
-Terms of Service
-
-Last updated: June 2026
-
-1. Acceptance of Terms
-By using Japanaut Trip, you agree to these Terms of Service. If you do not agree, please do not use the app.
-
-2. Use of the Service
-Japanaut Trip provides cultural information, travel planning tools, and AI-powered features for visitors to Japan. You may use the app for personal, non-commercial purposes only.
-
-3. User Accounts
-You are responsible for maintaining the confidentiality of your account credentials. You agree to provide accurate information when creating your account.
-
-4. Content
-AI-generated content (translations, cultural explanations, itineraries) is provided for informational purposes only and may contain errors. Always verify important information with official sources.
-
-5. Subscriptions
-Premium features are available via subscription. Subscriptions auto-renew unless cancelled at least 24 hours before the renewal date. Refunds are handled per the Google Play Store or Apple App Store policies.
-
-6. Limitation of Liability
-Japanaut Trip is provided "as is." We are not liable for any damages arising from your use of the app or reliance on its content.
-
-7. Changes to Terms
-We may update these Terms at any time. Continued use of the app after changes constitutes acceptance of the new Terms.
-
-8. Contact
-For questions about these Terms, contact us at support@japan-explorer.app
-''';
 
 // ── Section header ────────────────────────────────────────────────────────────
 

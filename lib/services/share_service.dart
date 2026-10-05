@@ -1,5 +1,6 @@
 import 'package:share_plus/share_plus.dart';
 
+import '../config/app_brand.dart';
 import '../models/curation.dart';
 import 'analytics_service.dart';
 
@@ -26,18 +27,18 @@ class ShareService {
 
   /// Share the app itself (e.g. from Profile screen).
   Future<void> shareApp() async {
-    const text = '🗾 Discover Japan like a local with Japanaut Trip!\n\n'
+    final text = '🗾 Discover Japan like a local with ${tripBrand.displayName}!\n\n'
         'AI audio guides, trip planning, cultural challenges & more.\n\n'
-        'https://japanexplorer.app';
-    await Share.share(text, subject: 'Japanaut Trip App');
+        '$playStoreUrl';
+    await Share.share(text, subject: '${tripBrand.displayName} App');
   }
 
   /// Share a referral code so a friend can redeem it after signing up.
   Future<void> shareReferralCode(String code) async {
-    final text = '🗾 Join me on Japanaut Trip!\n\n'
+    final text = '🗾 Join me on ${tripBrand.displayName}!\n\n'
         'Use my invite code $code when you sign up and we both get a bonus.\n\n'
-        'https://japanexplorer.app';
-    await Share.share(text, subject: 'Japanaut Trip invite');
+        '$playStoreUrl';
+    await Share.share(text, subject: '${tripBrand.displayName} invite');
   }
 }
 

@@ -9,6 +9,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
+import 'package:japanaut_kit/japanaut_kit.dart';
+
+import 'config/app_brand.dart';
 import 'config/router.dart';
 import 'config/theme.dart';
 import 'providers/language_provider.dart';
@@ -139,9 +142,11 @@ void main() async {
     EasyLocalization(
       supportedLocales: [for (final l in Language.values) l.locale],
       path: 'assets/translations',
+      assetLoader: const JapanautAssetLoader(),
       fallbackLocale: const Locale('en'),
       child: ProviderScope(
         overrides: [
+          appBrandProvider.overrideWithValue(tripBrand),
           onboardingStatusProvider.overrideWith((ref) => onboardingDone),
           usageGoalProvider.overrideWith((ref) => usageGoal),
         ],
@@ -174,7 +179,7 @@ class JapanExplorerApp extends ConsumerWidget {
     }
 
     return MaterialApp.router(
-      title: 'Japanaut Trip',
+      title: tripBrand.displayName,
       // Light & dark themes — the OS or user choice selects between them
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
