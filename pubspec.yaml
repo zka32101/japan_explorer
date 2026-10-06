@@ -106,6 +106,7 @@ flutter:
     - assets/icons/
     - assets/translations/
     - assets/culture_content/
+    - assets/branding/
 
 # ── App icon generation (dart run flutter_launcher_icons) ─────────────────────
 # Place a 1024×1024 PNG at assets/icons/app_icon.png before running.

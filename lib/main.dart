@@ -25,6 +25,7 @@ import 'services/vision_cache_service.dart';
 import 'services/culture_content_seeder.dart';
 import 'services/ads_service.dart';
 import 'utils/firestore_instance.dart';
+import 'widgets/startup_splash.dart';
 
 // ── Background FCM handler (top-level, required by Firebase) ──────────────────
 @pragma('vm:entry-point')
@@ -78,6 +79,9 @@ Future<void> _initImageCacheInBackground() async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // 初期化が終わるまで、中央に進行表示・下部に組織ロゴの起動画面を出す
+  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: StartupSplash()));
 
   // Image cache: optimize memory usage (default is 80 MB)
   // Reduce to 64 MB for lower-end devices
