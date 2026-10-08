@@ -3,4 +3,5 @@
     <!-- Override splash background for dark mode -->
     <color name="splashBackground">#0A0A1A</color>
     <color name="splashBackgroundDark">#0A0A1A</color>
+    <color name="splash_background">#121212</color>
 </resources>
