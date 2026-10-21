@@ -9,7 +9,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
-import 'package:japanaut_kit/japanaut_kit.dart';
+import 'package:showglobe_core/showglobe_core.dart'
+    show Language, ShowglobeAssetLoader, appBrandProvider;
 
 import 'config/app_brand.dart';
 import 'config/router.dart';
@@ -146,7 +147,7 @@ void main() async {
     EasyLocalization(
       supportedLocales: [for (final l in Language.values) l.locale],
       path: 'assets/translations',
-      assetLoader: const JapanautAssetLoader(),
+      assetLoader: const ShowglobeAssetLoader(),
       fallbackLocale: const Locale('en'),
       child: ProviderScope(
         overrides: [

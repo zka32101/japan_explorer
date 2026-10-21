@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:japanaut_kit/japanaut_kit.dart' show languageProvider;
+import 'package:showglobe_core/showglobe_core.dart' show languageProvider;
 
 import '../services/culture_translation_store.dart';
 
-// Language enum and the persisted language provider live in japanaut_kit.
-export 'package:japanaut_kit/japanaut_kit.dart'
+// Language enum and the persisted language provider live in showglobe_core.
+export 'package:showglobe_core/showglobe_core.dart'
     show Language, LanguageNotifier, languageProvider;
 
 // Extension helper to get localized text from CultureContent

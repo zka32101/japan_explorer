@@ -1,8 +1,8 @@
-import 'package:japanaut_kit/japanaut_kit.dart';
+import 'package:showglobe_core/showglobe_core.dart' show AppBrand;
 
 import 'theme.dart';
 
-/// Name, colour and identifiers of this app inside the Japanaut series.
+/// Name, colour and identifiers of this app inside the Showglobe/Japanaut series.
 /// Changing the display name only requires editing [AppBrand.suffix] here.
 final tripBrand = AppBrand(
   suffix: 'Trip',
