@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:japanaut_kit/japanaut_kit.dart';
+import 'package:showglobe_core/showglobe_core.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   test('共通訳文(kit)とアプリ訳文が重なって読み込める(全13言語)', () async {
-    const loader = JapanautAssetLoader();
+    const loader = ShowglobeAssetLoader();
     for (final l in Language.values) {
       final m = await loader.load('assets/translations', l.locale);
       expect((m['settings'] as Map)['title'], isNotNull, reason: '${l.code} kit');

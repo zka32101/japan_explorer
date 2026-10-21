@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:japanaut_kit/japanaut_kit.dart' show LegalText;
+import 'package:showglobe_core/showglobe_core.dart' show LegalText;
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../config/app_brand.dart';

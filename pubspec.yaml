@@ -15,11 +15,12 @@ dependencies:
   # State Management
   flutter_riverpod: ^2.6.1
 
-  # Japanaut series shared foundation
-  japanaut_kit:
+  # Showglobe / Japanaut series shared foundation
+  # (repo is being renamed to showglobe_core; GitHub redirects the old URL)
+  showglobe_core:
     git:
-      url: https://github.com/zka32101/japanaut_kit.git
-      ref: v0.2.0
+      url: https://github.com/zka32101/japanaut_core.git
+      ref: 396081e2b197246feda8ada1087af7b88f3f1087  # main, pin to tag once v0.4.0 exists
   riverpod_annotation: ^2.6.1
 
   # Firebase
