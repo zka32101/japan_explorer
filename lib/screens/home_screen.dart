@@ -116,13 +116,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: Row(
                     children: [
                       StreakWidget(streakDays: user.streakDays, compact: true),
-                      const Spacer(),
-                      const _NavigationButtons(),
                     ],
                   ),
                 ),
               ),
             ),
+          const SliverToBoxAdapter(
+            child: RepaintBoundary(child: _QuickMenu()),
+          ),
           ...middleSlivers,
           if (isLearner)
             SliverToBoxAdapter(
@@ -337,80 +338,68 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 }
 
-class _NavigationButtons extends StatelessWidget {
-  const _NavigationButtons();
+/// Entry points to the app's features, grouped by what the traveller wants to
+/// do. Replaces a single overflowing row of text buttons; every destination is
+/// pushed so the back button returns to Home.
+class _QuickMenu extends StatelessWidget {
+  const _QuickMenu();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _NavButton(
-          emoji: '🌸',
-          label: 'home.nav_seasons',
-          onPressed: () => context.push(AppRoutes.seasonEvents),
-        ),
-        _NavButton(
-          emoji: '🇯🇵',
-          label: 'home.nav_phrases',
-          onPressed: () => context.go('/phrases'),
-        ),
-        _NavButton(
-          emoji: '🤝',
-          label: 'home.nav_locals',
-          onPressed: () => context.push('/hosts'),
-        ),
-        _NavButton(
-          icon: Icons.leaderboard,
-          label: 'home.nav_rankings',
-          onPressed: () => context.go('/home/ranking'),
-        ),
-        _NavButton(
-          emoji: '❓',
-          label: 'home.nav_what',
-          onPressed: () => context.push(AppRoutes.whatIsThis),
-        ),
-        _NavButton(
-          emoji: '🍽️',
-          label: 'home.nav_menu',
-          onPressed: () => context.push(AppRoutes.menuTranslator),
-        ),
-        _NavButton(
-          emoji: '📚',
-          label: 'home.nav_learn',
-          onPressed: () => context.push(AppRoutes.cultureHub),
-        ),
-        _NavButton(
-          emoji: '🗂️',
-          label: 'home.nav_collection',
-          onPressed: () => context.push(AppRoutes.collection),
-        ),
-      ],
+    final items = <_QuickMenuItem>[
+      _QuickMenuItem('❓', 'home.nav_what', () => context.push(AppRoutes.whatIsThis)),
+      _QuickMenuItem('🍽️', 'home.nav_menu', () => context.push(AppRoutes.menuTranslator)),
+      _QuickMenuItem('🇯🇵', 'home.nav_phrases', () => context.push(AppRoutes.phrases)),
+      _QuickMenuItem('📚', 'home.nav_learn', () => context.push(AppRoutes.cultureHub)),
+      _QuickMenuItem('🌸', 'home.nav_seasons', () => context.push(AppRoutes.seasonEvents)),
+      _QuickMenuItem('🗂️', 'home.nav_collection', () => context.push(AppRoutes.collection)),
+      _QuickMenuItem('🤝', 'home.nav_locals', () => context.push(AppRoutes.hosts)),
+      _QuickMenuItem('🏆', 'home.nav_rankings', () => context.push('/home/ranking')),
+    ];
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+      child: GridView.count(
+        crossAxisCount: 4,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        mainAxisSpacing: 4,
+        crossAxisSpacing: 4,
+        childAspectRatio: 0.95,
+        children: [for (final item in items) _QuickMenuTile(item: item)],
+      ),
     );
   }
 }
 
-class _NavButton extends StatelessWidget {
-  final String? emoji;
-  final IconData? icon;
+class _QuickMenuItem {
+  final String emoji;
   final String label;
-  final VoidCallback onPressed;
+  final VoidCallback onTap;
+  const _QuickMenuItem(this.emoji, this.label, this.onTap);
+}
 
-  const _NavButton({
-    this.emoji,
-    this.icon,
-    required this.label,
-    required this.onPressed,
-  });
+class _QuickMenuTile extends StatelessWidget {
+  final _QuickMenuItem item;
+  const _QuickMenuTile({required this.item});
 
   @override
   Widget build(BuildContext context) {
-    return TextButton.icon(
-      onPressed: onPressed,
-      icon: emoji != null
-          ? Text(emoji!, style: const TextStyle(fontSize: 14))
-          : Icon(icon, size: 16),
-      label: Text(tr(label)),
+    return InkWell(
+      onTap: item.onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(item.emoji, style: const TextStyle(fontSize: 26)),
+          const SizedBox(height: 4),
+          Text(
+            tr(item.label),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+        ],
+      ),
     );
   }
 }

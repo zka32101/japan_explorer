@@ -203,7 +203,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const OnboardingScreen(),
       ),
       ShellRoute(
-        builder: (context, state, child) => MainShell(child: child),
+        builder: (context, state, child) =>
+            MainShell(location: state.uri.path, child: child),
         routes: [
           GoRoute(
             path: AppRoutes.home,
@@ -256,7 +257,11 @@ final routerProvider = Provider<GoRouter>((ref) {
 
 class MainShell extends StatefulWidget {
   final Widget child;
-  const MainShell({super.key, required this.child});
+
+  /// Current route path; keeps the selected tab in sync with deep links,
+  /// back navigation and `context.go` calls made outside the tab bar.
+  final String location;
+  const MainShell({super.key, required this.child, required this.location});
 
   @override
   State<MainShell> createState() => _MainShellState();
@@ -273,8 +278,17 @@ class _MainShellState extends State<MainShell> {
     AppRoutes.profile,
   ];
 
+  int? _indexFor(String location) {
+    for (var i = 0; i < _routes.length; i++) {
+      final r = _routes[i];
+      if (location == r || location.startsWith('$r/')) return i;
+    }
+    return null; // e.g. /map: keep the previously selected tab
+  }
+
   @override
   Widget build(BuildContext context) {
+    _currentIndex = _indexFor(widget.location) ?? _currentIndex;
     return Scaffold(
       body: Column(
         children: [
