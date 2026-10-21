@@ -293,90 +293,37 @@ class ProfileScreen extends ConsumerWidget {
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
+        // Features reachable elsewhere (challenge, phrases, camera, hosts on Home;
+        // AI planner on My Plan; progress via the level card) are not repeated here.
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: _FeatureTile(
-                emoji: '🧠',
-                title: tr('challenge.title'),
-                subtitle: tr('profile.feature_challenge_subtitle'),
-                color: const Color(0xFF1A237E),
-                onTap: () => context.push('/challenge'),
-              ),
+              child: Consumer(builder: (context, ref, _) {
+                final count = ref.watch(journalProvider).entries.length;
+                return _FeatureTile(
+                  emoji: '📖',
+                  title: tr('journal.title'),
+                  subtitle: count > 0
+                      ? tr('journal.entry_count',
+                          namedArgs: {'count': '$count'})
+                      : tr('journal.subtitle'),
+                  color: const Color(0xFF4E342E),
+                  onTap: () => context.push(AppRoutes.journal),
+                );
+              }),
             ),
             const SizedBox(width: 12),
             Expanded(
               child: _FeatureTile(
-                emoji: '✨',
-                title: tr('planner.title'),
-                subtitle: tr('profile.feature_planner_subtitle'),
-                color: const Color(0xFF00695C),
-                onTap: () => context.push('/ai-planner'),
+                emoji: '🎁',
+                title: tr('referral.title'),
+                subtitle: tr('referral.subtitle'),
+                color: const Color(0xFFE65100),
+                onTap: () => context.push(AppRoutes.inviteFriends),
               ),
             ),
           ],
-        ),
-        const SizedBox(height: 12),
-        Row(
-          children: [
-            Expanded(
-              child: _FeatureTile(
-                emoji: '🇯🇵',
-                title: tr('profile.feature_phrasebook'),
-                subtitle: tr('profile.feature_phrasebook_subtitle'),
-                color: const Color(0xFFB71C1C),
-                onTap: () => context.push('/phrases'),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _FeatureTile(
-                emoji: '📷',
-                title: tr('profile.feature_camera_title'),
-                subtitle: tr('profile.feature_camera_subtitle'),
-                color: const Color(0xFF4527A0),
-                onTap: () => context.push('/camera'),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-        _FeatureTile(
-          emoji: '🏆',
-          title: tr('profile.feature_progress_title'),
-          subtitle: tr('profile.feature_progress_subtitle'),
-          color: const Color(0xFF00695C),
-          onTap: () => context.push('/progress'),
-        ),
-        const SizedBox(height: 12),
-        Consumer(builder: (context, ref, _) {
-          final count = ref.watch(journalProvider).entries.length;
-          return _FeatureTile(
-            emoji: '📖',
-            title: tr('journal.title'),
-            subtitle: count > 0
-                ? tr('journal.entry_count',
-                    namedArgs: {'count': '$count'})
-                : tr('journal.subtitle'),
-            color: const Color(0xFF4E342E),
-            onTap: () => context.push(AppRoutes.journal),
-          );
-        }),
-        const SizedBox(height: 12),
-        _FeatureTile(
-          emoji: '🤝',
-          title: tr('profile.feature_hosts_title'),
-          subtitle: tr('profile.feature_hosts_subtitle'),
-          color: const Color(0xFF6A1B9A),
-          onTap: () => context.push('/hosts'),
-        ),
-        const SizedBox(height: 12),
-        _FeatureTile(
-          emoji: '🎁',
-          title: tr('referral.title'),
-          subtitle: tr('referral.subtitle'),
-          color: const Color(0xFFE65100),
-          onTap: () => context.push(AppRoutes.inviteFriends),
         ),
       ],
     );
