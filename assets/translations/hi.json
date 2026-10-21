@@ -201,7 +201,9 @@
     "copyright": "© 2026 Japanaut Trip",
     "notif_challenge_desc": "नई दैनिक चुनौतियाँ और परिणाम",
     "notif_meetup_desc": "होस्ट मीटअप के बारे में अपडेट",
-    "notif_streak_desc": "अपनी दैनिक स्ट्रीक बनाए रखने के लिए एक रिमाइंडर"
+    "notif_streak_desc": "अपनी दैनिक स्ट्रीक बनाए रखने के लिए एक रिमाइंडर",
+    "general": "सामान्य",
+    "account": "खाता"
   },
   "premium": {
     "subtitle": "जापान के संपूर्ण अनुभव का आनंद लें",

@@ -201,7 +201,9 @@
     "copyright": "© 2026 Japanaut Trip",
     "notif_challenge_desc": "Thử thách hàng ngày và kết quả mới",
     "notif_meetup_desc": "Cập nhật về các buổi gặp gỡ với host",
-    "notif_streak_desc": "Nhắc nhở duy trì chuỗi ngày liên tiếp của bạn"
+    "notif_streak_desc": "Nhắc nhở duy trì chuỗi ngày liên tiếp của bạn",
+    "general": "Chung",
+    "account": "Tài khoản"
   },
   "premium": {
     "subtitle": "Tận hưởng trọn vẹn trải nghiệm Nhật Bản",

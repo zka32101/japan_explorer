@@ -201,7 +201,9 @@
     "copyright": "© 2026 Japanaut Trip",
     "notif_challenge_desc": "每日挑戰與結果的通知",
     "notif_meetup_desc": "主人見面會的相關通知",
-    "notif_streak_desc": "提醒您保持連續打卡"
+    "notif_streak_desc": "提醒您保持連續打卡",
+    "general": "一般",
+    "account": "帳號"
   },
   "premium": {
     "subtitle": "盡享完整的日本體驗",

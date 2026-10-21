@@ -51,10 +51,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       appBar: AppBar(title: Text(tr('settings.title'))),
       body: ListView(
         children: [
-          // ── Appearance ───────────────────────────────────────────────────
+          // ── General ──────────────────────────────────────────────────────
           _SectionHeader(
-              title: tr('settings.appearance'), icon: Icons.palette_outlined),
+              title: tr('settings.general'), icon: Icons.tune_outlined),
           _ThemeTile(currentMode: settings.themeMode),
+          const Divider(height: 1, indent: 72),
+          Consumer(
+            builder: (context, ref, _) {
+              final currentLang = ref.watch(languageProvider);
+              return ListTile(
+                leading: const Icon(Icons.translate_outlined),
+                title: Text(tr('settings.app_language')),
+                subtitle: Text(currentLang.displayName),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => _showLanguageDialog(ref),
+              );
+            },
+          ),
           const Divider(height: 1),
 
           // ── Notifications ────────────────────────────────────────────────
@@ -92,27 +105,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const Divider(height: 1),
 
-          // ── Language ─────────────────────────────────────────────────────
+          // ── Data & Privacy ───────────────────────────────────────────────
           _SectionHeader(
-              title: tr('settings.language'), icon: Icons.language_outlined),
-          Consumer(
-            builder: (context, ref, _) {
-              final currentLang = ref.watch(languageProvider);
-              return ListTile(
-                leading: const Icon(Icons.translate_outlined),
-                title: Text(tr('settings.app_language')),
-                subtitle: Text(currentLang.displayName),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => _showLanguageDialog(ref),
-              );
-            },
-          ),
-          const Divider(height: 1),
-
-          // ── Offline Content ──────────────────────────────────────────────
-          _SectionHeader(
-              title: tr('offline.section_title'),
-              icon: Icons.download_outlined),
+              title: tr('settings.data_privacy'),
+              icon: Icons.security_outlined),
           Consumer(builder: (context, ref, _) {
             final offlineState = ref.watch(offlineSyncProvider);
             return ListTile(
@@ -128,12 +124,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               onTap: () => context.push(AppRoutes.offlineContent),
             );
           }),
-          const Divider(height: 1),
-
-          // ── Data & Privacy ───────────────────────────────────────────────
-          _SectionHeader(
-              title: tr('settings.data_privacy'),
-              icon: Icons.security_outlined),
+          const Divider(height: 1, indent: 72),
           ListTile(
             leading: const Icon(Icons.history_outlined),
             title: Text(tr('settings.clear_scan_history')),
@@ -149,15 +140,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             onTap: () =>
                 _showTextPage(context, tr('settings.privacy_policy'), LegalText.privacy(tripBrand,
                     collectedUsage: 'spots you view, plans you create, and features you use')),
-          ),
-          const Divider(height: 1, indent: 72),
-          ListTile(
-            leading: const Icon(Icons.delete_outline, color: Colors.red),
-            title: Text(tr('settings.delete_account'),
-                style: const TextStyle(color: Colors.red)),
-            subtitle: Text(tr('settings.delete_account_desc')),
-            trailing: const Icon(Icons.chevron_right, color: Colors.red),
-            onTap: _showDeleteAccountDialog,
           ),
           const Divider(height: 1),
 
@@ -181,6 +163,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 _showTextPage(context, tr('settings.terms'), LegalText.terms(tripBrand,
                     serviceSummary:
                         'cultural information, travel planning tools, and AI-powered features for visitors to Japan')),
+          ),
+          const Divider(height: 1),
+
+          // ── Account (destructive actions kept apart at the bottom) ───────
+          _SectionHeader(
+              title: tr('settings.account'), icon: Icons.person_outline),
+          ListTile(
+            leading: const Icon(Icons.delete_outline, color: Colors.red),
+            title: Text(tr('settings.delete_account'),
+                style: const TextStyle(color: Colors.red)),
+            subtitle: Text(tr('settings.delete_account_desc')),
+            trailing: const Icon(Icons.chevron_right, color: Colors.red),
+            onTap: _showDeleteAccountDialog,
           ),
           const SizedBox(height: 36),
           Center(
