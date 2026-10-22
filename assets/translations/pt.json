@@ -201,7 +201,9 @@
     "copyright": "© 2026 Japanaut Trip",
     "notif_challenge_desc": "Novos desafios diários e resultados",
     "notif_meetup_desc": "Atualizações sobre encontros com anfitriões",
-    "notif_streak_desc": "Um lembrete para manter sua sequência diária"
+    "notif_streak_desc": "Um lembrete para manter sua sequência diária",
+    "general": "Geral",
+    "account": "Conta"
   },
   "premium": {
     "subtitle": "Aproveite a experiência completa no Japão",
