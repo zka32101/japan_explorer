@@ -203,7 +203,11 @@
     "notif_meetup_desc": "होस्ट मीटअप के बारे में अपडेट",
     "notif_streak_desc": "अपनी दैनिक स्ट्रीक बनाए रखने के लिए एक रिमाइंडर",
     "general": "सामान्य",
-    "account": "खाता"
+    "account": "खाता",
+    "delete_account_done": "आपका खाता और डेटा हटा दिया गया है।",
+    "delete_account_failed": "खाता हटाया नहीं जा सका। कृपया अपना कनेक्शन जाँचें और फिर कोशिश करें।",
+    "delete_account_cancelled": "खाता हटाना रद्द कर दिया गया।",
+    "delete_account_subscription_note": "यदि आपकी कोई सक्रिय सदस्यता है, तो उसे Google Play या App Store में रद्द करें। खाता हटाने से सदस्यता रद्द नहीं होती।"
   },
   "premium": {
     "subtitle": "जापान के संपूर्ण अनुभव का आनंद लें",

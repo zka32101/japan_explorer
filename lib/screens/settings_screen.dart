@@ -7,9 +7,11 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../config/app_brand.dart';
 import '../config/theme.dart';
+import '../providers/auth_provider.dart';
 import '../providers/language_provider.dart';
 import '../providers/offline_provider.dart';
 import '../providers/settings_provider.dart';
+import '../services/account_deletion_client.dart';
 import '../utils/constants.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
@@ -263,7 +265,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       builder: (ctx) => AlertDialog(
         icon: const Icon(Icons.warning_rounded, color: Colors.red, size: 36),
         title: Text(tr('settings.delete_account_title')),
-        content: Text(tr('settings.delete_account_body')),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(tr('settings.delete_account_body')),
+              const SizedBox(height: 12),
+              Text(
+                tr('settings.delete_account_subscription_note'),
+                style: const TextStyle(
+                    fontSize: 13, color: AppColors.textSecondary),
+              ),
+            ],
+          ),
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
@@ -272,14 +288,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           FilledButton(
             onPressed: () {
               Navigator.pop(ctx);
-              // TODO: Trigger server-side account deletion (Cloud Function)
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(tr('settings.delete_account_processing')),
-                  ),
-                );
-              }
+              _deleteAccount();
             },
             style: FilledButton.styleFrom(backgroundColor: Colors.red),
             child: Text(tr('settings.delete_forever')),
@@ -287,6 +296,45 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _deleteAccount() async {
+    final messenger = ScaffoldMessenger.of(context);
+    final router = GoRouter.of(context);
+    // Blocks taps while the server removes the data (can take a few seconds).
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => PopScope(
+        canPop: false,
+        child: AlertDialog(
+          content: Row(
+            children: [
+              const CircularProgressIndicator(),
+              const SizedBox(width: 20),
+              Expanded(child: Text(tr('settings.delete_account_processing'))),
+            ],
+          ),
+        ),
+      ),
+    );
+    String? message;
+    try {
+      await ref.read(authNotifierProvider.notifier).deleteAccount();
+      message = tr('settings.delete_account_done');
+    } on AccountDeletionException catch (e) {
+      message = switch (e.failure) {
+        AccountDeletionFailure.cancelled =>
+          tr('settings.delete_account_cancelled'),
+        _ => tr('settings.delete_account_failed'),
+      };
+    } catch (_) {
+      message = tr('settings.delete_account_failed');
+    }
+    if (!mounted) return;
+    Navigator.of(context, rootNavigator: true).pop(); // progress dialog
+    messenger.showSnackBar(SnackBar(content: Text(message)));
+    if (!ref.read(isLoggedInProvider)) router.go(AppRoutes.login);
   }
 
   void _showTextPage(BuildContext context, String title, String content) {

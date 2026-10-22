@@ -61,6 +61,18 @@ class AuthNotifier extends StateNotifier<AsyncValue<AppUser?>> {
     state = const AsyncValue.data(null);
   }
 
+  /// Deletes the account and its data. Throws [AccountDeletionException].
+  Future<void> deleteAccount() async {
+    await _authService.deleteAccount();
+    // RevenueCat: back to an anonymous user (the store subscription itself is
+    // managed in Google Play / App Store and is not cancelled by this).
+    await purchaseService.logoutUser();
+    // Local reminders belong to the deleted account.
+    await fcmService.cancelStreakReminder();
+    await fcmService.cancelDailyCultureNotification();
+    state = const AsyncValue.data(null);
+  }
+
   // ── Helpers ──────────────────────────────────────────────────────────────────
 
   Future<void> _onSignIn(AppUser user) async {

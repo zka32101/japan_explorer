@@ -203,7 +203,11 @@
     "notif_meetup_desc": "호스트 밋업 관련 알림",
     "notif_streak_desc": "연속 기록을 이어가도록 알려드립니다",
     "general": "일반",
-    "account": "계정"
+    "account": "계정",
+    "delete_account_done": "계정과 데이터가 삭제되었습니다.",
+    "delete_account_failed": "계정을 삭제하지 못했습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
+    "delete_account_cancelled": "계정 삭제가 취소되었습니다.",
+    "delete_account_subscription_note": "활성 구독이 있다면 Google Play 또는 App Store에서 해지해 주세요. 계정을 삭제해도 구독은 해지되지 않습니다."
   },
   "premium": {
     "subtitle": "완벽한 일본 체험을 즐겨보세요",

@@ -203,7 +203,11 @@
     "notif_meetup_desc": "Pembaruan tentang temu tuan rumah",
     "notif_streak_desc": "Pengingat untuk menjaga rangkaian harian Anda",
     "general": "Umum",
-    "account": "Akun"
+    "account": "Akun",
+    "delete_account_done": "Akun dan data Anda telah dihapus.",
+    "delete_account_failed": "Tidak dapat menghapus akun Anda. Periksa koneksi dan coba lagi.",
+    "delete_account_cancelled": "Penghapusan akun dibatalkan.",
+    "delete_account_subscription_note": "Jika Anda memiliki langganan aktif, batalkan di Google Play atau App Store. Menghapus akun tidak membatalkan langganan."
   },
   "premium": {
     "subtitle": "Nikmati pengalaman Jepang sepenuhnya",
