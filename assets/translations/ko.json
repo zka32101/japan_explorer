@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Japanaut Trip\n에 오신 것을 환영합니다",
+      "title": "Showglobe Japan\n에 오신 것을 환영합니다",
       "subtitle": "언어를 선택해 주세요"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "스캔 기록이 삭제되었습니다",
     "clear_scan_history": "스캔 기록 삭제",
     "clear_scan_history_desc": "이 기기에 저장된 AI 스캔 기록을 삭제합니다",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "새로운 데일리 챌린지와 결과 알림",
     "notif_meetup_desc": "호스트 밋업 관련 알림",
     "notif_streak_desc": "연속 기록을 이어가도록 알려드립니다",
@@ -221,7 +221,7 @@
       "offline_cache": "인터넷 없이도 이용 가능한 오프라인 큐레이션 캐시",
       "no_limits": "사용 제한 없음 — 영원히"
     },
-    "hero_title": "Japanaut Trip 프리미엄",
+    "hero_title": "Showglobe Japan 프리미엄",
     "per_year_save": "연간 · 약 33% 절약",
     "annual_price_note": "월 $3.33 · 33% 절약"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "이 장소 공유하기",
-    "app": "Japanaut Trip 공유하기"
+    "app": "Showglobe Japan 공유하기"
   },
   "review": {
     "rate_us": "평가하기"
@@ -324,7 +324,7 @@
     "storage_used": "저장 공간 사용량",
     "synced": "동기화됨",
     "download_title": "오프라인용으로 다운로드",
-    "download_subtitle": "명소와 콘텐츠를 기기에 저장하세요. 인터넷 연결 없이도 Japanaut Trip를 사용할 수 있습니다.",
+    "download_subtitle": "명소와 콘텐츠를 기기에 저장하세요. 인터넷 연결 없이도 Showglobe Japan를 사용할 수 있습니다.",
     "start_sync": "지금 다운로드",
     "resync": "다운로드 업데이트",
     "clear_title": "다운로드 삭제",
@@ -613,6 +613,6 @@
     "japan_master_name": "재팬 마스터",
     "japan_master_desc": "레벨 10에 도달했어요",
     "ambassador_name": "앰버서더",
-    "ambassador_desc": "친구를 Japanaut Trip에 초대했어요"
+    "ambassador_desc": "친구를 Showglobe Japan에 초대했어요"
   }
 }

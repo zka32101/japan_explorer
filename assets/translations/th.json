@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "ยินดีต้อนรับสู่\nJapanaut Trip",
+      "title": "ยินดีต้อนรับสู่\nShowglobe Japan",
       "subtitle": "โปรดเลือกภาษา"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "ล้างประวัติการสแกนแล้ว",
     "clear_scan_history": "ล้างประวัติการสแกน",
     "clear_scan_history_desc": "ลบบันทึกการสแกน AI ที่บันทึกไว้ในอุปกรณ์นี้",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "ความท้าทายประจำวันและผลลัพธ์ใหม่ๆ",
     "notif_meetup_desc": "อัปเดตเกี่ยวกับการพบปะกับโฮสต์",
     "notif_streak_desc": "การแจ้งเตือนเพื่อรักษาสตรีทประจำวันของคุณ",
@@ -221,7 +221,7 @@
       "offline_cache": "แคชข้อมูลสำหรับการเดินทางโดยไม่ต้องใช้อินเทอร์เน็ต",
       "no_limits": "ไม่มีขีดจำกัดการใช้งาน — ตลอดไป"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "ต่อปี · ประหยัด ~33%",
     "annual_price_note": "$3.33/เดือน · ประหยัด 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "แชร์สถานที่นี้",
-    "app": "แชร์ Japanaut Trip"
+    "app": "แชร์ Showglobe Japan"
   },
   "review": {
     "rate_us": "ให้คะแนน"
@@ -324,7 +324,7 @@
     "storage_used": "พื้นที่เก็บข้อมูลที่ใช้",
     "synced": "ซิงค์แล้ว",
     "download_title": "ดาวน์โหลดเพื่อใช้งานแบบออฟไลน์",
-    "download_subtitle": "บันทึกสถานที่และเนื้อหาไว้ในอุปกรณ์ของคุณ คุณสามารถใช้งาน Japanaut Trip ได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต",
+    "download_subtitle": "บันทึกสถานที่และเนื้อหาไว้ในอุปกรณ์ของคุณ คุณสามารถใช้งาน Showglobe Japan ได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต",
     "start_sync": "ดาวน์โหลดเลย",
     "resync": "อัปเดตการดาวน์โหลด",
     "clear_title": "ลบการดาวน์โหลด",
@@ -613,6 +613,6 @@
     "japan_master_name": "ปรมาจารย์ญี่ปุ่น",
     "japan_master_desc": "ถึงระดับ 10 แล้ว",
     "ambassador_name": "ทูตสันถวไมตรี",
-    "ambassador_desc": "เชิญเพื่อนมาใช้ Japanaut Trip"
+    "ambassador_desc": "เชิญเพื่อนมาใช้ Showglobe Japan"
   }
 }

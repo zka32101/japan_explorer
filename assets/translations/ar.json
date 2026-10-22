@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "مرحباً بك في\nJapanaut Trip",
+      "title": "مرحباً بك في\nShowglobe Japan",
       "subtitle": "الرجاء اختيار اللغة"
     },
     "step1": {
@@ -140,7 +140,7 @@
     "budget": "الميزانية",
     "uses_remaining": "متبقي {count} هذا الأسبوع",
     "reset": "إعادة تعيين",
-    "hero_title": "خطط لرحلتك المثالية إلى Japanaut Trip",
+    "hero_title": "خطط لرحلتك المثالية إلى Showglobe Japan",
     "hero_subtitle": "أخبرنا بتفضيلاتك وسيقوم الذكاء الاصطناعي بإنشاء جدول يومي مخصص",
     "destination": "الوجهة",
     "duration": "المدة",
@@ -198,7 +198,7 @@
     "scan_history_cleared": "تم مسح سجل المسح الضوئي",
     "clear_scan_history": "مسح سجل المسح الضوئي",
     "clear_scan_history_desc": "حذف سجلات المسح بالذكاء الاصطناعي المحفوظة على هذا الجهاز",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "التحديات والنتائج اليومية الجديدة",
     "notif_meetup_desc": "تحديثات حول لقاءات المضيفين",
     "notif_streak_desc": "تذكير للحفاظ على سلسلة أيامك المتتالية",
@@ -221,7 +221,7 @@
       "offline_cache": "ذاكرة التخزين المؤقت للسفر بدون إنترنت",
       "no_limits": "بلا حدود للاستخدام — أبداً"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "لكل سنة · وفّر حوالي 33%",
     "annual_price_note": "$3.33 شهرياً · وفّر 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "مشاركة هذا المكان",
-    "app": "مشاركة تطبيق Japanaut Trip"
+    "app": "مشاركة تطبيق Showglobe Japan"
   },
   "review": {
     "rate_us": "تقييم"
@@ -265,7 +265,7 @@
     "create_post": "إنشاء منشور",
     "post": "نشر",
     "empty_title": "لا توجد منشورات بعد",
-    "empty_body": "كن أول من يشارك تجربتك في Japanaut Trip!",
+    "empty_body": "كن أول من يشارك تجربتك في Showglobe Japan!",
     "no_comments": "لا توجد تعليقات بعد. كن أول من يعلق!",
     "no_image": "يرجى اختيار صورة.",
     "no_caption": "يرجى إدخال تعليق.",
@@ -324,7 +324,7 @@
     "storage_used": "المساحة المستخدمة",
     "synced": "تمت المزامنة",
     "download_title": "التنزيل للاستخدام دون إنترنت",
-    "download_subtitle": "احفظ الأماكن والمحتوى على جهازك. يمكنك استخدام Japanaut Trip بدون اتصال بالإنترنت.",
+    "download_subtitle": "احفظ الأماكن والمحتوى على جهازك. يمكنك استخدام Showglobe Japan بدون اتصال بالإنترنت.",
     "start_sync": "تنزيل الآن",
     "resync": "تحديث التنزيل",
     "clear_title": "حذف التنزيل",
@@ -613,6 +613,6 @@
     "japan_master_name": "خبير اليابان",
     "japan_master_desc": "تم الوصول إلى المستوى 10",
     "ambassador_name": "سفير",
-    "ambassador_desc": "دعوة صديق إلى Japanaut Trip"
+    "ambassador_desc": "دعوة صديق إلى Showglobe Japan"
   }
 }

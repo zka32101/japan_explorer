@@ -123,7 +123,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                   ),
                   const SizedBox(height: 28),
                   const Text(
-                    'Japanaut Trip',
+                    'Showglobe Japan',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 34,

@@ -1,4 +1,4 @@
-# Flutter / Japanaut Trip ProGuard rules
+# Flutter / Showglobe Japan ProGuard rules
 # See https://www.guardsquare.com/manual/configuration/usage
 
 # Flutter wrapper

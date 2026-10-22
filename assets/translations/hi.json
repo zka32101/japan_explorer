@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "स्वागत है\nJapanaut Trip में",
+      "title": "स्वागत है\nShowglobe Japan में",
       "subtitle": "कृपया एक भाषा चुनें"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "स्कैन इतिहास साफ़ कर दिया गया",
     "clear_scan_history": "स्कैन इतिहास साफ़ करें",
     "clear_scan_history_desc": "इस डिवाइस पर सहेजे गए AI स्कैन रिकॉर्ड हटाएं",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "नई दैनिक चुनौतियाँ और परिणाम",
     "notif_meetup_desc": "होस्ट मीटअप के बारे में अपडेट",
     "notif_streak_desc": "अपनी दैनिक स्ट्रीक बनाए रखने के लिए एक रिमाइंडर",
@@ -221,7 +221,7 @@
       "offline_cache": "बिना इंटरनेट यात्रा के लिए ऑफ़लाइन क्यूरेशन कैश",
       "no_limits": "कोई उपयोग सीमा नहीं — कभी नहीं"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "प्रति वर्ष · ~33% की बचत",
     "annual_price_note": "$3.33/माह · 33% बचाएं"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "इस जगह को शेयर करें",
-    "app": "Japanaut Trip शेयर करें"
+    "app": "Showglobe Japan शेयर करें"
   },
   "review": {
     "rate_us": "रेट करें"
@@ -324,7 +324,7 @@
     "storage_used": "इस्तेमाल किया गया स्टोरेज",
     "synced": "सिंक किया गया",
     "download_title": "ऑफ़लाइन के लिए डाउनलोड करें",
-    "download_subtitle": "अपनी डिवाइस पर स्थान और सामग्री सहेजें। आप बिना इंटरनेट कनेक्शन के Japanaut Trip का उपयोग कर सकते हैं।",
+    "download_subtitle": "अपनी डिवाइस पर स्थान और सामग्री सहेजें। आप बिना इंटरनेट कनेक्शन के Showglobe Japan का उपयोग कर सकते हैं।",
     "start_sync": "अभी डाउनलोड करें",
     "resync": "डाउनलोड अपडेट करें",
     "clear_title": "डाउनलोड हटाएं",
@@ -613,6 +613,6 @@
     "japan_master_name": "जापान मास्टर",
     "japan_master_desc": "लेवल 10 पर पहुँच गए",
     "ambassador_name": "एम्बेसडर",
-    "ambassador_desc": "Japanaut Trip पर एक दोस्त को आमंत्रित किया"
+    "ambassador_desc": "Showglobe Japan पर एक दोस्त को आमंत्रित किया"
   }
 }

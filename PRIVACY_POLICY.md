@@ -1,16 +1,16 @@
-# Privacy Policy — Japanaut Trip
+# Privacy Policy — Showglobe Japan
 
 **Effective date:** 2026-06-08  
 **Developer:** Funvestment  
-**App:** Japanaut Trip (com.funvestment.japan_explorer)
+**App:** Showglobe Japan (com.funvestment.japan_explorer)
 
 ---
 
 ## 1. Introduction
 
-Japanaut Trip ("the App", "we", "us") is a travel and cultural discovery application for visitors to Japan. This Privacy Policy explains what data we collect, how we use it, and your rights.
+Showglobe Japan ("the App", "we", "us") is a travel and cultural discovery application for visitors to Japan. This Privacy Policy explains what data we collect, how we use it, and your rights.
 
-By using Japanaut Trip, you agree to this policy.
+By using Showglobe Japan, you agree to this policy.
 
 ---
 
@@ -58,7 +58,7 @@ By using Japanaut Trip, you agree to this policy.
 
 ## 4. Third-Party Services
 
-Japanaut Trip uses the following third-party services, each with its own privacy policy:
+Showglobe Japan uses the following third-party services, each with its own privacy policy:
 
 | Service | Purpose | Privacy Policy |
 |---|---|---|
@@ -94,14 +94,14 @@ Posts you submit (photos, ratings, reviews) go through a moderation queue before
 
 When you use the AI camera:
 - Your image is sent to **Google Gemini API** for landmark identification.
-- Images are used only to generate the AI response and are **not stored** by Japanaut Trip or Gemini beyond that request (subject to Google's data retention policies).
+- Images are used only to generate the AI response and are **not stored** by Showglobe Japan or Gemini beyond that request (subject to Google's data retention policies).
 - Location data is not automatically attached to camera images.
 
 ---
 
 ## 8. Children's Privacy
 
-Japanaut Trip is not directed at children under 13 (or under 16 in the EU). We do not knowingly collect personal information from children. If you believe a child has provided us personal data, contact us and we will delete it promptly.
+Showglobe Japan is not directed at children under 13 (or under 16 in the EU). We do not knowingly collect personal information from children. If you believe a child has provided us personal data, contact us and we will delete it promptly.
 
 ---
 
@@ -122,7 +122,7 @@ To exercise these rights, contact us at the email below. We will respond within 
 ## 10. Account Deletion
 
 To delete your account and all associated data:
-1. Open Japanaut Trip → Profile → Settings → Delete Account
+1. Open Showglobe Japan → Profile → Settings → Delete Account
 2. Or email us at the address below with subject "Account Deletion Request"
 
 Upon deletion, your profile, posts, streak data, and badges are permanently removed within 30 days.

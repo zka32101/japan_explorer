@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Bem-vindo ao\nJapanaut Trip",
+      "title": "Bem-vindo ao\nShowglobe Japan",
       "subtitle": "Por favor, selecione um idioma"
     },
     "step1": {
@@ -39,7 +39,7 @@
     },
     "step4": {
       "title": "Tudo pronto!",
-      "subtitle": "Sua jornada no Japanaut Trip começa agora",
+      "subtitle": "Sua jornada no Showglobe Japan começa agora",
       "cta": "Começar a Explorar",
       "subtitle_learn": "Sua jornada na cultura japonesa começa agora"
     }
@@ -63,7 +63,7 @@
     "profile": "Perfil"
   },
   "home": {
-    "title": "Descubra o Japanaut Trip",
+    "title": "Descubra o Showglobe Japan",
     "trending": "Em Alta",
     "featured": "Recomendados",
     "near_you": "Lugares Próximos",
@@ -198,7 +198,7 @@
     "scan_history_cleared": "Histórico de escaneamento limpo",
     "clear_scan_history": "Limpar histórico de escaneamento",
     "clear_scan_history_desc": "Excluir registros de escaneamento por IA salvos neste dispositivo",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "Novos desafios diários e resultados",
     "notif_meetup_desc": "Atualizações sobre encontros com anfitriões",
     "notif_streak_desc": "Um lembrete para manter sua sequência diária",
@@ -221,7 +221,7 @@
       "offline_cache": "Cache de curadoria offline para viagens sem internet",
       "no_limits": "Sem limites de uso — nunca"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "por ano · economize ~33%",
     "annual_price_note": "$3,33/mês · Economize 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "Compartilhar este local",
-    "app": "Compartilhar Japanaut Trip"
+    "app": "Compartilhar Showglobe Japan"
   },
   "review": {
     "rate_us": "Avaliar"
@@ -324,7 +324,7 @@
     "storage_used": "Armazenamento usado",
     "synced": "Sincronizado",
     "download_title": "Baixar para uso offline",
-    "download_subtitle": "Salve locais e conteúdo no seu dispositivo. Você pode usar o Japanaut Trip sem conexão com a internet.",
+    "download_subtitle": "Salve locais e conteúdo no seu dispositivo. Você pode usar o Showglobe Japan sem conexão com a internet.",
     "start_sync": "Baixar agora",
     "resync": "Atualizar download",
     "clear_title": "Excluir download",
@@ -613,6 +613,6 @@
     "japan_master_name": "Mestre do Japão",
     "japan_master_desc": "Alcançou o Nível 10",
     "ambassador_name": "Embaixador",
-    "ambassador_desc": "Convidou um amigo para o Japanaut Trip"
+    "ambassador_desc": "Convidou um amigo para o Showglobe Japan"
   }
 }

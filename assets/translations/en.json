@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Welcome to\nJapanaut Trip",
+      "title": "Welcome to\nShowglobe Japan",
       "subtitle": "Please select a language"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "Scan history cleared",
     "clear_scan_history": "Clear scan history",
     "clear_scan_history_desc": "Delete AI scan records saved on this device",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "New daily challenges and results",
     "notif_meetup_desc": "Updates about host meetups",
     "notif_streak_desc": "A reminder to keep your daily streak",
@@ -221,7 +221,7 @@
       "offline_cache": "Offline curation cache for travel without internet",
       "no_limits": "No usage limits — ever"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "per year · save ~33%",
     "annual_price_note": "$3.33/mo · Save 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "Share this spot",
-    "app": "Share Japanaut Trip"
+    "app": "Share Showglobe Japan"
   },
   "review": {
     "rate_us": "Rate"
@@ -324,7 +324,7 @@
     "storage_used": "Storage used",
     "synced": "Synced",
     "download_title": "Download for offline",
-    "download_subtitle": "Save spots and content to your device. You can use Japanaut Trip without an internet connection.",
+    "download_subtitle": "Save spots and content to your device. You can use Showglobe Japan without an internet connection.",
     "start_sync": "Download now",
     "resync": "Update download",
     "clear_title": "Delete download",
@@ -613,6 +613,6 @@
     "japan_master_name": "Japan Master",
     "japan_master_desc": "Reached Level 10",
     "ambassador_name": "Ambassador",
-    "ambassador_desc": "Invited a friend to Japanaut Trip"
+    "ambassador_desc": "Invited a friend to Showglobe Japan"
   }
 }

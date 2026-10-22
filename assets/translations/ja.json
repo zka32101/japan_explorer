@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Japanaut Trip\nへようこそ",
+      "title": "Showglobe Japan\nへようこそ",
       "subtitle": "言語を選択してください"
     },
     "step1": {
@@ -165,7 +165,7 @@
     "scan_history_cleared": "スキャン履歴を削除しました",
     "clear_scan_history": "スキャン履歴を削除",
     "clear_scan_history_desc": "この端末に保存したAIスキャンの記録を削除します",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "新しいデイリーチャレンジと結果のお知らせ",
     "notif_meetup_desc": "ホストとのミートアップに関するお知らせ",
     "notif_streak_desc": "連続記録を続けるためのリマインダー",
@@ -188,7 +188,7 @@
       "offline_cache": "オフラインでも使えるキュレーションキャッシュ",
       "no_limits": "利用制限なし・永久に"
     },
-    "hero_title": "Japanaut Trip プレミアム",
+    "hero_title": "Showglobe Japan プレミアム",
     "per_year_save": "年あたり・約33%お得",
     "annual_price_note": "月あたり$3.33・33%お得"
   },
@@ -197,7 +197,7 @@
   },
   "share": {
     "spot": "このスポットをシェア",
-    "app": "Japanaut Tripをシェア"
+    "app": "Showglobe Japanをシェア"
   },
   "review": {
     "rate_us": "評価する"
@@ -305,7 +305,7 @@
     "storage_used": "使用ストレージ",
     "synced": "同期済み",
     "download_title": "オフライン用にダウンロード",
-    "download_subtitle": "スポットとコンテンツをデバイスに保存。インターネット接続なしでJapanaut Tripを使用できます。",
+    "download_subtitle": "スポットとコンテンツをデバイスに保存。インターネット接続なしでShowglobe Japanを使用できます。",
     "start_sync": "今すぐダウンロード",
     "resync": "ダウンロードを更新",
     "clear_title": "ダウンロードを削除",
@@ -613,6 +613,6 @@
     "japan_master_name": "ジャパンマスター",
     "japan_master_desc": "レベル10に到達しました",
     "ambassador_name": "アンバサダー",
-    "ambassador_desc": "友達をJapanaut Tripに招待しました"
+    "ambassador_desc": "友達をShowglobe Japanに招待しました"
   }
 }

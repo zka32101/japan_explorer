@@ -1,17 +1,17 @@
-/* Japanaut Trip — French permission descriptions */
+/* Showglobe Japan — French permission descriptions */
 
-NSCameraUsageDescription = "Japanaut Trip utilise votre caméra pour identifier des monuments japonais, sanctuaires et sites culturels grâce à l'IA.";
+NSCameraUsageDescription = "Showglobe Japan utilise votre caméra pour identifier des monuments japonais, sanctuaires et sites culturels grâce à l'IA.";
 
-NSPhotoLibraryUsageDescription = "Japanaut Trip accède à votre bibliothèque photos pour partager vos expériences de voyage avec la communauté.";
+NSPhotoLibraryUsageDescription = "Showglobe Japan accède à votre bibliothèque photos pour partager vos expériences de voyage avec la communauté.";
 
-NSPhotoLibraryAddUsageDescription = "Japanaut Trip enregistre les images de lieux analysés par l'IA dans votre bibliothèque photos.";
+NSPhotoLibraryAddUsageDescription = "Showglobe Japan enregistre les images de lieux analysés par l'IA dans votre bibliothèque photos.";
 
-NSLocationWhenInUseUsageDescription = "Japanaut Trip utilise votre position pour afficher les lieux à proximité sur la carte et identifier les monuments lors de votre exploration.";
+NSLocationWhenInUseUsageDescription = "Showglobe Japan utilise votre position pour afficher les lieux à proximité sur la carte et identifier les monuments lors de votre exploration.";
 
-NSLocationAlwaysAndWhenInUseUsageDescription = "Japanaut Trip utilise votre position pour afficher les lieux à proximité et reconnaître automatiquement les monuments pendant votre exploration.";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Showglobe Japan utilise votre position pour afficher les lieux à proximité et reconnaître automatiquement les monuments pendant votre exploration.";
 
-NSMicrophoneUsageDescription = "Japanaut Trip utilise le microphone pour les interactions vocales avec le guide de voyage IA.";
+NSMicrophoneUsageDescription = "Showglobe Japan utilise le microphone pour les interactions vocales avec le guide de voyage IA.";
 
-NSSpeechRecognitionUsageDescription = "Japanaut Trip utilise la reconnaissance vocale pour vous permettre de poser des questions au guide IA par la voix.";
+NSSpeechRecognitionUsageDescription = "Showglobe Japan utilise la reconnaissance vocale pour vous permettre de poser des questions au guide IA par la voix.";
 
-NSUserTrackingUsageDescription = "Japanaut Trip utilise des analyses anonymes pour améliorer les fonctionnalités de l'app et personnaliser les recommandations.";
+NSUserTrackingUsageDescription = "Showglobe Japan utilise des analyses anonymes pour améliorer les fonctionnalités de l'app et personnaliser les recommandations.";

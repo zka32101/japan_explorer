@@ -165,7 +165,7 @@ class _ProgressHeader extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${(progress * 100).toStringAsFixed(1)}% of Japanaut Trip complete',
+                      '${(progress * 100).toStringAsFixed(1)}% of Showglobe Japan complete',
                       style: const TextStyle(
                         color: Colors.white70,
                         fontSize: 12,
