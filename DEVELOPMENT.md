@@ -1,4 +1,4 @@
-# Japanaut Trip — Development Guide
+# Showglobe Japan — Development Guide
 
 ## 環境構築
 

@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Chào mừng đến với\nJapanaut Trip",
+      "title": "Chào mừng đến với\nShowglobe Japan",
       "subtitle": "Vui lòng chọn ngôn ngữ"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "Đã xóa lịch sử quét",
     "clear_scan_history": "Xóa lịch sử quét",
     "clear_scan_history_desc": "Xóa bản ghi quét AI được lưu trên thiết bị này",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "Thử thách hàng ngày và kết quả mới",
     "notif_meetup_desc": "Cập nhật về các buổi gặp gỡ với host",
     "notif_streak_desc": "Nhắc nhở duy trì chuỗi ngày liên tiếp của bạn",
@@ -221,7 +221,7 @@
       "offline_cache": "Bộ nhớ đệm ngoại tuyến để du lịch không cần internet",
       "no_limits": "Không giới hạn sử dụng — vĩnh viễn"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "mỗi năm · tiết kiệm ~33%",
     "annual_price_note": "$3,33/tháng · Tiết kiệm 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "Chia sẻ địa điểm này",
-    "app": "Chia sẻ Japanaut Trip"
+    "app": "Chia sẻ Showglobe Japan"
   },
   "review": {
     "rate_us": "Đánh giá"
@@ -324,7 +324,7 @@
     "storage_used": "Bộ nhớ đã sử dụng",
     "synced": "Đã đồng bộ",
     "download_title": "Tải xuống để dùng ngoại tuyến",
-    "download_subtitle": "Lưu các địa điểm và nội dung vào thiết bị của bạn. Bạn có thể sử dụng Japanaut Trip mà không cần kết nối internet.",
+    "download_subtitle": "Lưu các địa điểm và nội dung vào thiết bị của bạn. Bạn có thể sử dụng Showglobe Japan mà không cần kết nối internet.",
     "start_sync": "Tải xuống ngay",
     "resync": "Cập nhật bản tải xuống",
     "clear_title": "Xóa bản tải xuống",
@@ -613,6 +613,6 @@
     "japan_master_name": "Bậc thầy Nhật Bản",
     "japan_master_desc": "Đã đạt Cấp độ 10",
     "ambassador_name": "Đại sứ",
-    "ambassador_desc": "Đã mời một người bạn tham gia Japanaut Trip"
+    "ambassador_desc": "Đã mời một người bạn tham gia Showglobe Japan"
   }
 }

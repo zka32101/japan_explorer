@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Bienvenue sur\nJapanaut Trip",
+      "title": "Bienvenue sur\nShowglobe Japan",
       "subtitle": "Sélectionnez une langue"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "Historique de scan effacé",
     "clear_scan_history": "Effacer l'historique des scans",
     "clear_scan_history_desc": "Supprimer les scans IA enregistrés sur cet appareil",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "Nouveaux défis quotidiens et résultats",
     "notif_meetup_desc": "Actualités sur les rencontres avec les hôtes",
     "notif_streak_desc": "Un rappel pour garder votre série quotidienne",
@@ -221,7 +221,7 @@
       "offline_cache": "Cache de contenu hors ligne pour voyager sans internet",
       "no_limits": "Aucune limite d'utilisation — pour toujours"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "par an · économisez ~33%",
     "annual_price_note": "$3.33/mois · Économisez 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "Partager ce lieu",
-    "app": "Partager Japanaut Trip"
+    "app": "Partager Showglobe Japan"
   },
   "review": {
     "rate_us": "Évaluer"
@@ -324,7 +324,7 @@
     "storage_used": "Espace de stockage utilisé",
     "synced": "Synchronisé",
     "download_title": "Télécharger pour une utilisation hors ligne",
-    "download_subtitle": "Enregistrez des lieux et du contenu sur votre appareil. Vous pouvez utiliser Japanaut Trip sans connexion Internet.",
+    "download_subtitle": "Enregistrez des lieux et du contenu sur votre appareil. Vous pouvez utiliser Showglobe Japan sans connexion Internet.",
     "start_sync": "Télécharger maintenant",
     "resync": "Mettre à jour le téléchargement",
     "clear_title": "Supprimer le téléchargement",
@@ -613,6 +613,6 @@
     "japan_master_name": "Maître du Japon",
     "japan_master_desc": "Niveau 10 atteint",
     "ambassador_name": "Ambassadeur",
-    "ambassador_desc": "A invité un ami sur Japanaut Trip"
+    "ambassador_desc": "A invité un ami sur Showglobe Japan"
   }
 }

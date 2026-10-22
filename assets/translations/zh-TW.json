@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "歡迎使用\nJapanaut Trip",
+      "title": "歡迎使用\nShowglobe Japan",
       "subtitle": "請選擇語言"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "掃描紀錄已清除",
     "clear_scan_history": "清除掃描記錄",
     "clear_scan_history_desc": "刪除儲存在此裝置上的AI掃描記錄",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "每日挑戰與結果的通知",
     "notif_meetup_desc": "主人見面會的相關通知",
     "notif_streak_desc": "提醒您保持連續打卡",
@@ -221,7 +221,7 @@
       "offline_cache": "無網路也能暢遊的離線精選快取",
       "no_limits": "永無使用限制"
     },
-    "hero_title": "Japanaut Trip 升級版",
+    "hero_title": "Showglobe Japan 升級版",
     "per_year_save": "每年 · 節省約 33%",
     "annual_price_note": "每月 $3.33 · 省下 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "分享這個景點",
-    "app": "分享 Japanaut Trip"
+    "app": "分享 Showglobe Japan"
   },
   "review": {
     "rate_us": "評分"
@@ -324,7 +324,7 @@
     "storage_used": "已使用儲存空間",
     "synced": "已同步",
     "download_title": "下載以供離線使用",
-    "download_subtitle": "將景點與內容儲存至您的裝置。您可以在沒有網路連線的情況下使用 Japanaut Trip。",
+    "download_subtitle": "將景點與內容儲存至您的裝置。您可以在沒有網路連線的情況下使用 Showglobe Japan。",
     "start_sync": "立即下載",
     "resync": "更新下載",
     "clear_title": "刪除下載",
@@ -613,6 +613,6 @@
     "japan_master_name": "日本通",
     "japan_master_desc": "達到等級 10",
     "ambassador_name": "大使",
-    "ambassador_desc": "邀請好友加入 Japanaut Trip"
+    "ambassador_desc": "邀請好友加入 Showglobe Japan"
   }
 }

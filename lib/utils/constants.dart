@@ -1,5 +1,5 @@
 class AppConstants {
-  static const appName = 'Japanaut Trip';
+  static const appName = 'Showglobe Japan';
   static const appVersion = '1.0.0';
 
   static const pageSize = 20;

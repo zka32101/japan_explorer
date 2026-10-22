@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Te damos la bienvenida a\nJapanaut Trip",
+      "title": "Te damos la bienvenida a\nShowglobe Japan",
       "subtitle": "Por favor, selecciona un idioma"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "Historial de escaneo borrado",
     "clear_scan_history": "Borrar historial de escaneo",
     "clear_scan_history_desc": "Eliminar los registros de escaneo de IA guardados en este dispositivo",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "Nuevos desafíos diarios y resultados",
     "notif_meetup_desc": "Actualizaciones sobre encuentros con anfitriones",
     "notif_streak_desc": "Un recordatorio para mantener tu racha diaria",
@@ -221,7 +221,7 @@
       "offline_cache": "Caché de contenido sin conexión para viajar sin internet",
       "no_limits": "Sin límites de uso, nunca"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "al año · ahorra ~33%",
     "annual_price_note": "$3.33/mes · Ahorra 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "Compartir este lugar",
-    "app": "Compartir Japanaut Trip"
+    "app": "Compartir Showglobe Japan"
   },
   "review": {
     "rate_us": "Calificar"
@@ -324,7 +324,7 @@
     "storage_used": "Almacenamiento usado",
     "synced": "Sincronizado",
     "download_title": "Descargar para usar sin conexión",
-    "download_subtitle": "Guarda lugares y contenido en tu dispositivo. Puedes usar Japanaut Trip sin conexión a internet.",
+    "download_subtitle": "Guarda lugares y contenido en tu dispositivo. Puedes usar Showglobe Japan sin conexión a internet.",
     "start_sync": "Descargar ahora",
     "resync": "Actualizar descarga",
     "clear_title": "Eliminar descarga",
@@ -613,6 +613,6 @@
     "japan_master_name": "Maestro de Japón",
     "japan_master_desc": "Alcanzó el Nivel 10",
     "ambassador_name": "Embajador",
-    "ambassador_desc": "Invitó a un amigo a Japanaut Trip"
+    "ambassador_desc": "Invitó a un amigo a Showglobe Japan"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "app_name": "Japanaut Trip",
+  "app_name": "Showglobe Japan",
   "onboarding": {
     "step0": {
-      "title": "Selamat datang di\nJapanaut Trip",
+      "title": "Selamat datang di\nShowglobe Japan",
       "subtitle": "Silakan pilih bahasa"
     },
     "step1": {
@@ -198,7 +198,7 @@
     "scan_history_cleared": "Riwayat pemindaian dibersihkan",
     "clear_scan_history": "Hapus riwayat pemindaian",
     "clear_scan_history_desc": "Hapus catatan pemindaian AI yang disimpan di perangkat ini",
-    "copyright": "© 2026 Japanaut Trip",
+    "copyright": "© 2026 Showglobe Japan",
     "notif_challenge_desc": "Tantangan harian dan hasil baru",
     "notif_meetup_desc": "Pembaruan tentang temu tuan rumah",
     "notif_streak_desc": "Pengingat untuk menjaga rangkaian harian Anda",
@@ -221,7 +221,7 @@
       "offline_cache": "Cache kurasi offline untuk perjalanan tanpa internet",
       "no_limits": "Tanpa batasan penggunaan — selamanya"
     },
-    "hero_title": "Japanaut Trip Premium",
+    "hero_title": "Showglobe Japan Premium",
     "per_year_save": "per tahun · hemat ~33%",
     "annual_price_note": "$3.33/bln · Hemat 33%"
   },
@@ -230,7 +230,7 @@
   },
   "share": {
     "spot": "Bagikan tempat ini",
-    "app": "Bagikan Japanaut Trip"
+    "app": "Bagikan Showglobe Japan"
   },
   "review": {
     "rate_us": "Beri Nilai"
@@ -265,7 +265,7 @@
     "create_post": "Buat Postingan",
     "post": "Posting",
     "empty_title": "Belum ada postingan",
-    "empty_body": "Jadilah yang pertama membagikan pengalaman Japanaut Trip Anda!",
+    "empty_body": "Jadilah yang pertama membagikan pengalaman Showglobe Japan Anda!",
     "no_comments": "Belum ada komentar. Jadilah yang pertama berkomentar!",
     "no_image": "Silakan pilih foto.",
     "no_caption": "Silakan masukkan takarir.",
@@ -324,7 +324,7 @@
     "storage_used": "Penyimpanan digunakan",
     "synced": "Disinkronkan",
     "download_title": "Unduh untuk offline",
-    "download_subtitle": "Simpan tempat dan konten ke perangkat Anda. Anda dapat menggunakan Japanaut Trip tanpa koneksi internet.",
+    "download_subtitle": "Simpan tempat dan konten ke perangkat Anda. Anda dapat menggunakan Showglobe Japan tanpa koneksi internet.",
     "start_sync": "Unduh sekarang",
     "resync": "Perbarui unduhan",
     "clear_title": "Hapus unduhan",
@@ -613,6 +613,6 @@
     "japan_master_name": "Ahli Jepang",
     "japan_master_desc": "Mencapai Level 10",
     "ambassador_name": "Duta",
-    "ambassador_desc": "Mengundang teman ke Japanaut Trip"
+    "ambassador_desc": "Mengundang teman ke Showglobe Japan"
   }
 }

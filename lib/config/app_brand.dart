@@ -1,11 +1,16 @@
-import 'package:showglobe_core/showglobe_core.dart' show AppBrand;
+import 'package:showglobe_core/showglobe_core.dart'
+    show AppBrand, kGlobalSeriesName;
 
 import 'theme.dart';
 
-/// Name, colour and identifiers of this app inside the Showglobe/Japanaut series.
-/// Changing the display name only requires editing [AppBrand.suffix] here.
+/// Name, colour and identifiers of this app inside the Showglobe series
+/// (display name: "Showglobe Japan"). The series name comes from
+/// [AppBrand.series]; the country/app part from [AppBrand.suffix].
+/// [AppBrand.slug] stays 'trip' because it is the existing notification
+/// channel id and storage-key prefix.
 final tripBrand = AppBrand(
-  suffix: 'Trip',
+  series: kGlobalSeriesName,
+  suffix: 'Japan',
   slug: 'trip',
   packageName: 'com.yourwish.japanexplorer',
   tagline: 'Discover Japan like a local',
