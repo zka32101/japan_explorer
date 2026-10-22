@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 
 import '../models/user.dart';
+import 'account_deletion_client.dart';
 import '../utils/constants.dart';
 import '../utils/firestore_instance.dart';
 
@@ -33,6 +35,46 @@ class AuthService {
       _logger.e('Google Sign-In error', error: e);
       rethrow;
     }
+  }
+
+  /// Deletes the account and all its data on the server, then signs out locally.
+  ///
+  /// The user is asked to sign in with Google again first: the server only
+  /// accepts a deletion from a fresh sign-in.
+  /// Throws [AccountDeletionException].
+  Future<void> deleteAccount({AccountDeletionClient? client}) async {
+    final user = _auth.currentUser;
+    if (user == null) {
+      throw const AccountDeletionException(AccountDeletionFailure.failed, 'not-signed-in');
+    }
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        throw const AccountDeletionException(AccountDeletionFailure.cancelled);
+      }
+      final googleAuth = await googleUser.authentication;
+      await user.reauthenticateWithCredential(GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      ));
+      final idToken = await user.getIdToken(true);
+      if (idToken == null) {
+        throw const AccountDeletionException(AccountDeletionFailure.failed, 'no-token');
+      }
+      await (client ?? AccountDeletionClient()).deleteAccount(
+        idToken: idToken,
+        projectId: Firebase.app().options.projectId,
+      );
+    } on AccountDeletionException {
+      rethrow;
+    } catch (e) {
+      _logger.e('Account deletion error', error: e);
+      throw AccountDeletionException(AccountDeletionFailure.failed, '$e');
+    }
+    // The Auth user no longer exists on the server; clear the local session.
+    try {
+      await signOut();
+    } catch (_) {}
   }
 
   Future<void> signOut() async {

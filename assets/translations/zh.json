@@ -203,7 +203,11 @@
     "notif_meetup_desc": "主人见面会的相关通知",
     "notif_streak_desc": "提醒您保持连续打卡",
     "general": "通用",
-    "account": "账户"
+    "account": "账户",
+    "delete_account_done": "您的账户和数据已删除。",
+    "delete_account_failed": "无法删除账户。请检查网络连接后重试。",
+    "delete_account_cancelled": "已取消删除账户。",
+    "delete_account_subscription_note": "如果您有有效的订阅，请在 Google Play 或 App Store 中取消。删除账户不会取消订阅。"
   },
   "premium": {
     "subtitle": "尽情享受完整的日本体验",

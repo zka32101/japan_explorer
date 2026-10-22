@@ -203,7 +203,11 @@
     "notif_meetup_desc": "Actualizaciones sobre encuentros con anfitriones",
     "notif_streak_desc": "Un recordatorio para mantener tu racha diaria",
     "general": "General",
-    "account": "Cuenta"
+    "account": "Cuenta",
+    "delete_account_done": "Tu cuenta y tus datos se han eliminado.",
+    "delete_account_failed": "No se pudo eliminar tu cuenta. Comprueba tu conexión e inténtalo de nuevo.",
+    "delete_account_cancelled": "Se canceló la eliminación de la cuenta.",
+    "delete_account_subscription_note": "Si tienes una suscripción activa, cancélala en Google Play o App Store. Eliminar tu cuenta no la cancela."
   },
   "premium": {
     "subtitle": "Disfruta de la experiencia completa en Japón",

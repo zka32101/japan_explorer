@@ -8,6 +8,8 @@ const { onBadgeUnlock, dailyStreakReminder } = require('./badge_notifications');
 const { grantReferralReward } = require('./referral_rewards');
 const { aggregateContributionVotes } = require('./contribution_vote_aggregation');
 
+const { deleteAccount } = require('./account_deletion');
+
 exports.aggregateRatings = aggregateRatings;
 exports.moderatePost = moderatePost;
 exports.sendDailyPhrase = sendDailyPhrase;
@@ -16,3 +18,4 @@ exports.onBadgeUnlock = onBadgeUnlock;
 exports.dailyStreakReminder = dailyStreakReminder;
 exports.grantReferralReward = grantReferralReward;
 exports.aggregateContributionVotes = aggregateContributionVotes;
+exports.deleteAccount = deleteAccount;
