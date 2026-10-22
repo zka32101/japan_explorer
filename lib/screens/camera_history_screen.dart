@@ -7,7 +7,8 @@ import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/scan_history.dart';
 
-final _scanHistoryProvider = FutureProvider<List<ScanRecord>>((ref) async {
+final _scanHistoryProvider =
+    FutureProvider.autoDispose<List<ScanRecord>>((ref) async {
   return scanHistoryRepository.getAll();
 });
 

@@ -7,10 +7,12 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../config/app_brand.dart';
 import '../config/theme.dart';
+import '../models/scan_history.dart';
 import '../providers/auth_provider.dart';
 import '../providers/language_provider.dart';
 import '../providers/offline_provider.dart';
 import '../providers/settings_provider.dart';
+import '../providers/vision_cache_provider.dart';
 import '../services/account_deletion_client.dart';
 import '../utils/constants.dart';
 
@@ -243,13 +245,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
-              // ScanHistoryRepository exposes a clear() method;
-              // wire it here once you expose it via a provider.
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(tr('settings.scan_history_cleared'))),
-                );
-              }
+              _clearScanHistory();
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: Text(tr('settings.clear')),
@@ -257,6 +253,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         ],
       ),
     );
+  }
+
+  /// Camera scan history and the "What is this?" / menu-translator results
+  /// (records and their photos) are stored on this device only.
+  Future<void> _clearScanHistory() async {
+    final messenger = ScaffoldMessenger.of(context);
+    String message;
+    try {
+      await scanHistoryRepository.clear();
+      await ref.read(visionCacheHistoryProvider.notifier).clearAll();
+      ref.invalidate(visionCacheSizeProvider);
+      message = tr('settings.scan_history_cleared');
+    } catch (_) {
+      message = tr('errors.generic');
+    }
+    if (!mounted) return;
+    messenger.showSnackBar(SnackBar(content: Text(message)));
   }
 
   void _showDeleteAccountDialog() {

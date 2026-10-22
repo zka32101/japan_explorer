@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// A single camera AI scan record stored locally.
@@ -109,9 +111,40 @@ class ScanHistoryRepository {
         _key, jsonEncode(updated.map((r) => r.toJson()).toList()));
   }
 
-  Future<void> clear() async {
+  /// Deletes every record, plus the scanned photos the app itself stored.
+  ///
+  /// Only files inside the app's own temp/documents folders are removed, never
+  /// anything outside them (e.g. a path that points into the photo library).
+  /// [ownedDirs] is injectable for tests.
+  Future<void> clear({Future<List<String>> Function()? ownedDirs}) async {
+    final records = await getAll();
+    final dirs = await (ownedDirs ?? _appOwnedDirs)();
+    for (final r in records) {
+      final path = r.imagePath;
+      if (path == null || path.isEmpty || !isInsideAny(path, dirs)) continue;
+      try {
+        final f = File(path);
+        if (await f.exists()) await f.delete();
+      } catch (_) {
+        // A photo that cannot be removed must not keep the history alive.
+      }
+    }
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_key);
+  }
+
+  static Future<List<String>> _appOwnedDirs() async => [
+        (await getTemporaryDirectory()).path,
+        (await getApplicationDocumentsDirectory()).path,
+      ];
+
+  /// True when [path] is located under one of [dirs] (no `..` tricks).
+  static bool isInsideAny(String path, List<String> dirs) {
+    final normalized = Uri.file(path).normalizePath().toFilePath();
+    return dirs.any((d) {
+      final base = Uri.directory(d).normalizePath().toFilePath();
+      return normalized.startsWith(base);
+    });
   }
 }
 
