@@ -44,6 +44,7 @@ import '../utils/app_navigator.dart';
 import '../utils/constants.dart';
 import '../widgets/banner_ad_widget.dart';
 import '../widgets/offline_banner.dart';
+import '../widgets/theme/app_icons.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(firebaseAuthStateProvider);
@@ -308,28 +309,28 @@ class _MainShellState extends State<MainShell> {
         },
         destinations: [
           NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
+            icon: const AppIcon(AppGlyph.home),
+            selectedIcon: const AppIcon(AppGlyph.home, strokeWidth: 2.6),
             label: tr('nav.home'),
           ),
           NavigationDestination(
-            icon: const Icon(Icons.map_outlined),
-            selectedIcon: const Icon(Icons.map),
+            icon: const AppIcon(AppGlyph.map),
+            selectedIcon: const AppIcon(AppGlyph.map, strokeWidth: 2.6),
             label: tr('nav.map'),
           ),
           NavigationDestination(
-            icon: const Icon(Icons.event_note_outlined),
-            selectedIcon: const Icon(Icons.event_note),
+            icon: const AppIcon(AppGlyph.plan),
+            selectedIcon: const AppIcon(AppGlyph.plan, strokeWidth: 2.6),
             label: tr('nav.my_plan'),
           ),
           NavigationDestination(
-            icon: const Icon(Icons.groups_outlined),
-            selectedIcon: const Icon(Icons.groups),
+            icon: const AppIcon(AppGlyph.people),
+            selectedIcon: const AppIcon(AppGlyph.people, strokeWidth: 2.6),
             label: tr('nav.community'),
           ),
           NavigationDestination(
-            icon: const Icon(Icons.person_outlined),
-            selectedIcon: const Icon(Icons.person),
+            icon: const AppIcon(AppGlyph.me),
+            selectedIcon: const AppIcon(AppGlyph.me, strokeWidth: 2.6),
             label: tr('nav.profile'),
           ),
         ],
