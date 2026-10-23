@@ -33,10 +33,13 @@ void main() {
   });
 
   testWidgets('AppIcon follows the IconTheme size', (tester) async {
+    // Center loosens the screen-filling constraints so the icon's own size shows.
     await tester.pumpWidget(const MaterialApp(
-      home: IconTheme(
-        data: IconThemeData(size: 40, color: Colors.red),
-        child: AppIcon(AppGlyph.home),
+      home: Center(
+        child: IconTheme(
+          data: IconThemeData(size: 40, color: Colors.red),
+          child: AppIcon(AppGlyph.home),
+        ),
       ),
     ));
     expect(tester.getSize(find.byType(AppIcon)), const Size(40, 40));
