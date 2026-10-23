@@ -260,7 +260,7 @@ class _PlanCard extends StatelessWidget {
                                 '${s.order + 1}',
                                 style: const TextStyle(
                                   color: Colors.white,
-                                  fontSize: 11,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

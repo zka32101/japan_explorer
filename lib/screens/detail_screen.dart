@@ -585,7 +585,7 @@ class _StatChip extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label,
-            style: const TextStyle(fontSize: 11, color: AppColors.textSecondary)),
+            style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
         Row(
           children: [
             Icon(Icons.star, size: 14, color: color),

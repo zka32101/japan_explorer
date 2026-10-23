@@ -292,7 +292,7 @@ class _MoodChip extends StatelessWidget {
             const SizedBox(height: 2),
             Text(mood.label,
                 style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 12,
                     color: selected
                         ? AppColors.primary
                         : AppColors.textSecondary,

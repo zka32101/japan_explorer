@@ -148,7 +148,7 @@ class HostProfileScreen extends ConsumerWidget {
                           ),
                           child: Text(tr('hosts.inactive'),
                               style: const TextStyle(
-                                  color: Colors.white, fontSize: 11)),
+                                  color: Colors.white, fontSize: 12)),
                         ),
                       ],
                     ],

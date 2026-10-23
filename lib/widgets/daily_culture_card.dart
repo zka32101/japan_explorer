@@ -78,7 +78,7 @@ class DailyCultureCard extends ConsumerWidget {
                           hasRead ? "Today's Culture — Read ✓" : "Today's Culture",
                           style: const TextStyle(
                             color: Colors.white70,
-                            fontSize: 11,
+                            fontSize: 12,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -100,7 +100,7 @@ class DailyCultureCard extends ConsumerWidget {
                       content.localizedSubtitle(language.code),
                       style: const TextStyle(
                         color: Colors.white70,
-                        fontSize: 11,
+                        fontSize: 12,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -122,7 +122,7 @@ class DailyCultureCard extends ConsumerWidget {
                     '${content.readTime}m',
                     style: const TextStyle(
                       color: Colors.white60,
-                      fontSize: 10,
+                      fontSize: 12,
                     ),
                   ),
                 ],

@@ -330,7 +330,7 @@ class _HostCard extends StatelessWidget {
                           child: Text(host.city,
                               style: const TextStyle(
                                   color: AppColors.textSecondary,
-                                  fontSize: 11),
+                                  fontSize: 12),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis),
                         ),
@@ -340,7 +340,7 @@ class _HostCard extends StatelessWidget {
                     // Languages
                     Text(
                       host.languageDisplay,
-                      style: const TextStyle(fontSize: 11),
+                      style: const TextStyle(fontSize: 12),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -362,18 +362,18 @@ class _HostCard extends StatelessWidget {
                           Text('(${host.reviewCount})',
                               style: const TextStyle(
                                   color: AppColors.textSecondary,
-                                  fontSize: 11)),
+                                  fontSize: 12)),
                         ] else
                           Text(tr('hosts.new_host'),
                               style: const TextStyle(
                                   color: AppColors.textSecondary,
-                                  fontSize: 11)),
+                                  fontSize: 12)),
                         const Spacer(),
                         if (host.meetupsCompleted > 0)
                           Text('${host.meetupsCompleted}✓',
                               style: const TextStyle(
                                   color: AppColors.secondary,
-                                  fontSize: 11,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold)),
                       ],
                     ),

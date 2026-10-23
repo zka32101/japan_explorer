@@ -275,7 +275,7 @@ class _PhraseCard extends StatelessWidget {
                       phrase.usageNote!,
                       style: TextStyle(
                         color: Colors.amber.shade800,
-                        fontSize: 11,
+                        fontSize: 12,
                         fontStyle: FontStyle.italic,
                       ),
                     ),

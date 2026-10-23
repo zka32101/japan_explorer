@@ -212,14 +212,14 @@ class _ScanCard extends StatelessWidget {
                           child: Text(
                             providerLabel,
                             style: TextStyle(
-                                color: providerColor, fontSize: 10),
+                                color: providerColor, fontSize: 12),
                           ),
                         ),
                         const SizedBox(width: 8),
                         Text(
                           _formatDate(record.scannedAt),
                           style: const TextStyle(
-                              color: Colors.white38, fontSize: 11),
+                              color: Colors.white38, fontSize: 12),
                         ),
                       ],
                     ),

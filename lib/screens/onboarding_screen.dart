@@ -632,7 +632,7 @@ class _Step2TravelStyle extends ConsumerWidget {
                           Text(
                             tr('onboarding.step2.$key'),
                             style: TextStyle(
-                              fontSize: 11,
+                              fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: isSelected
                                   ? Colors.white

@@ -270,7 +270,7 @@ class _StatBlock extends StatelessWidget {
                 fontWeight: FontWeight.bold)),
         Text(label,
             style: const TextStyle(
-                color: AppColors.textSecondary, fontSize: 11)),
+                color: AppColors.textSecondary, fontSize: 12)),
       ],
     );
   }
@@ -342,7 +342,7 @@ class _CategoryBar extends StatelessWidget {
                   progress.masteryLabel,
                   style: TextStyle(
                       color: progress.masteryColor,
-                      fontSize: 11,
+                      fontSize: 12,
                       fontWeight: FontWeight.w600),
                 ),
               ),
@@ -368,7 +368,7 @@ class _CategoryBar extends StatelessWidget {
                     progress.questionsAnswered.toString(),
                   ]),
             style: const TextStyle(
-                color: AppColors.textSecondary, fontSize: 11),
+                color: AppColors.textSecondary, fontSize: 12),
           ),
         ],
       ),
@@ -452,7 +452,7 @@ class _InfoTile extends StatelessWidget {
                   fontWeight: FontWeight.bold)),
           Text(label,
               style: const TextStyle(
-                  color: AppColors.textSecondary, fontSize: 11)),
+                  color: AppColors.textSecondary, fontSize: 12)),
         ],
       ),
     );

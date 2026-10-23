@@ -389,7 +389,7 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
                     .map((a) => Chip(
                       label: Text(a),
                       backgroundColor: Colors.red.shade100,
-                      labelStyle: TextStyle(fontSize: 11, color: Colors.red.shade700),
+                      labelStyle: TextStyle(fontSize: 12, color: Colors.red.shade700),
                     ))
                     .toList(),
               ),

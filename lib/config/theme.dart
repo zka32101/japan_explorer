@@ -17,7 +17,34 @@ class AppColors {
   static const sakura = Color(0xFFFFB7C5);
   static const matcha = Color(0xFF8B9E6A);
   static const indigo = Color(0xFF3D405B);
+
+  // Showglobe common theme (see showglobe_core brand/theme/board.png)
+  static const primaryDeep = Color(0xFF7E0020);
+  static const primaryLight = Color(0xFFE0334F);
+  static const paper = Color(0xFFF7F4EF);
+  static const ink = Color(0xFF1D1D1D);
+  static const gold = Color(0xFFC9A227);
+  static const night = Color(0xFF12141F);
+  static const nightSurface = Color(0xFF2A2F4A);
 }
+
+/// Corner radii used across the app.
+class AppRadius {
+  static const double chip = 18;
+  static const double button = 26;
+  static const double card = 18;
+  static const double sheet = 28;
+}
+
+/// Soft elevation: one gentle shadow level, plus a thin white edge on cards.
+class AppShadows {
+  static const soft = [
+    BoxShadow(color: Color(0x1F000000), blurRadius: 10, offset: Offset(0, 3)),
+  ];
+}
+
+/// Smallest text size used anywhere in the app (readability on small phones).
+const double kMinFontSize = 12;
 
 class AppTheme {
   static ThemeData get light => ThemeData(

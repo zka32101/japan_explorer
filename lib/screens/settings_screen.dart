@@ -386,7 +386,7 @@ class _SectionHeader extends StatelessWidget {
           Text(
             title.toUpperCase(),
             style: const TextStyle(
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.2,
               color: AppColors.textSecondary,
