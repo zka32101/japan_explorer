@@ -46,7 +46,8 @@ class _Shape {
         f = 0;
   const _Shape.rrect(this.a, this.b, this.c, this.e, this.f)
       : kind = 3,
-        d = '';
+        d = '',
+        rotations = const [0];
 
   final int kind; // 0 path, 1 circle, 2 ellipse, 3 rrect
   final String d;
@@ -109,44 +110,44 @@ const _glyphs = <AppGlyph, List<_Shape>>{
 /// Parses absolute SVG path data (`M L H V C Q Z`) into a [Path].
 @visibleForTesting
 Path parseGlyphPath(String d) {
-  final tokens = RegExp(r'[MLHVCQZ]|-?\d*\.?\d+').allMatches(d).map((m) => m[0]!).toList();
+  final tokens = RegExp(r'[A-Za-z]|-?\d*\.?\d+').allMatches(d).map((m) => m[0]!).toList();
   final path = Path();
   var i = 0;
   var x = 0.0, y = 0.0, startX = 0.0, startY = 0.0;
-  double num() => double.parse(tokens[i++]);
+  double next() => double.parse(tokens[i++]);
   String? cmd;
   while (i < tokens.length) {
-    if (RegExp(r'[MLHVCQZ]').hasMatch(tokens[i])) cmd = tokens[i++];
+    if (RegExp(r'[A-Za-z]').hasMatch(tokens[i])) cmd = tokens[i++];
     switch (cmd) {
       case 'M':
-        x = num();
-        y = num();
+        x = next();
+        y = next();
         startX = x;
         startY = y;
         path.moveTo(x, y);
         cmd = 'L'; // implicit lineto after the first pair
       case 'L':
-        x = num();
-        y = num();
+        x = next();
+        y = next();
         path.lineTo(x, y);
       case 'H':
-        x = num();
+        x = next();
         path.lineTo(x, y);
       case 'V':
-        y = num();
+        y = next();
         path.lineTo(x, y);
       case 'C':
         {
-          final x1 = num(), y1 = num(), x2 = num(), y2 = num();
-          x = num();
-          y = num();
+          final x1 = next(), y1 = next(), x2 = next(), y2 = next();
+          x = next();
+          y = next();
           path.cubicTo(x1, y1, x2, y2, x, y);
         }
       case 'Q':
         {
-          final x1 = num(), y1 = num();
-          x = num();
-          y = num();
+          final x1 = next(), y1 = next();
+          x = next();
+          y = next();
           path.quadraticBezierTo(x1, y1, x, y);
         }
       case 'Z':
