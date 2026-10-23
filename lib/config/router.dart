@@ -270,15 +270,18 @@ class MainShell extends StatefulWidget {
 class _MainShellState extends State<MainShell> {
   int _currentIndex = 0;
 
+  // Bottom tabs, left to right. Search is reached from the Home search field
+  // (it stays under the shell so the bar remains visible) and counts as Home.
   final _routes = [
     AppRoutes.home,
-    AppRoutes.search,
-    AppRoutes.community,
+    AppRoutes.map,
     AppRoutes.myPlan,
+    AppRoutes.community,
     AppRoutes.profile,
   ];
 
   int? _indexFor(String location) {
+    if (location == AppRoutes.search) return 0;
     for (var i = 0; i < _routes.length; i++) {
       final r = _routes[i];
       if (location == r || location.startsWith('$r/')) return i;
@@ -310,19 +313,19 @@ class _MainShellState extends State<MainShell> {
             label: tr('nav.home'),
           ),
           NavigationDestination(
-            icon: const Icon(Icons.search_outlined),
-            selectedIcon: const Icon(Icons.search),
-            label: tr('nav.search'),
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.photo_library_outlined),
-            selectedIcon: const Icon(Icons.photo_library),
-            label: tr('nav.community'),
-          ),
-          NavigationDestination(
             icon: const Icon(Icons.map_outlined),
             selectedIcon: const Icon(Icons.map),
+            label: tr('nav.map'),
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.event_note_outlined),
+            selectedIcon: const Icon(Icons.event_note),
             label: tr('nav.my_plan'),
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.groups_outlined),
+            selectedIcon: const Icon(Icons.groups),
+            label: tr('nav.community'),
           ),
           NavigationDestination(
             icon: const Icon(Icons.person_outlined),
