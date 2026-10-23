@@ -108,6 +108,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         controller: _scrollController,
         slivers: [
           _buildAppBar(user?.displayName),
+          const SliverToBoxAdapter(child: _SearchEntry()),
           if (user != null)
             SliverToBoxAdapter(
               child: RepaintBoundary(
@@ -328,6 +329,45 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             );
           },
           childCount: curations.length + 1,
+        ),
+      ),
+    );
+  }
+}
+
+/// Tappable search field under the app bar. Search is no longer a bottom tab;
+/// it opens the search screen (back returns to Home).
+class _SearchEntry extends StatelessWidget {
+  const _SearchEntry();
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+      child: Material(
+        color: scheme.surfaceContainerHighest.withValues(alpha: 0.6),
+        borderRadius: BorderRadius.circular(28),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: () => context.push(AppRoutes.search),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            child: Row(
+              children: [
+                const Icon(Icons.search, color: AppColors.textSecondary),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    tr('search.hint'),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(color: AppColors.textSecondary),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
