@@ -6,6 +6,7 @@ import 'package:easy_localization/easy_localization.dart';
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/plan_provider.dart';
+import '../services/share_service.dart';
 import '../utils/app_navigator.dart';
 
 class MyPlanScreen extends ConsumerWidget {
@@ -316,7 +317,12 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
         title: Text(widget.plan.title),
         actions: [
           IconButton(
-              icon: const Icon(Icons.share_outlined), onPressed: () {}),
+            icon: const Icon(Icons.share_outlined),
+            tooltip: tr('common.share'),
+            onPressed: _spots.isEmpty
+                ? null
+                : () => shareService.sharePlan(widget.plan, _spots),
+          ),
         ],
       ),
       body: _spots.isEmpty

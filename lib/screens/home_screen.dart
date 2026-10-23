@@ -245,10 +245,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             );
           },
         ),
-        IconButton(
-          icon: const Icon(Icons.notifications_outlined),
-          onPressed: () {},
-        ),
       ],
     );
   }

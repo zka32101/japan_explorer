@@ -2,6 +2,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../config/app_brand.dart';
 import '../models/curation.dart';
+import '../models/rating.dart' show Plan, PlanSpot;
 import 'analytics_service.dart';
 
 /// Builds share payloads and invokes the OS share sheet.
@@ -23,6 +24,47 @@ class ShareService {
 
     await Share.share(text, subject: curation.title);
     analyticsService.logPhotoShared(curation.id);
+  }
+
+  /// Plain-text version of a plan: title, optional description and dates, the
+  /// spots in the given order (grouped by day when days are set), app link.
+  static String planShareText(Plan plan, List<PlanSpot> spots) {
+    String date(DateTime d) =>
+        '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+    final b = StringBuffer('🗾 ${plan.title}\n');
+    final desc = plan.description?.trim() ?? '';
+    if (desc.isNotEmpty) b.write('$desc\n');
+    if (plan.startDate != null) {
+      final end = plan.endDate;
+      b.write(end == null || end == plan.startDate
+          ? '📅 ${date(plan.startDate!)}\n'
+          : '📅 ${date(plan.startDate!)} – ${date(end)}\n');
+    }
+
+    int? currentDay;
+    var n = 0;
+    var first = true;
+    for (final s in spots) {
+      if (first || s.dayNumber != currentDay) {
+        b.write('\n');
+        if (s.dayNumber != null) b.write('Day ${s.dayNumber}\n');
+        currentDay = s.dayNumber;
+        n = 0;
+        first = false;
+      }
+      n++;
+      final note = s.note?.trim() ?? '';
+      b.write('$n. ${s.curationTitle}${note.isEmpty ? '' : ' — $note'}\n');
+    }
+
+    b.write('\nMade with ${tripBrand.displayName}\n$playStoreUrl');
+    return b.toString();
+  }
+
+  /// Share a trip plan via the OS share sheet.
+  Future<void> sharePlan(Plan plan, List<PlanSpot> spots) async {
+    await Share.share(planShareText(plan, spots), subject: plan.title);
   }
 
   /// Share the app itself (e.g. from Profile screen).
