@@ -272,7 +272,7 @@ class ProfileScreen extends ConsumerWidget {
                   Text(
                     tr('profile.premium_banner_subtitle'),
                     style: const TextStyle(
-                        fontSize: 11, color: AppColors.textSecondary),
+                        fontSize: 12, color: AppColors.textSecondary),
                   ),
                 ],
               ),
@@ -389,7 +389,7 @@ class _FeatureTile extends StatelessWidget {
             const SizedBox(height: 2),
             Text(subtitle,
                 style: const TextStyle(
-                    fontSize: 11, color: AppColors.textSecondary)),
+                    fontSize: 12, color: AppColors.textSecondary)),
           ],
         ),
       ),

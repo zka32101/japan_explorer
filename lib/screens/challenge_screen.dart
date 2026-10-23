@@ -173,7 +173,7 @@ class ChallengeScreen extends ConsumerWidget {
           Column(
             children: [
               const Text('⭐ 15', style: TextStyle(color: Colors.white, fontSize: 16)),
-              Text(tr('challenge.xp_label'), style: const TextStyle(color: Colors.white70, fontSize: 11)),
+              Text(tr('challenge.xp_label'), style: const TextStyle(color: Colors.white70, fontSize: 12)),
             ],
           ),
         ],

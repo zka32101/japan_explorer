@@ -448,7 +448,7 @@ ${explanation.howToExperience}
                   Icon(badgeIcon, size: 12, color: badgeColor),
                   const SizedBox(width: 4),
                   Text(badgeLabel,
-                      style: TextStyle(color: badgeColor, fontSize: 11)),
+                      style: TextStyle(color: badgeColor, fontSize: 12)),
                 ],
               ),
             ),
@@ -460,7 +460,7 @@ ${explanation.howToExperience}
             child: Text(
               tr('camera.gemini_unavailable_fallback'),
               style: TextStyle(
-                  color: AppColors.accent.withValues(alpha: 0.7), fontSize: 11),
+                  color: AppColors.accent.withValues(alpha: 0.7), fontSize: 12),
             ),
           ),
         if (state.xpAwarded)
@@ -474,7 +474,7 @@ ${explanation.howToExperience}
                   tr('camera.xp_earned', args: const ['50']),
                   style: TextStyle(
                       color: AppColors.accent.withValues(alpha: 0.8),
-                      fontSize: 11),
+                      fontSize: 12),
                 ),
               ],
             ),

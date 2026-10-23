@@ -396,7 +396,7 @@ class _PlanCard extends StatelessWidget {
                   tr('premium.best_value').toUpperCase(),
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 9,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 0.8,
                   ),
@@ -426,7 +426,7 @@ class _PlanCard extends StatelessWidget {
                   : tr('premium.per_month'),
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.5),
-                fontSize: 11,
+                fontSize: 12,
               ),
             ),
           ],
@@ -491,7 +491,7 @@ class _StaticPlanCard extends StatelessWidget {
                   tr('premium.best_value').toUpperCase(),
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 9,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 0.8,
                   ),
@@ -519,7 +519,7 @@ class _StaticPlanCard extends StatelessWidget {
               sub,
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.5),
-                fontSize: 11,
+                fontSize: 12,
               ),
             ),
           ],

@@ -250,7 +250,7 @@ class _EventCard extends StatelessWidget {
                 child: Text(
                   tr('seasons.now'),
                   style: const TextStyle(
-                      color: Colors.white, fontSize: 10),
+                      color: Colors.white, fontSize: 12),
                 ),
               ),
           ],
@@ -358,7 +358,7 @@ class _SeasonChip extends StatelessWidget {
       ),
       child: Text(
         '${season.emoji} ${season.label}',
-        style: TextStyle(color: color, fontSize: 10),
+        style: TextStyle(color: color, fontSize: 12),
       ),
     );
   }

@@ -169,7 +169,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                   ),
                   Text(
                     tr('culture_hub.premium_banner_subtitle'),
-                    style: const TextStyle(color: Colors.white70, fontSize: 11),
+                    style: const TextStyle(color: Colors.white70, fontSize: 12),
                   ),
                 ],
               ),
@@ -299,7 +299,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                                 child: Text(
                                   content.getLevelLabel(),
                                   style: const TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600),
                                 ),
@@ -333,7 +333,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                                   ),
                                   child: Text(tag,
                                       style: TextStyle(
-                                          fontSize: 10, color: AppColors.primary)),
+                                          fontSize: 12, color: AppColors.primary)),
                                 ),
                               )),
                         ],
@@ -355,13 +355,13 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               const Text('✨',
-                                  style: TextStyle(fontSize: 11)),
+                                  style: TextStyle(fontSize: 12)),
                               const SizedBox(width: 4),
                               Text(
                                 tr('culture_hub.unlock_premium'),
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 11,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.bold),
                               ),
                             ],

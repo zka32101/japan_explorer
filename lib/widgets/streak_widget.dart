@@ -126,7 +126,7 @@ class WeeklyStreakCalendar extends StatelessWidget {
             Text(
               days[i],
               style: TextStyle(
-                fontSize: 11,
+                fontSize: 12,
                 color: isToday ? AppColors.primary : AppColors.textSecondary,
               ),
             ),

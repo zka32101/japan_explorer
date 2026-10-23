@@ -62,7 +62,7 @@ class SeasonBanner extends ConsumerWidget {
                           child: Text(
                             '+${events.length - 1}',
                             style: const TextStyle(
-                                color: Colors.white70, fontSize: 10),
+                                color: Colors.white70, fontSize: 12),
                           ),
                         ),
                       ],
@@ -72,7 +72,7 @@ class SeasonBanner extends ConsumerWidget {
                   Text(
                     event.tip,
                     style: const TextStyle(
-                        color: Colors.white70, fontSize: 11),
+                        color: Colors.white70, fontSize: 12),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -195,7 +195,7 @@ class _EventCard extends StatelessWidget {
                 child: Text(
                   event.season.label,
                   style: TextStyle(
-                      color: Colors.grey.shade700, fontSize: 11),
+                      color: Colors.grey.shade700, fontSize: 12),
                 ),
               ),
             ],

@@ -109,7 +109,7 @@ class _Chip extends StatelessWidget {
           ),
           const SizedBox(width: 4),
           Text(label,
-              style: TextStyle(fontSize: 11, color: color.withValues(alpha: 0.8))),
+              style: TextStyle(fontSize: 12, color: color.withValues(alpha: 0.8))),
         ],
       ),
     );

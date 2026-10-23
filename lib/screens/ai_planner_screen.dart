@@ -593,14 +593,14 @@ class _ActivityRow extends StatelessWidget {
               Text(time,
                   style: const TextStyle(
                       color: AppColors.textSecondary,
-                      fontSize: 11,
+                      fontSize: 12,
                       fontWeight: FontWeight.w600,
                       letterSpacing: 0.5)),
               const Spacer(),
               if (activity.duration.isNotEmpty)
                 Text(activity.duration,
                     style: const TextStyle(
-                        color: AppColors.textSecondary, fontSize: 11)),
+                        color: AppColors.textSecondary, fontSize: 12)),
             ],
           ),
           const SizedBox(height: 6),

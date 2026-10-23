@@ -171,7 +171,7 @@ class _AudioGuideScreenState extends ConsumerState<AudioGuideScreen> {
                 Text('🎧 Audio Guide',
                     style: TextStyle(
                         color: Colors.white70,
-                        fontSize: 11,
+                        fontSize: 12,
                         letterSpacing: 1.5)),
               ],
             ),
@@ -316,7 +316,7 @@ class _AudioGuideScreenState extends ConsumerState<AudioGuideScreen> {
                       child: const Text('Cached',
                           style: TextStyle(
                               color: Colors.greenAccent,
-                              fontSize: 10)),
+                              fontSize: 12)),
                     ),
                   ],
                 ],
@@ -385,7 +385,7 @@ class _AudioGuideScreenState extends ConsumerState<AudioGuideScreen> {
               Text(
                 '${guideState.speechRate.toStringAsFixed(2)}x',
                 style:
-                    const TextStyle(color: Colors.white54, fontSize: 11),
+                    const TextStyle(color: Colors.white54, fontSize: 12),
               ),
             ],
           ),
@@ -426,7 +426,7 @@ class _AudioGuideScreenState extends ConsumerState<AudioGuideScreen> {
           const SizedBox(height: 4),
           const Text('✨ AI-generated narration',
               style:
-                  TextStyle(color: Colors.white24, fontSize: 10)),
+                  TextStyle(color: Colors.white24, fontSize: 12)),
         ],
       ),
     );

@@ -623,7 +623,7 @@ class _RelatedCard extends StatelessWidget {
                           tr('culture_detail.min_short',
                               args: [item.readTime.toString()]),
                           style: TextStyle(
-                              fontSize: 11, color: AppColors.textSecondary)),
+                              fontSize: 12, color: AppColors.textSecondary)),
                     ],
                   ),
                 ],

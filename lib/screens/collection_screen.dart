@@ -189,7 +189,7 @@ class _ProgressHeader extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             _progressMessage(readCount),
-            style: const TextStyle(color: Colors.white70, fontSize: 11),
+            style: const TextStyle(color: Colors.white70, fontSize: 12),
           ),
         ],
       ),
@@ -359,7 +359,7 @@ class _RecentReadItem extends ConsumerWidget {
                   Text(
                     content.subtitle,
                     style: TextStyle(
-                        color: AppColors.textSecondary, fontSize: 11),
+                        color: AppColors.textSecondary, fontSize: 12),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
