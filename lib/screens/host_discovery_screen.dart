@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/host_profile.dart';
 import '../providers/auth_provider.dart';
@@ -58,22 +59,16 @@ class HostDiscoveryScreen extends ConsumerWidget {
     final isHostAsync =
         user == null ? null : ref.watch(isRegisteredHostProvider(user.uid));
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            const Text('🤝', style: TextStyle(fontSize: 18)),
-            const SizedBox(width: 8),
-            Text(tr('hosts.title')),
-          ],
-        ),
-        actions: [
+    return BrandScaffold(
+      title: '🤝 ${tr('hosts.title')}',
+      actions: [
           // Register / My Profile toggle
           if (user != null)
             isHostAsync?.when(
                   loading: () => const SizedBox.shrink(),
                   error: (_, _) => const SizedBox.shrink(),
                   data: (isHost) => TextButton.icon(
+                    style: TextButton.styleFrom(foregroundColor: Colors.white),
                     onPressed: () => AppNavigator.push(
                       context,
                       HostRegisterScreen(
@@ -87,8 +82,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
                   ),
                 ) ??
                 const SizedBox.shrink(),
-        ],
-      ),
+      ],
       body: Column(
         children: [
           RepaintBoundary(

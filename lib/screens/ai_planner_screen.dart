@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/ai_itinerary.dart';
 import '../models/rating.dart';
@@ -75,23 +76,16 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
   Widget build(BuildContext context) {
     final plannerState = ref.watch(plannerNotifierProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            const Text('🤖', style: TextStyle(fontSize: 18)),
-            const SizedBox(width: 8),
-            Text(tr('planner.title')),
-          ],
-        ),
-        actions: [
-          if (plannerState.itinerary != null)
-            TextButton(
-              onPressed: () => ref.read(plannerNotifierProvider.notifier).reset(),
-              child: Text(tr('planner.reset')),
-            ),
-        ],
-      ),
+    return BrandScaffold(
+      title: '🤖 ${tr('planner.title')}',
+      actions: [
+        if (plannerState.itinerary != null)
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: Colors.white),
+            onPressed: () => ref.read(plannerNotifierProvider.notifier).reset(),
+            child: Text(tr('planner.reset')),
+          ),
+      ],
       body: plannerState.isGenerating
           ? _buildLoading()
           : plannerState.itinerary != null

@@ -30,4 +30,17 @@ void main() {
     await t.pumpAndSettle();
     expect(find.text('Sub'), findsNothing);
   });
+
+  testWidgets('renders bottom widget between header and body', (t) async {
+    await t.pumpWidget(const MaterialApp(
+      home: BrandScaffold(
+        title: 'T',
+        bottom: Text('tabs'),
+        body: Text('content'),
+      ),
+    ));
+    expect(find.text('tabs'), findsOneWidget);
+    expect(t.getTopLeft(find.text('tabs')).dy,
+        lessThan(t.getTopLeft(find.text('content')).dy));
+  });
 }
