@@ -638,6 +638,8 @@
     "login_required": "Connectez-vous pour enregistrer des favoris",
     "plan_created": "Plan créé",
     "plan_updated": "Ajouté au plan",
-    "sign_in": "Se connecter"
+    "sign_in": "Se connecter",
+    "days_label": "Jours",
+    "day_n": "Jour {}"
   }
 }

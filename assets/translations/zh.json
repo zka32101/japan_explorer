@@ -638,6 +638,8 @@
     "login_required": "登录后才能收藏",
     "plan_created": "已创建计划",
     "plan_updated": "已加入计划",
-    "sign_in": "登录"
+    "sign_in": "登录",
+    "days_label": "天数",
+    "day_n": "第{}天"
   }
 }

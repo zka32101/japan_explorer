@@ -638,6 +638,8 @@
     "login_required": "Inicia sesión para guardar favoritos",
     "plan_created": "Plan creado",
     "plan_updated": "Añadido al plan",
-    "sign_in": "Iniciar sesión"
+    "sign_in": "Iniciar sesión",
+    "days_label": "Días",
+    "day_n": "Día {}"
   }
 }

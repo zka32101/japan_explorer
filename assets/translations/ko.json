@@ -638,6 +638,8 @@
     "login_required": "즐겨찾기를 저장하려면 로그인하세요",
     "plan_created": "계획을 만들었습니다",
     "plan_updated": "계획에 추가했습니다",
-    "sign_in": "로그인"
+    "sign_in": "로그인",
+    "days_label": "일수",
+    "day_n": "{}일차"
   }
 }

@@ -638,6 +638,8 @@
     "login_required": "Đăng nhập để lưu mục yêu thích",
     "plan_created": "Đã tạo kế hoạch",
     "plan_updated": "Đã thêm vào kế hoạch",
-    "sign_in": "Đăng nhập"
+    "sign_in": "Đăng nhập",
+    "days_label": "Số ngày",
+    "day_n": "Ngày {}"
   }
 }
