@@ -323,6 +323,17 @@ class FirebaseService {
     }
   }
 
+  /// Adds or removes [curationId] from the user's saved (favorite) spots.
+  Future<void> setCurationSaved(
+      String userId, String curationId, bool saved) async {
+    await _db.collection(FirestoreCollections.users).doc(userId).update({
+      'saved_curation_ids': saved
+          ? FieldValue.arrayUnion([curationId])
+          : FieldValue.arrayRemove([curationId]),
+      'updated_at': FieldValue.serverTimestamp(),
+    });
+  }
+
   Stream<AppUser> streamUser(String userId) {
     return _db
         .collection(FirestoreCollections.users)

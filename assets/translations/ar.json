@@ -619,5 +619,25 @@
     "japan_master_desc": "تم الوصول إلى المستوى 10",
     "ambassador_name": "سفير",
     "ambassador_desc": "دعوة صديق إلى Showglobe Japan"
+  },
+  "favorites": {
+    "title": "المفضلة",
+    "count_subtitle": "{} أماكن محفوظة",
+    "empty_title": "لا توجد مفضلات بعد",
+    "empty_hint": "اضغط على العلامة المرجعية في أي مكان لحفظه. يمكنك لاحقًا تحويلها إلى خطة سفر.",
+    "make_plan": "إنشاء خطة",
+    "sheet_title": "اختر خطة",
+    "new_plan": "إنشاء خطة جديدة",
+    "plan_name": "اسم الخطة",
+    "default_plan_title": "رحلتي",
+    "cancel": "إلغاء",
+    "create": "إنشاء",
+    "added": "تمت الإضافة إلى المفضلة",
+    "removed": "تمت الإزالة من المفضلة",
+    "view": "عرض",
+    "login_required": "سجّل الدخول لحفظ المفضلة",
+    "plan_created": "تم إنشاء الخطة",
+    "plan_updated": "تمت الإضافة إلى الخطة",
+    "sign_in": "تسجيل الدخول"
   }
 }

@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../providers/favorites_provider.dart';
 import '../models/curation.dart';
 import '../providers/auth_provider.dart';
 import '../providers/curations_provider.dart';
@@ -295,6 +296,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
 
     final notifier = ref.read(curationsNotifierProvider.notifier);
+    final favorites = ref.watch(favoriteIdsProvider).toSet();
 
     return SliverPadding(
       padding: const EdgeInsets.all(16),
@@ -324,6 +326,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               padding: const EdgeInsets.only(bottom: 16),
               child: CurationCard(
                 curation: curation,
+                isSaved: favorites.contains(curation.id),
+                onSave: () => toggleFavorite(context, ref, curation.id),
                 onTap: () => context.go('/home/detail/${curation.id}'),
               ),
             );

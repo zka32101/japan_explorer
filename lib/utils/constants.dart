@@ -72,6 +72,7 @@ class AppRoutes {
   static const cultureDetail = '/culture/:id';
   static const collection = '/collection';
   static const inviteFriends = '/invite';
+  static const favorites = '/favorites';
 }
 
 class FirestoreCollections {

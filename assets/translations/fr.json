@@ -619,5 +619,25 @@
     "japan_master_desc": "Niveau 10 atteint",
     "ambassador_name": "Ambassadeur",
     "ambassador_desc": "A invité un ami sur Showglobe Japan"
+  },
+  "favorites": {
+    "title": "Favoris",
+    "count_subtitle": "{} lieux enregistrés",
+    "empty_title": "Aucun favori pour le moment",
+    "empty_hint": "Touchez le marque-page d'un lieu pour l'enregistrer. Vous pourrez ensuite en faire un plan de voyage.",
+    "make_plan": "Créer un plan",
+    "sheet_title": "Choisir un plan",
+    "new_plan": "Créer un nouveau plan",
+    "plan_name": "Nom du plan",
+    "default_plan_title": "Mon voyage",
+    "cancel": "Annuler",
+    "create": "Créer",
+    "added": "Ajouté aux favoris",
+    "removed": "Retiré des favoris",
+    "view": "Voir",
+    "login_required": "Connectez-vous pour enregistrer des favoris",
+    "plan_created": "Plan créé",
+    "plan_updated": "Ajouté au plan",
+    "sign_in": "Se connecter"
   }
 }

@@ -619,5 +619,25 @@
     "japan_master_desc": "Đã đạt Cấp độ 10",
     "ambassador_name": "Đại sứ",
     "ambassador_desc": "Đã mời một người bạn tham gia Showglobe Japan"
+  },
+  "favorites": {
+    "title": "Yêu thích",
+    "count_subtitle": "{} địa điểm đã lưu",
+    "empty_title": "Chưa có mục yêu thích",
+    "empty_hint": "Nhấn vào dấu trang của địa điểm để lưu. Sau đó bạn có thể tạo kế hoạch du lịch từ các địa điểm này.",
+    "make_plan": "Tạo kế hoạch",
+    "sheet_title": "Chọn kế hoạch",
+    "new_plan": "Tạo kế hoạch mới",
+    "plan_name": "Tên kế hoạch",
+    "default_plan_title": "Chuyến đi của tôi",
+    "cancel": "Hủy",
+    "create": "Tạo",
+    "added": "Đã thêm vào yêu thích",
+    "removed": "Đã xóa khỏi yêu thích",
+    "view": "Xem",
+    "login_required": "Đăng nhập để lưu mục yêu thích",
+    "plan_created": "Đã tạo kế hoạch",
+    "plan_updated": "Đã thêm vào kế hoạch",
+    "sign_in": "Đăng nhập"
   }
 }

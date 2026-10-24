@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../providers/favorites_provider.dart';
 import '../providers/auth_provider.dart';
 import '../providers/journal_provider.dart';
 import '../providers/premium_provider.dart';
@@ -311,6 +312,25 @@ class ProfileScreen extends ConsumerWidget {
         const SizedBox(height: 12),
         // Features reachable elsewhere (challenge, phrases, camera, hosts on Home;
         // AI planner on My Plan; progress via the level card) are not repeated here.
+        Consumer(builder: (context, ref, _) {
+          final count = ref.watch(favoriteIdsProvider).length;
+          return Row(
+            children: [
+              Expanded(
+                child: _FeatureTile(
+                  glyph: AppGlyph.map,
+                  title: tr('favorites.title'),
+                  subtitle: count > 0
+                      ? tr('favorites.count_subtitle', args: ['$count'])
+                      : tr('favorites.empty_title'),
+                  color: AppColors.primary,
+                  onTap: () => context.push(AppRoutes.favorites),
+                ),
+              ),
+            ],
+          );
+        }),
+        const SizedBox(height: 12),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

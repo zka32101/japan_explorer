@@ -619,5 +619,25 @@
     "japan_master_desc": "已达到等级10",
     "ambassador_name": "推广大使",
     "ambassador_desc": "已邀请好友加入Showglobe Japan"
+  },
+  "favorites": {
+    "title": "收藏",
+    "count_subtitle": "{}个景点",
+    "empty_title": "还没有收藏",
+    "empty_hint": "点击景点上的书签即可收藏想去的地方，之后可以整理成旅行计划。",
+    "make_plan": "制作计划",
+    "sheet_title": "选择计划",
+    "new_plan": "新建计划",
+    "plan_name": "计划名称",
+    "default_plan_title": "我的旅行",
+    "cancel": "取消",
+    "create": "创建",
+    "added": "已加入收藏",
+    "removed": "已取消收藏",
+    "view": "查看",
+    "login_required": "登录后才能收藏",
+    "plan_created": "已创建计划",
+    "plan_updated": "已加入计划",
+    "sign_in": "登录"
   }
 }

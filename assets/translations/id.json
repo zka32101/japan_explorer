@@ -619,5 +619,25 @@
     "japan_master_desc": "Mencapai Level 10",
     "ambassador_name": "Duta",
     "ambassador_desc": "Mengundang teman ke Showglobe Japan"
+  },
+  "favorites": {
+    "title": "Favorit",
+    "count_subtitle": "{} tempat tersimpan",
+    "empty_title": "Belum ada favorit",
+    "empty_hint": "Ketuk penanda pada tempat untuk menyimpannya. Nanti Anda bisa menjadikannya rencana perjalanan.",
+    "make_plan": "Buat rencana",
+    "sheet_title": "Pilih rencana",
+    "new_plan": "Buat rencana baru",
+    "plan_name": "Nama rencana",
+    "default_plan_title": "Perjalananku",
+    "cancel": "Batal",
+    "create": "Buat",
+    "added": "Ditambahkan ke favorit",
+    "removed": "Dihapus dari favorit",
+    "view": "Lihat",
+    "login_required": "Masuk untuk menyimpan favorit",
+    "plan_created": "Rencana dibuat",
+    "plan_updated": "Ditambahkan ke rencana",
+    "sign_in": "Masuk"
   }
 }

@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
 
+import '../providers/favorites_provider.dart';
 import '../widgets/theme/app_icons.dart';
 import '../widgets/theme/paper_background.dart';
 import '../providers/curations_provider.dart';
@@ -98,6 +99,15 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
                 expandedHeight: 280,
                 pinned: true,
                 actions: [
+                  IconButton(
+                    icon: Icon(
+                      ref.watch(isFavoriteProvider(curation.id))
+                          ? Icons.bookmark
+                          : Icons.bookmark_outline,
+                    ),
+                    tooltip: tr('favorites.title'),
+                    onPressed: () => toggleFavorite(context, ref, curation.id),
+                  ),
                   IconButton(
                     icon: const Icon(Icons.share_outlined),
                     tooltip: tr('detail.share'),
