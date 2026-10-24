@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/journal_entry.dart';
 import '../providers/journal_provider.dart';
@@ -104,10 +105,8 @@ class _WhatIsThisScreenState extends ConsumerState<WhatIsThisScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('what_is_this.title')),
-      ),
+    return BrandScaffold(
+      title: tr('what_is_this.title'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(

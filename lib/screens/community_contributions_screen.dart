@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/user_contribution.dart';
 import '../providers/community_contributions_provider.dart';
@@ -25,10 +26,8 @@ class CommunityContributionsScreen extends ConsumerWidget {
     );
     final state = ref.watch(communityContributionsProvider(params));
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('community_contributions.title')),
-      ),
+    return BrandScaffold(
+      title: tr('community_contributions.title'),
       body: RefreshIndicator(
         onRefresh: () =>
             ref.read(communityContributionsProvider(params).notifier).load(),

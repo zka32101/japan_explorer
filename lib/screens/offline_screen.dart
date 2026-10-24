@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../providers/offline_provider.dart';
 
@@ -12,10 +13,8 @@ class OfflineScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(offlineSyncProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('offline.title')),
-      ),
+    return BrandScaffold(
+      title: tr('offline.title'),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [

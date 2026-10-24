@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../providers/referral_provider.dart';
 import '../services/share_service.dart';
@@ -16,8 +17,8 @@ class InviteFriendsScreen extends ConsumerWidget {
     final codeAsync = ref.watch(myReferralCodeProvider);
     final countAsync = ref.watch(referralCountProvider);
 
-    return Scaffold(
-      appBar: AppBar(title: Text(tr('referral.title'))),
+    return BrandScaffold(
+      title: tr('referral.title'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
