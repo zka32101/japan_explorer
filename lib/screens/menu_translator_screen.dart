@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../services/claude_vision_service.dart';
 import 'community_contributions_screen.dart';
@@ -108,10 +109,8 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('menu_translator.title')),
-      ),
+    return BrandScaffold(
+      title: tr('menu_translator.title'),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(

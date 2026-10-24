@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../providers/vision_cache_provider.dart';
 
@@ -15,17 +16,15 @@ class VisionCacheHistoryScreen extends ConsumerWidget {
     final history = ref.watch(visionCacheHistoryProvider);
     final cacheSize = ref.watch(visionCacheSizeProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('vision_cache.title')),
-        actions: [
-          if (history.isNotEmpty)
-            IconButton(
-              icon: const Icon(Icons.delete_outline),
-              onPressed: () => _showClearDialog(context, ref),
-            ),
-        ],
-      ),
+    return BrandScaffold(
+      title: tr('vision_cache.title'),
+      actions: [
+        if (history.isNotEmpty)
+          IconButton(
+            icon: const Icon(Icons.delete_outline, color: Colors.white),
+            onPressed: () => _showClearDialog(context, ref),
+          ),
+      ],
       body: history.isEmpty
           ? _buildEmptyState()
           : SingleChildScrollView(

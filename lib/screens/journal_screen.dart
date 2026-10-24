@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/journal_entry.dart';
 import '../providers/journal_provider.dart';
@@ -16,10 +17,8 @@ class JournalScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final journalState = ref.watch(journalProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('journal.title')),
-      ),
+    return BrandScaffold(
+      title: tr('journal.title'),
       body: journalState.isLoading
           ? const Center(child: CircularProgressIndicator())
           : journalState.entries.isEmpty
