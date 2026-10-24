@@ -10,6 +10,9 @@ import '../models/post.dart';
 import '../utils/constants.dart';
 import '../providers/posts_provider.dart';
 import '../widgets/cached_image.dart';
+import '../widgets/theme/app_icons.dart';
+import '../widgets/theme/brand_header.dart';
+import '../widgets/theme/paper_background.dart';
 
 class CommunityScreen extends ConsumerStatefulWidget {
   const CommunityScreen({super.key});
@@ -45,17 +48,27 @@ class _CommunityScreenState extends ConsumerState<CommunityScreen> {
     final feedState = ref.watch(postFeedProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('community.title')),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add_photo_alternate_outlined),
-            tooltip: tr('community.create_post'),
-            onPressed: () => context.push(AppRoutes.createPost),
-          ),
-        ],
-      ),
-      body: RefreshIndicator(
+      body: PaperBackground(
+        child: Column(
+          children: [
+            BrandHeader(
+              height: 130,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                      child: BrandHeaderTitle(title: tr('community.title'))),
+                  IconButton(
+                    icon: const Icon(Icons.add_photo_alternate_outlined,
+                        color: Colors.white),
+                    tooltip: tr('community.create_post'),
+                    onPressed: () => context.push(AppRoutes.createPost),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: RefreshIndicator(
         onRefresh: () async => await ref.read(postFeedProvider.notifier).loadInitial(),
         child: feedState.isLoading && feedState.posts.isEmpty
             ? const Center(child: CircularProgressIndicator())
@@ -76,6 +89,10 @@ class _CommunityScreenState extends ConsumerState<CommunityScreen> {
                       return _PostCard(post: feedState.posts[i]);
                     },
                   ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -251,8 +268,7 @@ class _EmptyFeed extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.photo_camera_outlined,
-              size: 72, color: Colors.grey[400]),
+          const AppIconChip(AppGlyph.people, size: 88),
           const SizedBox(height: 16),
           Text(tr('community.empty_title'),
               style: Theme.of(context).textTheme.titleMedium),
