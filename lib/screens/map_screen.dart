@@ -8,6 +8,8 @@ import '../providers/curations_provider.dart';
 import '../services/location_service.dart';
 import '../config/theme.dart';
 import '../widgets/map_widget.dart';
+import '../widgets/theme/brand_header.dart';
+import '../widgets/theme/paper_background.dart';
 
 class MapScreen extends ConsumerStatefulWidget {
   const MapScreen({super.key});
@@ -58,17 +60,22 @@ class _MapScreenState extends ConsumerState<MapScreen> {
     final curationsAsync = ref.watch(curationsNotifierProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Spot Map'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.my_location),
-            onPressed: _getLocation,
-          ),
-        ],
-      ),
-      body: Column(
+      body: PaperBackground(
+        child: Column(
         children: [
+          BrandHeader(
+            height: 130,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const Expanded(child: BrandHeaderTitle(title: 'Spot Map')),
+                IconButton(
+                  icon: const Icon(Icons.my_location, color: Colors.white),
+                  onPressed: _getLocation,
+                ),
+              ],
+            ),
+          ),
           _buildCategoryFilter(),
           Expanded(
             child: curationsAsync.when(
@@ -85,6 +92,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
             ),
           ),
         ],
+      ),
       ),
     );
   }
