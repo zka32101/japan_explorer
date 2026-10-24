@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../utils/constants.dart';
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/plan_provider.dart';
@@ -33,6 +34,11 @@ class MyPlanScreen extends ConsumerWidget {
                     icon: const Text('✨', style: TextStyle(fontSize: 18)),
                     tooltip: tr('myplan.generate_with_ai'),
                     onPressed: () => context.push('/ai-planner'),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.bookmark_outline, color: Colors.white),
+                    tooltip: tr('favorites.title'),
+                    onPressed: () => context.push(AppRoutes.favorites),
                   ),
                   IconButton(
                     icon: const Icon(Icons.map_outlined, color: Colors.white),

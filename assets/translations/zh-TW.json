@@ -619,5 +619,25 @@
     "japan_master_desc": "達到等級 10",
     "ambassador_name": "大使",
     "ambassador_desc": "邀請好友加入 Showglobe Japan"
+  },
+  "favorites": {
+    "title": "收藏",
+    "count_subtitle": "{}個景點",
+    "empty_title": "還沒有收藏",
+    "empty_hint": "點擊景點上的書籤即可收藏想去的地方，之後可以整理成旅行計畫。",
+    "make_plan": "製作計畫",
+    "sheet_title": "選擇計畫",
+    "new_plan": "新增計畫",
+    "plan_name": "計畫名稱",
+    "default_plan_title": "我的旅行",
+    "cancel": "取消",
+    "create": "建立",
+    "added": "已加入收藏",
+    "removed": "已取消收藏",
+    "view": "查看",
+    "login_required": "登入後才能收藏",
+    "plan_created": "已建立計畫",
+    "plan_updated": "已加入計畫",
+    "sign_in": "登入"
   }
 }

@@ -619,5 +619,25 @@
     "japan_master_desc": "Alcanzó el Nivel 10",
     "ambassador_name": "Embajador",
     "ambassador_desc": "Invitó a un amigo a Showglobe Japan"
+  },
+  "favorites": {
+    "title": "Favoritos",
+    "count_subtitle": "{} lugares guardados",
+    "empty_title": "Aún no hay favoritos",
+    "empty_hint": "Toca el marcador de un lugar para guardarlo. Después podrás convertirlos en un plan de viaje.",
+    "make_plan": "Crear plan",
+    "sheet_title": "Elige un plan",
+    "new_plan": "Crear un plan nuevo",
+    "plan_name": "Nombre del plan",
+    "default_plan_title": "Mi viaje",
+    "cancel": "Cancelar",
+    "create": "Crear",
+    "added": "Añadido a favoritos",
+    "removed": "Quitado de favoritos",
+    "view": "Ver",
+    "login_required": "Inicia sesión para guardar favoritos",
+    "plan_created": "Plan creado",
+    "plan_updated": "Añadido al plan",
+    "sign_in": "Iniciar sesión"
   }
 }

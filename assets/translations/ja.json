@@ -619,5 +619,25 @@
     "japan_master_desc": "レベル10に到達しました",
     "ambassador_name": "アンバサダー",
     "ambassador_desc": "友達をShowglobe Japanに招待しました"
+  },
+  "favorites": {
+    "title": "お気に入り",
+    "count_subtitle": "{}件のスポット",
+    "empty_title": "お気に入りはまだありません",
+    "empty_hint": "行きたい場所のブックマークをタップすると、ここに保存されます。あとで旅行プランにまとめられます。",
+    "make_plan": "プランにする",
+    "sheet_title": "追加するプランを選択",
+    "new_plan": "新しいプランを作る",
+    "plan_name": "プラン名",
+    "default_plan_title": "私の旅行",
+    "cancel": "キャンセル",
+    "create": "作成",
+    "added": "お気に入りに追加しました",
+    "removed": "お気に入りから外しました",
+    "view": "見る",
+    "login_required": "お気に入りの保存にはログインが必要です",
+    "plan_created": "プランを作成しました",
+    "plan_updated": "プランに追加しました",
+    "sign_in": "ログイン"
   }
 }

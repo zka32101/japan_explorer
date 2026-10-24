@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../providers/favorites_provider.dart';
 import '../widgets/theme/app_icons.dart';
 import '../widgets/theme/brand_header.dart';
 import '../widgets/theme/paper_background.dart';
@@ -34,6 +35,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final resultsAsync = ref.watch(searchResultsProvider(_query));
+    final favorites = ref.watch(favoriteIdsProvider).toSet();
 
     return Scaffold(
       body: PaperBackground(
@@ -119,6 +121,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                     return RepaintBoundary(
                       child: CurationCard(
                         curation: curation,
+                        isSaved: favorites.contains(curation.id),
+                        onSave: () => toggleFavorite(context, ref, curation.id),
                         onTap: () => context.go('/home/detail/${curation.id}'),
                       ),
                     );
