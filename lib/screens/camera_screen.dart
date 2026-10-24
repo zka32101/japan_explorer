@@ -94,9 +94,9 @@ ${explanation.howToExperience}
     final nearby = ref.watch(nearbySpotProvider);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.night,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColors.night,
         foregroundColor: Colors.white,
         title: Row(
           children: [
@@ -169,7 +169,7 @@ ${explanation.howToExperience}
   Widget _buildLanguageSelector(CameraState cameraState) {
     return Container(
       height: 40,
-      color: const Color(0xFF111111),
+      color: AppColors.night,
       child: Row(
         children: [
           const SizedBox(width: 12),
@@ -307,7 +307,7 @@ ${explanation.howToExperience}
 
   Widget _buildCaptureControls() {
     return Container(
-      color: Colors.black,
+      color: AppColors.night,
       padding: const EdgeInsets.fromLTRB(32, 20, 32, 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -349,7 +349,7 @@ ${explanation.howToExperience}
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        backgroundColor: const Color(0xFF1E1E1E),
+        backgroundColor: AppColors.nightSurface,
         title: Text(tr('camera.tips_dialog_title'),
             style: const TextStyle(color: Colors.white)),
         content: Column(
@@ -387,7 +387,7 @@ ${explanation.howToExperience}
           ),
         Expanded(
           child: Container(
-            color: const Color(0xFF1A1A1A),
+            color: AppColors.nightSurface,
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -657,7 +657,7 @@ ${explanation.howToExperience}
   Widget _buildBottomActions(CameraState state) {
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
-      color: Colors.black,
+      color: AppColors.night,
       child: Row(
         children: [
           Expanded(
@@ -692,7 +692,7 @@ ${explanation.howToExperience}
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: const Color(0xFF1E1E1E),
+      backgroundColor: AppColors.nightSurface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -804,7 +804,7 @@ class _AddToPlanSheet extends ConsumerWidget {
     final name = await showDialog<String>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF1E1E1E),
+        backgroundColor: AppColors.nightSurface,
         title: Text(tr('camera.plan_name_title'),
             style: const TextStyle(color: Colors.white)),
         content: TextField(

@@ -20,9 +20,9 @@ class CameraHistoryScreen extends ConsumerWidget {
     final historyAsync = ref.watch(_scanHistoryProvider);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.night,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: AppColors.night,
         foregroundColor: Colors.white,
         title: Row(
           children: [
@@ -112,7 +112,7 @@ class CameraHistoryScreen extends ConsumerWidget {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: const Color(0xFF1A1A1A),
+      backgroundColor: AppColors.nightSurface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
