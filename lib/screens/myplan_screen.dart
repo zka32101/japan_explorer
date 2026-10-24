@@ -8,6 +8,9 @@ import '../models/rating.dart';
 import '../providers/plan_provider.dart';
 import '../services/share_service.dart';
 import '../utils/app_navigator.dart';
+import '../widgets/theme/app_icons.dart';
+import '../widgets/theme/brand_header.dart';
+import '../widgets/theme/paper_background.dart';
 
 class MyPlanScreen extends ConsumerWidget {
   const MyPlanScreen({super.key});
@@ -17,28 +20,40 @@ class MyPlanScreen extends ConsumerWidget {
     final plansAsync = ref.watch(planNotifierProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('myplan.title')),
-        actions: [
-          IconButton(
-            icon: const Text('✨', style: TextStyle(fontSize: 18)),
-            tooltip: tr('myplan.generate_with_ai'),
-            onPressed: () => context.push('/ai-planner'),
-          ),
-          IconButton(
-            icon: const Icon(Icons.map_outlined),
-            tooltip: tr('myplan.view_on_map'),
-            onPressed: () => context.go('/map'),
-          ),
-        ],
-      ),
-      body: plansAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) =>
-            Center(child: Text(tr('myplan.error_prefix', args: ['$e']))),
-        data: (plans) => plans.isEmpty
-            ? _buildEmpty(context)
-            : _buildPlanList(context, ref, plans),
+      body: PaperBackground(
+        child: Column(
+          children: [
+            BrandHeader(
+              height: 130,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: BrandHeaderTitle(title: tr('myplan.title'))),
+                  IconButton(
+                    icon: const Text('✨', style: TextStyle(fontSize: 18)),
+                    tooltip: tr('myplan.generate_with_ai'),
+                    onPressed: () => context.push('/ai-planner'),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.map_outlined, color: Colors.white),
+                    tooltip: tr('myplan.view_on_map'),
+                    onPressed: () => context.go('/map'),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: plansAsync.when(
+                loading: () => const Center(child: CircularProgressIndicator()),
+                error: (e, _) =>
+                    Center(child: Text(tr('myplan.error_prefix', args: ['$e']))),
+                data: (plans) => plans.isEmpty
+                    ? _buildEmpty(context)
+                    : _buildPlanList(context, ref, plans),
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _showCreateDialog(context, ref),
@@ -53,15 +68,7 @@ class MyPlanScreen extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.08),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(Icons.map_outlined,
-                size: 56, color: AppColors.primary),
-          ),
+          const AppIconChip(AppGlyph.plan, size: 96),
           const SizedBox(height: 20),
           Text(tr('myplan.no_plans_title'),
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
