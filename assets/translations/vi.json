@@ -640,6 +640,12 @@
     "plan_updated": "Đã thêm vào kế hoạch",
     "sign_in": "Đăng nhập",
     "days_label": "Số ngày",
-    "day_n": "Ngày {}"
+    "day_n": "Ngày {}",
+    "sort_newest": "Mới nhất",
+    "sort_area": "Theo khu vực",
+    "filter_all": "Tất cả",
+    "note_title": "Ghi chú",
+    "note_hint": "VD: đi sớm, cần đặt chỗ",
+    "save": "Lưu"
   }
 }

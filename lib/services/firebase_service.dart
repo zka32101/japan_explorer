@@ -326,10 +326,24 @@ class FirebaseService {
   /// Adds or removes [curationId] from the user's saved (favorite) spots.
   Future<void> setCurationSaved(
       String userId, String curationId, bool saved) async {
-    await _db.collection(FirestoreCollections.users).doc(userId).update({
+    await _db.collection(FirestoreCollections.users).doc(userId).update(<Object, Object?>{
       'saved_curation_ids': saved
           ? FieldValue.arrayUnion([curationId])
           : FieldValue.arrayRemove([curationId]),
+      // Un-saving also drops the spot's memo.
+      if (!saved)
+        FieldPath(['favorite_notes', curationId]): FieldValue.delete(),
+      'updated_at': FieldValue.serverTimestamp(),
+    });
+  }
+
+  /// Sets (or, when [note] is blank, removes) the memo of a saved spot.
+  Future<void> setFavoriteNote(
+      String userId, String curationId, String note) async {
+    final trimmed = note.trim();
+    await _db.collection(FirestoreCollections.users).doc(userId).update(<Object, Object?>{
+      FieldPath(['favorite_notes', curationId]):
+          trimmed.isEmpty ? FieldValue.delete() : trimmed,
       'updated_at': FieldValue.serverTimestamp(),
     });
   }

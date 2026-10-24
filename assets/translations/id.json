@@ -640,6 +640,12 @@
     "plan_updated": "Ditambahkan ke rencana",
     "sign_in": "Masuk",
     "days_label": "Jumlah hari",
-    "day_n": "Hari {}"
+    "day_n": "Hari {}",
+    "sort_newest": "Terbaru",
+    "sort_area": "Per wilayah",
+    "filter_all": "Semua",
+    "note_title": "Catatan",
+    "note_hint": "mis. pergi pagi, perlu reservasi",
+    "save": "Simpan"
   }
 }

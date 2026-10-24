@@ -640,6 +640,12 @@
     "plan_updated": "Added to plan",
     "sign_in": "Sign in",
     "days_label": "Days",
-    "day_n": "Day {}"
+    "day_n": "Day {}",
+    "sort_newest": "Newest first",
+    "sort_area": "By area",
+    "filter_all": "All",
+    "note_title": "Note",
+    "note_hint": "e.g. go early, reservation needed",
+    "save": "Save"
   }
 }

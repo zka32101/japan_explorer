@@ -14,6 +14,8 @@ class AppUser {
   final int streakRecoveryUsed;
   final List<String> savedCurationIds;
   final List<String> readCultureIds;
+  /// Per-spot memo for saved spots, keyed by curation id.
+  final Map<String, String> favoriteNotes;
   final String languageCode;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -32,6 +34,7 @@ class AppUser {
     required this.streakRecoveryUsed,
     required this.savedCurationIds,
     this.readCultureIds = const [],
+    this.favoriteNotes = const {},
     required this.languageCode,
     required this.createdAt,
     required this.updatedAt,
@@ -58,6 +61,10 @@ class AppUser {
       streakRecoveryUsed: data['streak_recovery_used'] ?? 0,
       savedCurationIds: List<String>.from(data['saved_curation_ids'] ?? []),
       readCultureIds: List<String>.from(data['read_culture_ids'] ?? []),
+      favoriteNotes: {
+        for (final e in (data['favorite_notes'] as Map? ?? const {}).entries)
+          '${e.key}': '${e.value}',
+      },
       languageCode: data['language_code'] ?? 'en',
       createdAt: data['created_at'] == null
           ? throw StateError('User document ${doc.id} missing required createdAt')
@@ -82,6 +89,7 @@ class AppUser {
         'streak_recovery_used': streakRecoveryUsed,
         'saved_curation_ids': savedCurationIds,
         'read_culture_ids': readCultureIds,
+        'favorite_notes': favoriteNotes,
         'language_code': languageCode,
         'created_at': Timestamp.fromDate(createdAt),
         'updated_at': Timestamp.fromDate(updatedAt),
@@ -151,6 +159,7 @@ class AppUser {
     int? streakRecoveryUsed,
     List<String>? savedCurationIds,
     List<String>? readCultureIds,
+    Map<String, String>? favoriteNotes,
     String? languageCode,
   }) =>
       AppUser(
@@ -167,6 +176,7 @@ class AppUser {
         streakRecoveryUsed: streakRecoveryUsed ?? this.streakRecoveryUsed,
         savedCurationIds: savedCurationIds ?? this.savedCurationIds,
         readCultureIds: readCultureIds ?? this.readCultureIds,
+        favoriteNotes: favoriteNotes ?? this.favoriteNotes,
         languageCode: languageCode ?? this.languageCode,
         createdAt: createdAt,
         updatedAt: DateTime.now(),

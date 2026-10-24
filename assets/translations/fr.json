@@ -640,6 +640,12 @@
     "plan_updated": "Ajouté au plan",
     "sign_in": "Se connecter",
     "days_label": "Jours",
-    "day_n": "Jour {}"
+    "day_n": "Jour {}",
+    "sort_newest": "Plus récents",
+    "sort_area": "Par zone",
+    "filter_all": "Tous",
+    "note_title": "Note",
+    "note_hint": "ex. : y aller tôt, réservation requise",
+    "save": "Enregistrer"
   }
 }

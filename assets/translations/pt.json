@@ -640,6 +640,12 @@
     "plan_updated": "Adicionado ao plano",
     "sign_in": "Entrar",
     "days_label": "Dias",
-    "day_n": "Dia {}"
+    "day_n": "Dia {}",
+    "sort_newest": "Mais recentes",
+    "sort_area": "Por região",
+    "filter_all": "Todos",
+    "note_title": "Nota",
+    "note_hint": "ex.: ir cedo, precisa de reserva",
+    "save": "Salvar"
   }
 }
