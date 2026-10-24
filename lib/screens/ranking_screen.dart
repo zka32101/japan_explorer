@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../models/curation.dart';
 import '../providers/ranking_provider.dart';
 import '../config/theme.dart';
@@ -14,10 +15,8 @@ class RankingScreen extends ConsumerWidget {
     final filter = ref.watch(rankingFilterProvider);
     final rankingsAsync = ref.watch(rankingProvider(filter));
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Rankings'),
-      ),
+    return BrandScaffold(
+      title: 'Rankings',
       body: Column(
         children: [
           RepaintBoundary(

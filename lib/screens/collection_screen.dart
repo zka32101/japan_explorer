@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/culture_content.dart';
 import '../providers/daily_culture_provider.dart';
@@ -28,17 +29,16 @@ class CollectionScreen extends ConsumerWidget {
     final readCount = readIds.length;
     final progress = total == 0 ? 0.0 : readCount / total;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('My Culture Collection'),
-        actions: [
-          TextButton.icon(
-            onPressed: () => context.push('/culture'),
-            icon: const Icon(Icons.library_books, size: 16),
-            label: const Text('Learn More'),
-          ),
-        ],
-      ),
+    return BrandScaffold(
+      title: 'My Culture Collection',
+      actions: [
+        TextButton.icon(
+          style: TextButton.styleFrom(foregroundColor: Colors.white),
+          onPressed: () => context.push('/culture'),
+          icon: const Icon(Icons.library_books, size: 16),
+          label: const Text('Learn More'),
+        ),
+      ],
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
