@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:showglobe_core/showglobe_core.dart' show ShareCardLabels, TripCardDay, TripCardSpot, TripShareCard, showShareCardSheet;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../utils/constants.dart';
+import '../config/app_brand.dart';
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/plan_provider.dart';
@@ -330,6 +332,11 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
         title: Text(widget.plan.title),
         actions: [
           IconButton(
+            icon: const Icon(Icons.image_outlined),
+            tooltip: tr('stamps.share_trip'),
+            onPressed: _spots.isEmpty ? null : () => _shareCard(context),
+          ),
+          IconButton(
             icon: const Icon(Icons.share_outlined),
             tooltip: tr('common.share'),
             onPressed: _spots.isEmpty
@@ -414,6 +421,33 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  /// 日ごと（日割りが無ければ 1 まとまり）にスポットを並べたしおりカードを共有する。
+  void _shareCard(BuildContext context) {
+    final days = <int?, List<TripCardSpot>>{};
+    for (final s in _spots) {
+      days.putIfAbsent(s.dayNumber, () => []).add(TripCardSpot(
+            title: s.curationTitle,
+            imageUrl: s.imageUrl,
+            note: s.note,
+          ));
+    }
+    final keys = days.keys.toList()
+      ..sort((a, b) => (a ?? 0).compareTo(b ?? 0));
+    showShareCardSheet(
+      context,
+      labels: ShareCardLabels.localized(),
+      subject: widget.plan.title,
+      shareText: '${widget.plan.title} · ${tripBrand.displayName}',
+      cardBuilder: (_, style) => TripShareCard(
+        style: style,
+        brand: tripBrand,
+        title: widget.plan.title,
+        days: [for (final k in keys) TripCardDay(dayNumber: k, spots: days[k]!)],
+        labels: ShareCardLabels.localized(),
       ),
     );
   }

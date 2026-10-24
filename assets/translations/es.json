@@ -647,5 +647,18 @@
     "note_title": "Nota",
     "note_hint": "p. ej., ir temprano, requiere reserva",
     "save": "Guardar"
+  },
+  "stamps": {
+    "title": "Álbum de sellos",
+    "tile_subtitle": "Colecciona las prefecturas que visitas",
+    "visited_of": "{} / {} prefecturas",
+    "collected": "Sellos conseguidos",
+    "year_section": "Resumen del año",
+    "year_numbers": "{} lugares · {} prefecturas",
+    "share_book": "Compartir álbum",
+    "share_year": "Compartir resumen",
+    "share_trip": "Compartir como tarjeta de viaje",
+    "empty_title": "Aún no hay sellos",
+    "empty_hint": "Escribe un diario de un lugar para obtener el sello de su prefectura."
   }
 }

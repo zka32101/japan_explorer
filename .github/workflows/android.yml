@@ -21,8 +21,8 @@ jobs:
           cat analyze_output.txt
           # Note: Lint violations are being tracked and fixed incrementally.
           # Only fail on actual parse/compilation errors, not lint warnings.
-          # Checking for "PARSE ERROR" or "ERROR:" which indicate actual failures
-          if grep -q "PARSE ERROR\|ERROR:" analyze_output.txt; then
+          # Checking for "PARSE ERROR", "ERROR:" and analyzer "error •" lines, which indicate actual failures
+          if grep -qE "PARSE ERROR|ERROR:|^ *error •" analyze_output.txt; then
             echo "::error::flutter analyze found parse/compilation errors"
             exit 1
           fi

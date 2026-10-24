@@ -647,5 +647,18 @@
     "note_title": "Catatan",
     "note_hint": "mis. pergi pagi, perlu reservasi",
     "save": "Simpan"
+  },
+  "stamps": {
+    "title": "Buku Stempel",
+    "tile_subtitle": "Kumpulkan prefektur yang dikunjungi",
+    "visited_of": "{} / {} prefektur",
+    "collected": "Stempel terkumpul",
+    "year_section": "Ringkasan tahun ini",
+    "year_numbers": "{} tempat · {} prefektur",
+    "share_book": "Bagikan buku stempel",
+    "share_year": "Bagikan ringkasan",
+    "share_trip": "Bagikan sebagai kartu perjalanan",
+    "empty_title": "Belum ada stempel",
+    "empty_hint": "Tulis jurnal untuk suatu tempat agar mendapat stempel prefekturnya."
   }
 }

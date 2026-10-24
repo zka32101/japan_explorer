@@ -647,5 +647,18 @@
     "note_title": "備註",
     "note_hint": "例如：早上去、需要預約",
     "save": "儲存"
+  },
+  "stamps": {
+    "title": "印章冊",
+    "tile_subtitle": "集齊去過的都道府縣",
+    "visited_of": "{} / {} 個都道府縣",
+    "collected": "已收集的印章",
+    "year_section": "年度回顧",
+    "year_numbers": "{}處景點・{}個都道府縣",
+    "share_book": "分享印章冊",
+    "share_year": "分享回顧",
+    "share_trip": "以行程卡片分享",
+    "empty_title": "還沒有印章",
+    "empty_hint": "為景點寫下日記，就能獲得該都道府縣的印章。"
   }
 }

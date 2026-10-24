@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:showglobe_core/showglobe_core.dart' show PhotoShareCard, ShareCardLabels, showShareCardSheet;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../config/app_brand.dart';
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/camera_provider.dart';
@@ -112,6 +114,29 @@ ${explanation.howToExperience}
             tooltip: tr('camera.scan_history'),
             onPressed: () => AppNavigator.push(context, const CameraHistoryScreen()),
           ),
+          if (cameraState.explanation != null &&
+              cameraState.capturedImage != null)
+            IconButton(
+              icon: const Icon(Icons.ios_share, color: Colors.white),
+              tooltip: tr('common.share'),
+              onPressed: () => showShareCardSheet(
+                context,
+                labels: ShareCardLabels.localized(),
+                subject: cameraState.explanation!.name,
+                shareText:
+                    '${cameraState.explanation!.name} · ${tripBrand.displayName}',
+                cardBuilder: (_, style) => PhotoShareCard(
+                  style: style,
+                  brand: tripBrand,
+                  title: cameraState.explanation!.name,
+                  subtitle: 'AI Lens',
+                  photo: FileImage(cameraState.capturedImage!),
+                  body: cameraState.explanation!.description,
+                  highlight: cameraState.explanation!.phrase.japanese,
+                  highlightSub: cameraState.explanation!.phrase.english,
+                ),
+              ),
+            ),
           if (cameraState.explanation != null)
             IconButton(
               icon: const Icon(Icons.refresh, color: Colors.white),

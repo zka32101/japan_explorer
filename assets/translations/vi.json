@@ -647,5 +647,18 @@
     "note_title": "Ghi chú",
     "note_hint": "VD: đi sớm, cần đặt chỗ",
     "save": "Lưu"
+  },
+  "stamps": {
+    "title": "Sổ tem",
+    "tile_subtitle": "Sưu tầm các tỉnh đã đến",
+    "visited_of": "{} / {} tỉnh",
+    "collected": "Tem đã sưu tầm",
+    "year_section": "Nhìn lại năm",
+    "year_numbers": "{} địa điểm · {} tỉnh",
+    "share_book": "Chia sẻ sổ tem",
+    "share_year": "Chia sẻ tổng kết",
+    "share_trip": "Chia sẻ dạng thẻ chuyến đi",
+    "empty_title": "Chưa có tem nào",
+    "empty_hint": "Viết nhật ký cho một địa điểm để nhận tem của tỉnh đó."
   }
 }
