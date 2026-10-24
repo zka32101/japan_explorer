@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/culture_content.dart';
 import '../providers/culture_content_provider.dart';
@@ -31,22 +32,20 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
     ref.watch(cultureTranslationsProvider);
     final langCode = ref.watch(languageProvider).code;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('culture_hub.title')),
-        elevation: 0,
-        actions: [
+    return BrandScaffold(
+      title: tr('culture_hub.title'),
+      actions: [
           if (!isPremium)
             TextButton.icon(
               onPressed: () => showPremiumPaywall(context),
               icon: const Text('✨', style: TextStyle(fontSize: 14)),
               label: Text(
                 tr('culture_hub.premium_badge'),
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
-        ],
-      ),
+      ],
       body: Column(
         children: [
           // Category tabs
