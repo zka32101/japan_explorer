@@ -12,6 +12,9 @@ import '../utils/constants.dart';
 import '../widgets/streak_widget.dart';
 import '../widgets/badge_widget.dart';
 import '../widgets/premium_gate.dart';
+import '../widgets/theme/app_icons.dart';
+import '../widgets/theme/brand_header.dart';
+import '../widgets/theme/paper_background.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -21,16 +24,25 @@ class ProfileScreen extends ConsumerWidget {
     final userAsync = ref.watch(appUserProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('nav.profile')),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            onPressed: () => context.go('/profile/settings'),
-          ),
-        ],
-      ),
-      body: userAsync.when(
+      body: PaperBackground(
+        child: Column(
+          children: [
+            BrandHeader(
+              height: 130,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(child: BrandHeaderTitle(title: tr('nav.profile'))),
+                  IconButton(
+                    icon: const Icon(Icons.settings_outlined,
+                        color: Colors.white),
+                    onPressed: () => context.go('/profile/settings'),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: userAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) =>
             Center(child: Text(tr('profile.error_message', args: ['$e']))),
@@ -67,6 +79,10 @@ class ProfileScreen extends ConsumerWidget {
             ],
           );
         },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -302,7 +318,7 @@ class ProfileScreen extends ConsumerWidget {
               child: Consumer(builder: (context, ref, _) {
                 final count = ref.watch(journalProvider).entries.length;
                 return _FeatureTile(
-                  emoji: '📖',
+                  glyph: AppGlyph.book,
                   title: tr('journal.title'),
                   subtitle: count > 0
                       ? tr('journal.entry_count',
@@ -316,7 +332,7 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(width: 12),
             Expanded(
               child: _FeatureTile(
-                emoji: '🎁',
+                glyph: AppGlyph.people,
                 title: tr('referral.title'),
                 subtitle: tr('referral.subtitle'),
                 color: const Color(0xFFE65100),
@@ -350,14 +366,14 @@ class ProfileScreen extends ConsumerWidget {
 // ── Feature tile ─────────────────────────────────────────────────────────────
 
 class _FeatureTile extends StatelessWidget {
-  final String emoji;
+  final AppGlyph glyph;
   final String title;
   final String subtitle;
   final Color color;
   final VoidCallback onTap;
 
   const _FeatureTile({
-    required this.emoji,
+    required this.glyph,
     required this.title,
     required this.subtitle,
     required this.color,
@@ -379,7 +395,7 @@ class _FeatureTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(emoji, style: const TextStyle(fontSize: 24)),
+            AppIconChip(glyph, size: 40),
             const SizedBox(height: 8),
             Text(title,
                 style: TextStyle(
