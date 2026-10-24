@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/cultural_challenge.dart';
 import '../providers/challenge_provider.dart';
@@ -16,16 +17,9 @@ class ChallengeScreen extends ConsumerWidget {
     final state = ref.watch(challengeNotifierProvider);
     final challenge = state.challenge;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Text(challenge.category.emoji),
-            const SizedBox(width: 8),
-            Text(tr('challenge.title')),
-          ],
-        ),
-        actions: [
+    return BrandScaffold(
+      title: '${challenge.category.emoji} ${tr('challenge.title')}',
+      actions: [
           Container(
             margin: const EdgeInsets.only(right: 12),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -42,8 +36,7 @@ class ChallengeScreen extends ConsumerWidget {
                   fontWeight: FontWeight.w600),
             ),
           ),
-        ],
-      ),
+      ],
       body: Stack(
         children: [
           SafeArea(

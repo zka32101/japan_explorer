@@ -5,19 +5,24 @@ import 'paper_background.dart';
 
 /// Sub-screen scaffold: [BrandHeader] with the title (and a back button when
 /// the route can be popped) over a [PaperBackground]. [actions] are shown at
-/// the right of the header; give them white icons/text.
+/// the right of the header; give them white icons/text. [bottom] (e.g. a
+/// `TabBar`) sits on the paper just below the header.
 class BrandScaffold extends StatelessWidget {
   const BrandScaffold({
     super.key,
     required this.title,
     required this.body,
     this.actions = const [],
+    this.bottom,
     this.floatingActionButton,
   });
 
   final String title;
   final Widget body;
   final List<Widget> actions;
+
+  /// Shown between the header and [body], e.g. a `TabBar`.
+  final Widget? bottom;
   final Widget? floatingActionButton;
 
   @override
@@ -43,6 +48,7 @@ class BrandScaffold extends StatelessWidget {
                 ],
               ),
             ),
+            if (bottom != null) bottom!,
             Expanded(child: body),
           ],
         ),

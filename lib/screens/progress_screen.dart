@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/cultural_challenge.dart';
 import '../models/cultural_progress.dart';
@@ -17,24 +18,16 @@ class ProgressScreen extends ConsumerWidget {
     final userAsync = ref.watch(appUserProvider);
     final progressAsync = ref.watch(culturalProgressProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            const Text('🏆', style: TextStyle(fontSize: 18)),
-            const SizedBox(width: 8),
-            Text(tr('profile.feature_progress_title')),
-          ],
+    return BrandScaffold(
+      title: '🏆 ${tr('profile.feature_progress_title')}',
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.refresh_outlined, color: Colors.white),
+          tooltip: 'Refresh',
+          onPressed: () =>
+              ref.invalidate(culturalProgressProvider),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_outlined),
-            tooltip: 'Refresh',
-            onPressed: () =>
-                ref.invalidate(culturalProgressProvider),
-          ),
-        ],
-      ),
+      ],
       body: userAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/season_event.dart';
 import '../providers/season_events_provider.dart';
@@ -53,17 +54,15 @@ class _SeasonEventsScreenState extends ConsumerState<SeasonEventsScreen>
     final activeEvents = ref.watch(activeEventsProvider);
     final filteredEvents = ref.watch(eventsBySeasonProvider(_selectedSeason));
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tr('seasons.title')),
-        bottom: TabBar(
-          controller: _tabCtrl,
-          isScrollable: true,
-          tabAlignment: TabAlignment.start,
-          tabs: _seasonLabels
-              .map((l) => Tab(text: l))
-              .toList(),
-        ),
+    return BrandScaffold(
+      title: tr('seasons.title'),
+      bottom: TabBar(
+        controller: _tabCtrl,
+        isScrollable: true,
+        tabAlignment: TabAlignment.start,
+        tabs: _seasonLabels
+            .map((l) => Tab(text: l))
+            .toList(),
       ),
       body: CustomScrollView(
         slivers: [

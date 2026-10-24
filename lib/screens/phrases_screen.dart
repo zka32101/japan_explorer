@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/theme/brand_scaffold.dart';
 import '../config/theme.dart';
 import '../models/phrase_category.dart';
 import '../services/tts_service.dart';
@@ -52,25 +53,17 @@ class _PhrasesScreenState extends State<PhrasesScreen>
   Widget build(BuildContext context) {
     final isSearching = _searchQuery.isNotEmpty;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Row(
-          children: [
-            Text('🇯🇵', style: TextStyle(fontSize: 18)),
-            SizedBox(width: 8),
-            Text('Japanese Phrasebook'),
-          ],
-        ),
-        bottom: isSearching
-            ? null
-            : TabBar(
-                controller: _tabController,
-                isScrollable: true,
-                tabs: TravelPhrases.categories
-                    .map((c) => Tab(text: '${c.emoji} ${c.title}'))
-                    .toList(),
-              ),
-      ),
+    return BrandScaffold(
+      title: '🇯🇵 Japanese Phrasebook',
+      bottom: isSearching
+          ? null
+          : TabBar(
+              controller: _tabController,
+              isScrollable: true,
+              tabs: TravelPhrases.categories
+                  .map((c) => Tab(text: '${c.emoji} ${c.title}'))
+                  .toList(),
+            ),
       body: Column(
         children: [
           // ── Search bar ────────────────────────────────────────────
