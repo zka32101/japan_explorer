@@ -4,51 +4,140 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../utils/favorites_view.dart';
+import '../services/firebase_service.dart';
+import '../providers/auth_provider.dart';
 import '../utils/trip_planner.dart';
 import '../config/theme.dart';
 import '../models/curation.dart';
-import '../providers/curations_provider.dart';
 import '../providers/favorites_provider.dart';
 import '../providers/plan_provider.dart';
 import '../widgets/theme/app_icons.dart';
 import '../widgets/theme/brand_scaffold.dart';
 
-/// Spots the user saved ("行きたい場所"), with a shortcut to turn them into a
-/// trip plan.
-class FavoritesScreen extends ConsumerWidget {
+/// Spots the user saved ("行きたい場所"), with filtering, sorting, per-spot
+/// memos and a shortcut to turn them into a trip plan.
+class FavoritesScreen extends ConsumerStatefulWidget {
   const FavoritesScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<FavoritesScreen> createState() => _FavoritesScreenState();
+}
+
+class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
+  String? _category;
+  FavoriteSort _sort = FavoriteSort.newest;
+
+  @override
+  Widget build(BuildContext context) {
+    final saved = ref.watch(favoriteCurationsProvider);
+    final notes = ref.watch(favoriteNotesProvider);
     final ids = ref.watch(favoriteIdsProvider);
 
     return BrandScaffold(
       title: tr('favorites.title'),
-      floatingActionButton: ids.isEmpty
-          ? null
-          : FloatingActionButton.extended(
-              onPressed: () => _makePlan(context, ref, ids),
-              icon: const Icon(Icons.event_note_outlined),
-              label: Text(tr('favorites.make_plan')),
+      actions: [
+        PopupMenuButton<FavoriteSort>(
+          icon: const Icon(Icons.sort, color: Colors.white),
+          onSelected: (v) => setState(() => _sort = v),
+          itemBuilder: (_) => [
+            CheckedPopupMenuItem(
+              value: FavoriteSort.newest,
+              checked: _sort == FavoriteSort.newest,
+              child: Text(tr('favorites.sort_newest')),
             ),
+            CheckedPopupMenuItem(
+              value: FavoriteSort.area,
+              checked: _sort == FavoriteSort.area,
+              child: Text(tr('favorites.sort_area')),
+            ),
+          ],
+        ),
+      ],
       body: ids.isEmpty
           ? const _EmptyFavorites()
-          : ListView.separated(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
-              itemCount: ids.length,
-              separatorBuilder: (_, _) => const SizedBox(height: 10),
-              // Newest first.
-              itemBuilder: (_, i) => _FavoriteTile(id: ids[ids.length - 1 - i]),
+          : saved.when(
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (e, _) => Center(child: Text('$e')),
+              data: (all) {
+                final categories = categoriesPresent(all);
+                // A filter whose spots were all removed falls back to "all".
+                final category = categories.contains(_category) ? _category : null;
+                final shown = filterAndSortFavorites(all,
+                    category: category, sort: _sort);
+                return Stack(
+                  children: [
+                    Column(
+                      children: [
+                        if (categories.length > 1)
+                          SizedBox(
+                            height: 52,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              children: [
+                                _chip(tr('favorites.filter_all'),
+                                    category == null, () {
+                                  setState(() => _category = null);
+                                }),
+                                for (final c in categories)
+                                  _chip(
+                                    '${CurationCategory.emoji(c)} ${CurationCategory.label(c)}',
+                                    category == c,
+                                    () => setState(() => _category = c),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        Expanded(
+                          child: ListView.separated(
+                            padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
+                            itemCount: shown.length,
+                            separatorBuilder: (_, _) => const SizedBox(height: 10),
+                            itemBuilder: (_, i) => _FavoriteTile(
+                              curation: shown[i],
+                              note: notes[shown[i].id],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Positioned(
+                      right: 16,
+                      bottom: 16,
+                      child: FloatingActionButton.extended(
+                        onPressed: shown.isEmpty
+                            ? null
+                            : () => _makePlan(context, ref, shown, notes),
+                        icon: const Icon(Icons.event_note_outlined),
+                        label: Text(tr('favorites.make_plan')),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
     );
   }
 
-  Future<void> _makePlan(
-      BuildContext context, WidgetRef ref, List<String> ids) async {
+  Widget _chip(String label, bool selected, VoidCallback onTap) => Padding(
+        padding: const EdgeInsets.only(right: 8),
+        child: ChoiceChip(
+          label: Text(label),
+          selected: selected,
+          onSelected: (_) => onTap(),
+          selectedColor: AppColors.primary,
+          labelStyle: TextStyle(color: selected ? Colors.white : AppColors.onSurface),
+        ),
+      );
+
+  /// Turns the currently shown spots into a plan (new, or added to one).
+  Future<void> _makePlan(BuildContext context, WidgetRef ref,
+      List<Curation> curations, Map<String, String> notes) async {
     final messenger = ScaffoldMessenger.of(context);
     final plans = ref.read(planNotifierProvider).valueOrNull ?? [];
 
-    // Pick the destination: a new plan or one of the existing plans.
     final choice = await showModalBottomSheet<String>(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -89,24 +178,20 @@ class FavoritesScreen extends ConsumerWidget {
 
     ({String title, int days})? created;
     if (choice.isEmpty) {
-      created = await _askNewPlan(context, ids.length);
+      created = await _askNewPlan(context, curations.length);
       if (created == null || !context.mounted) return;
     }
 
-    final curations = <Curation>[];
-    for (final id in ids) {
-      final c = await ref.read(curationDetailProvider(id).future);
-      if (c != null) curations.add(c);
-    }
     final notifier = ref.read(planNotifierProvider.notifier);
     if (created != null) {
       // Walkable order, split over the chosen number of days.
-      await notifier.createPlanWithSpots(
-          created.title, arrangeByRoute(curations, days: created.days));
+      await notifier.createPlanWithSpots(created.title,
+          arrangeByRoute(curations, days: created.days, notes: notes));
     } else {
       await notifier.addSpotsToPlan(choice, [
         for (var i = 0; i < curations.length; i++)
-          planSpotFromCuration(curations[i], order: i),
+          planSpotFromCuration(curations[i],
+              order: i, note: notes[curations[i].id]),
       ]);
     }
     messenger.showSnackBar(SnackBar(
@@ -178,67 +263,83 @@ class FavoritesScreen extends ConsumerWidget {
 }
 
 class _FavoriteTile extends ConsumerWidget {
-  const _FavoriteTile({required this.id});
-  final String id;
+  const _FavoriteTile({required this.curation, this.note});
+  final Curation curation;
+  final String? note;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final curation = ref.watch(curationDetailProvider(id));
-    return curation.when(
-      loading: () => const SizedBox(
-        height: 72,
-        child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
-      ),
-      error: (_, _) => const SizedBox.shrink(),
-      data: (c) {
-        if (c == null) return const SizedBox.shrink();
-        return Card(
-          clipBehavior: Clip.antiAlias,
-          margin: EdgeInsets.zero,
-          child: InkWell(
-            onTap: () => context.push('/home/detail/${c.id}'),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 88,
-                  height: 88,
-                  child: c.imageUrls.isEmpty
-                      ? Container(
-                          color: AppColors.divider,
-                          child: const Icon(Icons.image,
-                              color: AppColors.textSecondary),
-                        )
-                      : CachedNetworkImage(
-                          imageUrl: c.imageUrls.first,
-                          fit: BoxFit.cover,
-                          memCacheWidth: 300,
-                          errorWidget: (_, _, _) =>
-                              Container(color: AppColors.divider),
-                        ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          c.title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          c.prefecture,
-                          style: const TextStyle(
-                              fontSize: kMinFontSize,
-                              color: AppColors.textSecondary),
-                        ),
-                      ],
+    final c = curation;
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      margin: EdgeInsets.zero,
+      child: InkWell(
+        onTap: () => context.push('/home/detail/${c.id}'),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 88,
+              height: 88,
+              child: c.imageUrls.isEmpty
+                  ? Container(
+                      color: AppColors.divider,
+                      child: const Icon(Icons.image,
+                          color: AppColors.textSecondary),
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: c.imageUrls.first,
+                      fit: BoxFit.cover,
+                      memCacheWidth: 300,
+                      errorWidget: (_, _, _) =>
+                          Container(color: AppColors.divider),
                     ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      c.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '${CurationCategory.emoji(c.category)} ${c.prefecture}',
+                      style: const TextStyle(
+                          fontSize: kMinFontSize,
+                          color: AppColors.textSecondary),
+                    ),
+                    if (note != null && note!.isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        note!,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            fontSize: kMinFontSize, color: AppColors.primary),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.edit_note,
+                    color: (note ?? '').isEmpty
+                        ? AppColors.textSecondary
+                        : AppColors.primary,
                   ),
+                  tooltip: tr('favorites.note_title'),
+                  onPressed: () => _editNote(context, ref),
                 ),
                 IconButton(
                   icon: const Icon(Icons.bookmark, color: AppColors.primary),
@@ -246,10 +347,43 @@ class _FavoriteTile extends ConsumerWidget {
                 ),
               ],
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
+  }
+
+  Future<void> _editNote(BuildContext context, WidgetRef ref) async {
+    final user = ref.read(appUserProvider).valueOrNull;
+    if (user == null) return;
+    final controller = TextEditingController(text: note ?? '');
+    final result = await showDialog<String>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(tr('favorites.note_title')),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          maxLines: 3,
+          maxLength: 120,
+          decoration: InputDecoration(hintText: tr('favorites.note_hint')),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(tr('favorites.cancel')),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(dialogContext, controller.text),
+            child: Text(tr('favorites.save')),
+          ),
+        ],
+      ),
+    );
+    if (result == null) return;
+    await ref
+        .read(firebaseServiceProvider)
+        .setFavoriteNote(user.uid, curation.id, result);
   }
 }
 

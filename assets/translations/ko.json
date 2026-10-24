@@ -640,6 +640,12 @@
     "plan_updated": "계획에 추가했습니다",
     "sign_in": "로그인",
     "days_label": "일수",
-    "day_n": "{}일차"
+    "day_n": "{}일차",
+    "sort_newest": "최근 추가순",
+    "sort_area": "지역순",
+    "filter_all": "전체",
+    "note_title": "메모",
+    "note_hint": "예: 아침 일찍, 예약 필요",
+    "save": "저장"
   }
 }

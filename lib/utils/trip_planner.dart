@@ -21,7 +21,8 @@ double distanceKm(double lat1, double lng1, double lat2, double lng2) {
 /// The route starts at the westernmost spot and always continues to the
 /// nearest unvisited one, so spots in the same area end up on the same day.
 /// With one day only the order is set (no day numbers).
-List<PlanSpot> arrangeByRoute(List<Curation> curations, {int days = 1}) {
+List<PlanSpot> arrangeByRoute(List<Curation> curations,
+    {int days = 1, Map<String, String> notes = const {}}) {
   if (curations.isEmpty) return [];
   final remaining = [...curations];
   remaining.sort(
@@ -50,7 +51,8 @@ List<PlanSpot> arrangeByRoute(List<Curation> curations, {int days = 1}) {
   for (var day = 1; day <= dayCount; day++) {
     final size = base + (day <= extra ? 1 : 0);
     for (var k = 0; k < size; k++) {
-      final spot = planSpotFromCuration(route[index], order: index);
+      final spot = planSpotFromCuration(route[index],
+          order: index, note: notes[route[index].id]);
       spots.add(dayCount > 1 ? spot.copyWith(dayNumber: day) : spot);
       index++;
     }
