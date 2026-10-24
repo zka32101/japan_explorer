@@ -15,6 +15,8 @@ import '../providers/settings_provider.dart';
 import '../providers/vision_cache_provider.dart';
 import '../services/account_deletion_client.dart';
 import '../utils/constants.dart';
+import '../widgets/theme/brand_header.dart';
+import '../widgets/theme/paper_background.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -52,8 +54,28 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final settings = ref.watch(settingsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(tr('settings.title'))),
-      body: ListView(
+      body: PaperBackground(
+        child: Column(
+          children: [
+            BrandHeader(
+              height: 130,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                    tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+                    onPressed: () => context.canPop()
+                        ? context.pop()
+                        : context.go(AppRoutes.profile),
+                  ),
+                  Expanded(
+                      child: BrandHeaderTitle(title: tr('settings.title'))),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView(
         children: [
           // ── General ──────────────────────────────────────────────────────
           _SectionHeader(
@@ -192,6 +214,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const SizedBox(height: 32),
         ],
+      ),
+            ),
+          ],
+        ),
       ),
     );
   }
