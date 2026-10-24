@@ -19,6 +19,9 @@ import '../config/theme.dart';
 import '../utils/constants.dart';
 import '../providers/streak_provider.dart';
 import '../widgets/daily_culture_card.dart';
+import '../widgets/theme/app_icons.dart';
+import '../widgets/theme/brand_header.dart';
+import '../widgets/theme/paper_background.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -103,11 +106,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ];
 
     return Scaffold(
-      body: OfflineAwarePage(
+      body: PaperBackground(
+        child: OfflineAwarePage(
         child: CustomScrollView(
         controller: _scrollController,
         slivers: [
-          _buildAppBar(user?.displayName),
+          SliverToBoxAdapter(child: _buildHeader(user?.displayName)),
           const SliverToBoxAdapter(child: _SearchEntry()),
           if (user != null)
             SliverToBoxAdapter(
@@ -176,6 +180,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ],
       ),
       ),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.go('/camera'),
         backgroundColor: AppColors.primary,
@@ -185,68 +190,63 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildAppBar(String? name) {
-    return SliverAppBar(
-      floating: true,
-      expandedHeight: 100,
-      flexibleSpace: FlexibleSpaceBar(
-        titlePadding: const EdgeInsets.only(left: 20, bottom: 16),
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              name == null ? tr('app_name') : tr('home.greeting', args: [name]),
-              style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+  Widget _buildHeader(String? name) {
+    return BrandHeader(
+      height: 170,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Expanded(
+            child: BrandHeaderTitle(
+              subtitle:
+                  name == null ? tr('app_name') : tr('home.greeting', args: [name]),
+              title: tr('home.title'),
             ),
-            Text(
-              tr('home.title'),
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-      actions: [
-        Consumer(
-          builder: (context, ref, _) {
-            final language = ref.watch(languageProvider);
-            return PopupMenuButton<Language>(
-              onSelected: (lang) {
-                ref.read(languageProvider.notifier).setLanguage(lang);
-              },
-              itemBuilder: (BuildContext context) => [
-                for (final lang in Language.values)
-                  PopupMenuItem<Language>(
-                    value: lang,
-                    child: Row(
-                      children: [
-                        Text('${lang.flag} ${lang.displayName}'),
-                        if (language == lang)
-                          const Padding(
-                            padding: EdgeInsets.only(left: 8),
-                            child: Icon(Icons.check, size: 18),
-                          ),
-                      ],
+          ),
+          Consumer(
+            builder: (context, ref, _) {
+              final language = ref.watch(languageProvider);
+              return PopupMenuButton<Language>(
+                onSelected: (lang) {
+                  ref.read(languageProvider.notifier).setLanguage(lang);
+                },
+                itemBuilder: (BuildContext context) => [
+                  for (final lang in Language.values)
+                    PopupMenuItem<Language>(
+                      value: lang,
+                      child: Row(
+                        children: [
+                          Text('${lang.flag} ${lang.displayName}'),
+                          if (language == lang)
+                            const Padding(
+                              padding: EdgeInsets.only(left: 8),
+                              child: Icon(Icons.check, size: 18),
+                            ),
+                        ],
+                      ),
                     ),
+                ],
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(AppRadius.chip),
                   ),
-              ],
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Center(
                   child: Text(
                     language.displayName,
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: kMinFontSize,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primary,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-              ),
-            );
-          },
-        ),
-      ],
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -355,7 +355,7 @@ class _SearchEntry extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             child: Row(
               children: [
-                const Icon(Icons.search, color: AppColors.textSecondary),
+                const AppIcon(AppGlyph.search, color: AppColors.textSecondary),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
@@ -383,14 +383,14 @@ class _QuickMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = <_QuickMenuItem>[
-      _QuickMenuItem('❓', 'home.nav_what', () => context.push(AppRoutes.whatIsThis)),
-      _QuickMenuItem('🍽️', 'home.nav_menu', () => context.push(AppRoutes.menuTranslator)),
-      _QuickMenuItem('🇯🇵', 'home.nav_phrases', () => context.push(AppRoutes.phrases)),
-      _QuickMenuItem('📚', 'home.nav_learn', () => context.push(AppRoutes.cultureHub)),
-      _QuickMenuItem('🌸', 'home.nav_seasons', () => context.push(AppRoutes.seasonEvents)),
-      _QuickMenuItem('🗂️', 'home.nav_collection', () => context.push(AppRoutes.collection)),
-      _QuickMenuItem('🤝', 'home.nav_locals', () => context.push(AppRoutes.hosts)),
-      _QuickMenuItem('🏆', 'home.nav_rankings', () => context.push('/home/ranking')),
+      _QuickMenuItem(AppGlyph.lens, 'home.nav_what', () => context.push(AppRoutes.whatIsThis)),
+      _QuickMenuItem(AppGlyph.bowl, 'home.nav_menu', () => context.push(AppRoutes.menuTranslator)),
+      _QuickMenuItem(AppGlyph.globe, 'home.nav_phrases', () => context.push(AppRoutes.phrases)),
+      _QuickMenuItem(AppGlyph.book, 'home.nav_learn', () => context.push(AppRoutes.cultureHub)),
+      _QuickMenuItem(AppGlyph.sakura, 'home.nav_seasons', () => context.push(AppRoutes.seasonEvents)),
+      _QuickMenuItem(AppGlyph.plan, 'home.nav_collection', () => context.push(AppRoutes.collection)),
+      _QuickMenuItem(AppGlyph.people, 'home.nav_locals', () => context.push(AppRoutes.hosts)),
+      _QuickMenuItem(AppGlyph.trophy, 'home.nav_rankings', () => context.push('/home/ranking')),
     ];
     return Padding(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
@@ -408,10 +408,10 @@ class _QuickMenu extends StatelessWidget {
 }
 
 class _QuickMenuItem {
-  final String emoji;
+  final AppGlyph glyph;
   final String label;
   final VoidCallback onTap;
-  const _QuickMenuItem(this.emoji, this.label, this.onTap);
+  const _QuickMenuItem(this.glyph, this.label, this.onTap);
 }
 
 class _QuickMenuTile extends StatelessWidget {
@@ -426,7 +426,7 @@ class _QuickMenuTile extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(item.emoji, style: const TextStyle(fontSize: 26)),
+          AppIconChip(item.glyph, size: 44),
           const SizedBox(height: 4),
           Text(
             tr(item.label),
@@ -460,7 +460,7 @@ class _LearnCultureCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Text('📖', style: TextStyle(fontSize: 22)),
+            const AppIcon(AppGlyph.book, size: 24, color: Colors.white),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
@@ -509,7 +509,7 @@ class _DailyChallengeCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Text('🧠', style: TextStyle(fontSize: 22)),
+            const AppIcon(AppGlyph.lens, size: 24, color: Colors.white),
             const SizedBox(width: 12),
             Expanded(
               child: Column(
