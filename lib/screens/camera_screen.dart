@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../config/app_brand.dart';
+import '../widgets/share/lens_share_card.dart';
+import '../widgets/share/share_card_sheet.dart';
 import '../config/theme.dart';
 import '../models/rating.dart';
 import '../providers/camera_provider.dart';
@@ -112,6 +115,22 @@ ${explanation.howToExperience}
             tooltip: tr('camera.scan_history'),
             onPressed: () => AppNavigator.push(context, const CameraHistoryScreen()),
           ),
+          if (cameraState.explanation != null &&
+              cameraState.capturedImage != null)
+            IconButton(
+              icon: const Icon(Icons.ios_share, color: Colors.white),
+              tooltip: tr('common.share'),
+              onPressed: () => showShareCardSheet(
+                context,
+                subject: cameraState.explanation!.name,
+                shareText: '${cameraState.explanation!.name} · ${tripBrand.displayName}',
+                cardBuilder: (_, style) => LensShareCard(
+                  style: style,
+                  explanation: cameraState.explanation!,
+                  photo: cameraState.capturedImage!,
+                ),
+              ),
+            ),
           if (cameraState.explanation != null)
             IconButton(
               icon: const Icon(Icons.refresh, color: Colors.white),
