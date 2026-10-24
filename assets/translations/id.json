@@ -638,6 +638,8 @@
     "login_required": "Masuk untuk menyimpan favorit",
     "plan_created": "Rencana dibuat",
     "plan_updated": "Ditambahkan ke rencana",
-    "sign_in": "Masuk"
+    "sign_in": "Masuk",
+    "days_label": "Jumlah hari",
+    "day_n": "Hari {}"
   }
 }

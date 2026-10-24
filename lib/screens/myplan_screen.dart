@@ -487,8 +487,15 @@ class _SpotTile extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.w600),
             maxLines: 1,
             overflow: TextOverflow.ellipsis),
-        subtitle: spot.note != null
-            ? Text(spot.note!, style: const TextStyle(fontSize: 12))
+        subtitle: spot.dayNumber != null || spot.note != null
+            ? Text(
+                [
+                  if (spot.dayNumber != null)
+                    tr('favorites.day_n', args: ['${spot.dayNumber}']),
+                  if (spot.note != null) spot.note!,
+                ].join(' · '),
+                style: const TextStyle(fontSize: 12),
+              )
             : null,
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

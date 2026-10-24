@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../utils/trip_planner.dart';
 import '../config/theme.dart';
 import '../models/curation.dart';
 import '../providers/curations_provider.dart';
@@ -86,10 +87,10 @@ class FavoritesScreen extends ConsumerWidget {
     );
     if (choice == null || !context.mounted) return;
 
-    String? title;
+    ({String title, int days})? created;
     if (choice.isEmpty) {
-      title = await _askPlanTitle(context);
-      if (title == null || !context.mounted) return;
+      created = await _askNewPlan(context, ids.length);
+      if (created == null || !context.mounted) return;
     }
 
     final curations = <Curation>[];
@@ -97,15 +98,16 @@ class FavoritesScreen extends ConsumerWidget {
       final c = await ref.read(curationDetailProvider(id).future);
       if (c != null) curations.add(c);
     }
-    final spots = [
-      for (var i = 0; i < curations.length; i++)
-        planSpotFromCuration(curations[i], order: i),
-    ];
     final notifier = ref.read(planNotifierProvider.notifier);
-    if (choice.isEmpty) {
-      await notifier.createPlanWithSpots(title!, spots);
+    if (created != null) {
+      // Walkable order, split over the chosen number of days.
+      await notifier.createPlanWithSpots(
+          created.title, arrangeByRoute(curations, days: created.days));
     } else {
-      await notifier.addSpotsToPlan(choice, spots);
+      await notifier.addSpotsToPlan(choice, [
+        for (var i = 0; i < curations.length; i++)
+          planSpotFromCuration(curations[i], order: i),
+      ]);
     }
     messenger.showSnackBar(SnackBar(
       content: Text(
@@ -114,32 +116,62 @@ class FavoritesScreen extends ConsumerWidget {
     if (context.mounted) context.go('/my-plan');
   }
 
-  Future<String?> _askPlanTitle(BuildContext context) {
+  Future<({String title, int days})?> _askNewPlan(
+      BuildContext context, int spotCount) {
     final controller =
         TextEditingController(text: tr('favorites.default_plan_title'));
-    return showDialog<String>(
+    var days = 1;
+    final maxDays = spotCount.clamp(1, 7);
+    return showDialog<({String title, int days})>(
       context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: Text(tr('favorites.new_plan')),
-        content: TextField(
-          controller: controller,
-          autofocus: true,
-          decoration: InputDecoration(labelText: tr('favorites.plan_name')),
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text(tr('favorites.new_plan')),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                controller: controller,
+                autofocus: true,
+                decoration:
+                    InputDecoration(labelText: tr('favorites.plan_name')),
+              ),
+              if (maxDays > 1) ...[
+                const SizedBox(height: 16),
+                Text(tr('favorites.days_label')),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  children: [
+                    for (var d = 1; d <= maxDays; d++)
+                      ChoiceChip(
+                        label: Text('$d'),
+                        selected: days == d,
+                        onSelected: (_) => setState(() => days = d),
+                      ),
+                  ],
+                ),
+              ],
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              child: Text(tr('favorites.cancel')),
+            ),
+            FilledButton(
+              onPressed: () {
+                final t = controller.text.trim();
+                Navigator.pop(dialogContext, (
+                  title: t.isEmpty ? tr('favorites.default_plan_title') : t,
+                  days: days,
+                ));
+              },
+              child: Text(tr('favorites.create')),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext),
-            child: Text(tr('favorites.cancel')),
-          ),
-          FilledButton(
-            onPressed: () {
-              final t = controller.text.trim();
-              Navigator.pop(dialogContext,
-                  t.isEmpty ? tr('favorites.default_plan_title') : t);
-            },
-            child: Text(tr('favorites.create')),
-          ),
-        ],
       ),
     );
   }

@@ -638,6 +638,8 @@
     "login_required": "お気に入りの保存にはログインが必要です",
     "plan_created": "プランを作成しました",
     "plan_updated": "プランに追加しました",
-    "sign_in": "ログイン"
+    "sign_in": "ログイン",
+    "days_label": "日数",
+    "day_n": "{}日目"
   }
 }

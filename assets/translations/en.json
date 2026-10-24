@@ -638,6 +638,8 @@
     "login_required": "Sign in to save favorites",
     "plan_created": "Plan created",
     "plan_updated": "Added to plan",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "days_label": "Days",
+    "day_n": "Day {}"
   }
 }
