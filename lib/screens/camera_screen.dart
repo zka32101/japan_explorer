@@ -137,8 +137,6 @@ ${explanation.howToExperience}
                 ),
               ),
             ),
-              ),
-            ),
           if (cameraState.explanation != null)
             IconButton(
               icon: const Icon(Icons.refresh, color: Colors.white),

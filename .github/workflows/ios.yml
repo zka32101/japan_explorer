@@ -24,7 +24,7 @@ jobs:
           flutter analyze > analyze_output.txt 2>&1 || true
           cat analyze_output.txt
           # Checking for actual compilation failures, not lint violations
-          if grep -q "PARSE ERROR\|ERROR:" analyze_output.txt; then
+          if grep -qE "PARSE ERROR|ERROR:|^ *error •" analyze_output.txt; then
             echo "::error::flutter analyze found parse/compilation errors"
             exit 1
           fi
