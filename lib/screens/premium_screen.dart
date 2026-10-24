@@ -36,7 +36,7 @@ class PremiumScreen extends ConsumerWidget {
     });
 
     return Scaffold(
-      backgroundColor: const Color(0xFF080818),
+      backgroundColor: AppColors.night,
       body: Stack(
         children: [
           _buildBackground(),
