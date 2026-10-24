@@ -647,5 +647,18 @@
     "note_title": "Note",
     "note_hint": "ex. : y aller tôt, réservation requise",
     "save": "Enregistrer"
+  },
+  "stamps": {
+    "title": "Carnet de tampons",
+    "tile_subtitle": "Collectionnez les préfectures visitées",
+    "visited_of": "{} / {} préfectures",
+    "collected": "Tampons obtenus",
+    "year_section": "Bilan de l'année",
+    "year_numbers": "{} lieux · {} préfectures",
+    "share_book": "Partager le carnet",
+    "share_year": "Partager le bilan",
+    "share_trip": "Partager en carte de voyage",
+    "empty_title": "Aucun tampon pour le moment",
+    "empty_hint": "Écrivez un journal pour un lieu afin d'obtenir le tampon de sa préfecture."
   }
 }

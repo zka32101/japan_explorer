@@ -327,6 +327,16 @@ class ProfileScreen extends ConsumerWidget {
                   onTap: () => context.push(AppRoutes.favorites),
                 ),
               ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _FeatureTile(
+                  glyph: AppGlyph.trophy,
+                  title: tr('stamps.title'),
+                  subtitle: tr('stamps.tile_subtitle'),
+                  color: const Color(0xFF4E342E),
+                  onTap: () => context.push(AppRoutes.stamps),
+                ),
+              ),
             ],
           );
         }),

@@ -647,5 +647,18 @@
     "note_title": "Note",
     "note_hint": "e.g. go early, reservation needed",
     "save": "Save"
+  },
+  "stamps": {
+    "title": "Stamp Book",
+    "tile_subtitle": "Collect the prefectures you visit",
+    "visited_of": "{} / {} prefectures",
+    "collected": "Collected stamps",
+    "year_section": "Year in review",
+    "year_numbers": "{} spots · {} prefectures",
+    "share_book": "Share stamp book",
+    "share_year": "Share summary",
+    "share_trip": "Share as trip card",
+    "empty_title": "No stamps yet",
+    "empty_hint": "Write a journal entry for a spot to get the stamp of its prefecture."
   }
 }

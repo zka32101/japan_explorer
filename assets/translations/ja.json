@@ -647,5 +647,18 @@
     "note_title": "メモ",
     "note_hint": "例: 朝いちで行く、予約が必要",
     "save": "保存"
+  },
+  "stamps": {
+    "title": "スタンプ帳",
+    "tile_subtitle": "行った都道府県を集める",
+    "visited_of": "{} / {} 都道府県",
+    "collected": "集めたスタンプ",
+    "year_section": "年間まとめ",
+    "year_numbers": "{}か所・{}都道府県",
+    "share_book": "スタンプ帳をシェア",
+    "share_year": "まとめをシェア",
+    "share_trip": "しおりカードで共有",
+    "empty_title": "まだスタンプがありません",
+    "empty_hint": "スポットの日記を書くと、その都道府県のスタンプが押されます。"
   }
 }

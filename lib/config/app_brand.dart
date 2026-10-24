@@ -16,6 +16,7 @@ final tripBrand = AppBrand(
   tagline: 'Discover Japan like a local',
   primaryColor: AppColors.primary,
   supportEmail: 'petitworksdev@gmail.com',
+  countryCode: 'JP',
 );
 
 /// Shared privacy policy of Petit Works Apps (Google Sites).

@@ -20,7 +20,7 @@ dependencies:
   showglobe_core:
     git:
       url: https://github.com/zka32101/japanaut_core.git
-      ref: 396081e2b197246feda8ada1087af7b88f3f1087  # main, pin to tag once v0.4.0 exists
+      ref: e1894d0abeeaa4736f0a93d97add6969ec49b407  # main (v0.4.0 + PhotoShareCard); pin to a tag once tags can be pushed
   riverpod_annotation: ^2.6.1
 
   # Firebase

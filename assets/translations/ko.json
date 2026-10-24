@@ -647,5 +647,18 @@
     "note_title": "메모",
     "note_hint": "예: 아침 일찍, 예약 필요",
     "save": "저장"
+  },
+  "stamps": {
+    "title": "스탬프 북",
+    "tile_subtitle": "다녀온 도도부현 모으기",
+    "visited_of": "{} / {} 도도부현",
+    "collected": "모은 스탬프",
+    "year_section": "올해 돌아보기",
+    "year_numbers": "명소 {}곳 · {}개 도도부현",
+    "share_book": "스탬프 북 공유",
+    "share_year": "요약 공유",
+    "share_trip": "여행 카드로 공유",
+    "empty_title": "아직 스탬프가 없습니다",
+    "empty_hint": "명소의 일기를 쓰면 해당 도도부현의 스탬프가 찍힙니다."
   }
 }

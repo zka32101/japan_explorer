@@ -647,5 +647,18 @@
     "note_title": "Nota",
     "note_hint": "ex.: ir cedo, precisa de reserva",
     "save": "Salvar"
+  },
+  "stamps": {
+    "title": "Álbum de carimbos",
+    "tile_subtitle": "Colecione as prefeituras que visita",
+    "visited_of": "{} / {} prefeituras",
+    "collected": "Carimbos coletados",
+    "year_section": "Resumo do ano",
+    "year_numbers": "{} locais · {} prefeituras",
+    "share_book": "Compartilhar álbum",
+    "share_year": "Compartilhar resumo",
+    "share_trip": "Compartilhar como cartão de viagem",
+    "empty_title": "Ainda não há carimbos",
+    "empty_hint": "Escreva um diário de um local para ganhar o carimbo da sua prefeitura."
   }
 }

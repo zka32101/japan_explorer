@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import '../screens/stamp_book_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -137,6 +138,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.premium,
         builder: (context, state) => const PremiumScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.stamps,
+        builder: (context, state) => const StampBookScreen(),
       ),
       GoRoute(
         path: AppRoutes.favorites,
