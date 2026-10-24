@@ -6,6 +6,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/theme/app_icons.dart';
+import '../widgets/theme/paper_background.dart';
 import '../providers/curations_provider.dart';
 import '../providers/auth_provider.dart';
 import '../providers/plan_provider.dart';
@@ -82,7 +84,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     final curationAsync = ref.watch(curationDetailProvider(widget.curationId));
 
     return Scaffold(
-      body: curationAsync.when(
+      body: PaperBackground(
+        child: curationAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text(tr('detail.error_prefix', args: [e.toString()]))),
         data: (curation) {
@@ -180,6 +183,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
             ],
           );
         },
+      ),
       ),
       bottomNavigationBar: _buildBottomBar(),
     );
@@ -543,7 +547,7 @@ class _BottomActionButtons extends StatelessWidget {
         Expanded(
           child: OutlinedButton.icon(
             onPressed: onJournalTap,
-            icon: const Text('📖', style: TextStyle(fontSize: 14)),
+            icon: const AppIcon(AppGlyph.book, size: 16),
             label: Text(tr('journal.write_btn')),
           ),
         ),
