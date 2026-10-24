@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/theme/app_icons.dart';
+import '../widgets/theme/brand_header.dart';
+import '../widgets/theme/paper_background.dart';
 import '../providers/curations_provider.dart';
 import '../widgets/curation_card.dart';
 import '../config/theme.dart';
@@ -33,38 +36,64 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final resultsAsync = ref.watch(searchResultsProvider(_query));
 
     return Scaffold(
-      appBar: AppBar(
-        title: TextField(
-          controller: _controller,
-          autofocus: true,
-          decoration: InputDecoration(
-            hintText: tr('search.hint'),
-            border: InputBorder.none,
-            suffixIcon: _query.isNotEmpty
-                ? IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () {
-                      _debounce?.cancel();
-                      _controller.clear();
-                      setState(() => _query = '');
-                    },
-                  )
-                : null,
-          ),
-          onChanged: (v) {
-            _debounce?.cancel();
-            if (v.isEmpty) {
-              setState(() => _query = '');
-              return;
-            }
-            if (v.length < 2) return;
-            _debounce = Timer(const Duration(milliseconds: 350), () {
-              if (mounted) setState(() => _query = v.trim());
-            });
-          },
-        ),
-      ),
-      body: _query.isEmpty
+      body: PaperBackground(
+        child: Column(
+          children: [
+            BrandHeader(
+              height: 130,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  if (Navigator.canPop(context))
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      tooltip:
+                          MaterialLocalizations.of(context).backButtonTooltip,
+                      onPressed: () => Navigator.maybePop(context),
+                    ),
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      autofocus: true,
+                      decoration: InputDecoration(
+                        hintText: tr('search.hint'),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(AppRadius.button),
+                          borderSide: BorderSide.none,
+                        ),
+                        suffixIcon: _query.isNotEmpty
+                            ? IconButton(
+                                icon: const Icon(Icons.clear),
+                                onPressed: () {
+                                  _debounce?.cancel();
+                                  _controller.clear();
+                                  setState(() => _query = '');
+                                },
+                              )
+                            : null,
+                      ),
+                      onChanged: (v) {
+                        _debounce?.cancel();
+                        if (v.isEmpty) {
+                          setState(() => _query = '');
+                          return;
+                        }
+                        if (v.length < 2) return;
+                        _debounce = Timer(const Duration(milliseconds: 350), () {
+                          if (mounted) setState(() => _query = v.trim());
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: _query.isEmpty
           ? RepaintBoundary(child: _buildEmptyState())
           : resultsAsync.when(
               loading: () => RepaintBoundary(
@@ -97,6 +126,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 );
               },
             ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -105,7 +138,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.search, size: 64, color: AppColors.textSecondary),
+          const AppIconChip(AppGlyph.search, size: 80),
           const SizedBox(height: 16),
           Text(
             tr('search.empty_title'),
