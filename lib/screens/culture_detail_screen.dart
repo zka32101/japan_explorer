@@ -64,14 +64,11 @@ class CultureDetailScreen extends ConsumerWidget {
                               fit: BoxFit.cover,
                               memCacheWidth: 800,
                               placeholder: (_, _) =>
-                                  Container(color: AppColors.surface),
-                              errorWidget: (_, _, _) => Container(
-                                color: AppColors.surface,
-                                child: const Center(
-                                    child: Icon(Icons.image_not_supported)),
-                              ),
+                                  _HeaderPlaceholder(categoryId: content.categoryId),
+                              errorWidget: (_, _, _) =>
+                                  _HeaderPlaceholder(categoryId: content.categoryId),
                             )
-                          : Container(color: AppColors.surface),
+                          : _HeaderPlaceholder(categoryId: content.categoryId),
                       // Premium shimmer overlay on image
                       if (isLocked)
                         Container(
@@ -162,13 +159,16 @@ class CultureDetailScreen extends ConsumerWidget {
                                   color: AppColors.textSecondary,
                                   fontSize: 13)),
                           const SizedBox(width: 16),
-                          const Icon(Icons.calendar_today,
-                              size: 16, color: AppColors.textSecondary),
-                          const SizedBox(width: 6),
-                          Text(_formatDate(content.createdAt),
-                              style: TextStyle(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 13)),
+                          // 未来の日付(データ側の誤り)は表示しない
+                          if (!content.createdAt.isAfter(DateTime.now())) ...[
+                            const Icon(Icons.calendar_today,
+                                size: 16, color: AppColors.textSecondary),
+                            const SizedBox(width: 6),
+                            Text(_formatDate(content.createdAt),
+                                style: TextStyle(
+                                    color: AppColors.textSecondary,
+                                    fontSize: 13)),
+                          ],
                         ],
                       ),
                       const SizedBox(height: 16),
@@ -695,6 +695,31 @@ class _VideoSectionState extends State<_VideoSection> {
         ),
         const SizedBox(height: 24),
       ],
+    );
+  }
+}
+
+/// 記事に画像が無い/読み込み前/失敗のときのヘッダー(暗い背景に合う色+カテゴリの絵文字)。
+class _HeaderPlaceholder extends StatelessWidget {
+  final String categoryId;
+  const _HeaderPlaceholder({required this.categoryId});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF2A2F4A), Color(0xFF1B1E33)],
+        ),
+      ),
+      child: Center(
+        child: Text(
+          CultureCategory.getCategoryEmoji(categoryId),
+          style: const TextStyle(fontSize: 64),
+        ),
+      ),
     );
   }
 }
