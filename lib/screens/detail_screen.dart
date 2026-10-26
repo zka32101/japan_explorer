@@ -411,9 +411,10 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
         ref.watch(curationDetailProvider(widget.curationId)).valueOrNull;
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-      decoration: const BoxDecoration(
-        color: AppColors.surface,
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
+      decoration: BoxDecoration(
+        // ダークテーマで真っ白に浮かないよう、テーマの面の色を使う
+        color: Theme.of(context).colorScheme.surface,
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -558,7 +559,7 @@ class _BottomActionButtons extends StatelessWidget {
           child: OutlinedButton.icon(
             onPressed: onJournalTap,
             icon: const AppIcon(AppGlyph.book, size: 16),
-            label: Text(tr('journal.write_btn')),
+            label: FittedBox(fit: BoxFit.scaleDown, child: Text(tr('journal.write_btn'))),
           ),
         ),
         const SizedBox(width: 8),
@@ -566,7 +567,7 @@ class _BottomActionButtons extends StatelessWidget {
           child: OutlinedButton.icon(
             onPressed: onPlanTap,
             icon: const Icon(Icons.add, size: 16),
-            label: Text(tr('nav.my_plan')),
+            label: FittedBox(fit: BoxFit.scaleDown, child: Text(tr('nav.my_plan'))),
           ),
         ),
         const SizedBox(width: 8),
@@ -574,7 +575,7 @@ class _BottomActionButtons extends StatelessWidget {
           child: ElevatedButton.icon(
             onPressed: onNavigateTap,
             icon: const Icon(Icons.navigation, size: 16),
-            label: Text(tr('detail.go_button')),
+            label: FittedBox(fit: BoxFit.scaleDown, child: Text(tr('detail.go_button'))),
           ),
         ),
       ],
