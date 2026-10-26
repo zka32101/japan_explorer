@@ -170,6 +170,7 @@ class JapanExplorerApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final settings = ref.watch(settingsProvider);
+    final localeTag = context.locale.toLanguageTag();
 
     // languageProvider is the single source of truth for the UI language;
     // keep easy_localization's locale in step with it (home toggle, settings
@@ -193,6 +194,12 @@ class JapanExplorerApp extends ConsumerWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
+      // 言語を切り替えたとき、グローバルな tr() を使う画面は自動では作り直されず、
+      // 画面の一部だけ前の言語のまま残る。ロケールが変わったら画面ツリーを作り直す。
+      builder: (context, child) => KeyedSubtree(
+        key: ValueKey(localeTag),
+        child: child ?? const SizedBox.shrink(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
