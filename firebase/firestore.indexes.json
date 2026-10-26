@@ -172,6 +172,14 @@
         { "fieldPath": "title",        "order": "ASCENDING"  },
         { "fieldPath": "voteCount",    "order": "DESCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "curations",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "is_active",    "order": "ASCENDING" },
+        { "fieldPath": "overall_rank", "order": "ASCENDING" }
+      ]
     }
   ],
   "fieldOverrides": [
