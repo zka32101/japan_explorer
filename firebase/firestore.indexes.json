@@ -180,6 +180,14 @@
         { "fieldPath": "is_active",    "order": "ASCENDING" },
         { "fieldPath": "overall_rank", "order": "ASCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "culture_content",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "categoryId", "order": "ASCENDING"  },
+        { "fieldPath": "createdAt",  "order": "DESCENDING" }
+      ]
     }
   ],
   "fieldOverrides": [
