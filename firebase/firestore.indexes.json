@@ -188,6 +188,14 @@
         { "fieldPath": "categoryId", "order": "ASCENDING"  },
         { "fieldPath": "createdAt",  "order": "DESCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "hosts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "is_active", "order": "ASCENDING"  },
+        { "fieldPath": "rating",    "order": "DESCENDING" }
+      ]
     }
   ],
   "fieldOverrides": [
