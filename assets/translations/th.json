@@ -166,6 +166,12 @@
     "evening": "ตอนเย็น"
   },
   "profile": {
+    "level_tourist": "นักท่องเที่ยว",
+    "level_traveler": "นักเดินทาง",
+    "level_explorer": "นักสำรวจ",
+    "level_ambassador": "ทูตวัฒนธรรม",
+    "level_expert": "ผู้เชี่ยวชาญญี่ปุ่น",
+    "level_master": "ปรมาจารย์ญี่ปุ่น",
     "level": "ระดับ {level}",
     "xp": "{xp} XP",
     "streak": "ต่อเนื่อง {days} วัน",

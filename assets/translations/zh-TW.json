@@ -166,6 +166,12 @@
     "evening": "晚上"
   },
   "profile": {
+    "level_tourist": "遊客",
+    "level_traveler": "旅行者",
+    "level_explorer": "探索者",
+    "level_ambassador": "文化大使",
+    "level_expert": "日本通",
+    "level_master": "日本大師",
     "level": "等級 {level}",
     "xp": "{xp} XP",
     "streak": "連續 {days} 天",

@@ -166,6 +166,12 @@
     "evening": "Soir"
   },
   "profile": {
+    "level_tourist": "Touriste",
+    "level_traveler": "Voyageur",
+    "level_explorer": "Explorateur",
+    "level_ambassador": "Ambassadeur culturel",
+    "level_expert": "Expert du Japon",
+    "level_master": "Maître du Japon",
     "level": "Niveau {level}",
     "xp": "{xp} XP",
     "streak": "{days} jours consécutifs",

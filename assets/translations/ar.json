@@ -166,6 +166,12 @@
     "evening": "المساء"
   },
   "profile": {
+    "level_tourist": "سائح",
+    "level_traveler": "مسافر",
+    "level_explorer": "مستكشف",
+    "level_ambassador": "سفير ثقافي",
+    "level_expert": "خبير في اليابان",
+    "level_master": "سيد اليابان",
     "level": "المستوى {level}",
     "xp": "{xp} نقطة خبرة",
     "streak": "سلسلة لمدة {days} أيام",

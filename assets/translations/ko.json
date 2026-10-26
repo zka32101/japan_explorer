@@ -166,6 +166,12 @@
     "evening": "저녁"
   },
   "profile": {
+    "level_tourist": "관광객",
+    "level_traveler": "여행자",
+    "level_explorer": "탐험가",
+    "level_ambassador": "문화 대사",
+    "level_expert": "일본 전문가",
+    "level_master": "일본 마스터",
     "level": "레벨 {level}",
     "xp": "{xp} XP",
     "streak": "{days}일 연속 기록",
