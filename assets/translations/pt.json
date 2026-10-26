@@ -64,6 +64,10 @@
     "map": "Mapa"
   },
   "home": {
+    "todays_culture": "Cultura de hoje",
+    "todays_culture_read": "Cultura de hoje — Lido ✓",
+    "streak_keep": "Continue explorando todos os dias!",
+    "streak_start": "Comece sua sequência hoje!",
     "title": "Descubra o Showglobe Japan",
     "trending": "Em Alta",
     "featured": "Recomendados",

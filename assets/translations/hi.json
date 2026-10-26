@@ -64,6 +64,10 @@
     "map": "मानचित्र"
   },
   "home": {
+    "todays_culture": "आज की संस्कृति",
+    "todays_culture_read": "आज की संस्कृति — पढ़ लिया ✓",
+    "streak_keep": "रोज़ खोज करते रहें!",
+    "streak_start": "आज से अपनी स्ट्रीक शुरू करें!",
     "title": "Japan की खोज करें",
     "trending": "ट्रेंडिंग",
     "featured": "अनुशंसित",

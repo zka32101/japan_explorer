@@ -64,6 +64,10 @@
     "map": "Mapa"
   },
   "home": {
+    "todays_culture": "Cultura de hoy",
+    "todays_culture_read": "Cultura de hoy — Leído ✓",
+    "streak_keep": "¡Sigue explorando cada día!",
+    "streak_start": "¡Empieza tu racha hoy!",
     "title": "Descubre Japón",
     "trending": "Tendencias",
     "featured": "Recomendados",

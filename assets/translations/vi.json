@@ -64,6 +64,10 @@
     "map": "Bản đồ"
   },
   "home": {
+    "todays_culture": "Văn hóa hôm nay",
+    "todays_culture_read": "Văn hóa hôm nay — Đã đọc ✓",
+    "streak_keep": "Hãy khám phá mỗi ngày!",
+    "streak_start": "Bắt đầu chuỗi ngày của bạn hôm nay!",
     "title": "Khám phá Nhật Bản",
     "trending": "Xu hướng",
     "featured": "Đề xuất",
@@ -71,8 +75,8 @@
     "all_categories": "Tất cả danh mục",
     "nav_seasons": "Mùa",
     "nav_phrases": "Cụm từ",
-    "nav_locals": "Người địa phương",
-    "nav_rankings": "Bảng xếp hạng",
+    "nav_locals": "Người dân",
+    "nav_rankings": "Xếp hạng",
     "nav_what": "Cái gì?",
     "nav_menu": "Menu",
     "nav_learn": "Học tập",

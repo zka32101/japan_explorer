@@ -56,6 +56,10 @@
     "history": "歴史"
   },
   "home": {
+    "todays_culture": "今日の文化",
+    "todays_culture_read": "今日の文化 — 読了 ✓",
+    "streak_keep": "毎日続けて探検しよう！",
+    "streak_start": "今日から連続記録を始めよう！",
     "title": "日本を発見しよう",
     "trending": "トレンド",
     "featured": "おすすめ",
@@ -260,9 +264,9 @@
   "nav": {
     "home": "ホーム",
     "search": "検索",
-    "community": "コミュニティ",
+    "community": "交流",
     "my_plan": "プラン",
-    "profile": "プロフィール",
+    "profile": "マイページ",
     "map": "地図"
   },
   "community": {
