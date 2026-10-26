@@ -77,6 +77,9 @@ class BrandHeaderTitle extends StatelessWidget {
           ),
         Text(
           title,
+          // 長い言語(フランス語など)で3行になって切れないよう、2行までにする
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
