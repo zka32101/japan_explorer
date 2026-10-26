@@ -64,6 +64,10 @@
     "map": "Peta"
   },
   "home": {
+    "todays_culture": "Budaya Hari Ini",
+    "todays_culture_read": "Budaya Hari Ini — Sudah dibaca ✓",
+    "streak_keep": "Terus jelajahi setiap hari!",
+    "streak_start": "Mulai rentetan harimu hari ini!",
     "title": "Jelajahi Jepang",
     "trending": "Sedang Tren",
     "featured": "Rekomendasi",

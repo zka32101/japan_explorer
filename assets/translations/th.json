@@ -64,6 +64,10 @@
     "map": "แผนที่"
   },
   "home": {
+    "todays_culture": "วัฒนธรรมวันนี้",
+    "todays_culture_read": "วัฒนธรรมวันนี้ — อ่านแล้ว ✓",
+    "streak_keep": "สำรวจต่อเนื่องทุกวัน!",
+    "streak_start": "เริ่มสตรีคของคุณวันนี้!",
     "title": "ค้นพบ Japan",
     "trending": "ยอดฮิต",
     "featured": "แนะนำ",

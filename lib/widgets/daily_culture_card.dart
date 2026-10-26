@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -75,7 +76,7 @@ class DailyCultureCard extends ConsumerWidget {
                           style: TextStyle(fontSize: 12),
                         ),
                         Text(
-                          hasRead ? "Today's Culture — Read ✓" : "Today's Culture",
+                          hasRead ? tr('home.todays_culture_read') : tr('home.todays_culture'),
                           style: const TextStyle(
                             color: Colors.white70,
                             fontSize: 12,

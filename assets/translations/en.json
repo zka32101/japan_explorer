@@ -64,6 +64,10 @@
     "map": "Map"
   },
   "home": {
+    "todays_culture": "Today's Culture",
+    "todays_culture_read": "Today's Culture — Read ✓",
+    "streak_keep": "Keep exploring daily!",
+    "streak_start": "Start your streak today!",
     "title": "Discover Japan",
     "trending": "Trending",
     "featured": "Recommended",

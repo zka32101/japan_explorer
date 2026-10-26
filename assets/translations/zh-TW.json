@@ -64,6 +64,10 @@
     "map": "地圖"
   },
   "home": {
+    "todays_culture": "今日文化",
+    "todays_culture_read": "今日文化 — 已讀 ✓",
+    "streak_keep": "每天持續探索！",
+    "streak_start": "今天開始你的連續記錄！",
     "title": "探索日本",
     "trending": "熱門趨勢",
     "featured": "推薦",

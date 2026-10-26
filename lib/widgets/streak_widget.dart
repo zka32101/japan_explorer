@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../config/theme.dart';
@@ -64,7 +65,7 @@ class StreakWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '$streakDays Day Streak',
+                    '$streakDays ${tr('progress.day_streak')}',
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -72,8 +73,8 @@ class StreakWidget extends StatelessWidget {
                   ),
                   Text(
                     streakDays > 0
-                        ? 'Keep exploring daily!'
-                        : 'Start your streak today!',
+                        ? tr('home.streak_keep')
+                        : tr('home.streak_start'),
                     style: const TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 13,

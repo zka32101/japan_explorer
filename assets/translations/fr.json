@@ -58,12 +58,16 @@
   "nav": {
     "home": "Accueil",
     "search": "Rechercher",
-    "community": "Communauté",
+    "community": "Échanges",
     "my_plan": "Plans",
     "profile": "Profil",
     "map": "Carte"
   },
   "home": {
+    "todays_culture": "Culture du jour",
+    "todays_culture_read": "Culture du jour — Lu ✓",
+    "streak_keep": "Continuez à explorer chaque jour !",
+    "streak_start": "Commencez votre série aujourd'hui !",
     "title": "Découvrez le Japon",
     "trending": "Tendances",
     "featured": "Recommandé",
