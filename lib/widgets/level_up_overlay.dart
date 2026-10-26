@@ -1,3 +1,4 @@
+import '../models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -55,7 +56,7 @@ class _LevelUpOverlayState extends State<LevelUpOverlay>
     super.dispose();
   }
 
-  String get _title => _levelTitle(widget.newLevel);
+  String get _title => levelTitleFor(widget.newLevel);
 
   @override
   Widget build(BuildContext context) {
@@ -172,21 +173,5 @@ class _LevelUpOverlayState extends State<LevelUpOverlay>
         ),
       ),
     );
-  }
-
-  String _levelTitle(int level) {
-    // Mirrors AppUser.levelTitle
-    switch (level) {
-      case 2: return 'Tourist+';
-      case 3: return 'Traveler';
-      case 4: return 'Traveler+';
-      case 5: return 'Explorer';
-      case 6: return 'Explorer+';
-      case 7: return 'Cultural Ambassador';
-      case 8: return 'Cultural Ambassador+';
-      case 9: return 'Japan Expert';
-      case 10: return 'Japan Master';
-      default: return 'Tourist';
-    }
   }
 }

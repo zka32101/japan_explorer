@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AppUser {
   final String uid;
@@ -120,32 +121,7 @@ class AppUser {
     }
   }
 
-  String get levelTitle {
-    switch (level) {
-      case 1:
-        return 'Tourist';
-      case 2:
-        return 'Tourist+';
-      case 3:
-        return 'Traveler';
-      case 4:
-        return 'Traveler+';
-      case 5:
-        return 'Explorer';
-      case 6:
-        return 'Explorer+';
-      case 7:
-        return 'Cultural Ambassador';
-      case 8:
-        return 'Cultural Ambassador+';
-      case 9:
-        return 'Japan Expert';
-      case 10:
-        return 'Japan Master';
-      default:
-        return 'Japan Master';
-    }
-  }
+  String get levelTitle => levelTitleFor(level);
 
   AppUser copyWith({
     String? displayName,
@@ -181,4 +157,15 @@ class AppUser {
         createdAt: createdAt,
         updatedAt: DateTime.now(),
       );
+}
+
+/// レベルの称号(表示言語に合わせる)。偶数レベルは「+」付き(Tourist+ など)。
+String levelTitleFor(int level) {
+  const keys = [
+    'tourist', 'tourist', 'traveler', 'traveler', 'explorer', 'explorer',
+    'ambassador', 'ambassador', 'expert', 'master',
+  ];
+  final i = (level.clamp(1, 10)) - 1;
+  final base = tr('profile.level_${keys[i]}');
+  return (i.isOdd && i < 8) ? '$base+' : base;
 }

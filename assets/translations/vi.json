@@ -166,6 +166,12 @@
     "evening": "Buổi tối"
   },
   "profile": {
+    "level_tourist": "Du khách",
+    "level_traveler": "Lữ khách",
+    "level_explorer": "Nhà thám hiểm",
+    "level_ambassador": "Đại sứ văn hóa",
+    "level_expert": "Chuyên gia Nhật Bản",
+    "level_master": "Bậc thầy Nhật Bản",
     "level": "Cấp độ {level}",
     "xp": "{xp} XP",
     "streak": "Chuỗi {days} ngày",

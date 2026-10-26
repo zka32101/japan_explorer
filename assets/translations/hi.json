@@ -166,6 +166,12 @@
     "evening": "शाम"
   },
   "profile": {
+    "level_tourist": "पर्यटक",
+    "level_traveler": "यात्री",
+    "level_explorer": "खोजकर्ता",
+    "level_ambassador": "सांस्कृतिक राजदूत",
+    "level_expert": "जापान विशेषज्ञ",
+    "level_master": "जापान मास्टर",
     "level": "लेवल {level}",
     "xp": "{xp} XP",
     "streak": "{days} दिन की स्ट्रीक",

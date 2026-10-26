@@ -166,6 +166,12 @@
     "evening": "Malam"
   },
   "profile": {
+    "level_tourist": "Turis",
+    "level_traveler": "Pelancong",
+    "level_explorer": "Penjelajah",
+    "level_ambassador": "Duta Budaya",
+    "level_expert": "Ahli Jepang",
+    "level_master": "Master Jepang",
     "level": "Level {level}",
     "xp": "{xp} XP",
     "streak": "Streak {days} hari",

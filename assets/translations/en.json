@@ -166,6 +166,12 @@
     "evening": "Evening"
   },
   "profile": {
+    "level_tourist": "Tourist",
+    "level_traveler": "Traveler",
+    "level_explorer": "Explorer",
+    "level_ambassador": "Cultural Ambassador",
+    "level_expert": "Japan Expert",
+    "level_master": "Japan Master",
     "level": "Level {level}",
     "xp": "{xp} XP",
     "streak": "{days}-day streak",
