@@ -156,15 +156,17 @@ class _MenuTranslatorScreenState extends ConsumerState<MenuTranslatorScreen> {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          // 言語によってラベルが長いと横に収まらないので、狭いときは折り返す
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 12,
+            runSpacing: 8,
             children: [
               ElevatedButton.icon(
                 onPressed: () => _pickImage(ImageSource.camera),
                 icon: const Icon(Icons.camera),
                 label: Text(tr('common.camera')),
               ),
-              const SizedBox(width: 12),
               OutlinedButton.icon(
                 onPressed: () => _pickImage(ImageSource.gallery),
                 icon: const Icon(Icons.photo),
