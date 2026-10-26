@@ -431,7 +431,10 @@ class _FeatureTile extends StatelessWidget {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 13,
-                    color: color)),
+                    // 暗い色(濃い茶など)は暗い背景で読めないので、明るく寄せる
+                    color: color.computeLuminance() < 0.2
+                        ? Color.lerp(color, Colors.white, 0.65)
+                        : color)),
             const SizedBox(height: 2),
             Text(subtitle,
                 style: const TextStyle(

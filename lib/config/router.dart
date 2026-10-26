@@ -311,7 +311,12 @@ class _MainShellState extends State<MainShell> {
           const BannerAdWidget(),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
+      bottomNavigationBar: NavigationBarTheme(
+        // 「コミュニティ」「プロフィール」など長いラベルが2行に折り返さないよう小さめにする
+        data: NavigationBarTheme.of(context).copyWith(
+          labelTextStyle: WidgetStateProperty.all(const TextStyle(fontSize: 11)),
+        ),
+        child: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (index) {
           setState(() => _currentIndex = index);
@@ -344,6 +349,7 @@ class _MainShellState extends State<MainShell> {
             label: tr('nav.profile'),
           ),
         ],
+      ),
       ),
     );
   }
