@@ -73,6 +73,8 @@ class AppRoutes {
   static const collection = '/collection';
   static const inviteFriends = '/invite';
   static const favorites = '/favorites';
+  // シェルの外(全画面)で開くスポット詳細。お気に入りから push して、戻るとお気に入りに戻る
+  static const spot = '/spot';
   static const stamps = '/stamps';
 }
 

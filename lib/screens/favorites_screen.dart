@@ -1,3 +1,4 @@
+import '../utils/constants.dart';
 import '../widgets/curation_image_placeholder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -275,8 +276,9 @@ class _FavoriteTile extends ConsumerWidget {
       clipBehavior: Clip.antiAlias,
       margin: EdgeInsets.zero,
       child: InkWell(
-        // 詳細はシェル内のルート。ほかの画面と同じ go で開く(push だと真っ白になる)
-        onTap: () => context.go('/home/detail/${c.id}'),
+        // シェルの外の詳細ルートに push する(戻るとお気に入りに戻る)。
+        // シェル内の /home/detail を push すると真っ白になるため使わない。
+        onTap: () => context.push('${AppRoutes.spot}/${c.id}'),
         child: Row(
           children: [
             SizedBox(
