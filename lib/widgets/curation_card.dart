@@ -1,3 +1,4 @@
+import 'curation_image_placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -28,6 +29,7 @@ class CurationCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _HeroImage(
+              category: curation.category,
               imageUrl: curation.imageUrls.isNotEmpty
                   ? curation.imageUrls.first
                   : null,
@@ -98,12 +100,14 @@ class CurationCard extends StatelessWidget {
 }
 
 class _HeroImage extends StatelessWidget {
+  final String category;
   final String? imageUrl;
   final int? rank;
   final bool isSaved;
   final VoidCallback? onSave;
 
   const _HeroImage({
+    required this.category,
     this.imageUrl,
     this.rank,
     required this.isSaved,
@@ -128,9 +132,10 @@ class _HeroImage extends StatelessWidget {
                     color: AppColors.divider,
                     child: const Center(child: CircularProgressIndicator()),
                   ),
-                  errorWidget: (_, _, _) => _PlaceholderImage(),
+                  errorWidget: (_, _, _) =>
+                      CurationImagePlaceholder(category: category, emojiSize: 56),
                 )
-              : _PlaceholderImage(),
+              : CurationImagePlaceholder(category: category, emojiSize: 56),
         ),
         if (rank != null)
           Positioned(
@@ -168,20 +173,6 @@ class _HeroImage extends StatelessWidget {
             ),
           ),
       ],
-    );
-  }
-}
-
-class _PlaceholderImage extends StatelessWidget {
-  const _PlaceholderImage();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.divider,
-      child: const Center(
-        child: Icon(Icons.image_outlined, size: 48, color: AppColors.textSecondary),
-      ),
     );
   }
 }
