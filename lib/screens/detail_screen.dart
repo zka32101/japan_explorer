@@ -411,7 +411,9 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     final curation =
         ref.watch(curationDetailProvider(widget.curationId)).valueOrNull;
     return Container(
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+      // シェル外(お気に入りからの /spot/:id)で開くと下のシステム余白を誰も処理しないので、ここで足す。
+      // シェル内ではシェルの下タブが余白を消費済みで、padding.bottom は 0 になる。
+      padding: EdgeInsets.fromLTRB(16, 8, 16, 16 + MediaQuery.of(context).padding.bottom),
       decoration: BoxDecoration(
         // ダークテーマで真っ白に浮かないよう、テーマの面の色を使う
         color: Theme.of(context).colorScheme.surface,
