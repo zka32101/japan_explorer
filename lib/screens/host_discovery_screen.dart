@@ -120,7 +120,7 @@ class HostDiscoveryScreen extends ConsumerWidget {
   Widget _buildFilters(
       BuildContext context, WidgetRef ref, HostFilter filter) {
     return Container(
-      color: AppColors.surface,
+      color: Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -414,7 +414,7 @@ class _FilterChip extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
-            color: selected ? Colors.white : AppColors.onSurface,
+            color: selected ? Colors.white : Theme.of(context).colorScheme.onSurface,
             fontSize: compact ? 12 : 13,
             fontWeight:
                 selected ? FontWeight.bold : FontWeight.normal,

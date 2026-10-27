@@ -195,7 +195,7 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
               onSelected: (_) => setState(() => _selectedCategory = cat.id),
               selectedColor: AppColors.primary,
               labelStyle: TextStyle(
-                color: isSelected ? Colors.white : AppColors.onSurface,
+                color: isSelected ? Colors.white : Theme.of(context).colorScheme.onSurface,
               ),
             ),
           );
@@ -233,11 +233,11 @@ class _CultureHubScreenState extends ConsumerState<CultureHubScreen> {
                         memCacheWidth: 800,
                         placeholder: (_, _) => Container(
                           height: 160,
-                          color: AppColors.surface,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                         errorWidget: (_, _, _) => Container(
                           height: 160,
-                          color: AppColors.surface,
+                          color: Theme.of(context).colorScheme.surface,
                           child: Center(child: Icon(Icons.image_not_supported)),
                         ),
                       ),
