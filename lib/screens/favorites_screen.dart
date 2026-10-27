@@ -94,7 +94,7 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
                           ),
                         Expanded(
                           child: ListView.separated(
-                            padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
+                            padding: EdgeInsets.fromLTRB(16, 8, 16, 100 + MediaQuery.of(context).padding.bottom),
                             itemCount: shown.length,
                             separatorBuilder: (_, _) => const SizedBox(height: 10),
                             itemBuilder: (_, i) => _FavoriteTile(
@@ -107,7 +107,8 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
                     ),
                     Positioned(
                       right: 16,
-                      bottom: 16,
+                      // シェル外で開くとシステム下余白を誰も処理しないので足す(シェル内では0)
+                      bottom: 16 + MediaQuery.of(context).padding.bottom,
                       child: FloatingActionButton.extended(
                         onPressed: shown.isEmpty
                             ? null
