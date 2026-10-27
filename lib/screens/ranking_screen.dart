@@ -24,7 +24,7 @@ class RankingScreen extends ConsumerWidget {
           ),
           if (filter == RankingFilter.category)
             RepaintBoundary(
-              child: _buildCategoryPicker(ref),
+              child: _buildCategoryPicker(context, ref),
             ),
           Expanded(
             child: rankingsAsync.when(
@@ -39,7 +39,7 @@ class RankingScreen extends ConsumerWidget {
   }
 
 
-  Widget _buildCategoryPicker(WidgetRef ref) {
+  Widget _buildCategoryPicker(BuildContext context, WidgetRef ref) {
     final selected = ref.watch(rankingCategoryProvider);
     return SizedBox(
       height: 44,
@@ -59,7 +59,7 @@ class RankingScreen extends ConsumerWidget {
                 ref.read(rankingCategoryProvider.notifier).state = cat,
             selectedColor: AppColors.primary,
             labelStyle:
-                TextStyle(color: isSelected ? Colors.white : AppColors.onSurface),
+                TextStyle(color: isSelected ? Colors.white : Theme.of(context).colorScheme.onSurface),
           );
         },
       ),
@@ -187,7 +187,7 @@ class _RankingFilterTabs extends ConsumerWidget {
     ];
 
     return Container(
-      color: AppColors.surface,
+      color: Theme.of(context).colorScheme.surface,
       child: Row(
         children: filters.map((f) {
           final isSelected = f.$1 == current;

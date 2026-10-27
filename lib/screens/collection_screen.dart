@@ -251,7 +251,7 @@ class _CategoryRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(4),
             child: LinearProgressIndicator(
               value: pct,
-              backgroundColor: AppColors.surface,
+              backgroundColor: Theme.of(context).colorScheme.surface,
               valueColor: AlwaysStoppedAnimation<Color>(
                 pct >= 1.0 ? Colors.green : AppColors.primary,
               ),
@@ -278,7 +278,7 @@ class _MotivationCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.primary.withValues(alpha: 0.2)),
       ),
