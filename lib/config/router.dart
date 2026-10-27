@@ -148,6 +148,11 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const FavoritesScreen(),
       ),
       GoRoute(
+        path: '${AppRoutes.spot}/:id',
+        builder: (context, state) =>
+            DetailScreen(curationId: state.pathParameters['id']!),
+      ),
+      GoRoute(
         path: AppRoutes.inviteFriends,
         builder: (context, state) => const InviteFriendsScreen(),
       ),
