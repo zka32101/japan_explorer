@@ -394,9 +394,10 @@ class _PlanDetailScreenState extends ConsumerState<PlanDetailScreen> {
   Widget _buildBottomBar(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
-      decoration: const BoxDecoration(
-        color: AppColors.surface,
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)],
+      decoration: BoxDecoration(
+        // ダークテーマで真っ白に浮かないよう、テーマの面の色を使う
+        color: Theme.of(context).colorScheme.surface,
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8)],
       ),
       child: Row(
         children: [
