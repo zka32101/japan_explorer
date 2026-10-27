@@ -1,3 +1,4 @@
+import '../widgets/curation_image_placeholder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -274,24 +275,21 @@ class _FavoriteTile extends ConsumerWidget {
       clipBehavior: Clip.antiAlias,
       margin: EdgeInsets.zero,
       child: InkWell(
-        onTap: () => context.push('/home/detail/${c.id}'),
+        // 詳細はシェル内のルート。ほかの画面と同じ go で開く(push だと真っ白になる)
+        onTap: () => context.go('/home/detail/${c.id}'),
         child: Row(
           children: [
             SizedBox(
               width: 88,
               height: 88,
               child: c.imageUrls.isEmpty
-                  ? Container(
-                      color: AppColors.divider,
-                      child: const Icon(Icons.image,
-                          color: AppColors.textSecondary),
-                    )
+                  ? CurationImagePlaceholder(category: c.category)
                   : CachedNetworkImage(
                       imageUrl: c.imageUrls.first,
                       fit: BoxFit.cover,
                       memCacheWidth: 300,
                       errorWidget: (_, _, _) =>
-                          Container(color: AppColors.divider),
+                          CurationImagePlaceholder(category: c.category),
                     ),
             ),
             Expanded(
