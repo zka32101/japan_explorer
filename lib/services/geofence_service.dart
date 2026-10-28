@@ -5,6 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:logger/logger.dart';
 
 import '../models/curation.dart';
+import '../utils/constants.dart';
 
 /// Lightweight target for geofence checking.
 class GeofenceTarget {
@@ -149,7 +150,9 @@ class GeofenceService {
       await _localNotifications.show(
         spotName.hashCode,
         '📍 You\'re near $spotName',
-        'Tap AI Lens to identify and learn about this spot!',
+        AppConstants.aiLensEnabled
+            ? 'Tap AI Lens to identify and learn about this spot!'
+            : 'Open the app to learn about this spot!',
         NotificationDetails(
           android: AndroidNotificationDetails(
             _notifChannelId,

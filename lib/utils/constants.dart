@@ -2,6 +2,9 @@ class AppConstants {
   static const appName = 'Showglobe Japan';
   static const appVersion = '1.0.0';
 
+  /// AI レンズ(写真→AI 解説)。費用と利用見込みが固まるまで入口を隠す。
+  static const aiLensEnabled = false;
+
   static const pageSize = 20;
   static const searchDebounceMs = 500;
   static const geofenceRadiusMeters = 200.0;
