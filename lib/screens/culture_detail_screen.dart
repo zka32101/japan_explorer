@@ -7,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import '../config/theme.dart';
 import '../models/culture_content.dart';
+import '../widgets/simple_markdown_text.dart';
 import '../providers/culture_content_provider.dart';
 import '../providers/premium_provider.dart';
 import '../widgets/premium_gate.dart';
@@ -209,7 +210,7 @@ class CultureDetailScreen extends ConsumerWidget {
                       if (isLocked)
                         _buildPremiumPaywallBlock(context, content, langCode)
                       else
-                        Text(
+                        SimpleMarkdownText(
                           content.localizedDescription(langCode),
                           style:
                               const TextStyle(height: 1.6, fontSize: 15),
