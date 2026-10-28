@@ -182,12 +182,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => context.go('/camera'),
-        backgroundColor: AppColors.primary,
-        icon: const Icon(Icons.camera_alt, color: Colors.white),
-        label: Text(tr('home.ai_lens_label'), style: const TextStyle(color: Colors.white)),
-      ),
+      floatingActionButton: AppConstants.aiLensEnabled
+          ? FloatingActionButton.extended(
+              onPressed: () => context.go('/camera'),
+              backgroundColor: AppColors.primary,
+              icon: const Icon(Icons.camera_alt, color: Colors.white),
+              label: Text(tr('home.ai_lens_label'),
+                  style: const TextStyle(color: Colors.white)),
+            )
+          : null,
     );
   }
 
@@ -387,7 +390,8 @@ class _QuickMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = <_QuickMenuItem>[
-      _QuickMenuItem(AppGlyph.lens, 'home.nav_what', () => context.push(AppRoutes.whatIsThis)),
+      if (AppConstants.aiLensEnabled)
+        _QuickMenuItem(AppGlyph.lens, 'home.nav_what', () => context.push(AppRoutes.whatIsThis)),
       _QuickMenuItem(AppGlyph.bowl, 'home.nav_menu', () => context.push(AppRoutes.menuTranslator)),
       _QuickMenuItem(AppGlyph.globe, 'home.nav_phrases', () => context.push(AppRoutes.phrases)),
       _QuickMenuItem(AppGlyph.book, 'home.nav_learn', () => context.push(AppRoutes.cultureHub)),
